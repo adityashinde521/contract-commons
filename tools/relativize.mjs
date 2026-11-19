@@ -22,7 +22,7 @@ for (const f of files.filter((x) => x.endsWith('.html'))) {
   writeFileSync(f, s);
 }
 for (const f of files.filter((x) => x.endsWith('.css'))) {
-  const s = readFileSync(f, 'utf8').replace(/url\(\/_astro\//g, 'url(./');
+  const s = readFileSync(f, 'utf8').replace(/url\(\/assets\//g, 'url(./');
   writeFileSync(f, s);
 }
 console.log(`relativize: ${n} links rewritten`);
