@@ -1,42 +1,95 @@
 ---
 import Base from '../layouts/Base.astro';
 import { MODULES, TINT, KIND_LABEL, KIND_CHIP, orderedLessons, url } from '../lib/course';
+import quizzes from '../data/quizzes.json';
 const lessons = await orderedLessons();
+const Q = quizzes as Record<string, unknown[]>;
+const count = (k: string) => lessons.filter((l) => l.entry.data.kind === k).length;
+const all = lessons.map((l) => l.entry.id).join(',');
 ---
-<Base title="Curriculum" active="curriculum">
-  <div class="wrap">
-    <header class="page-head">
-      <div class="cc-eyebrow">Curriculum</div>
-      <h1>{MODULES.length} modules, {lessons.length} lessons and labs</h1>
-      <p class="lead">Ethereum-focused and ordered from first principles to research. Every module ends with a lab. Lessons marked with a quiz are complete when you score 80%.</p>
+<Base title="Curriculum" active="curriculum" wide>
+  <div class="wrap wrap-wide">
+    <header class="page-head curr-head">
+      <div>
+        <div class="cc-eyebrow">Curriculum</div>
+        <h1>{MODULES.length} modules, {lessons.length} lessons and labs</h1>
+        <p class="lead">Ethereum-focused and ordered from first principles to research. One path for everyone: work through the modules in order. A unit is complete when you pass its quiz with 80%.</p>
+      </div>
+      <div class="curr-overview">
+        <div class="curr-ov-top"><span>Your progress</span><b data-course-count={all}>0 of {lessons.length}</b></div>
+        <div class="cc-progress"><span data-course-bar={all} style="width:0%"></span></div>
+        <ul class="curr-legend">
+          <li><span class="cc-chip cc-chip--brand">Lesson</span>{count('lesson')}</li>
+          <li><span class="cc-chip cc-chip--cs">Code lab</span>{count('lab-remix')}</li>
+          <li><span class="cc-chip cc-chip--law">Tool lab</span>{count('lab-gui')}</li>
+        </ul>
+        <a class="cc-btn cc-btn--primary curr-next" href={url('/lessons/trust-and-ledgers/')} data-course-next>Start with 1.1</a>
+      </div>
     </header>
-    <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px">
-      {MODULES.map((m) => (
-        <section class="cc-card" id={m.slug} style="border-radius:var(--radius-xl)">
-          <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
-            <span class={`mod-num ${TINT[m.tint]}`}>{String(m.n).padStart(2, '0')}</span>
-            <div style="flex:1 1 400px;min-width:0">
-              <h2 style="margin:0;font-size:22px;font-weight:800"><a href={url(`/modules/${m.slug}/`)} style="color:var(--ink);text-decoration:none">{m.title}</a></h2>
-              <p style="margin:4px 0 0;color:var(--muted)">{m.summary}</p>
+
+    <div class="curr-layout">
+      <nav class="curr-index" aria-label="Modules">
+        <div class="lbl">Modules</div>
+        <ol>
+          {MODULES.map((m) => (
+            <li><a href={`#${m.slug}`} data-index-link={m.slug}>
+              <span class={`mod-num ${TINT[m.tint]}`}>{String(m.n).padStart(2, '0')}</span>
+              <span class="t">{m.title}</span>
+              <span class="c" data-mod-count={m.lessons.join(',')}>0/{m.lessons.length}</span>
+            </a></li>
+          ))}
+          <li><a href="#finish"><span class="mod-num" style="background:var(--surface-muted);color:var(--brand-900)">✓</span><span class="t">Capstone and final exam</span></a></li>
+        </ol>
+      </nav>
+
+      <div class="curr-main">
+        {MODULES.map((m) => {
+          const ls = lessons.filter((l) => l.mod.n === m.n);
+          return (
+            <section class="curr-mod" id={m.slug} data-curr-mod={m.slug}>
+              <header class="curr-mod-head">
+                <span class={`mod-num ${TINT[m.tint]}`}>{String(m.n).padStart(2, '0')}</span>
+                <div class="curr-mod-title">
+                  <h2><a href={url(`/modules/${m.slug}/`)}>{m.title}</a></h2>
+                  <p>{m.summary}</p>
+                </div>
+                <div class="curr-mod-prog">
+                  <span class="cc-chip" data-mod-progress={m.lessons.join(',')}>0 of {m.lessons.length} done</span>
+                  <div class="cc-progress"><span data-mod-bar={m.lessons.join(',')} style="width:0%"></span></div>
+                </div>
+              </header>
+              <ol class="curr-rows">
+                {ls.map((l) => (
+                  <li><a class="curr-row" href={url(`/lessons/${l.entry.id}/`)} data-lesson-link={l.entry.id} data-row>
+                    <span class="code">{l.code}</span>
+                    <span class="title">{l.entry.data.title}</span>
+                    <span class="meta">
+                      <span class={`cc-chip ${KIND_CHIP[l.entry.data.kind]}`}>{KIND_LABEL[l.entry.data.kind]}</span>
+                      {l.entry.data.minutes && <span class="min">{l.entry.data.minutes}</span>}
+                      {Q[l.entry.id] && <span class="min">{Q[l.entry.id].length} questions</span>}
+                    </span>
+                    <span class="status" aria-hidden="true"></span>
+                  </a></li>
+                ))}
+              </ol>
+            </section>
+          );
+        })}
+
+        <section class="curr-mod curr-finish" id="finish">
+          <header class="curr-mod-head">
+            <span class="mod-num" style="background:var(--brand-900);color:var(--on-brand)">✓</span>
+            <div class="curr-mod-title">
+              <h2>Capstone and final exam</h2>
+              <p>Bring the three lenses together in one team project, then take the final exam: 40 questions, the same for everyone, pass with 70%. No code writing.</p>
             </div>
-            <span class="cc-chip" data-mod-progress={m.lessons.join(',')}>0 of {m.lessons.length} done</span>
-          </div>
-          <ol style="list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-            {lessons.filter((l) => l.mod.n === m.n).map((l) => (
-              <li><a href={url(`/lessons/${l.entry.id}/`)} data-lesson-link={l.entry.id} style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--surface-muted);text-decoration:none;color:var(--ink)">
-                <span style="font:500 13px var(--font-mono);color:var(--muted-2);min-width:34px">{l.code}</span>
-                <span style="flex:1;font-weight:600;font-size:15px">{l.entry.data.title}</span>
-                <span class={`cc-chip ${KIND_CHIP[l.entry.data.kind]}`}>{KIND_LABEL[l.entry.data.kind]}</span>
-              </a></li>
-            ))}
+          </header>
+          <ol class="curr-rows">
+            <li><a class="curr-row" href={url('/capstone/')}><span class="code">P</span><span class="title">Capstone: the agentic escrow</span><span class="meta"><span class="cc-chip">Team project</span><span class="min">4 weeks</span></span><span class="status" aria-hidden="true"></span></a></li>
+            <li><a class="curr-row" href={url('/final-exam/')} data-exam-row><span class="code">E</span><span class="title">Final exam</span><span class="meta"><span class="cc-chip">40 questions</span><span class="min">Pass 70%</span></span><span class="status" aria-hidden="true"></span></a></li>
           </ol>
         </section>
-      ))}
-      <section class="cc-card" style="border-radius:var(--radius-xl)">
-        <h2 style="margin:0;font-size:22px;font-weight:800">Capstone and final exam</h2>
-        <p style="margin:4px 0 12px;color:var(--muted)">Bring the three lenses together in one project, then take the final exam: 40 questions, the same for everyone, pass with 70%.</p>
-        <div class="meta-chips"><a class="cc-btn cc-btn--primary" href={url('/capstone/')}>Capstone: the agentic escrow</a><a class="cc-btn cc-btn--secondary" href={url('/final-exam/')}>Final exam</a></div>
-      </section>
+      </div>
     </div>
   </div>
 </Base>

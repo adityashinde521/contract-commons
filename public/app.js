@@ -48,6 +48,7 @@
   function marks() {
     $$('[data-lesson-link]').forEach(function (a) {
       var id = a.getAttribute('data-lesson-link');
+      if (a.hasAttribute('data-row')) { a.classList.toggle('is-done', !!S.done[id]); return; }
       if (S.done[id] && !a.querySelector('.done-tick')) {
         var s = document.createElement('span'); s.className = 'cc-chip cc-chip--brand done-tick'; s.textContent = 'Done'; s.style.marginLeft = '6px';
         a.appendChild(s);
@@ -57,8 +58,27 @@
       var ids = c.getAttribute('data-mod-progress').split(','), n = ids.filter(function (i) { return S.done[i]; }).length;
       c.textContent = n + ' of ' + ids.length + ' done'; c.className = 'cc-chip' + (n === ids.length ? ' cc-chip--brand' : '');
     });
+    function cnt(attr) { return function (el) { var ids = el.getAttribute(attr).split(','); return [ids.filter(function (i) { return S.done[i]; }).length, ids.length]; }; }
+    $$('[data-mod-bar]').forEach(function (el) { var c = cnt('data-mod-bar')(el); el.style.width = Math.round(100 * c[0] / c[1]) + '%'; });
+    $$('[data-course-bar]').forEach(function (el) { var c = cnt('data-course-bar')(el); el.style.width = Math.round(100 * c[0] / c[1]) + '%'; });
+    $$('[data-course-count]').forEach(function (el) { var c = cnt('data-course-count')(el); el.textContent = c[0] + ' of ' + c[1]; });
+    $$('[data-mod-count]').forEach(function (el) { var c = cnt('data-mod-count')(el); el.textContent = c[0] + '/' + c[1]; el.parentNode.classList.toggle('is-complete', c[0] === c[1]); });
+    var rows = $$('a[data-row]'), nx = rows.filter(function (r) { return !S.done[r.getAttribute('data-lesson-link')]; })[0];
+    rows.forEach(function (r) { r.classList.toggle('is-next', r === nx); });
+    var cn = $('[data-course-next]');
+    if (cn) {
+      if (nx) { cn.href = nx.href; cn.textContent = (Object.keys(S.done).length ? 'Continue with ' : 'Start with ') + nx.querySelector('.code').textContent; }
+      else { cn.href = L('/final-exam/'); cn.textContent = 'Take the final exam'; }
+    }
+    var er = $('[data-exam-row]'); if (er) er.classList.toggle('is-done', !!S.examPassed);
   }
   marks();
+  /* Curriculum index: highlight the module in view */
+  var idxLinks = $$('[data-index-link]');
+  if (idxLinks.length && 'IntersectionObserver' in window) {
+    var io2 = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return; var k = e.target.id; idxLinks.forEach(function (a) { a.classList.toggle('is-current', a.getAttribute('data-index-link') === k); }); }); }, { rootMargin: '-20% 0px -70% 0px' });
+    $$('[data-curr-mod]').forEach(function (s) { io2.observe(s); });
+  }
 
   /* Quizzes. Types: mc (concept), fill (missing logic), fix (wrong line), order (steps). */
   var TYPE = { mc: 'Concept', fill: 'Fill the missing logic', fix: 'Fix the wrong line', order: 'Put steps in order' };
