@@ -27,6 +27,33 @@ problem: "Your wallet shows a balance. But which computer told it that number, a
 <li>Trust trade-off: a provider can see your requests and could, in theory, show wrong data. Running your own node, or a light client, removes that trust.</li>
 </ul>
 
+<!-- deep:start -->
+### In depth
+
+<p>When your wallet shows a balance, it asked a <b>node</b>. A node is software that downloads every block, runs every transaction in the EVM and keeps the current state. Since the Merge an Ethereum node runs two programs. The <b>execution client</b> (Geth, Nethermind, Besu, Erigon, Reth) runs transactions and keeps the state. The <b>consensus client</b> (Lighthouse, Prysm, Teku, Nimbus, Lodestar, Grandine) follows Proof of Stake. A full node needs a fast SSD of about 2 TB and a good internet connection; an <b>archive node</b>, which keeps every historical state, needs much more.</p>
+<p>Most applications do not run their own node. They send JSON-RPC requests (<code>eth_getBalance</code>, <code>eth_call</code>, <code>eth_sendRawTransaction</code>) to an <b>RPC provider</b> such as Infura, Alchemy or QuickNode. This is convenient but brings back a trusted middleman: the provider sees your IP address and every address you look up, can be down, can refuse service in some regions, and could in theory return wrong data. <b>Light clients</b> reduce that trust: they follow block headers and verify the answers they get with Merkle proofs.</p>
+<p><b>Client diversity</b> protects the network. If one client with more than two thirds of validators had a bug, it could finalise a wrong chain; with more than one third, a bug could stop finality. That is why staking providers are asked to spread across clients.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> follow one balance request.</p>
+<ol>
+  <li>MetaMask sends <code>{"method":"eth_getBalance","params":["0x5B38…","latest"]}</code> to its default provider.</li>
+  <li>The provider’s node looks up the account in its state and returns <code>"0x2386f26fc10000"</code>: 10<sup>16</sup> wei, which is 0.01 ETH.</li>
+  <li>You change the RPC URL in MetaMask to another provider and get the same answer. Two independent sources agree.</li>
+  <li>When you send a transaction, the wallet signs it locally and only sends the signed bytes. The provider cannot change it without breaking the signature, but it could delay it or not forward it.</li>
+</ol>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“MetaMask is a node.” It is a wallet that talks to someone else’s node.</li>
+  <li>“The provider can steal my funds.” It never has your key; it can mislead or censor you, not spend for you.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

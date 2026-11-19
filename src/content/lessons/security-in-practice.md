@@ -46,6 +46,34 @@ problem: "About $3.4 billion was stolen in crypto in 2025, but most of it not th
       <li>If an AI tool finds a bug, may a researcher use it to “rescue” funds? Where is the line to unauthorised access?</li>
     </ul></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>The numbers for 2025 changed the security picture. About $3.4 billion was stolen, and almost half of it in a single incident: the Bybit hack of February 2025, about $1.5 billion. The contracts worked perfectly. The attackers compromised a computer used by the wallet provider’s developers and injected code into the signing website, so the exchange’s signers saw a normal transfer while they actually approved a change that gave the attackers control of the cold wallet.</p>
+<p>This is the main lesson: <b>operational security</b> now matters as much as code. Typical attack paths are stolen or phished private keys, compromised front ends and software supply chains, social engineering of staff (including fake job applicants), and governance or admin keys with too much power. Hackers linked to North Korea were responsible for at least $2.02 billion in 2025, often through such human routes.</p>
+<p>Defences follow from the attack paths. Use multisig with independent signers and hardware wallets. Verify transactions on a second device, by reading the raw data or a simulation, not only the website. Limit what admin keys can do, add timelocks, and monitor contracts so you can pause quickly. At the same time, attackers use AI too: in December 2025, AI agents in the SCONE-bench study exploited more than half of recent real-world vulnerable contracts in simulation.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> review a company’s payment process against the Bybit pattern.</p>
+<div class="tw"><table>
+  <tr><th>Step today</th><th>Risk</th><th>Better</th></tr>
+  <tr><td>Three signers approve in the same web app</td><td>One compromised app fools all three</td><td>Each signer checks the decoded transaction on a hardware wallet or an independent tool</td></tr>
+  <tr><td>Signers check the receiver address only</td><td>The attack changed the call type, not the address</td><td>Check the function, the value and whether it is a delegatecall</td></tr>
+  <tr><td>Admin key on one laptop</td><td>Malware takes full control</td><td>Admin in a multisig with a 48-hour timelock</td></tr>
+  <tr><td>No monitoring</td><td>Loss found hours later</td><td>Alerts on large transfers and admin calls; a pause switch</td></tr>
+</table></div>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“A multisig is safe by design.” It is only as safe as the way its signers check what they sign.</li>
+  <li>“Hacks are mostly clever code exploits.” The largest losses are increasingly human and operational.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

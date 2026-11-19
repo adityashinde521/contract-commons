@@ -47,6 +47,33 @@ problem: "A smart contract paid the seller, then a court says the sale was void.
       <li>Good fit: many parties with low trust and clear digital rules. Bad fit: one trusted operator, private data, human judgment.</li>
     </ul>
 
+<!-- deep:start -->
+### In depth
+
+<p>Lawyers and developers use the word “contract” differently. In law, a contract is a binding agreement formed by offer and acceptance; it creates rights and duties that courts enforce. A smart contract is software that moves assets according to rules. The two can overlap: code can be the way the parties <i>perform</i> their agreement, or, in some designs, part of the agreement itself. But the code does not replace contract law. Questions such as capacity, mistake, fraud, unfair terms and consumer rights are still answered by the law of the country that applies.</p>
+<p>Seven problems appear again and again: <b>identity and capacity</b> (an address does not show who or how old the party is), <b>error and rescission</b> (the law may cancel a contract, but the payment on chain cannot be reversed), <b>interpretation</b> (what if text and code differ?), <b>oracles and liability</b>, <b>data protection</b> (immutable storage versus the right to erasure), <b>jurisdiction</b> (which court, which law, when nodes are everywhere), and <b>mandatory law</b> (tenancy or consumer rules override what the code says).</p>
+<p>For businesses, the question is economic: does automation reduce the cost of trust enough to justify development, audits and legal review? Good candidates are processes with many parties, clear conditions, digital assets and a need for an independent record: escrow, supply-chain payments, tokenised securities, insurance pay-outs based on data.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> the Escrow buyer is 16 years old.</p>
+<ol>
+  <li>Under German law (§§ 106 ff. BGB) a contract by a minor without parental consent is pending and may be invalid if the parents refuse.</li>
+  <li>The contract code has no idea: the buyer deposited, confirmed, and the seller received 1 ETH.</li>
+  <li>If the parents refuse, the seller must give the payment back under unjust enrichment rules (§ 812 BGB). The chain will not do it automatically; it is a claim against the seller as a person.</li>
+  <li><b>Design options:</b> verify age off chain before allowing deposits (with privacy, lesson 10.3), add an arbiter refund window, or keep the transaction small enough to fall under pocket-money rules (§ 110 BGB).</li>
+</ol>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“Once on chain, the law cannot reach it.” Courts act on people and companies, who must return or pay.</li>
+  <li>“Lawyers only need to read the comments.” The code is what runs; the comments can be wrong.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

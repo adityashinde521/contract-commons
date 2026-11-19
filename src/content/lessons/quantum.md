@@ -25,7 +25,7 @@ problem: "A quantum computer could one day derive private keys from public ones.
     </ul>
     <h4>The response</h4>
     <ul>
-      <li>NIST published post-quantum standards in 2024: ML-KEM (FIPS 203), ML-DSA (FIPS 204) and SLH-DSA (FIPS 205). NIST plans to deprecate ECDSA by 2030 and disallow it by 2035.</li>
+      <li>NIST published post-quantum standards in 2024: ML-KEM (FIPS 203), ML-DSA (FIPS 204) and SLH-DSA (FIPS 205). NIST IR 8547, finalised on 27 October 2026, deprecates quantum-vulnerable signatures such as ECDSA after 2030 and disallows them after 2035.</li>
       <li>The Ethereum Foundation formed a Post-Quantum team in January 2026 (pq.ethereum.org). The target for full Layer 1 protection is around 2029.</li>
       <li>Post-quantum signatures are much larger. This costs block space and gas.</li>
     </ul>
@@ -34,6 +34,33 @@ problem: "A quantum computer could one day derive private keys from public ones.
       <li>If a quantum attacker takes funds from an old account, is that theft? Who is liable?</li>
       <li>Business: plan the migration cost like any other technology risk.</li>
     </ul></div>
+
+<!-- deep:start -->
+### In depth
+
+<p>Quantum computers threaten two kinds of cryptography differently. <b>Shor’s algorithm</b> can compute a private key from a public key for elliptic-curve and RSA schemes, given a large enough, error-corrected quantum computer. That would break ECDSA account signatures, BLS validator signatures and KZG commitments. <b>Grover’s algorithm</b> only speeds up brute-force search, which roughly halves the security of hash functions: Keccak-256 keeps about 128 bits of security, which is still considered enough.</p>
+<p>An important detail: an Ethereum address is a <i>hash</i> of the public key. As long as an account has never sent a transaction, its public key is not visible, and a quantum attacker sees only the hash. Once an account signs, its public key can be recovered from the signature. Accounts that have transacted are therefore exposed first, and any migration plan must move funds before an attacker can act.</p>
+<p>The response is <b>crypto-agility</b>: making the signature scheme replaceable. Post-quantum signatures standardised by NIST (ML-DSA, SLH-DSA) are larger and more expensive to verify than ECDSA. Ethereum’s path includes account abstraction (so each account can choose its signature scheme), hash-based signatures for validators, and new proof systems. The practical question for long-lived records, such as land registers or certificates, is whether they will still be trustworthy in 20 years.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> a notary office registers document hashes from one EOA and wants them to stay credible until 2045.</p>
+<ol>
+  <li>Risk: once quantum attacks are practical, someone could forge new signatures from that EOA and register false documents with a backdated story.</li>
+  <li>Existing registrations stay valid as records: the hash and the block timestamp do not depend on ECDSA.</li>
+  <li>Mitigation now: move registration to a smart account whose verifier can be replaced (crypto-agility), and publish the policy.</li>
+  <li>Later: switch the verifier to a post-quantum scheme by governance, and retire the old key in a public transaction.</li>
+</ol>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“Quantum computers break all of blockchain.” Hashes survive; signatures and some proofs need replacing.</li>
+  <li>“It is decades away, so ignore it.” Migrations take years; records made today must last.</li>
+</ul>
+<!-- deep:end -->
 
 ### Watch and read
 

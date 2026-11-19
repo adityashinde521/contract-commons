@@ -43,6 +43,38 @@ problem: "You click transact in Remix and a fee appears. What exactly did you ju
       <tr><td>Used in</td><td>Most code labs (Remix VM)</td><td>Sepolia deployment and most tool labs</td><td>Never in this course</td></tr>
     </table></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>Ethereum is a single, shared computer. Its state is a table of accounts. <b>Externally owned accounts</b> (EOAs) are controlled by private keys and can start transactions. <b>Contract accounts</b> hold code and storage and run only when called. A transaction is a signed message from an EOA that either moves ETH, deploys a contract, or calls a contract function with some input data.</p>
+<p>Every node runs the same transactions in the same order in the <b>Ethereum Virtual Machine</b> (EVM). The EVM executes bytecode, simple instructions such as ADD, SSTORE (write storage) or CALL (call another contract). Because every node must get exactly the same result, the EVM cannot use random numbers, the internet or the clock of the computer it runs on. That is why contracts need oracles for outside data.</p>
+<p>Each instruction costs <b>gas</b>. Gas stops endless loops (a transaction must say how much gas it may use, the gas limit) and prices scarce resources. Writing a new value to storage costs about 20,000 gas; an addition costs 3. Since EIP-1559, each block has a <b>base fee</b> per gas that rises when blocks are full and falls when they are empty; the base fee is burned. Users add a <b>priority fee</b> (tip) for the validator.</p>
+<!-- diagram:tx-lifecycle -->
+<figure class="dg"><div class="sv"><svg viewBox="0 0 720 190" role="img" aria-label="Life of an Ethereum transaction" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah-lifeofanethereumtran-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-a" d="M0 0L10 5L0 10z"/></marker><marker id="ah-lifeofanethereumtran-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ar" d="M0 0L10 5L0 10z"/></marker><marker id="ah-lifeofanethereumtran-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ag" d="M0 0L10 5L0 10z"/></marker><marker id="ah-lifeofanethereumtran-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-am" d="M0 0L10 5L0 10z"/></marker></defs><rect class="k-law" x="10" y="40" width="100" height="66" rx="12"/><text class="tb" x="60.0" y="68.5" text-anchor="middle" font-size="13.5">Wallet</text><text class="t" x="60.0" y="87.0" text-anchor="middle" font-size="13.5">signs</text><rect class="k-n" x="128" y="40" width="100" height="66" rx="12"/><text class="tb" x="178.0" y="68.5" text-anchor="middle" font-size="13.5">Mempool</text><text class="t" x="178.0" y="87.0" text-anchor="middle" font-size="13.5">waits</text><line class="k-a" x1="110" y1="73" x2="126" y2="73" marker-end="url(#ah-lifeofanethereumtran-a)"/><rect class="k-bi" x="246" y="40" width="100" height="66" rx="12"/><text class="tb" x="296.0" y="68.5" text-anchor="middle" font-size="13.5">Proposer</text><text class="t" x="296.0" y="87.0" text-anchor="middle" font-size="13.5">orders</text><line class="k-a" x1="228" y1="73" x2="244" y2="73" marker-end="url(#ah-lifeofanethereumtran-a)"/><rect class="k-cs" x="364" y="40" width="100" height="66" rx="12"/><text class="tb" x="414.0" y="68.5" text-anchor="middle" font-size="13.5">EVM</text><text class="t" x="414.0" y="87.0" text-anchor="middle" font-size="13.5">runs, gas</text><line class="k-a" x1="346" y1="73" x2="362" y2="73" marker-end="url(#ah-lifeofanethereumtran-a)"/><rect class="k-brand" x="482" y="40" width="100" height="66" rx="12"/><text class="tb" x="532.0" y="68.5" text-anchor="middle" font-size="13.5">Included</text><text class="t" x="532.0" y="87.0" text-anchor="middle" font-size="13.5">≈ 12 s</text><line class="k-a" x1="464" y1="73" x2="480" y2="73" marker-end="url(#ah-lifeofanethereumtran-a)"/><rect class="k-brand" x="600" y="40" width="100" height="66" rx="12"/><text class="tb" x="650.0" y="68.5" text-anchor="middle" font-size="13.5">Final</text><text class="t" x="650.0" y="87.0" text-anchor="middle" font-size="13.5">≈ 13 min</text><line class="k-a" x1="582" y1="73" x2="598" y2="73" marker-end="url(#ah-lifeofanethereumtran-a)"/><text class="tl" x="360" y="140" text-anchor="middle" font-size="13">Revert in the EVM: state changes are undone, gas used is still paid.</text><text class="tl" x="360" y="165" text-anchor="middle" font-size="13">Fee = gas used × (base fee, burned + priority fee, to validator)</text></svg></div><figcaption><b>From click to finality.</b> The wallet signs locally, the transaction waits in the mempool, a validator includes it, every node runs it in the EVM, and after about 13 minutes it is final.</figcaption></figure>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> what does calling <code>deposit()</code> on the Escrow cost?</p>
+<ol>
+  <li>The transaction uses 50,000 gas (one storage write for the state, one event, checks).</li>
+  <li>The base fee is 8 gwei, and the user offers a priority fee of 1 gwei. 1 gwei = 0.000000001 ETH.</li>
+  <li>Fee = 50,000 × (8 + 1) gwei = 450,000 gwei = 0.00045 ETH.</li>
+  <li>At an ETH price of 3,000 EUR, that is 1.35 EUR. Of this, 0.0004 ETH is burned and 0.00005 ETH goes to the validator.</li>
+  <li>If the transaction reverts halfway (wrong sender), the user still pays for the gas used up to the revert, but the state does not change.</li>
+</ol>
+<p>On a rollup the same call often costs a few cents, because the expensive part (posting data to Ethereum) is shared by many users.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“Gas is a token.” Gas is a unit of work. You pay for it in ETH.</li>
+  <li>“A higher gas limit costs more.” You pay for gas <i>used</i>; unused gas is not charged.</li>
+  <li>“Reading a contract costs gas.” Calling a view function from outside is free; only transactions cost gas.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

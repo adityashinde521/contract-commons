@@ -34,6 +34,37 @@ problem: "Code on a blockchain cannot be changed, yet many large protocols ship 
 <li><b>Maintenance:</b> dependency updates (OpenZeppelin releases), compiler versions, and documenting every deployment address.</li>
 </ul>
 
+<!-- deep:start -->
+### In depth
+
+<p>Immutability protects users from sudden rule changes, but it also means bugs cannot be fixed. Many protocols therefore use a <b>proxy</b>. Users always talk to one fixed proxy address. The proxy holds the data and forwards every call with <code>delegatecall</code> to an <b>implementation</b> contract that holds the logic. To upgrade, an admin points the proxy at a new implementation; the address and data stay, the logic changes.</p>
+<!-- diagram:proxy -->
+<figure class="dg"><div class="sv"><svg viewBox="0 0 720 260" role="img" aria-label="Upgradeable proxy pattern" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah-upgradeableproxypatt-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-a" d="M0 0L10 5L0 10z"/></marker><marker id="ah-upgradeableproxypatt-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ar" d="M0 0L10 5L0 10z"/></marker><marker id="ah-upgradeableproxypatt-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ag" d="M0 0L10 5L0 10z"/></marker><marker id="ah-upgradeableproxypatt-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-am" d="M0 0L10 5L0 10z"/></marker></defs><rect class="k-law" x="20" y="100" width="120" height="56" rx="12"/><text class="tb" x="80.0" y="132.7" text-anchor="middle" font-size="13.5">User</text><rect class="k-cs" x="200" y="86" width="180" height="84" rx="12"/><text class="tb" x="290.0" y="114.2" text-anchor="middle" font-size="13.5">Proxy</text><text class="t" x="290.0" y="132.7" text-anchor="middle" font-size="13.5">fixed address</text><text class="t" x="290.0" y="151.2" text-anchor="middle" font-size="13.5">holds storage &amp; ETH</text><rect class="k-n" x="470" y="20" width="220" height="70" rx="12"/><text class="tb" x="580.0" y="50.5" text-anchor="middle" font-size="13.5">Implementation v1</text><text class="t" x="580.0" y="69.0" text-anchor="middle" font-size="13.5">logic only</text><rect class="k-brand" x="470" y="166" width="220" height="70" rx="12"/><text class="tb" x="580.0" y="196.5" text-anchor="middle" font-size="13.5">Implementation v2</text><text class="t" x="580.0" y="215.0" text-anchor="middle" font-size="13.5">fixed logic</text><line class="k-a" x1="140" y1="128" x2="198" y2="128" marker-end="url(#ah-upgradeableproxypatt-a)"/><text class="tl" x="169.0" y="121.0" text-anchor="middle" font-size="12.5">call</text><line class="k-a" x1="380" y1="110" x2="468" y2="60" marker-end="url(#ah-upgradeableproxypatt-a)"/><text class="tl" x="470" y="112" text-anchor="start" font-size="12.5">delegatecall</text><line class="k-ag" x1="380" y1="150" x2="468" y2="196" marker-end="url(#ah-upgradeableproxypatt-ag)" stroke-dasharray="5 4"/><text class="tlg" x="470" y="150" text-anchor="start" font-size="12.5">after upgrade</text><rect class="k-warn" x="200" y="200" width="180" height="50" rx="12"/><text class="tb" x="290.0" y="220.6" text-anchor="middle" font-size="13">Admin</text><text class="t" x="290.0" y="238.6" text-anchor="middle" font-size="13">multisig + timelock</text><line class="k-am" x1="290" y1="200" x2="290" y2="172" marker-end="url(#ah-upgradeableproxypatt-am)"/></svg></div><figcaption><b>Same address, new logic.</b> The proxy keeps the data and borrows the code of the current implementation. An upgrade only changes which implementation it points to, so whoever controls the admin controls the contract.</figcaption></figure>
+<p>Upgradeability moves trust from code to people: whoever controls the upgrade key can change everything, including taking the funds. Good practice limits that power. Put the admin role in a <b>multisig</b>, add a <b>timelock</b> (for example 48 hours) so users can see an upgrade coming and exit, and publish who the signers are. Rating sites such as L2BEAT grade protocols on exactly these points. Proxies also have technical traps: the storage layout of a new implementation must match the old one, and implementations must not be initialisable by strangers.</p>
+<p>Operating a live contract also means <b>monitoring</b> (alerts on large transfers or admin calls), an <b>incident plan</b> (who can pause, how fast, who informs users), and key management for every privileged role. Many losses happen not at launch but months later, when an admin key is stolen.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> a bug is found in a live, upgradeable Escrow platform.</p>
+<ol>
+  <li><b>Hour 0:</b> a researcher reports a bug through the bounty programme. The team confirms it with a test on a mainnet fork.</li>
+  <li><b>Hour 1:</b> two of three multisig signers call <code>pause()</code>. Deposits stop; funds stay safe.</li>
+  <li><b>Day 1–3:</b> the fix is written, tested and reviewed. The storage layout is checked with a tool.</li>
+  <li><b>Day 3:</b> the upgrade is proposed in the multisig and enters a 48-hour timelock, announced publicly.</li>
+  <li><b>Day 5:</b> the upgrade executes; the source of the new implementation is verified; the contract is unpaused.</li>
+</ol>
+<p><b>Trade-off:</b> the timelock slows the fix but stops a stolen key from upgrading instantly.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“Upgradeable contracts are unsafe.” They are a trust choice; with a multisig and a timelock they can be safer than unfixable code.</li>
+  <li>Adding a new variable at the top of the storage layout in an upgrade, which overwrites existing data.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

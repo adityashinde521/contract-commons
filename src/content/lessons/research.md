@@ -28,6 +28,29 @@ problem: "You are choosing a seminar paper or thesis topic. Where is the researc
     </table></div>
     <div class="callout law"><h5>The common thread</h5><p>Most open problems sit between disciplines: a technical fix (fair ordering, a pause switch) needs an economic reason and a legal basis. That is why every student in this course learns technology, business and law.</p></div>
 
+<!-- deep:start -->
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> summarise one paper in the course format.</p>
+<ol>
+  <li><b>Problem:</b> Can language models find vulnerabilities in smart contracts reliably? (Ince et al., 2025)</li>
+  <li><b>Method:</b> a systematic review of studies that test LLM-based tools on labelled contract datasets.</li>
+  <li><b>Result:</b> LLMs are not yet reliable enough to replace analysers such as Slither; combined approaches work best.</li>
+  <li><b>Technology lens:</b> how were false positives counted? Would results hold on new contracts?</li>
+  <li><b>Business lens:</b> could a hybrid tool reduce audit cost for small teams?</li>
+  <li><b>Law lens:</b> if an AI audit misses a bug, who is liable: the tool provider, the auditor, or the developer?</li>
+</ol>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>Citing a preprint as settled fact. Check whether it was peer reviewed.</li>
+  <li>Reading only the abstract. The limitations section often changes the meaning.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <p>For each paper, read the abstract, introduction and conclusion. Write three lines: problem, method, result. Then one line each for the technology, business and law lenses.</p>

@@ -32,6 +32,33 @@ problem: "A logistics consortium asks for “a blockchain”. Should it use Ethe
 <li>Does the data contain personal or confidential information? Then keep it off chain and store only hashes or proofs.</li>
 </ol>
 
+<!-- deep:start -->
+### In depth
+
+<p>“Blockchain” covers very different systems. The main question is <b>who may write and who may validate</b>. On a <b>public, permissionless</b> chain such as Ethereum, anyone can send transactions, read all data and, with enough stake, become a validator. On a <b>permissioned</b> chain, an operator or a group decides who joins. When one organisation controls it, it is a <b>private</b> chain; when several known organisations share control, it is a <b>consortium</b> chain (for example Hyperledger Fabric networks in trade finance).</p>
+<p>Each choice moves the trade-off between openness and control. Public chains give strong neutrality and censorship resistance, but data is visible to everyone and fees vary. Permissioned chains are faster and can keep data confidential, but users must trust the operators, who can change the rules or the history if they agree. A private chain run by one company gives few advantages over a normal database with audit logs.</p>
+<p>Today many projects mix models. Rollups (Module 10) run their own fast chain but post data and proofs to Ethereum for security. Banks issue tokenised bonds on public chains but restrict who may hold them with allow-lists in the token contract. The useful question is not “which chain is best?” but “who must be able to do what, and whom are users willing to trust?”.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> three scenarios, three answers.</p>
+<div class="tw"><table>
+  <tr><th>Scenario</th><th>Analysis</th><th>Choice</th></tr>
+  <tr><td>A university issues diplomas that employers worldwide must verify.</td><td>One writer (the university), many readers who should not need an account.</td><td>Public chain with only hashes or attestations; the data stays at the university.</td></tr>
+  <tr><td>Five shipping companies share container status updates.</td><td>Several known writers who compete and do not want one of them in control; data is commercially sensitive.</td><td>Consortium chain, or a public chain with encrypted data.</td></tr>
+  <tr><td>A shop wants an internal log of price changes.</td><td>One writer, one organisation, no outside verifier.</td><td>Normal database with an audit log. No blockchain.</td></tr>
+</table></div>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“Private chains are blockchains with privacy.” They are blockchains with an owner. Privacy can also be built on public chains.</li>
+  <li>“Permissioned means more secure.” It means fewer, known validators: more trust in them, not more security by default.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

@@ -30,6 +30,29 @@ problem: "Your AI assistant books travel and pays for data. What stops it from b
       <li><b>Defence:</b> put limits in a smart contract, not in the prompt: allow-lists, daily limits, a pause switch, human approval above a threshold. That is the mini-lab.</li>
     </ul>
 
+<!-- deep:start -->
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> an AI research assistant buys data for a student project with a spending limit.</p>
+<ol>
+  <li>The student deploys <code>AgentWallet</code> with the agent’s address, a daily limit of 0.01 ETH, and one allowed payee: a data API.</li>
+  <li>The agent finds the API’s identity and reputation through the ERC-8004 registries and calls it. The API answers “HTTP 402 Payment Required” with a price (the x402 pattern).</li>
+  <li>The agent pays 0.002 ETH through <code>pay()</code>. The contract checks the agent, the payee and the limit, then pays. The memo links the payment to the request.</li>
+  <li>A prompt-injection attack tells the agent to send 1 ETH to a new address. The contract reverts twice: the payee is not allowed, and the amount exceeds the limit.</li>
+  <li>The student sees the attempted call in the events and calls <code>pause()</code>.</li>
+</ol>
+<p><b>Point:</b> the agent’s intelligence is not trusted; its wallet’s rules are.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>Giving an agent a normal private key with full access. Use a contract wallet with limits.</li>
+  <li>“The agent is liable.” In law, a person or company behind it is; the open question is which one.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

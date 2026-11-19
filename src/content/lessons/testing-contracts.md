@@ -27,6 +27,36 @@ problem: "In the Escrow lab you checked each rule by clicking. A real contract h
 <li>Write the tests from the agreement: every clause that the code enforces should have at least one test. Writing these test cases from the clauses is part of the lab for everyone.</li>
 </ul>
 
+<!-- deep:start -->
+### In depth
+
+<p>A deployed contract usually cannot be fixed, and it holds money. Testing is therefore the main way to gain confidence before launch. Good tests check three kinds of behaviour. <b>Happy paths</b>: the normal flow works (deposit, confirm, seller paid). <b>Failure paths</b>: every forbidden action reverts with the right message (seller confirms, wrong amount, wrong state). <b>Properties</b>: rules that must hold whatever happens, such as “the contract never pays out more than it received”.</p>
+<p>Four techniques build on each other. <b>Unit tests</b> call one function with chosen inputs. <b>Fuzz tests</b> let the framework try hundreds of random inputs for a parameter; they find edge cases you did not think of, such as zero or the maximum value. <b>Invariant tests</b> call random sequences of functions and check a property after each one. <b>Fork tests</b> run against a copy of mainnet to see how your contract behaves with real tokens.</p>
+<p>A useful habit for this course: derive tests directly from the legal clauses. Every “only”, “must”, “after” and “at most” in the text becomes at least one failure test. This is where the three lenses meet: the lawyer writes the rule, the business analyst names the edge cases, the developer turns both into code.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> clause §4 of the Escrow, “The buyer or the arbiter may release the payment once it is held”.</p>
+<div class="tw"><table>
+  <tr><th>Test</th><th>Type</th><th>Expectation</th></tr>
+  <tr><td>Buyer confirms after deposit</td><td>Unit, happy path</td><td>Seller balance + price; state Complete</td></tr>
+  <tr><td>Arbiter confirms after deposit</td><td>Unit, happy path</td><td>Same result</td></tr>
+  <tr><td>Seller confirms</td><td>Failure</td><td>Revert “Only buyer or arbiter”</td></tr>
+  <tr><td>Buyer confirms before deposit</td><td>Failure</td><td>Revert “Wrong state”</td></tr>
+  <tr><td>Any random caller address</td><td>Fuzz</td><td>Reverts unless caller is buyer or arbiter</td></tr>
+  <tr><td>After any sequence of calls</td><td>Invariant</td><td>Contract balance is either 0 or exactly price</td></tr>
+</table></div>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>Testing only the happy path. Most real bugs are actions that should have failed but did not.</li>
+  <li>“100% line coverage means no bugs.” Coverage shows which lines ran, not whether the rules are right.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

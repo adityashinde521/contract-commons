@@ -39,6 +39,35 @@ problem: "Two companies that do not trust each other must keep one shared list o
       <div class="lw"><h5>Law lens</h5><ul><li>A register without a registrar. Who is responsible for errors?</li></ul></div>
     </div>
 
+<!-- deep:start -->
+### In depth
+
+<p>Every agreement between strangers needs someone to keep the record. When you pay a seller by bank transfer, the bank keeps one ledger, checks that you have the money, and makes sure the same euro is not spent twice. You trust the bank because it is regulated, insured and liable when it makes mistakes. That trust is useful, but it has costs: fees, opening hours, borders, and the power to freeze or reverse a payment.</p>
+<p>A blockchain replaces the single record keeper with many copies of the same ledger that check each other. Three problems have to be solved for this to work. First, <b>integrity</b>: nobody may change an old entry without everyone noticing. Second, <b>authorisation</b>: only the owner of money may spend it. Third, <b>agreement</b>: when two payments conflict, all copies must pick the same one. Hashes solve the first, digital signatures the second, and consensus the third. The rest of Modules 1 and 2 explains each one.</p>
+<p>The famous case is <b>double spending</b>. With digital files, copying is free: if money were just a file, Alice could send the same coin to Bob and to Carol. A central ledger stops this by refusing the second payment. A blockchain stops it because all nodes follow one agreed order of transactions; the second payment arrives later and finds the coin already spent.</p>
+<p>A blockchain is not automatically better. It is slower and more expensive than a database, every entry is public on most chains, and mistakes are hard to undo. It is worth it only when several parties must share a record, do not want to trust one of them to keep it, and need anyone to be able to check it later.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> a second-hand laptop sale between two students who have never met. The price is 1 ETH.</p>
+<ol>
+  <li><b>With a bank:</b> the buyer transfers 300 EUR, the bank updates two accounts. If the seller never ships, the buyer must ask the bank or a court to help. The bank is the record keeper and, in practice, the judge of who paid.</li>
+  <li><b>With a shared ledger:</b> the buyer signs a payment of 1 ETH. Thousands of nodes check the signature and the balance and include it in the next block. Anyone can verify the payment forever.</li>
+  <li><b>What is still missing:</b> the ledger proves that 1 ETH moved. It cannot prove that the laptop arrived. That needs a smart contract with rules (Module 4) and someone or something that reports delivery (an arbiter or an oracle).</li>
+</ol>
+<p><b>Conclusion:</b> the ledger removes the need to trust a record keeper, but not the need to trust facts from the outside world.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“A blockchain means nobody has to trust anyone.” You still trust the code, the majority of validators, and whoever reports outside facts.</li>
+  <li>“A blockchain is a better database.” For one organisation it is usually a worse one: slower, public and harder to correct.</li>
+  <li>“Blockchain data is anonymous.” Addresses are pseudonyms. Once one is linked to a person, its whole history is visible.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

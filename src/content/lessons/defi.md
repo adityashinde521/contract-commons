@@ -27,6 +27,35 @@ problem: "Banks take days to settle a trade; a decentralised exchange settles in
 <p><b>Maximal extractable value</b> is the profit available from choosing the order of transactions in a block. In a <b>sandwich</b>, a searcher buys just before a large trade and sells just after it, at the trader’s expense. Proposer-builder separation (and ePBS in Glamsterdam) and private order flow aim to limit the harm.</p>
 <div class="cc-callout cc-callout--law"><div><b>Law lens.</b> Is front-running a trade on a DEX market abuse? The EU Market Abuse Regulation covers financial instruments; MiCA has its own market-abuse rules for crypto-assets. Who is the intermediary when there is none?</div></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>Decentralised finance (DeFi) rebuilds financial services as open contracts. Four building blocks matter most. <b>Stablecoins</b> keep a stable value: fiat-backed ones (USDC, USDT) hold reserves at an issuer; crypto-backed ones (DAI/USDS) are over-collateralised by other tokens; algorithmic ones rely on incentives and failed badly with TerraUSD in 2022. <b>Decentralised exchanges</b> (DEXs) such as Uniswap replace order books with liquidity pools and a pricing formula. <b>Lending protocols</b> such as Aave let users deposit collateral and borrow against it; positions that fall below a safety level are liquidated automatically. <b>MEV</b> (maximal extractable value) is the profit that block builders and bots make by ordering, inserting or front-running transactions.</p>
+<p>An automated market maker (AMM) keeps two token reserves, x and y, and enforces <b>x × y = k</b>. A buyer adds one token and removes the other so that the product stays constant. Large trades move the price a lot (<b>slippage</b>); small pools are easy to move, which is why they are dangerous as price oracles.</p>
+<!-- diagram:amm -->
+<figure class="dg"><div class="sv"><svg viewBox="0 0 720 300" role="img" aria-label="Constant-product AMM curve" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah-constantproductammcu-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-a" d="M0 0L10 5L0 10z"/></marker><marker id="ah-constantproductammcu-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ar" d="M0 0L10 5L0 10z"/></marker><marker id="ah-constantproductammcu-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ag" d="M0 0L10 5L0 10z"/></marker><marker id="ah-constantproductammcu-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-am" d="M0 0L10 5L0 10z"/></marker></defs><line class="k-axis" x1="70" y1="260" x2="690" y2="260"/><line class="k-axis" x1="70" y1="260" x2="70" y2="20"/><polyline class="k-curve" points="78.4,76.4 86.8,84.7 95.2,92.5 103.6,99.9 112.0,106.8 120.4,113.3 128.8,119.5 137.2,125.4 145.6,131.0 154.0,136.2 162.4,141.3 170.8,146.1 179.2,150.6 187.6,155.0 196.0,159.2 204.4,163.2 212.8,167.0 221.2,170.6 229.6,174.1 238.0,177.5 246.4,180.7 254.8,183.8 263.2,186.8 271.6,189.7 280.0,192.5 288.4,195.2 296.8,197.8 305.2,200.3 313.6,202.7 322.0,205.0 330.4,207.3 338.8,209.4 347.2,211.5 355.6,213.6 364.0,215.6 372.4,217.5 380.8,219.4 389.2,221.2 397.6,222.9 406.0,224.6 414.4,226.3 422.8,227.9 431.2,229.5 439.6,231.0 448.0,232.5 456.4,233.9 464.8,235.4 473.2,236.7 481.6,238.1 490.0,239.4 498.4,240.6 506.8,241.9 515.2,243.1 523.6,244.3 532.0,245.4 540.4,246.6 548.8,247.7 557.2,248.8 565.6,249.8 574.0,250.8 582.4,251.8 590.8,252.8 599.2,253.8 607.6,254.7 616.0,255.7 624.4,256.6 632.8,257.4 641.2,258.3 649.6,259.2"/><circle class="k-dot" cx="238.0" cy="177.5" r="6"/><circle class="k-dot2" cx="280.0" cy="192.5" r="6"/><text class="tl" x="250.0" y="167.5" text-anchor="start" font-size="12.5">A: 100 ETH · 300,000 USDC</text><text class="tl" x="294.0" y="226.5" text-anchor="start" font-size="12.5">B: 110 ETH · 272,727 USDC</text><text class="tl" x="690" y="286" text-anchor="end" font-size="12.5">ETH in pool →</text><text class="tl" x="62" y="34" text-anchor="end" font-size="12.5">USDC</text><text class="th" x="500" y="70" text-anchor="middle" font-size="14">x × y = k = 30,000,000</text><text class="tl" x="500" y="94" text-anchor="middle" font-size="12.5">Sell 10 ETH → get 27,273 USDC</text></svg></div><figcaption><b>Price is the slope of the curve.</b> A trade moves the pool from A to B along x × y = k. The bigger the trade compared with the pool, the worse the average price (slippage).</figcaption></figure>
+<p>Because every DeFi contract can call every other one (“money legos”), new products are built quickly, but risks also spread: a broken oracle or a depegged stablecoin can trigger liquidations across many protocols at once.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> swap in a pool with 100 ETH and 300,000 USDC (k = 30,000,000). Price ≈ 3,000 USDC per ETH. Fees ignored.</p>
+<ol>
+  <li>A trader sells 10 ETH. New ETH reserve: 110.</li>
+  <li>The USDC reserve must become 30,000,000 / 110 = 272,727.</li>
+  <li>The trader receives 300,000 − 272,727 = 27,273 USDC, an average of 2,727 per ETH, about 9% below the starting price. That is slippage.</li>
+  <li>The new pool price is 272,727 / 110 ≈ 2,479 USDC per ETH. Arbitrageurs will buy cheap ETH here and sell it elsewhere until the price matches other markets.</li>
+</ol>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“DeFi has no counterparty risk.” You rely on code, oracles, governance and stablecoin issuers.</li>
+  <li>“A stablecoin always equals one dollar.” Only as long as its reserves or mechanism hold.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

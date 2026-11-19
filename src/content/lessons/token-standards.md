@@ -25,6 +25,38 @@ problem: "A university wants to issue course credits and degree certificates on 
     </ul>
     <div class="callout law"><h5>Law lens</h5><p>A token is a record in a contract. Whether it gives a legal right (ownership of a bond, a claim against an issuer, nothing at all) depends on the legal terms around it. Under MiCA and MiFID II, the rights the token gives decide its classification (<a href="/lessons/regulation/">12.3 Regulation</a>).</p></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>A token is not a coin that moves; it is a row in a contract’s table. An ERC-20 contract keeps <code>balanceOf[address]</code>. A “transfer” lowers one row and raises another. What makes tokens powerful is the <b>standard interface</b>: because every ERC-20 has the same functions and events, any wallet, exchange or explorer can show and move any token without custom code.</p>
+<p>ERC-20 has a second way to move tokens: <b>approve and transferFrom</b>. You first approve a spender (for example an exchange contract) to move up to a certain amount; later the spender pulls the tokens in its own transaction. This lets contracts take payment in tokens, but it is also a risk: many people give unlimited approvals, and a hacked spender can drain them. Newer designs (permit signatures, EIP-7702 batching) reduce the number of steps.</p>
+<!-- diagram:approve-flow -->
+<figure class="dg"><div class="sv"><svg viewBox="0 0 720 280" role="img" aria-label="ERC-20 approve and transferFrom" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ah-erc20approveandtrans-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-a" d="M0 0L10 5L0 10z"/></marker><marker id="ah-erc20approveandtrans-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ar" d="M0 0L10 5L0 10z"/></marker><marker id="ah-erc20approveandtrans-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-ag" d="M0 0L10 5L0 10z"/></marker><marker id="ah-erc20approveandtrans-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="m-am" d="M0 0L10 5L0 10z"/></marker></defs><rect class="k-law" x="10" y="12" width="160" height="40" rx="12"/><text class="tb" x="90.0" y="36.7" text-anchor="middle" font-size="13.5">Alice</text><line class="k-life" x1="90" y1="52" x2="90" y2="270"/><rect class="k-cs" x="280" y="12" width="160" height="40" rx="12"/><text class="tb" x="360.0" y="36.7" text-anchor="middle" font-size="13.5">Token contract</text><line class="k-life" x1="360" y1="52" x2="360" y2="270"/><rect class="k-bi" x="550" y="12" width="160" height="40" rx="12"/><text class="tb" x="630.0" y="36.7" text-anchor="middle" font-size="13.5">Shop contract</text><line class="k-life" x1="630" y1="52" x2="630" y2="270"/><line class="k-a" x1="90" y1="90" x2="358" y2="90" marker-end="url(#ah-erc20approveandtrans-a)"/><text class="tl" x="224.0" y="83.0" text-anchor="middle" font-size="12.5">1  approve(Shop, 50)</text><text class="tl" x="372" y="108" text-anchor="start" font-size="12">allowance[Alice][Shop] = 50</text><line class="k-a" x1="90" y1="150" x2="628" y2="150" marker-end="url(#ah-erc20approveandtrans-a)"/><text class="tl" x="509.0" y="143.0" text-anchor="middle" font-size="12.5">2  buy(item)</text><line class="k-a" x1="630" y1="200" x2="362" y2="200" marker-end="url(#ah-erc20approveandtrans-a)"/><text class="tl" x="496.0" y="192.0" text-anchor="middle" font-size="12.5">3  transferFrom(Alice, Shop, 50)</text><text class="tl" x="372" y="230" text-anchor="start" font-size="12">balance Alice −50 · Shop +50</text><text class="tl" x="372" y="250" text-anchor="start" font-size="12">allowance back to 0</text></svg></div><figcaption><b>Two transactions, one pull.</b> Alice first allows the shop to take up to 50 tokens. The shop then pulls them itself. If step 1 is missing, step 3 reverts.</figcaption></figure>
+<p><b>ERC-721</b> tokens are unique: each token ID has one owner and a <code>tokenURI</code> pointing to metadata (name, image). <b>ERC-1155</b> manages many token types in one contract, some unique and some with copies, which saves gas for games and tickets. Tokens can also add rules: pausing, allow-lists of verified holders, or a maximum supply. Those rules are where regulation meets code (lesson 12.3).</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> Alice pays 50 CRS course tokens to a shop contract.</p>
+<div class="tw"><table>
+  <tr><th>Step</th><th>Call</th><th>State after</th></tr>
+  <tr><td>Start</td><td></td><td>balanceOf[Alice] = 100, balanceOf[Shop] = 0, allowance[Alice][Shop] = 0</td></tr>
+  <tr><td>1</td><td>Alice: <code>approve(Shop, 50)</code></td><td>allowance[Alice][Shop] = 50. Event Approval</td></tr>
+  <tr><td>2</td><td>Alice: <code>Shop.buy(itemId)</code>, which calls <code>transferFrom(Alice, Shop, 50)</code></td><td>balanceOf[Alice] = 50, balanceOf[Shop] = 50, allowance = 0. Event Transfer</td></tr>
+  <tr><td>Wrong order</td><td>Alice calls <code>buy</code> first</td><td>Revert: insufficient allowance. Nothing changes.</td></tr>
+</table></div>
+<p>Note the units: with 18 decimals, “50 CRS” is stored as 50 × 10<sup>18</sup>.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“The NFT contains the image.” Usually it contains a link; the image lives elsewhere (lesson 9.3).</li>
+  <li>“Owning a token means owning the asset.” Only the legal terms around the token can give that right.</li>
+  <li>“Approvals expire.” They do not, until you set them to zero.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

@@ -34,6 +34,35 @@ problem: "A student loses a laptop with MetaMask on it. Is the money gone? What 
 </ul>
 <div class="cc-callout cc-callout--warn"><div><b>Five course rules.</b> Never share or type your recovery phrase. Course wallet for testnets only. Never deploy to Mainnet. Check the network before every signature. If you do not understand a signature request, reject it. <a href="../../setup/">Full setup guide</a>.</div></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>A wallet does not hold coins. Coins are entries on the chain. A wallet holds <b>keys</b> and offers three functions: show balances (by asking a node), build transactions, and sign them. Wallets differ in where the keys live. A <b>browser wallet</b> such as MetaMask stores encrypted keys on your computer: convenient, but exposed to malware. A <b>hardware wallet</b> keeps keys on a separate device and signs inside it. A <b>custodial wallet</b> on an exchange means the exchange holds the keys; you hold a claim against the exchange.</p>
+<p><b>Smart accounts</b> put the rules into a contract: several signers, daily limits, recovery through friends or a company. ERC-4337 introduced them without changing the protocol; EIP-7702 (Pectra, May 2025) lets a normal account temporarily act as a smart account, for example to batch an approval and a swap in one click or let a company pay the gas.</p>
+<p>A <b>testnet</b> is a copy of Ethereum where coins have no value. Sepolia is the standard testnet for applications; Hoodi is used by validators and staking providers. Faucets give out test ETH for free, usually with limits to stop abuse. Testnets are sometimes reset or replaced, so never build anything permanent on them.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> set up a safe course wallet and check it.</p>
+<ol>
+  <li>Install MetaMask from metamask.io only. Create a <i>new</i> wallet just for this course.</li>
+  <li>Write the 12 words on paper. Never type them anywhere else, never photograph them.</li>
+  <li>Turn on “Show test networks” and select Sepolia. Your address is the same on every network; only the balance differs.</li>
+  <li>Get 0.05 SepoliaETH from a faucet. Open sepolia.etherscan.io and search your address: one incoming transaction.</li>
+  <li>Send 0.001 to a classmate. Etherscan shows <i>From</i> (you), <i>To</i>, <i>Value</i> and the fee.</li>
+</ol>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“Test ETH can be sold.” It has no value. Anyone offering to buy or sell it is running a scam.</li>
+  <li>“Each network needs a new wallet.” One key gives the same address on all EVM networks.</li>
+  <li>“A browser extension is as safe as a hardware wallet.” Not for real money.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

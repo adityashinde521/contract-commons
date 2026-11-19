@@ -41,6 +41,44 @@ problem: "You know Java or Python. Which habits work in Solidity, and which ones
       <li><b>Interactions:</b> send ETH or call other contracts last.</li>
     </ol>
 
+<!-- deep:start -->
+### In depth
+
+<p>Solidity looks like JavaScript or Java, but three ideas make it different. First, <b>state is permanent and expensive</b>. Variables declared at contract level live in storage on every node; writing them costs thousands of gas. Local variables in <code>memory</code> disappear after the call. Second, <b>every call has a sender and maybe a value</b>: <code>msg.sender</code> is the direct caller, <code>msg.value</code> is the ETH sent with the call, and only <code>payable</code> functions may receive ETH. Third, <b>failure is all or nothing</b>: <code>require(condition, "message")</code> reverts the whole transaction and undoes every change if the condition is false.</p>
+<p>Visibility decides who can call: <code>external</code> and <code>public</code> functions are part of the contract’s interface; <code>internal</code> and <code>private</code> are helpers. <code>view</code> functions only read; <code>pure</code> functions read nothing at all. <b>Modifiers</b> package repeated checks, such as <code>onlyOwner</code>. <b>Events</b> write cheap logs that apps and explorers read; contracts cannot read them back.</p>
+<p>Since Solidity 0.8, arithmetic overflow reverts automatically, which removed a whole class of old bugs. Amounts of ETH are always integers in <b>wei</b> (1 ether = 10<sup>18</sup> wei); there are no decimals. Mixing up units is one of the most common beginner mistakes.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> read a function line by line and predict what happens.</p>
+<pre><code>function refund() external inState(State.AwaitingDelivery) {
+    require(msg.sender == arbiter, "Only arbiter");
+    state = State.Refunded;
+    (bool ok, ) = payable(buyer).call{value: price}("");
+    require(ok, "Transfer failed");
+    emit Refunded(buyer, price);
+}</code></pre>
+<ol>
+  <li><code>inState</code> (a modifier) reverts unless the money is currently held.</li>
+  <li>The first <code>require</code> reverts unless the caller is the arbiter.</li>
+  <li>The state changes <i>before</i> the money leaves (checks, effects, interactions: lesson 7.1).</li>
+  <li>The low-level <code>call</code> sends <code>price</code> wei to the buyer and reports success.</li>
+  <li>If sending fails, everything is reverted, including the state change.</li>
+</ol>
+<p><b>Prediction:</b> the seller calls <code>refund()</code> → revert “Only arbiter”, no state change, the seller pays for the gas used.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>Forgetting <code>payable</code>: every call with a value reverts.</li>
+  <li>Writing <code>1</code> where <code>1 ether</code> was meant: that is 1 wei.</li>
+  <li>Using <code>tx.origin</code> for access control instead of <code>msg.sender</code>.</li>
+  <li>Thinking <code>private</code> hides data: anyone can read storage directly from the chain.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

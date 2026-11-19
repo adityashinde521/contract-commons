@@ -28,6 +28,35 @@ problem: "A startup will hold €2 million in a new contract next month. How do 
 </ul>
 <div class="cc-callout cc-callout--law"><div><b>Law lens.</b> An audit is not a guarantee. Audit contracts usually limit liability to the fee. If a protocol says “audited” in its marketing and is then hacked, can users rely on that statement?</div></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>Before a contract holds real money, professionals combine several methods, because each one finds different problems. <b>Manual review</b> by experienced auditors finds logic and design flaws that tools cannot understand, such as an unfair liquidation rule. <b>Static analysis</b> (Slither, Aderyn) scans the source for known patterns, such as reentrancy or unchecked return values, in seconds; it reports many false positives. <b>Symbolic execution and formal verification</b> (Mythril, Certora, Halmos) try to prove that a property holds for all inputs, or produce a counterexample. <b>Fuzzing and invariant testing</b> attack the contract with random sequences.</p>
+<p>Audits end in a <b>report</b>: each finding has a title, a severity (critical, high, medium, low, informational), a description of the impact and a recommended fix, and the team’s response. After launch, <b>bug bounties</b> (for example on Immunefi) pay outside researchers to report issues instead of exploiting them, and <b>audit contests</b> let many auditors compete for a fixed prize pool.</p>
+<p>AI tools are now part of the toolbox. Research in 2025 found that language models are useful for explaining code and proposing hypotheses, but not yet reliable enough to replace classic analysers; combinations work best. Every AI finding must be confirmed by a test.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> plan the security budget for a contract that will hold €2 million.</p>
+<ol>
+  <li>Internal: full test suite with fuzz and invariant tests; Slither in CI. Cost: team time.</li>
+  <li>One independent audit by a firm, about two to four weeks. Typical prices are tens of thousands of euros for a small codebase.</li>
+  <li>Fix findings, then a short re-review of the fixes.</li>
+  <li>Launch with limits: a deposit cap of €200,000 for the first month and a pause switch held by a multisig.</li>
+  <li>Bug bounty: for example 10% of funds at risk, capped, for critical findings.</li>
+</ol>
+<p><b>Reasoning:</b> spending 3–5% of the value at risk on security is common; losing it all is the alternative.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“An audit is a guarantee.” It is a time-limited review of one version of the code.</li>
+  <li>Changing code after the audit without a new review.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

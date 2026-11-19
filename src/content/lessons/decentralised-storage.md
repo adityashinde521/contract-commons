@@ -28,6 +28,34 @@ problem: "A certificate NFT points to an image on a startup’s server. The star
 </table></div>
 <div class="cc-callout cc-callout--law"><div><b>Law lens.</b> Permanent storage meets the GDPR right to erasure. Never store personal data in permanent storage; store it in a system that can delete, and put only a hash on chain (see labs <a href="/lessons/lab-document-registry/">4.5 Document registry</a> and <a href="/lessons/lab-attestations/">9.4 Attestations</a>).</div></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>Storing data on Ethereum is very expensive: writing 1 MB to contract storage would cost thousands of euros. So blockchains store small facts and <b>pointers</b>, while files live elsewhere. The question is where, and who can change or delete them.</p>
+<p><b>IPFS</b> addresses files by their content: the address (CID) is derived from a hash of the file. If anyone changes the file, the CID changes, so a CID in a contract always refers to exactly one version. But IPFS does not guarantee that anyone keeps the file; it disappears unless someone <b>pins</b> it. <b>Filecoin</b> adds paid storage deals with proofs that providers still hold the data. <b>Arweave</b> charges once for permanent storage. A normal cloud server is cheap and fast, but the owner can change the file behind the same URL.</p>
+<p>This is a legal design decision as much as a technical one. Data that may need correction or deletion under the GDPR, such as names, addresses or health data, must stay in a system that can delete it. Only a hash or an encrypted reference should go on chain or into permanent storage. Even then, check whether the hash can be linked back to a person.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> where should each part of a course certificate NFT live?</p>
+<div class="tw"><table>
+  <tr><th>Data</th><th>Where</th><th>Why</th></tr>
+  <tr><td>Token ID and owner address</td><td>On chain (ERC-721)</td><td>Must be verifiable by anyone</td></tr>
+  <tr><td>Certificate design image</td><td>IPFS, pinned by the university</td><td>Fixed version; the CID proves it was not swapped</td></tr>
+  <tr><td>Metadata JSON (course, grade band, image CID)</td><td>IPFS; its CID is the tokenURI</td><td>Tamper-evident</td></tr>
+  <tr><td>Student’s name and matriculation number</td><td>University database only</td><td>Personal data must be correctable and deletable</td></tr>
+</table></div>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“IPFS stores files forever.” Only while someone pins them.</li>
+  <li>“Encrypted personal data on chain is fine.” Encryption can be broken in future, and the key holder can still identify people.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">

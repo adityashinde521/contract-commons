@@ -394,3 +394,48 @@ dialog.search::backdrop { background: rgba(11,59,44,0.35); }
   .curr-row .status { order: 2; }
   .curr-overview { flex: 1 1 100%; }
 }
+
+/* Worked examples and diagrams in lessons */
+.prose .worked { background: var(--surface-muted); border: 1px solid var(--line); border-left: 4px solid var(--brand-500); border-radius: 16px; padding: 16px 20px; margin: 10px 0 6px; }
+.prose .worked > p:first-child { margin-top: 0; }
+.prose .worked > :last-child { margin-bottom: 0; }
+.prose .worked ol { margin: 8px 0; }
+.prose .worked ol li { margin: 6px 0; }
+.prose .worked .tw { margin: 8px 0; }
+.prose .worked pre { margin: 10px 0; }
+.prose blockquote { margin: 10px 0; padding: 12px 16px; border-left: 3px solid var(--law-600); background: var(--surface); border-radius: 0 12px 12px 0; font-style: normal; }
+.prose blockquote p { margin: 0; }
+.prose figure.dg { margin: 18px 0 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.prose figure.dg svg { display: block; width: 100%; height: auto; max-height: 420px; }
+.prose figure.dg figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+.prose figure.dg figcaption b { color: var(--ink); }
+@media (max-width: 640px) { .prose .worked { padding: 14px; } .prose figure.dg { padding: 10px; } }
+.prose figure.dg .sv { overflow-x: auto; }
+@media (max-width: 640px) { .prose figure.dg svg { min-width: 600px; } }
+.dg text { font-family: var(--font-sans); fill: var(--ink-2); }
+.dg .tb, .dg .th { font-weight: 700; fill: var(--ink); }
+.dg .tl { fill: var(--muted); font-weight: 600; }
+.dg .tlg { fill: var(--brand-700); font-weight: 700; }
+.dg rect { stroke-width: 1.5; }
+.dg .k-n { fill: var(--surface); stroke: var(--line-strong); }
+.dg .k-cs { fill: var(--cs-100); stroke: var(--cs-600); }
+.dg .k-bi { fill: var(--bi-100); stroke: var(--bi-600); }
+.dg .k-law { fill: var(--law-100); stroke: var(--law-600); }
+.dg .k-brand { fill: var(--brand-100); stroke: var(--brand-700); }
+.dg .k-warn { fill: var(--warn-100); stroke: var(--warn-700); }
+.dg .k-danger { fill: var(--danger-100); stroke: var(--danger-700); }
+.dg .k-zone { fill: var(--surface-muted); stroke: none; }
+.dg .k-zone-b { fill: var(--brand-50); stroke: var(--brand-300); stroke-dasharray: 5 4; }
+.dg .k-slot { fill: var(--surface); stroke: var(--line-strong); }
+.dg .k-slot-m { fill: var(--warn-100); stroke: var(--warn-700); }
+.dg .k-legend-b { fill: var(--brand-100); stroke: var(--brand-700); }
+.dg .k-legend-w { fill: var(--warn-100); stroke: var(--warn-700); }
+.dg line, .dg path { stroke-width: 2; }
+.dg .k-a { stroke: var(--ink-2); } .dg .m-a { fill: var(--ink-2); }
+.dg .k-ar { stroke: var(--danger-700); } .dg .m-ar { fill: var(--danger-700); }
+.dg .k-ag { stroke: var(--brand-700); } .dg .m-ag { fill: var(--brand-700); }
+.dg .k-am { stroke: var(--muted-2); } .dg .m-am { fill: var(--muted-2); }
+.dg .k-life { stroke: var(--line-strong); stroke-dasharray: 4 4; stroke-width: 1.5; }
+.dg .k-axis { stroke: var(--muted-2); stroke-width: 1.5; }
+.dg .k-curve { fill: none; stroke: var(--cs-600); stroke-width: 3; }
+.dg .k-dot { fill: var(--brand-700); } .dg .k-dot2 { fill: var(--danger-700); }

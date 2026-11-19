@@ -27,6 +27,34 @@ problem: "A public blockchain shows everything to everyone. How can someone prov
       <li>Anti-money-laundering rules need traceability. How do privacy and AML fit together?</li>
     </ul></div>
 
+<!-- deep:start -->
+### In depth
+
+<p>A zero-knowledge proof (ZKP) lets a <b>prover</b> convince a <b>verifier</b> that a statement is true without revealing why. The classic picture is a cave with a magic door: Peggy shows Victor that she knows the password by coming out of whichever side he names, many times in a row, without ever saying the password. Modern ZKPs are mathematical: the statement is written as a circuit, the prover computes a short proof, and anyone can check the proof quickly.</p>
+<p>A good proof system has three properties. <b>Completeness</b>: an honest prover with a true statement convinces the verifier. <b>Soundness</b>: a cheating prover with a false statement almost never succeeds. <b>Zero knowledge</b>: the verifier learns nothing except that the statement is true. Two families are common. <b>SNARKs</b> (for example Groth16, PLONK) produce tiny proofs that are cheap to verify on chain; some need a trusted setup. <b>STARKs</b> produce larger proofs but need no trusted setup and are considered safer against quantum computers.</p>
+<p>ZKPs have two big uses. <b>Scaling</b>: a ZK rollup proves that thousands of transactions were executed correctly, so Ethereum checks one proof instead of re-running them. <b>Privacy</b>: a person proves “I am over 18”, “I am an EU resident” or “my balance is above X” without disclosing the underlying data. This fits the GDPR principle of data minimisation and the selective disclosure of the EU Digital Identity Wallet.</p>
+
+### Worked example
+
+<div class="worked">
+<p><b>Case:</b> a wine shop must check that a buyer is over 18.</p>
+<div class="tw"><table>
+  <tr><th></th><th>Today (show ID card)</th><th>With a ZK credential</th></tr>
+  <tr><td>What the shop sees</td><td>Name, date of birth, address, ID number, photo</td><td>“Age ≥ 18: true”, signed by a trusted issuer</td></tr>
+  <tr><td>What the shop could leak</td><td>All of it</td><td>Almost nothing</td></tr>
+  <tr><td>What the verifier checks</td><td>The card looks real</td><td>The proof is valid and the issuer’s key is on a trusted list</td></tr>
+</table></div>
+<p><b>Open question for the law lens:</b> is a proof that cannot be linked to a person still personal data? It depends on whether the shop or someone else can link it.</p>
+</div>
+
+### Common mistakes
+
+<ul>
+  <li>“ZK means encrypted.” The data is not sent at all; only a proof about it is.</li>
+  <li>“ZK rollups are private.” Most publish all transaction data; ZK is used for correctness there, not secrecy.</li>
+</ul>
+<!-- deep:end -->
+
 ### Watch and read
 
 <div class="vids">
