@@ -1,17 +1,35 @@
 ---
 import Base from '../layouts/Base.astro';
 import quizzes from '../data/quizzes.json';
-const pool = Object.values(quizzes).flat();
+import { MODULES, url } from '../lib/course';
+const modOf: Record<string, number> = {};
+MODULES.forEach((m) => m.lessons.forEach((l) => { modOf[l] = m.n; }));
+const pool = Object.entries(quizzes as Record<string, any[]>).flatMap(([slug, qs]) => qs.map((q) => ({ ...q, m: modOf[slug] || 0 })));
+const count = (t: string) => pool.filter((q) => (q.t || 'mc') === t).length;
+const types = [
+  ['Fill the missing logic', 10, 'fill', 'Choose the condition or line that completes a short contract or pseudo code.'],
+  ['Fix the wrong line', 10, 'fix', 'Click the line with the wrong check, order, address or unit, then choose the fix.'],
+  ['Put steps in order', 10, 'order', 'Use the arrows to order the steps of a procedure.'],
+  ['Concept questions', 10, 'mc', 'Choose the right answer about a tool, rule, risk or legal question.'],
+] as const;
 ---
-<Base title="Final exam" active="">
+<Base title="Final exam" active="exam">
   <div class="wrap" style="max-width:860px">
     <header class="page-head">
-      <div class="cc-eyebrow">Final exam</div>
-      <h1>20 questions from the whole course</h1>
-      <p class="lead">Each attempt draws new questions from {pool.length} in the course. Pass with 80% or more.</p>
+      <div class="cc-eyebrow">Final exam · the same for every student</div>
+      <h1>40 questions from the whole course. Pass with 70%.</h1>
+      <p class="lead">No code writing. You read short contracts and pseudo code and show that you understand them. Every attempt draws 10 questions of each type, spread across all {MODULES.length} modules, from a pool of {pool.length}.</p>
     </header>
+    <div class="grid grid-sm" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:20px">
+      {types.map(([t, n, k, d]) => (
+        <div class="cc-card"><div class="meta-chips"><span class="cc-chip">{n} questions</span><span class="cc-chip">{count(k)} in pool</span></div><h3 style="font-size:16.5px">{t}</h3><p style="margin:0;font-size:14.5px">{d}</p></div>
+      ))}
+    </div>
+    <div class="cc-callout cc-callout--tool" style="display:block;margin-top:18px">
+      <b>Before you start.</b> Finish every module first: each lesson quiz uses the same four types. Allow about 60 minutes. Results are saved only in this browser. <a href={url('/curriculum/')}>Curriculum</a>
+    </div>
     <section class="step-card quiz" style="margin-top:20px">
-      <div data-quiz="final-exam" data-quiz-sample="20"></div>
+      <div data-quiz="final-exam" data-quiz-mix="fill:10,fix:10,order:10,mc:10" data-pass="70"></div>
       <script type="application/json" data-quiz-data="final-exam" set:html={JSON.stringify(pool)} />
     </section>
   </div>

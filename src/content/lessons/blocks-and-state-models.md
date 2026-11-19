@@ -48,7 +48,7 @@ problem: "Bitcoin and Ethereum both keep balances, but in completely different w
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>How many hashes does a Merkle proof need for a block with 1,024 transactions?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which model would you choose for a loyalty-point system, and why?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Can a coin be “clean” again after passing through many outputs? Who decides?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>How many hashes does a Merkle proof need for a block with 1,024 transactions?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which model would you choose for a loyalty-point system, and why?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Can a coin be “clean” again after passing through many outputs? Who decides?</li></ul></div></div>
 
 ## Ship
 

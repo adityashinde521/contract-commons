@@ -38,11 +38,11 @@ problem: "A startup will hold €2 million in a new contract next month. How do 
 
 ## Try it
 
-<p>Code track: in your Foundry project from the Foundry lab, add <code>VulnerableBank</code> from lab L6 to <code>src/</code>, install Slither (<code>pip install slither-analyzer</code>) and run <code>slither .</code>.<span class="exp" style="display:block">A finding named <code>reentrancy-eth</code> pointing to <code>withdraw</code>.</span> Everyone: open a public audit report from an audit firm’s website and find its scope and its highest-severity finding.</p>
+<p>In your Foundry project from the Foundry lab, add <code>VulnerableBank</code> from lab L6 to <code>src/</code>, install Slither (<code>pip install slither-analyzer</code>) and run <code>slither .</code>.<span class="exp" style="display:block">A finding named <code>reentrancy-eth</code> pointing to <code>withdraw</code>.</span> Everyone: open a public audit report from an audit firm’s website and find its scope and its highest-severity finding.</p>
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Which property of the Escrow would you give to a formal verifier?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Budget for security: audit, contest, bounty. What would you spend for €2 million at risk?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Draft the scope and limitation-of-liability clause of an audit contract.</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which property of the Escrow would you give to a formal verifier?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Budget for security: audit, contest, bounty. What would you spend for €2 million at risk?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Draft the scope and limitation-of-liability clause of an audit contract.</li></ul></div></div>
 
 ## Ship
 

@@ -39,8 +39,8 @@ problem: "A university wants to issue course credits and degree certificates on 
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why does ERC-20 use approve and transferFrom instead of one call?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which business models fit a fungible token, which a non-fungible one?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Does owning a token give a legal right? Which one?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why does ERC-20 use approve and transferFrom instead of one call?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which business models fit a fungible token, which a non-fungible one?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Does owning a token give a legal right? Which one?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

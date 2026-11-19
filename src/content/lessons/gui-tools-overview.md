@@ -19,14 +19,14 @@ problem: "Law and business students need to use blockchains, not only read about
     <p>All tools below are used by professional teams. None of them needs programming for the parts you do in this course. Every lab runs on the <b>Sepolia testnet</b> or reads public data. <b>No real money is used anywhere.</b></p>
     <h4>A. Build: create and deploy contracts without code</h4>
     <div class="tw"><table>
-      <tr><th>Lab</th><th>Tool</th><th>What you create</th><th>Account</th><th>Best for</th></tr>
+      <tr><th>Lab</th><th>Tool</th><th>What you create</th><th>Account</th><th>Main lens</th></tr>
       <tr><td>G1</td><td><a href="https://wizard.openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin Contracts Wizard</a> + Remix</td><td>An audited ERC-721 certificate contract, configured with checkboxes and deployed with buttons</td><td>None (MetaMask for Sepolia)</td><td>All</td></tr>
-      <tr><td>G2</td><td><a href="https://thirdweb.com/explore" target="_blank" rel="noopener">thirdweb</a> dashboard</td><td>A ready-made NFT “Edition Drop” (tickets or certificates) with claim rules and an airdrop, managed from a dashboard</td><td>thirdweb sign-in + MetaMask</td><td>BI, Law</td></tr>
-      <tr><td>G3</td><td><a href="https://app.safe.global/welcome?chain=sep" target="_blank" rel="noopener">Safe{Wallet}</a></td><td>A 2-of-3 company wallet: no payment without two signatures</td><td>MetaMask (3 accounts)</td><td>Law, BI</td></tr>
-      <tr><td>G4</td><td><a href="https://app.aragon.org" target="_blank" rel="noopener">Aragon App</a></td><td>A DAO with members, a treasury and proposals that execute on chain</td><td>MetaMask (3 accounts)</td><td>Law, BI</td></tr>
+      <tr><td>G2</td><td><a href="https://thirdweb.com/explore" target="_blank" rel="noopener">thirdweb</a> dashboard</td><td>A ready-made NFT “Edition Drop” (tickets or certificates) with claim rules and an airdrop, managed from a dashboard</td><td>thirdweb sign-in + MetaMask</td><td>Business, law</td></tr>
+      <tr><td>G3</td><td><a href="https://app.safe.global/welcome?chain=sep" target="_blank" rel="noopener">Safe{Wallet}</a></td><td>A 2-of-3 company wallet: no payment without two signatures</td><td>MetaMask (3 accounts)</td><td>Law, business</td></tr>
+      <tr><td>G4</td><td><a href="https://app.aragon.org" target="_blank" rel="noopener">Aragon App</a></td><td>A DAO with members, a treasury and proposals that execute on chain</td><td>MetaMask (3 accounts)</td><td>Law, business</td></tr>
       <tr><td>G5</td><td><a href="https://sepolia.easscan.org" target="_blank" rel="noopener">Ethereum Attestation Service</a></td><td>Your own record format and a signed on-chain statement about a document</td><td>MetaMask</td><td>Law</td></tr>
       <tr><td>G6</td><td><a href="https://playground.accordproject.org" target="_blank" rel="noopener">Accord Project Template Playground</a></td><td>A smart legal contract template: legal text, data model and data</td><td>None</td><td>Law</td></tr>
-      <tr><td>G7</td><td>Remix QuickDApp</td><td>A clickable web app for your team’s Escrow, generated with AI</td><td>MetaMask</td><td>Team</td></tr>
+      <tr><td>G7</td><td>Remix QuickDApp</td><td>A clickable web app for your team’s Escrow, generated with AI</td><td>MetaMask</td><td>All</td></tr>
     </table></div>
     <h4>B. Inspect and visualise: see what a contract really does</h4>
     <div class="tw"><table>
@@ -57,8 +57,8 @@ problem: "Law and business students need to use blockchains, not only read about
       <li>Hosted tools change their labels and plans often. If a button has another name, look for the closest match and note it in your lab log.</li>
       <li>Contracts and attestations stay on the chain even if a website closes. Your Etherscan links remain valid.</li>
     </ul>
-    <div class="callout law"><h5>Why this matters for lawyers</h5><p>You do not need to write Solidity to ask the right questions: Who can call this function? Who can upgrade the contract? What happens if the signer is tricked? These tools let you check the answers yourself.</p></div>
+    <div class="callout law"><h5>Why this matters for everyone</h5><p>You do not need to write Solidity to ask the right questions: Who can call this function? Who can upgrade the contract? What happens if the signer is tricked? These tools let you check the answers yourself.</p></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

@@ -32,7 +32,7 @@ problem: "A quantum computer could one day derive private keys from public ones.
     <div class="callout law"><h5>Law and business lens</h5><ul>
       <li>Long-lived records (land registers, notarised documents, L4, G5) must stay valid for decades. Should a contract require <b>crypto-agility</b>, the ability to change algorithms?</li>
       <li>If a quantum attacker takes funds from an old account, is that theft? Who is liable?</li>
-      <li>BI: plan the migration cost like any other technology risk.</li>
+      <li>Business: plan the migration cost like any other technology risk.</li>
     </ul></div>
 
 ### Watch and read
@@ -48,8 +48,8 @@ problem: "A quantum computer could one day derive private keys from public ones.
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Design a contract whose signature check can be replaced later.</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Put the migration cost in a risk register.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Is taking funds from an old account with a quantum computer theft?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Design a contract whose signature check can be replaced later.</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Put the migration cost in a risk register.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is taking funds from an old account with a quantum computer theft?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

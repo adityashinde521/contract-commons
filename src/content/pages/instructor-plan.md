@@ -17,9 +17,9 @@ minutes: "15 min"
 
 ## Module map
 
-<p>Each frontier topic can become one unit with a task for each discipline.</p>
+<p>Each frontier topic can become one unit with one task per lens, done by every student.</p>
     <div class="tw"><table>
-      <tr><th>Unit</th><th>CS task</th><th>BI task</th><th>Law task</th></tr>
+      <tr><th>Unit</th><th>Technology task</th><th>Business task</th><th>Law task</th></tr>
       <tr><td>Scaling (F1)</td><td>Deploy Escrow on an L2 testnet. Compare fees.</td><td>Cost per transaction for a real process.</td><td>Who is responsible when a rollup bridge fails?</td></tr>
       <tr><td>Privacy (F2)</td><td>Use a ZK library to prove “age over 18”.</td><td>A KYC process with minimal data.</td><td>GDPR and AML: is the proof personal data?</td></tr>
       <tr><td>AI agents (F3)</td><td>AgentWallet with approval above a threshold.</td><td>Pay-per-call business model.</td><td>Who is bound when an agent pays?</td></tr>

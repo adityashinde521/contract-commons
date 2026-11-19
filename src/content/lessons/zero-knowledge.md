@@ -30,7 +30,7 @@ problem: "A public blockchain shows everything to everyone. How can someone prov
 ### Watch and read
 
 <div class="vids">
-      <a class="vid" href="https://www.youtube.com/watch?v=fOGdb1CTu5c" target="_blank" rel="noopener"><span class="play"></span><span><b>Zero-knowledge proofs in 5 levels of difficulty</b><small>WIRED with Amit Sahai, 23 min. Very good for law students.</small></span></a>
+      <a class="vid" href="https://www.youtube.com/watch?v=fOGdb1CTu5c" target="_blank" rel="noopener"><span class="play"></span><span><b>Zero-knowledge proofs in 5 levels of difficulty</b><small>WIRED with Amit Sahai, 23 min. Very good first watch.</small></span></a>
     </div>
 
 ## Try it
@@ -39,8 +39,8 @@ problem: "A public blockchain shows everything to everyone. How can someone prov
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>SNARK or STARK: which would you choose for a quantum-safe system?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Design a KYC check that stores no personal data.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Is a zero-knowledge proof itself personal data?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>SNARK or STARK: which would you choose for a quantum-safe system?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Design a KYC check that stores no personal data.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is a zero-knowledge proof itself personal data?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

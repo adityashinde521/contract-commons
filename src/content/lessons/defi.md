@@ -44,7 +44,7 @@ problem: "Banks take days to settle a trade; a decentralised exchange settles in
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why can a flash loan be repaid in the same transaction, and what happens if it is not?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>A company holds treasury in a stablecoin. List the risks: issuer, freeze, peg, smart contract.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Is providing liquidity to a pool a regulated activity? Who is the counterparty?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why can a flash loan be repaid in the same transaction, and what happens if it is not?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>A company holds treasury in a stablecoin. List the risks: issuer, freeze, peg, smart contract.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is providing liquidity to a pool a regulated activity? Who is the counterparty?</li></ul></div></div>
 
 ## Ship
 

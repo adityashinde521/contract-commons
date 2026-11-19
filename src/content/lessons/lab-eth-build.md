@@ -30,7 +30,7 @@ problem: "Hashes and signatures are abstract until you see them change. ETH.BUIL
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Which module would you add to build a simple block that links to a previous hash?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Use the model to explain to a manager why a signed invoice cannot be altered unnoticed.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>The signature proves control of a key, not identity. What else is needed for an electronic signature under eIDAS?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which module would you add to build a simple block that links to a previous hash?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Use the model to explain to a manager why a signed invoice cannot be altered unnoticed.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>The signature proves control of a key, not identity. What else is needed for an electronic signature under eIDAS?</li></ul></div></div>
 
 ## Ship
 

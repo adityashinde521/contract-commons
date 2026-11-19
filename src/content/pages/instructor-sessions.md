@@ -10,7 +10,7 @@ minutes: "15 min"
       <li><b>10–25 min.</b> Live demo in Remix or in G1. Students watch and predict each result before you click.</li>
       <li><b>25–60 min.</b> Teams do the lab. The builder reads each step aloud; the analysts explain it in their words.</li>
       <li><b>60–80 min.</b> Teams change one rule (an extension task) and present the effect in two minutes.</li>
-      <li><b>80–90 min.</b> Three-question check: one each from CS, BI and law. Quiz as homework.</li>
+      <li><b>80–90 min.</b> Three-question check: one per lens: technology, business, law. Quiz as homework.</li>
     </ol>
 
 ## Preparation checklist

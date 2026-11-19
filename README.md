@@ -1,13 +1,17 @@
 # Contract Commons
 
-An Ethereum-focused smart contracts course for computer science, business informatics and law
-students. Learners build contracts in Remix and Foundry, use the graphical tools professionals use
-(OpenZeppelin, thirdweb, Safe, Aragon, EAS, Tenderly, Phalcon, Dune, L2BEAT), and analyse every
-contract from three sides: code, business process and law.
+An Ethereum-focused smart contracts course with one path for every student. Learners run contracts
+in Remix and Foundry, use the graphical tools professionals use (OpenZeppelin, thirdweb, Safe, Aragon,
+EAS, Tenderly, Phalcon, Dune, L2BEAT), and look at every contract through three lenses: technology,
+business and law. Everyone does every lab and takes the same final exam.
 
 - 13 modules, 56 lessons and labs, every lesson in the same five steps: Problem → Concept → Build → Apply → Ship
-- Quizzes on 54 units, a placement check and a 20-question final exam
-- Learning paths: smart contract developer, legal-tech analyst, blockchain product analyst
+- Quizzes on all 56 units, with four question types: fill the missing logic, fix the wrong line,
+  put steps in order, and concept multiple choice (no code writing)
+- One final exam for everyone: 40 questions (10 of each type, spread across all modules), pass with 70%
+- A placement check that shows which modules a learner can move through quickly
+- Question sources: `src/data/quizzes.json`; the fill/fix/order items are authored in
+  `tools/quiz_types_*.py` and merged with `python3 tools/quiz_types.py`
 - Progress, quiz scores and a lab log saved in the learner’s browser (no accounts, no server)
 - Every lab runs on the Sepolia test network or reads public data. No real money is used.
 

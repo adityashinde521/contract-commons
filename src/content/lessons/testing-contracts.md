@@ -24,7 +24,7 @@ problem: "In the Escrow lab you checked each rule by clicking. A real contract h
 </table></div>
 <ul>
 <li>In Foundry, a <b>cheatcode</b> such as <code>vm.prank(addr)</code> makes the next call come from <code>addr</code>, and <code>vm.expectRevert</code> expects a failure. These replace switching accounts in Remix.</li>
-<li>Write the tests from the agreement: every clause that the code enforces should have at least one test. This is where law and BI students help CS students.</li>
+<li>Write the tests from the agreement: every clause that the code enforces should have at least one test. Writing these test cases from the clauses is part of the lab for everyone.</li>
 </ul>
 
 ### Watch and read
@@ -40,7 +40,7 @@ problem: "In the Escrow lab you checked each rule by clicking. A real contract h
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Which invariant would have caught the reentrancy bug in L6?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Turn a business rule into an acceptance test written in plain language.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Write three test names from a rental agreement. Which clause is impossible to test?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which invariant would have caught the reentrancy bug in L6?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Turn a business rule into an acceptance test written in plain language.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Write three test names from a rental agreement. Which clause is impossible to test?</li></ul></div></div>
 
 ## Ship
 

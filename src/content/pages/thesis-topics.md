@@ -13,6 +13,6 @@ minutes: "15 min"
       <li><b>Attestations as evidence:</b> how should German courts weigh EAS attestations compared with qualified electronic signatures? (Law)</li>
       <li><b>Crypto-agility pattern:</b> design a contract where the signature check can be replaced, and analyse the governance risk this creates. (CS + Law)</li>
       <li><b>MEV and fairness:</b> explain sandwich attacks to non-experts and assess them under consumer-protection and market-abuse rules. (Law + BI)</li>
-      <li><b>GUI tools in legal education:</b> test G3, G4 and G8 with law students and measure which concepts they understand afterwards. (BI + education)</li>
+      <li><b>GUI tools in legal education:</b> test G3, G4 and G8 with students without a programming background and measure which concepts they understand afterwards. (BI + education)</li>
       <li><b>Tool evaluation:</b> evaluate a new visual builder from G12 with the checklist and compare it with G1 and G2. (CS + BI)</li>
     </ol>

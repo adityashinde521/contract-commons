@@ -45,8 +45,8 @@ problem: "A landlord says the lease you signed said 990 EUR, not 900. How could 
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why is a 256-bit hash still safe if computers get much faster?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which business documents need proof that they were not changed?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Is a hash of personal data still personal data under the GDPR?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why is a 256-bit hash still safe if computers get much faster?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which business documents need proof that they were not changed?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is a hash of personal data still personal data under the GDPR?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

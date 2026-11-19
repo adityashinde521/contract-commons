@@ -48,9 +48,9 @@ problem: "Two parties want a neutral, permanent record that they both had the sa
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>A resolver contract can check rules before an attestation is accepted. Design one: “only the university may attest degrees”.</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Which business processes produce statements others must trust: supplier certificates, audit results, delivery proofs?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>Is an attestation an electronic signature under eIDAS? Simple, advanced or qualified? What is its value as evidence?</li><li>“Revoked” but still visible: does this satisfy a GDPR erasure request if the data was personal?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>A resolver contract can check rules before an attestation is accepted. Design one: “only the university may attest degrees”.</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Which business processes produce statements others must trust: supplier certificates, audit results, delivery proofs?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>Is an attestation an electronic signature under eIDAS? Simple, advanced or qualified? What is its value as evidence?</li><li>“Revoked” but still visible: does this satisfy a GDPR erasure request if the data was personal?</li></ul></div>
     </div>
 
 ## Ship

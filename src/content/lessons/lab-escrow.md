@@ -86,7 +86,7 @@ contract Escrow {
         emit Refunded(buyer, amount);
     }
 }</code></pre><button class="copy" type="button">Copy</button></div>
-    <div class="callout gui"><h5>See it in a real tool</h5><p>After L7, open your Escrow transactions in <a href="../lab-tenderly/">Tenderly (G8)</a>: every step of this lab becomes visible in the debugger, and the simulator lets law and BI students test each role without signing.</p></div>
+    <div class="callout gui"><h5>See it in a real tool</h5><p>After L7, open your Escrow transactions in <a href="../lab-tenderly/">Tenderly (G8)</a>: every step of this lab becomes visible in the debugger, and the simulator lets you test each role without signing.</p></div>
 
 ## Build
 
@@ -135,9 +135,9 @@ contract Escrow {
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>What happens if the arbiter loses its key? Add a deadline: after 30 days, the buyer can refund without the arbiter.</li><li>Why is <code>price</code> <code>immutable</code>?</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Compare cost and time with a bank escrow or a payment service with buyer protection.</li><li>Who would pay the arbiter, and how?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>The arbiter acts like a judge or an arbitral tribunal. Who chooses it? Is its decision enforceable?</li><li>Goods are only partly defective. The code knows only “all” or “nothing”. What does the law say (price reduction, §441 BGB)?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>What happens if the arbiter loses its key? Add a deadline: after 30 days, the buyer can refund without the arbiter.</li><li>Why is <code>price</code> <code>immutable</code>?</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Compare cost and time with a bank escrow or a payment service with buyer protection.</li><li>Who would pay the arbiter, and how?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>The arbiter acts like a judge or an arbitral tribunal. Who chooses it? Is its decision enforceable?</li><li>Goods are only partly defective. The code knows only “all” or “nothing”. What does the law say (price reduction, §441 BGB)?</li></ul></div>
     </div>
 
 ### Go further
@@ -154,11 +154,11 @@ contract Escrow {
       <li>You can run both paths and read the state after each step.</li>
       <li>You can explain each revert message and which rule it enforces.</li>
       <li>You can explain why <code>confirmDelivery</code> changes the state before it sends ETH.</li>
-      <li>You can explain the Escrow in one sentence each for CS, BI and law.</li>
+      <li>You can explain the Escrow in one sentence each through the technology, business and law lenses.</li>
     </ul>
     <div class="card"><h4>One contract, three sentences</h4>
-      <p><b>CS:</b> “A state machine with three roles. Access control and checks-effects-interactions protect the funds.”</p>
-      <p><b>BI:</b> “It automates a three-party payment process, removes the bank as intermediary and leaves an audit trail of events.”</p>
+      <p><b>Technology:</b> “A state machine with three roles. Access control and checks-effects-interactions protect the funds.”</p>
+      <p><b>Business:</b> “It automates a three-party payment process, removes the bank as intermediary and leaves an audit trail of events.”</p>
       <p><b>Law:</b> “It performs part of a purchase agreement. The code cannot judge if goods are defective, so the arbiter still needs a legal mandate.”</p>
     </div>
     <div class="callout lab"><h5>Lab log</h5><p>Screenshots: state after each step, the “Only arbiter” revert, account balances after release. The state diagram drawn by the process analyst.</p></div>

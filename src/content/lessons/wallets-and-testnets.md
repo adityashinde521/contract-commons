@@ -52,7 +52,7 @@ problem: "A student loses a laptop with MetaMask on it. Is the money gone? What 
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>How can a smart account let someone recover access without a recovery phrase?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Design key management for a small company: who signs what, and with which device?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Is a recovery phrase part of an estate? How can heirs get access lawfully?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>How can a smart account let someone recover access without a recovery phrase?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Design key management for a small company: who signs what, and with which device?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is a recovery phrase part of an estate? How can heirs get access lawfully?</li></ul></div></div>
 
 ## Ship
 

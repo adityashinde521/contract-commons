@@ -34,9 +34,9 @@ problem: "Fees on Ethereum were once tens of dollars. Today most activity costs 
     </table></div>
     <p class="note">Ethereum now aims for about two hard forks a year, and dates often move. Check ethereum.org before you rely on a date.</p>
     <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Deploy L2 Escrow on an L2 testnet and compare fees with Sepolia.</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Low L2 fees make micro-payments and process automation economic.</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>A rollup has an operator and a bridge. Who is responsible if a bridge fails? Users trust more parties than on L1.</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Deploy L2 Escrow on an L2 testnet and compare fees with Sepolia.</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Low L2 fees make micro-payments and process automation economic.</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>A rollup has an operator and a bridge. Who is responsible if a bridge fails? Users trust more parties than on L1.</li></ul></div>
     </div>
 
 ### Watch and read
@@ -52,8 +52,8 @@ problem: "Fees on Ethereum were once tens of dollars. Today most activity costs 
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Deploy the Escrow on an L2 testnet and compare fees.</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>What do low L2 fees make possible?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Who is responsible if a rollup bridge fails?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Deploy the Escrow on an L2 testnet and compare fees.</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>What do low L2 fees make possible?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Who is responsible if a rollup bridge fails?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

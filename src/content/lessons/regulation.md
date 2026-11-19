@@ -28,7 +28,7 @@ problem: "A bank wants to issue a tokenised bond to EU clients. Which rules appl
       <tr><td>EU DLT Pilot Regime</td><td>Since 2023</td><td>Test environment for trading and settling tokenised securities.</td></tr>
       <tr><td>EU AML package</td><td>Applies from July 2027</td><td>Stricter anti-money-laundering rules and a new EU AML authority.</td></tr>
     </table></div>
-    <div class="callout law"><h5>Questions for law students</h5><ul>
+    <div class="callout law"><h5>Questions to answer</h5><ul>
       <li>Is a token a financial instrument (MiFID II) or a crypto-asset (MiCA)? The Commission is reviewing gaps between the two.</li>
       <li>Does a token give legal ownership of the bond, or only a claim against the issuer?</li>
       <li>Can MiCA apply to a fully decentralised protocol with no intermediary?</li>
@@ -48,8 +48,8 @@ problem: "A bank wants to issue a tokenised bond to EU clients. Which rules appl
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Add an investor allow-list to the L5 token.</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Write the business case for a tokenised bond.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Is the token a financial instrument or a crypto-asset under MiCA?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Add an investor allow-list to the L5 token.</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Write the business case for a tokenised bond.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is the token a financial instrument or a crypto-asset under MiCA?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

@@ -42,9 +42,9 @@ problem: "On 9 July 2025 about $42 million left GMX V1 in one attack. What actua
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Which defence from T8 would have stopped this? Why is “protocol maturity” no protection?</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Write the incident cost: direct loss, reputation, recovery. Part of the funds was later returned under a bounty deal. How should that be booked?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>The attacker returned most of the funds in exchange for a “bounty”. Is that a lawful settlement, or does criminal liability remain? Compare with the DAO case (T8).</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Which defence from T8 would have stopped this? Why is “protocol maturity” no protection?</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Write the incident cost: direct loss, reputation, recovery. Part of the funds was later returned under a bounty deal. How should that be booked?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>The attacker returned most of the funds in exchange for a “bounty”. Is that a lawful settlement, or does criminal liability remain? Compare with the DAO case (T8).</li></ul></div>
     </div>
 
 ## Ship

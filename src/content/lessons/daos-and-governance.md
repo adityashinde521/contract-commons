@@ -42,7 +42,7 @@ problem: "A group wants to manage shared money without a company. Can a smart co
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>How does a timelock protect against a governance attack?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Design voting rules for a 50-member student cooperative.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Which German legal form fits a DAO best: GbR, e.V., GmbH or eG? Why?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>How does a timelock protect against a governance attack?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Design voting rules for a 50-member student cooperative.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Which German legal form fits a DAO best: GbR, e.V., GmbH or eG? Why?</li></ul></div></div>
 
 ## Ship
 

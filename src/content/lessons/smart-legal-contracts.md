@@ -51,7 +51,7 @@ problem: "A law firm wants contracts that a court can read and a computer can pe
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>How would you embed the hash of the legal text in the Escrow?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which contract types in a company are good candidates for templates?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Under German law, can a party contest a declaration made by clicking a contract function (§119 BGB, mistake)?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>How would you embed the hash of the legal text in the Escrow?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which contract types in a company are good candidates for templates?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Under German law, can a party contest a declaration made by clicking a contract function (§119 BGB, mistake)?</li></ul></div></div>
 
 ## Ship
 

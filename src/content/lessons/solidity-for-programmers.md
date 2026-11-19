@@ -14,7 +14,7 @@ problem: "You know Java or Python. Which habits work in Solidity, and which ones
 
 ## Concept
 
-<div class="goal"><b>Goal:</b> you can read all lab contracts and know where Solidity differs from languages you know. (Code track.)</div>
+<div class="goal"><b>Goal:</b> you can read all lab contracts and know where Solidity differs from languages you know.</div>
     <div class="tw"><table>
       <tr><th>Solidity</th><th>Similar to</th><th>Important difference</th></tr>
       <tr><td><code>contract</code></td><td>class</td><td>One instance per deployment, with its own address and balance.</td></tr>
@@ -55,8 +55,8 @@ problem: "You know Java or Python. Which habits work in Solidity, and which ones
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why is a mapping not iterable, and how do you work around it?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Storage writes cost the most gas. What does that mean for data you keep on chain?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Code comments are not terms. Should the legal text link to the code by hash?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why is a mapping not iterable, and how do you work around it?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Storage writes cost the most gas. What does that mean for data you keep on chain?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Code comments are not terms. Should the legal text link to the code by hash?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

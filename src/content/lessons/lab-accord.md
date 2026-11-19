@@ -41,9 +41,9 @@ problem: "A law firm has 2,000 leases in Word files. It wants the key terms as d
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Generate a Solidity constructor from the Concerto model. Which types map cleanly?</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>A company has 2,000 leases. What does a template give the business: search, reporting, reminders?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>Add the §551 BGB cap as a rule: deposit ≤ 3 × monthlyRent. Is this a check in the model, in logic or in the text?</li><li>Compare with the research on Stipula and Catala (F7).</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Generate a Solidity constructor from the Concerto model. Which types map cleanly?</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>A company has 2,000 leases. What does a template give the business: search, reporting, reminders?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>Add the §551 BGB cap as a rule: deposit ≤ 3 × monthlyRent. Is this a check in the model, in logic or in the text?</li><li>Compare with the research on Stipula and Catala (F7).</li></ul></div>
     </div>
 
 ## Ship

@@ -47,7 +47,7 @@ problem: "Code on a blockchain cannot be changed, yet many large protocols ship 
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why must a proxy and its implementation agree on the storage layout?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Write a short incident plan for the course Escrow: who pauses, who tells users?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Users accepted the terms of version 1. An upgrade changes them. Is that a unilateral change of contract terms?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why must a proxy and its implementation agree on the storage layout?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Write a short incident plan for the course Escrow: who pauses, who tells users?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Users accepted the terms of version 1. An upgrade changes them. Is that a unilateral change of contract terms?</li></ul></div></div>
 
 ## Ship
 

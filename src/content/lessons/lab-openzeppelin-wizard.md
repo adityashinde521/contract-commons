@@ -47,9 +47,9 @@ problem: "A university wants a certificate contract but has no Solidity develope
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Make the certificate non-transferable (“soulbound”). Which function do you need to override?</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Who pays gas when a university issues 5,000 certificates? Compare with a PDF and a verification portal.</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>A transferable degree certificate can be sold. Is that a problem? Which features must a legally useful credential have?</li><li>A student wants a certificate deleted under the GDPR. What can the issuer do?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Make the certificate non-transferable (“soulbound”). Which function do you need to override?</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Who pays gas when a university issues 5,000 certificates? Compare with a PDF and a verification portal.</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>A transferable degree certificate can be sold. Is that a problem? Which features must a legally useful credential have?</li><li>A student wants a certificate deleted under the GDPR. What can the issuer do?</li></ul></div>
     </div>
 
 ## Ship

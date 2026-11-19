@@ -39,7 +39,7 @@ problem: "Your AI assistant books travel and pays for data. What stops it from b
 
 ## Try it
 
-<div class="goal"><b>Goal:</b> build a wallet where the agent can pay, but only inside rules that the owner controls. (Code track, Remix VM.)</div>
+<div class="goal"><b>Goal:</b> build a wallet where the agent can pay, but only inside rules that the owner controls. (Remix VM.)</div>
     <div class="pre-wrap"><pre><code>// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
@@ -125,11 +125,11 @@ contract AgentWallet {
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Add a rule: payments above 0.5 ether need the owner’s approval.</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Pay-per-call pricing instead of subscriptions. Which business models change?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>An AI agent is not a legal person. When it pays or “agrees”, who is bound: the user, the developer, the model provider? Compare with agency law and with automated declarations of intent.</li><li>The EU AI Act applies in phases. Which duties can apply to an agent that moves money?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Add a rule: payments above 0.5 ether need the owner’s approval.</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Pay-per-call pricing instead of subscriptions. Which business models change?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>An AI agent is not a legal person. When it pays or “agrees”, who is bound: the user, the developer, the model provider? Compare with agency law and with automated declarations of intent.</li><li>The EU AI Act applies in phases. Which duties can apply to an agent that moves money?</li></ul></div>
     </div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

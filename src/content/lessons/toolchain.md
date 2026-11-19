@@ -37,11 +37,11 @@ problem: "Remix is great for learning, but a real project has many files, a team
 
 ## Try it
 
-<p>Read the Foundry Book chapter “Getting started”. Install Foundry if you are on the code track (the <a href="../lab-foundry-test/">Foundry lab</a> needs it). Run <code>forge --version</code>.</p>
+<p>Read the Foundry Book chapter “Getting started”. Install Foundry (the <a href="../lab-foundry-test/">Foundry lab</a> needs it). Run <code>forge --version</code>.</p>
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why are tests written in Solidity (Foundry) faster to run than tests in JavaScript?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which tool choices reduce the risk of a project depending on one developer?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Git history shows who changed what and when. Could it serve as evidence in a dispute about a bug?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why are tests written in Solidity (Foundry) faster to run than tests in JavaScript?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which tool choices reduce the risk of a project depending on one developer?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Git history shows who changed what and when. Could it serve as evidence in a dispute about a bug?</li></ul></div></div>
 
 ## Ship
 

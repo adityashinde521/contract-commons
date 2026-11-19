@@ -32,3 +32,13 @@ contracts, and was checked against these syllabi (retrieved November 2026):
 | 13 | Frontiers and research | 13.1 AI agents with wallets; 13.2 Quantum computing and blockchain security; 13.3 Current research and open problems; 13.4 To evaluate: new visual builders |
 
 The roadmap.sh topics Truffle and Brownie are mentioned as history only, because both are no longer maintained.
+
+## One path and assessment
+
+There are no separate tracks. Every student completes every module and lab and looks at each
+contract through three lenses (technology, business, law).
+
+- Lesson quizzes: every unit mixes concept questions with three applied types: fill the missing
+  logic, fix the wrong line, put steps in order. Pass mark 80%.
+- Final exam: the same for every student. 40 questions, 10 of each type, drawn across all 13
+  modules. Pass mark 70%. No code writing.

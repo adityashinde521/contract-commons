@@ -37,7 +37,7 @@ problem: "Everything on Ethereum is public, but only if you can read it. A block
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why can Etherscan decode input data only for verified contracts?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Calculate the fee of one transaction in euros at today’s ETH price.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>An issuer can freeze tokens. Is that compatible with “ownership”? What does MiCA say about issuer obligations?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why can Etherscan decode input data only for verified contracts?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Calculate the fee of one transaction in euros at today’s ETH price.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>An issuer can freeze tokens. Is that compatible with “ownership”? What does MiCA say about issuer obligations?</li></ul></div></div>
 
 ## Ship
 

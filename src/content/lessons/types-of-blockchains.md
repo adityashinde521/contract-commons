@@ -45,7 +45,7 @@ problem: "A logistics consortium asks for “a blockchain”. Should it use Ethe
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>What does an EVM-compatible chain have to implement to run your Solidity code unchanged?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>A consortium chain needs a governance agreement. Who pays for the nodes?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>On a consortium chain the members are known. Does that make them jointly controllers under the GDPR?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>What does an EVM-compatible chain have to implement to run your Solidity code unchanged?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>A consortium chain needs a governance agreement. Who pays for the nodes?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>On a consortium chain the members are known. Does that make them jointly controllers under the GDPR?</li></ul></div></div>
 
 ## Ship
 

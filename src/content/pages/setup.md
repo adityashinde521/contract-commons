@@ -14,7 +14,7 @@ minutes: "30 min"
       <li>Get test ETH from a faucet, for example the <a href="https://www.alchemy.com/faucets/ethereum-sepolia" target="_blank" rel="noopener">Alchemy Sepolia faucet</a>, the Google Cloud Web3 faucet or the pk910 PoW faucet. Some ask for a login or a small Mainnet balance. If that is a problem, ask the instructor: test ETH is shared in class.<span class="exp">0.05 SepoliaETH or more after a few minutes.</span></li>
       <li>Create two more accounts in MetaMask (<span class="ui">Add account</span>). Name them “Account 2” and “Account 3”.<span class="exp">Three addresses. G3 (Safe) and G4 (Aragon) need them.</span></li>
     </ol>
-    <h4>For the code track</h4>
+    <h4>For the code labs</h4>
     <ul>
       <li>A free GitHub account to back up your lab files. Remix stores files only in the browser.</li>
       <li>Optional: Visual Studio Code with the Solidity extension, for work after the course.</li>

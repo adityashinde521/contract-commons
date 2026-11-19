@@ -42,7 +42,7 @@ problem: "Bridges have been behind some of the largest hacks in crypto. Why is m
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why does a channel need a dispute window?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>A payments company must choose a chain for micro-payments. Channel, sidechain or rollup?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Who is the issuer of a bridged token under MiCA?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why does a channel need a dispute window?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>A payments company must choose a chain for micro-payments. Channel, sidechain or rollup?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Who is the issuer of a bridged token under MiCA?</li></ul></div></div>
 
 ## Ship
 

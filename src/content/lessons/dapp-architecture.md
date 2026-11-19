@@ -40,7 +40,7 @@ problem: "Your buyer will never open Remix. What sits between a smart contract a
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why do apps read past events from an indexer instead of the node directly?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which parts of a dApp can a company still switch off?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Who is the provider of a dApp under consumer law: the contract author or the website operator?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why do apps read past events from an indexer instead of the node directly?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which parts of a dApp can a company still switch off?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Who is the provider of a dApp under consumer law: the contract author or the website operator?</li></ul></div></div>
 
 ## Ship
 

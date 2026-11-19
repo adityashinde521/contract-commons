@@ -65,9 +65,9 @@ contract SimpleStorage {
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Why is <code>storedValue</code> private but still readable on chain? Find it with the debugger or <code>eth_getStorageAt</code>.</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Each write costs money. Which business data would you write on chain, and which not?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>All chain data is public. What does this mean for personal data and trade secrets?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Why is <code>storedValue</code> private but still readable on chain? Find it with the debugger or <code>eth_getStorageAt</code>.</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Each write costs money. Which business data would you write on chain, and which not?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>All chain data is public. What does this mean for personal data and trade secrets?</li></ul></div>
     </div>
 
 ## Ship

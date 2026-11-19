@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { MODULES, PATHS, TINT, orderedLessons, url } from '../lib/course';
+import { MODULES, TINT, orderedLessons, url } from '../lib/course';
 const lessons = await orderedLessons();
 const codeLabs = lessons.filter((l) => l.entry.data.kind === 'lab-remix').length;
 const toolLabs = lessons.filter((l) => l.entry.data.kind === 'lab-gui').length;
@@ -9,15 +9,20 @@ const steps = [
   ['01', 'Problem', 'A real case: a purchase between strangers, a lost key, a 2025 hack.'],
   ['02', 'Concept', 'The idea behind it, in plain words, with tables, key terms and sources.'],
   ['03', 'Build', 'Do it yourself in Remix or a market tool, with the expected result for every step.'],
-  ['04', 'Apply', 'The same contract seen by CS, business and law, with questions for your team.'],
+  ['04', 'Apply', 'The same contract through three lenses: technology, business and law. You answer all three.'],
   ['05', 'Ship', 'Something you keep: a verified contract, an Etherscan link, a lab log entry, a passed quiz.'],
 ];
 const tools = [['Remix','Write and deploy'],['MetaMask','Test wallet'],['OpenZeppelin','Audited building blocks'],['Foundry','Testing'],['thirdweb','Ready-made contracts'],['Safe','Multisig'],['Aragon','DAOs'],['EAS','Attestations'],['Tenderly','Debug and simulate'],['Phalcon','Trace real hacks'],['Dune','On-chain data'],['L2BEAT','Rollup risk']];
-const personas = [
-  { t: 'I study law', d: 'No code. Learn the technology, then run real contracts with GUI tools and analyse them legally.', chips: ['Legal-tech path', 'No programming'], href: '/paths/#legal', tint: 'law', icon: 'M12 3v18M5 21h14M6 7h12M4 7l-2 6a3 3 0 0 0 6 0zM20 7l-2 6a3 3 0 0 0 4 0z' },
-  { t: 'I study business informatics', d: 'Model processes as state machines, price transactions and judge when a blockchain is worth it.', chips: ['Product path', 'Light code'], href: '/paths/#product', tint: 'bi', icon: 'M4 19V5M4 19h16M8 15l4-4 3 3 5-6' },
-  { t: 'I study computer science', d: 'Write Solidity, break it on purpose, test it with Foundry and ship it to a public testnet.', chips: ['Developer path', 'Solidity'], href: '/paths/#developer', tint: 'cs', icon: 'm8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14' },
-  { t: 'I already work', d: 'Lawyers, analysts and engineers who need the essentials fast. Take the placement check and skip what you know.', chips: ['Self-paced', 'Pick modules'], href: '/placement/', tint: 'brand', icon: 'M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2' },
+const lenses = [
+  { t: 'Technology lens', d: 'How the code works: hashes, signatures, gas, the EVM, and what each line of a contract allows or forbids.', tint: 'cs', icon: 'm8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14' },
+  { t: 'Business lens', d: 'Why a process should run on a chain, what it costs, and when a normal database is the better choice.', tint: 'bi', icon: 'M4 19V5M4 19h16M8 15l4-4 3 3 5-6' },
+  { t: 'Law lens', d: 'What the code means legally: contract formation, mandatory law, GDPR, MiCA and who is liable when it fails.', tint: 'law', icon: 'M12 3v18M5 21h14M6 7h12M4 7l-2 6a3 3 0 0 0 6 0zM20 7l-2 6a3 3 0 0 0 4 0z' },
+];
+const exam = [
+  ['Fill the missing logic', 'Choose the condition or line that completes a contract or pseudo code.'],
+  ['Fix the wrong line', 'Spot the wrong check, order, address or unit and choose the fix.'],
+  ['Put steps in order', 'Order the steps of a procedure, such as checks, effects, interactions.'],
+  ['Concept questions', 'Explain what a tool, rule or attack does and why it matters.'],
 ];
 ---
 <Base title="Contract Commons">
@@ -26,11 +31,11 @@ const personas = [
       <div class="hero-copy">
         <span class="hero-badge"><i></i>Free · in your browser · testnet only</span>
         <h1>Learn smart contracts the way they are used: in code, in business and in law.</h1>
-        <p>An Ethereum-focused course for computer science, business informatics and law students. Build real contracts in Remix, use the tools professionals use, and learn to ask the questions that code cannot answer.</p>
+        <p>One Ethereum-focused course, one path and one final exam for everyone. Run real contracts in Remix, use the tools professionals use, and learn to ask the questions that code cannot answer.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <a class="cc-btn cc-btn--accent" href={url('/curriculum/')}>Start the course
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="cc-btn cc-btn--ghost-dark" href="#start">Find your starting point</a>
+          <a class="cc-btn cc-btn--ghost-dark" href="#start">How you pass</a>
         </div>
         <div class="hero-stats">
           <div><b>{MODULES.length}</b>modules</div>
@@ -70,16 +75,15 @@ const personas = [
 
     <section class="section" id="start">
       <div class="section-head">
-        <div><div class="cc-eyebrow">Start where you are</div><h2>One course, four ways in</h2><p>Pick the card that sounds like you. The 10-question placement check then marks where to start.</p></div>
-        <a class="more" href={url('/placement/')}>Take the placement check →</a>
+        <div><div class="cc-eyebrow">One course for everyone</div><h2>Every student learns all three lenses</h2><p>There are no separate tracks. Everyone reads every lesson, does every lab and takes the same final exam. Each lesson ends with the same contract seen through three lenses.</p></div>
+        <a class="more" href={url('/placement/')}>Check what you already know →</a>
       </div>
-      <div class="grid grid-sm">
-        {personas.map((p) => (
-          <a class="cc-card card-link" href={url(p.href)}>
+      <div class="grid grid-sm" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        {lenses.map((p) => (
+          <div class="cc-card">
             <span class={`cc-icon-tile cc-icon-tile--${p.tint}`}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={p.icon}/></svg></span>
             <div><h3>{p.t}</h3><p style="margin-top:6px">{p.d}</p></div>
-            <div class="meta-chips" style="margin-top:auto">{p.chips.map((c) => <span class="cc-chip">{c}</span>)}</div>
-          </a>
+          </div>
         ))}
       </div>
     </section>
@@ -111,12 +115,10 @@ const personas = [
     </section>
 
     <section class="section">
-      <div class="section-head"><div><div class="cc-eyebrow">Learning paths</div><h2>Where the course can take you</h2></div><a class="more" href={url('/paths/')}>Compare paths →</a></div>
-      <div class="grid">
-        {PATHS.map((p) => (
-          <a class={`path-card ${p.tint}`} href={url(`/paths/#${p.id}`)}>
-            <h3>{p.title}</h3><p>{p.text}</p><span class="k">{p.modules.length} modules · {p.tools}</span>
-          </a>
+      <div class="section-head"><div><div class="cc-eyebrow">Final exam</div><h2>40 questions, the same for everyone. Pass with 70%.</h2><p>No code writing. You read short contracts and pseudo code and show that you understand them.</p></div><a class="more" href={url('/final-exam/')}>Try the final exam →</a></div>
+      <div class="grid grid-sm" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        {exam.map(([t, d], i) => (
+          <div class="cc-card"><span class="cc-chip">{`Type ${i + 1}`}</span><h3>{t}</h3><p style="margin-top:6px">{d}</p></div>
         ))}
       </div>
     </section>

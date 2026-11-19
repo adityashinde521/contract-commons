@@ -26,16 +26,16 @@ problem: "You are choosing a seminar paper or thesis topic. Where is the researc
       <tr><td><b>Agent economies</b></td><td>How do autonomous agents find, trust and pay each other, and who is accountable?</td><td>ERC-8004 and x402 are the first standards. Open: reputation manipulation, validation of agent work, legal attribution (F3).</td></tr>
       <tr><td><b>Formal verification</b></td><td>Can we prove that a contract always behaves as intended?</td><td>Solidity SMTChecker, Certora Prover, the K framework. Open: specifications that non-experts, including lawyers, can write and check.</td></tr>
     </table></div>
-    <div class="callout law"><h5>The common thread</h5><p>Most open problems sit between disciplines: a technical fix (fair ordering, a pause switch) needs an economic reason and a legal basis. That is why this course mixes CS, business and law.</p></div>
+    <div class="callout law"><h5>The common thread</h5><p>Most open problems sit between disciplines: a technical fix (fair ordering, a pause switch) needs an economic reason and a legal basis. That is why every student in this course learns technology, business and law.</p></div>
 
 ### Watch and read
 
-<p>For each paper, read the abstract, introduction and conclusion. Write three lines: problem, method, result. Then one line each for CS, BI and law.</p>
+<p>For each paper, read the abstract, introduction and conclusion. Write three lines: problem, method, result. Then one line each for the technology, business and law lenses.</p>
     <div class="vids">
       <a class="vid read" href="https://arxiv.org/abs/2504.04685" target="_blank" rel="noopener"><span class="play"></span><span><b>Generative LLM usage in smart contract vulnerability detection</b><small>Ince, Yu, Liu, Du. arXiv, April 2025</small></span></a>
       <a class="vid read" href="https://red.anthropic.com/2025/smart-contracts/" target="_blank" rel="noopener"><span class="play"></span><span><b>AI agents find $4.6M in blockchain smart contract exploits (SCONE-bench)</b><small>Anthropic and MATS, December 2025</small></span></a>
       <a class="vid read" href="https://arxiv.org/abs/2603.07716" target="_blank" rel="noopener"><span class="play"></span><span><b>SoK: The evolution of Maximal Extractable Value</b><small>Mancino and Sevim. arXiv, March 2026</small></span></a>
-      <a class="vid read" href="https://doi.org/10.1016/j.clsr.2025.106223" target="_blank" rel="noopener"><span class="play"></span><span><b>Integration of statutory norms in computable contracts (Stipula)</b><small>Laneve, Parenti, Sartor. CLSR, December 2025. Best paper for law students.</small></span></a>
+      <a class="vid read" href="https://doi.org/10.1016/j.clsr.2025.106223" target="_blank" rel="noopener"><span class="play"></span><span><b>Integration of statutory norms in computable contracts (Stipula)</b><small>Laneve, Parenti, Sartor. CLSR, December 2025. Best entry paper for the law lens.</small></span></a>
       <a class="vid read" href="https://arxiv.org/pdf/2510.20007" target="_blank" rel="noopener"><span class="play"></span><span><b>zk-Agreements: privacy-preserving trust in confidential agreements</b><small>arXiv, October 2025</small></span></a>
       <a class="vid read" href="https://arxiv.org/pdf/2407.19572" target="_blank" rel="noopener"><span class="play"></span><span><b>MEV mitigation approaches in Ethereum and Layer-2 chains: a survey</b><small>arXiv, July 2024</small></span></a>
     </div>
@@ -51,12 +51,12 @@ problem: "You are choosing a seminar paper or thesis topic. Where is the researc
 
 ## Try it
 
-<p>Pick one paper from the reading list. Write the three-line summary (problem, method, result) and one line each for CS, BI and law.</p>
+<p>Pick one paper from the reading list. Write the three-line summary (problem, method, result) and one line each for the technology, business and law lenses.</p>
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Which open problem could you test with the course labs?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which research result changes a business decision?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Which result needs a legal answer before it can be used?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which open problem could you test with the course labs?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which research result changes a business decision?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Which result needs a legal answer before it can be used?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

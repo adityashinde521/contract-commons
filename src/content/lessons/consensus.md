@@ -47,8 +47,8 @@ problem: "Alice sends the same 10 coins to Bob and to Carol one second apart. Th
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why is Proof of Work hard to do and easy to check?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Validators earn rewards. Who pays for the security of the network?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Legal finality versus technical finality: when is a payment final for a court?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why is Proof of Work hard to do and easy to check?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Validators earn rewards. Who pays for the security of the network?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Legal finality versus technical finality: when is a payment final for a court?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

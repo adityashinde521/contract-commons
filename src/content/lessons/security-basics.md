@@ -39,8 +39,8 @@ problem: "In 2016 an attacker took about a third of the funds in The DAO using t
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Which defence would you add first to a new contract, and why?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Compare the cost of an audit with the funds at risk.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Was the DAO attacker a thief or a user of the code as written?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which defence would you add first to a new contract, and why?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Compare the cost of an audit with the funds at risk.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Was the DAO attacker a thief or a user of the code as written?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

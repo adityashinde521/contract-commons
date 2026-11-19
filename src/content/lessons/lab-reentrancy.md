@@ -111,9 +111,9 @@ contract FixedBank {
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Add OpenZeppelin <code>ReentrancyGuard</code> to VulnerableBank without reordering. Does it stop the attack?</li><li>Run an AI assistant and a static analyser (Slither) on VulnerableBank. Compare findings (F5).</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Estimate the cost of an audit versus the funds at risk. When is an audit worth it?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>After the DAO hack (2016), Ethereum reversed the theft with a hard fork. Was this fair to the attacker who used the code “as written”? Who decided, and with what legitimacy?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Add OpenZeppelin <code>ReentrancyGuard</code> to VulnerableBank without reordering. Does it stop the attack?</li><li>Run an AI assistant and a static analyser (Slither) on VulnerableBank. Compare findings (F5).</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Estimate the cost of an audit versus the funds at risk. When is an audit worth it?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>After the DAO hack (2016), Ethereum reversed the theft with a hard fork. Was this fair to the attacker who used the code “as written”? Who decided, and with what legitimacy?</li></ul></div>
     </div>
 
 ## Ship

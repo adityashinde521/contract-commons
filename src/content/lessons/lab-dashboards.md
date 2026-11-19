@@ -44,9 +44,9 @@ problem: "A claim in a paper or a pitch says “most losses come from key theft�
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Dashboards depend on how raw data is decoded. How can a chart be wrong even if the chain is correct?</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Is “total value locked” a good measure of business success? What would you measure instead?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>A rollup at stage 0 can be upgraded by a small group at any time. Who is the “operator” for MiCA or liability purposes?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Dashboards depend on how raw data is decoded. How can a chart be wrong even if the chain is correct?</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Is “total value locked” a good measure of business success? What would you measure instead?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>A rollup at stage 0 can be upgraded by a small group at any time. Who is the “operator” for MiCA or liability purposes?</li></ul></div>
     </div>
 
 ## Ship

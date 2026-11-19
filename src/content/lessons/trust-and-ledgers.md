@@ -34,9 +34,9 @@ problem: "Two companies that do not trust each other must keep one shared list o
       <li>Decisions need human judgment or must be reversible.</li>
     </ul>
     <div class="aud">
-      <div class="cs"><h5>CS view</h5><ul><li>A replicated, append-only log with Byzantine fault tolerance.</li></ul></div>
-      <div class="bi"><h5>BI view</h5><ul><li>Removes or reduces an intermediary, at the cost of fees and slower changes.</li></ul></div>
-      <div class="lw"><h5>Law view</h5><ul><li>A register without a registrar. Who is responsible for errors?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>A replicated, append-only log with Byzantine fault tolerance.</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Removes or reduces an intermediary, at the cost of fees and slower changes.</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>A register without a registrar. Who is responsible for errors?</li></ul></div>
     </div>
 
 ### Watch and read
@@ -52,8 +52,8 @@ problem: "Two companies that do not trust each other must keep one shared list o
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Which failure does a blockchain tolerate that a replicated database does not?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Name a process in your field with many parties and low trust. Is a blockchain worth it there?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>A land registry already exists. What would a blockchain register add, and what would it remove?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which failure does a blockchain tolerate that a replicated database does not?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Name a process in your field with many parties and low trust. Is a blockchain worth it there?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>A land registry already exists. What would a blockchain register add, and what would it remove?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

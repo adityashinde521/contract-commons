@@ -47,9 +47,9 @@ problem: "A startup’s founders want no single person to be able to move the co
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>The Bybit hack (2025) drained a Safe: injected code in the signing interface showed the signers a harmless transaction. How can signers check what they sign? (F5)</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Design a four-eyes principle for payments above €10,000 and a single signature below it.</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>Map the Safe to a GmbH: managing directors, joint representation (§35 GmbHG). What happens if a director leaves, dies or loses a key?</li><li>Who is liable if two directors sign a fraudulent payment?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>The Bybit hack (2025) drained a Safe: injected code in the signing interface showed the signers a harmless transaction. How can signers check what they sign? (F5)</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Design a four-eyes principle for payments above €10,000 and a single signature below it.</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>Map the Safe to a GmbH: managing directors, joint representation (§35 GmbHG). What happens if a director leaves, dies or loses a key?</li><li>Who is liable if two directors sign a fraudulent payment?</li></ul></div>
     </div>
 
 ## Ship

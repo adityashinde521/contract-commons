@@ -59,8 +59,8 @@ problem: "About $3.4 billion was stolen in crypto in 2025, but most of it not th
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Which defences protect against operations failures rather than code bugs?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>What should an incident plan contain?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Is an exchange liable to customers after a hack?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which defences protect against operations failures rather than code bugs?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>What should an incident plan contain?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is an exchange liable to customers after a hack?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

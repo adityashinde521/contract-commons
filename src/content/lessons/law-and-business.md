@@ -60,8 +60,8 @@ problem: "A smart contract paid the seller, then a court says the sale was void.
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>How would you make the code follow a court decision?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Where in a company’s processes would a smart contract save the most?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Which of the seven legal questions is hardest for a German court?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>How would you make the code follow a court decision?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Where in a company’s processes would a smart contract save the most?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Which of the seven legal questions is hardest for a German court?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

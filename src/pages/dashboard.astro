@@ -1,8 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import { MODULES, PATHS, orderedLessons, url } from '../lib/course';
+import { MODULES, orderedLessons, url } from '../lib/course';
 const lessons = (await orderedLessons()).map((l) => ({ id: l.entry.id, title: l.entry.data.title, code: l.code, mod: l.mod.n, kind: l.entry.data.kind, minutes: l.entry.data.minutes || '' }));
-const data = { lessons, modules: MODULES.map((m) => ({ n: m.n, slug: m.slug, title: m.title, lessons: m.lessons })), paths: PATHS };
+const data = { lessons, modules: MODULES.map((m) => ({ n: m.n, slug: m.slug, title: m.title, lessons: m.lessons })) };
 ---
 <Base title="My progress" active="">
   <div class="wrap wrap-wide">
@@ -11,7 +11,7 @@ const data = { lessons, modules: MODULES.map((m) => ({ n: m.n, slug: m.slug, tit
         <nav aria-label="Learner">
           <a href={url('/dashboard/')} aria-current="page">Home</a>
           <a href={url('/curriculum/')}>Curriculum</a>
-          <a href={url('/paths/')}>My path</a>
+          <a href={url('/final-exam/')}>Final exam</a>
           <a href={url('/labs/')}>Labs</a>
           <a href="#lablog">Lab log</a>
           <a href={url('/glossary/')}>Glossary</a>
@@ -26,22 +26,16 @@ const data = { lessons, modules: MODULES.map((m) => ({ n: m.n, slug: m.slug, tit
       <div class="app-main" id="dash">
         <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
           <div><div class="cc-eyebrow">My progress</div><h1 style="font-size:32px;letter-spacing:-.02em;font-weight:800;margin:6px 0 0">Welcome back</h1></div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-            <label for="path-pick" style="font-size:14px;font-weight:600">Path</label>
-            <select id="path-pick" class="select" data-path-pick>
-              {PATHS.map((p) => <option value={p.id}>{p.title}</option>)}
-            </select>
-          </div>
         </div>
         <section class="path-hero">
           <div style="flex:1 1 360px;min-width:0">
-            <span class="hero-badge" data-d-pathname>Your path</span>
+            <span class="hero-badge">One course · same final exam for everyone</span>
             <h2 data-d-next-title>Up next</h2>
             <p data-d-next-sub>Start with Module 1.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="cc-btn cc-btn--accent" href={url('/curriculum/')} data-d-next-link>Continue</a><a class="cc-btn cc-btn--ghost-dark" href={url('/paths/')}>Change path</a></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="cc-btn cc-btn--accent" href={url('/curriculum/')} data-d-next-link>Continue</a><a class="cc-btn cc-btn--ghost-dark" href={url('/final-exam/')}>Final exam</a></div>
           </div>
           <div class="path-box">
-            <div style="display:flex;justify-content:space-between;font-size:13.5px;color:var(--on-brand-muted)"><span>Path progress</span><b style="color:var(--on-brand)" data-d-path-count>0 of 0 modules</b></div>
+            <div style="display:flex;justify-content:space-between;font-size:13.5px;color:var(--on-brand-muted)"><span>Course progress</span><b style="color:var(--on-brand)" data-d-path-count>0 of 0 modules</b></div>
             <div class="cc-progress"><span data-d-path-bar style="width:0%"></span></div>
             <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14px" data-d-path-list></ol>
           </div>
@@ -49,7 +43,7 @@ const data = { lessons, modules: MODULES.map((m) => ({ n: m.n, slug: m.slug, tit
         <div class="grid grid-sm" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
           <div class="cc-stat"><span class="cc-icon-tile cc-icon-tile--cs" style="width:44px;height:44px;font-weight:800;font-size:13px">LS</span><div><div class="cc-stat__label">Units completed</div><div class="cc-stat__value" data-d-done>0</div><div class="cc-stat__note" data-d-done-note></div></div></div>
           <div class="cc-stat"><span class="cc-icon-tile cc-icon-tile--brand" style="width:44px;height:44px;font-weight:800;font-size:13px">LB</span><div><div class="cc-stat__label">Labs completed</div><div class="cc-stat__value" data-d-labs>0</div><div class="cc-stat__note" data-d-labs-note></div></div></div>
-          <div class="cc-stat"><span class="cc-icon-tile cc-icon-tile--law" style="width:44px;height:44px;font-weight:800;font-size:13px">QZ</span><div><div class="cc-stat__label">Quiz average</div><div class="cc-stat__value" data-d-quiz>–</div><div class="cc-stat__note">Pass mark 80%</div></div></div>
+          <div class="cc-stat"><span class="cc-icon-tile cc-icon-tile--law" style="width:44px;height:44px;font-weight:800;font-size:13px">QZ</span><div><div class="cc-stat__label">Quiz average</div><div class="cc-stat__value" data-d-quiz>–</div><div class="cc-stat__note">Lesson pass mark 80%</div></div></div>
           <div class="cc-stat"><span class="cc-icon-tile cc-icon-tile--bi" style="width:44px;height:44px;font-weight:800;font-size:13px">LG</span><div><div class="cc-stat__label">Lab log entries</div><div class="cc-stat__value" data-d-logs>0</div><div class="cc-stat__note">Saved in this browser</div></div></div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start">

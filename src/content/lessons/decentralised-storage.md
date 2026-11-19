@@ -41,7 +41,7 @@ problem: "A certificate NFT points to an image on a startup’s server. The star
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why is a content hash a better pointer than a URL?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Who pays to keep a university’s certificate images pinned for 50 years?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>An image linked from an NFT infringes copyright. Who must take it down, and can they?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why is a content hash a better pointer than a URL?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Who pays to keep a university’s certificate images pinned for 50 years?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>An image linked from an NFT infringes copyright. Who must take it down, and can they?</li></ul></div></div>
 
 ## Ship
 

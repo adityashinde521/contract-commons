@@ -13,7 +13,7 @@ problem: "You will prove, with code, that the Escrow pays the seller, refuses th
 
 ## Concept
 
-<div class="ov"><div><b>You will</b>Create a Foundry project, add the Escrow from L2 and write three tests: a unit test, a revert test and a fuzz test.</div><div><b>Before</b>Lab L2 and lesson “Testing smart contracts”. Code track.</div><div><b>You need</b>macOS, Linux or Windows with WSL; a terminal; Git.</div></div>
+<div class="ov"><div><b>You will</b>Create a Foundry project, add the Escrow from L2 and write three tests: a unit test, a revert test and a fuzz test.</div><div><b>Before</b>Lab L2 and lesson “Testing smart contracts”.</div><div><b>You need</b>macOS, Linux or Windows with WSL; a terminal; Git.</div></div>
 
 ## Build
 
@@ -82,7 +82,7 @@ contract EscrowTest is Test {
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Add an invariant: the contract’s balance is never more than the price.</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which test would you show a client to prove the money is safe?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Write the test name for “the arbiter may release payment”. Is it in the agreement or only in the code?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Add an invariant: the contract’s balance is never more than the price.</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which test would you show a client to prove the money is safe?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Write the test name for “the arbiter may release payment”. Is it in the agreement or only in the code?</li></ul></div></div>
 
 ## Ship
 

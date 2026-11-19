@@ -42,7 +42,7 @@ problem: "A crop-insurance contract should pay farmers if it does not rain for 3
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Add an oracle to the Escrow: who may call <code>confirmDelivery</code> now?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Which data source would you trust for a delivery confirmation: the courier, the buyer or a sensor?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>Draft a clause that allocates the risk of a wrong oracle report.</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Add an oracle to the Escrow: who may call <code>confirmDelivery</code> now?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Which data source would you trust for a delivery confirmation: the courier, the buyer or a sensor?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Draft a clause that allocates the risk of a wrong oracle report.</li></ul></div></div>
 
 ## Ship
 

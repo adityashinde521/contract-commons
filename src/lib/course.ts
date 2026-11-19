@@ -8,15 +8,6 @@ export const KIND_LABEL: Record<string, string> = { lesson: 'Lesson', 'lab-remix
 export const KIND_CHIP: Record<string, string> = { lesson: 'cc-chip--brand', 'lab-remix': 'cc-chip--cs', 'lab-gui': 'cc-chip--law', reading: '' };
 export const TINT: Record<string, string> = { core: 't-core', cs: 't-cs', bi: 't-bi', law: 't-law' };
 
-export const PATHS = [
-  { id: 'developer', title: 'Smart contract developer', tint: 'cs', modules: [1,2,3,4,5,6,7,8,9,10,11,12,13],
-    text: 'Solidity, testing, security and deployment, ending with a tested capstone on a testnet.', tools: 'Remix, Foundry, Tenderly, Phalcon' },
-  { id: 'legal', title: 'Legal-tech analyst', tint: 'law', modules: [1,2,3,4,9,11,12,13],
-    text: 'Read and question contracts without writing them: smart legal contracts, MiCA, GDPR, liability.', tools: 'EAS, Safe, Aragon, Accord Project' },
-  { id: 'product', title: 'Blockchain product analyst', tint: 'bi', modules: [1,2,3,4,5,9,10,11,12],
-    text: 'Process design, cost of trust, token models and on-chain data, ending with a business case.', tools: 'thirdweb, Aragon, Dune, L2BEAT' },
-];
-
 export function code(m: number, order: number) { return `${m}.${order}`; }
 
 export async function orderedLessons() {

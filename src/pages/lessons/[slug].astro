@@ -16,7 +16,7 @@ const prev = idx > 0 ? ordered[idx - 1] : null;
 const next = idx >= 0 && idx < ordered.length - 1 ? ordered[idx + 1] : null;
 const d = entry.data;
 const steps = splitSteps(entry.body || '');
-const SUB: Record<string, string> = { problem: 'The question', concept: 'Ideas and terms', build: 'Do it, step by step', 'try-it': 'A short exercise', apply: 'CS · BI · Law', ship: 'Keep the result' };
+const SUB: Record<string, string> = { problem: 'The question', concept: 'Ideas and terms', build: 'Do it, step by step', 'try-it': 'A short exercise', apply: 'Three lenses', ship: 'Keep the result' };
 const quiz = (quizzes as Record<string, unknown[]>)[entry.id] || null;
 const isLab = d.kind.startsWith('lab');
 const tools = isLab ? 'See the Concept step for tools and what you need.' : '';
@@ -49,7 +49,7 @@ const tools = isLab ? 'See the Concept step for tools and what you need.' : '';
             <span class={`cc-chip ${KIND_CHIP[d.kind]}`}>{KIND_LABEL[d.kind]}</span>
             {d.minutes && <span class="cc-chip">{d.minutes}</span>}
             {here && <span class="cc-chip">Module {here.mod.n}</span>}
-            <span class="cc-chip">CS · BI · Law</span>
+            <span class="cc-chip">Part of the final exam</span>
           </div>
           <h1>{d.title}</h1>
         </section>
@@ -79,7 +79,7 @@ const tools = isLab ? 'See the Concept step for tools and what you need.' : '';
           <section class="step-card quiz" id="quiz" data-step="quiz">
             <div class="step-label">{String(steps.length + 1).padStart(2, '0')} · Quiz</div>
             <h2 style="font-size:22px;margin:4px 0 4px">Check yourself</h2>
-            <p style="margin:0 0 6px;color:var(--muted)">{quiz.length} questions. Pass with 80% to complete this {isLab ? 'lab' : 'lesson'}.</p>
+            <p style="margin:0 0 6px;color:var(--muted)">{quiz.length} questions, in the same four types as the final exam. Pass with 80% to complete this {isLab ? 'lab' : 'lesson'}.</p>
             <div data-quiz={entry.id}></div>
             <script type="application/json" data-quiz-data={entry.id} set:html={JSON.stringify(quiz)} />
           </section>
@@ -101,25 +101,9 @@ const tools = isLab ? 'See the Concept step for tools and what you need.' : '';
             </ol>
           </section>
         )}
-        <section class="cc-card">
-          <h2>Your role today</h2>
-          <label for="role" class="sr-only">Your discipline</label>
-          <select id="role" class="select" data-role-select style="width:100%">
-            <option value="">Choose your discipline</option>
-            <option value="cs">Computer science</option>
-            <option value="bi">Business informatics</option>
-            <option value="law">Law</option>
-          </select>
-          <p style="font-size:14px;color:var(--muted);margin:10px 0 0" data-role-hint>In mixed teams, roles rotate each lab: builder, process analyst, legal analyst, recorder. <a href={url('/teamwork/')}>Team roles</a></p>
-        </section>
         <section class="cc-callout cc-callout--warn" style="display:block">
           <b>Safety.</b> Test networks only. Never share or type your recovery phrase. <a href={url('/setup/')}>Setup and safety</a>
         </section>
-        {here && (
-          <section class="cc-callout cc-callout--tool" style="display:block">
-            <b>Where this comes from.</b> {here.mod.sources}.
-          </section>
-        )}
       </aside>
     </div>
   </div>

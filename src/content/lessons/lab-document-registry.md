@@ -70,9 +70,9 @@ contract DocumentRegistry {
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li><code>hashText</code> sends the text in the transaction input when called as a transaction. Why is that a privacy leak? Hash off-chain instead.</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Compare with a notary, a timestamp service (RFC 3161) or registered mail: cost, speed, legal weight.</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>Is the record admissible evidence in a German court (free evaluation of evidence, §286 ZPO)?</li><li>GDPR: is the hash of a short personal text still personal data?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li><code>hashText</code> sends the text in the transaction input when called as a transaction. Why is that a privacy leak? Hash off-chain instead.</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Compare with a notary, a timestamp service (RFC 3161) or registered mail: cost, speed, legal weight.</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>Is the record admissible evidence in a German court (free evaluation of evidence, §286 ZPO)?</li><li>GDPR: is the hash of a short personal text still personal data?</li></ul></div>
     </div>
 
 ## Ship

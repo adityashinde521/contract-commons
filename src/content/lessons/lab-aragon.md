@@ -46,9 +46,9 @@ problem: "A student cooperative wants its members to decide on spending together
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>The DAO is made of several contracts (plugins). Find them on Etherscan. Which contract actually holds the money?</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Token voting versus multisig: which fits a club, a cooperative, an investment group?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>Under German law, a DAO without a legal wrapper may be treated as a civil-law partnership (GbR), with members personally liable. What does this mean for the three of you?</li><li>Compare with DAO laws such as Wyoming’s DAO LLC. Is a legal wrapper needed in the EU?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>The DAO is made of several contracts (plugins). Find them on Etherscan. Which contract actually holds the money?</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Token voting versus multisig: which fits a club, a cooperative, an investment group?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>Under German law, a DAO without a legal wrapper may be treated as a civil-law partnership (GbR), with members personally liable. What does this mean for the three of you?</li><li>Compare with DAO laws such as Wyoming’s DAO LLC. Is a legal wrapper needed in the EU?</li></ul></div>
     </div>
 
 ## Ship

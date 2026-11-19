@@ -43,7 +43,7 @@ problem: "In 2016 the Ethereum community reversed a theft by changing its own hi
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why is a soft fork backwards compatible and a hard fork not?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>An exchange must decide which side of a contentious fork to list. What does it consider?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>After a fork, a token exists on both chains. Who owns the copy, and is it taxable?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why is a soft fork backwards compatible and a hard fork not?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>An exchange must decide which side of a contentious fork to list. What does it consider?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>After a fork, a token exists on both chains. Who owns the copy, and is it taxable?</li></ul></div></div>
 
 ## Ship
 

@@ -43,8 +43,8 @@ problem: "There is no bank to check your ID. How does the network know that a pa
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>Why can’t a signature be copied to a different transaction?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Who should hold the keys in a company: each employee, IT, or a custody provider?</li></ul></div><div class="lw"><h5>Law</h5><ul><li>A key is stolen and funds are moved. Is the owner bound by the transaction?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Why can’t a signature be copied to a different transaction?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Who should hold the keys in a company: each employee, IT, or a custody provider?</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>A key is stolen and funds are moved. Is the owner bound by the transaction?</li></ul></div></div>
 
 ## Ship
 
-<p>Write three sentences in your lab log: the main idea, one example from your discipline, and one open question. Then take the quiz below.</p>
+<p>Write three sentences in your lab log: the main idea, one example for each lens (technology, business, law), and one open question. Then take the quiz below.</p>

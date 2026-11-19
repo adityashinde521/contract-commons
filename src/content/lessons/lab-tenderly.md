@@ -44,9 +44,9 @@ problem: "Etherscan shows that your transaction happened. You need to see how, a
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>CS</h5><ul><li>Use the simulator to test every <code>require</code> in Escrow. Is this a replacement for unit tests?</li></ul></div>
-      <div class="bi"><h5>BI</h5><ul><li>Companies simulate every treasury payment before signing. What would that have changed in the Bybit case (F5)?</li></ul></div>
-      <div class="lw"><h5>Law</h5><ul><li>A simulation shows what a contract would do for a given party. Could a lawyer use it as evidence of the contract’s terms or of foreseeability?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Use the simulator to test every <code>require</code> in Escrow. Is this a replacement for unit tests?</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Companies simulate every treasury payment before signing. What would that have changed in the Bybit case (F5)?</li></ul></div>
+      <div class="lw"><h5>Law lens</h5><ul><li>A simulation shows what a contract would do for a given party. Could a lawyer use it as evidence of the contract’s terms or of foreseeability?</li></ul></div>
     </div>
 
 ## Ship

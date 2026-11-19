@@ -41,7 +41,7 @@ problem: "Your wallet shows a balance. But which computer told it that number, a
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Computer science</h5><ul><li>What would happen if a client with 70% share had a consensus bug?</li></ul></div><div class="bi"><h5>Business informatics</h5><ul><li>Run your own node or pay a provider? List costs and risks.</li></ul></div><div class="lw"><h5>Law</h5><ul><li>An RPC provider blocks requests from a sanctioned region. Is the network still neutral?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>What would happen if a client with 70% share had a consensus bug?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Run your own node or pay a provider? List costs and risks.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>An RPC provider blocks requests from a sanctioned region. Is the network still neutral?</li></ul></div></div>
 
 ## Ship
 

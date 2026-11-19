@@ -9,12 +9,12 @@ import '../styles/site.css';
 import Logo from '../components/Logo.astro';
 import { url } from '../lib/course';
 interface Props { title: string; description?: string; active?: string; wide?: boolean }
-const { title, description = 'An Ethereum-focused smart contracts course for computer science, business informatics and law students.', active = '', wide = false } = Astro.props;
+const { title, description = 'An Ethereum-focused smart contracts course. One path for everyone: technology, business and law, with one final exam.', active = '', wide = false } = Astro.props;
 const nav = [
   ['curriculum', 'Curriculum', '/curriculum/'],
-  ['paths', 'Paths', '/paths/'],
   ['labs', 'Labs & tools', '/labs/'],
   ['glossary', 'Glossary', '/glossary/'],
+  ['exam', 'Final exam', '/final-exam/'],
   ['instructors', 'For instructors', '/instructors/'],
 ];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');

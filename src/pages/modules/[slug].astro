@@ -25,7 +25,6 @@ const next = MODULES.find((x) => x.n === m.n + 1);
         </a>
       ))}
     </div>
-    <section class="cc-callout cc-callout--tool" style="display:block;margin-top:20px"><b>Sources for this module.</b> {m.sources}.</section>
     <nav style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:24px">
       {prev ? <a class="cc-btn cc-btn--secondary" href={url(`/modules/${prev.slug}/`)}>← Module {prev.n}</a> : <span></span>}
       {next && <a class="cc-btn cc-btn--primary" href={url(`/modules/${next.slug}/`)}>Module {next.n}: {next.title} →</a>}
