@@ -79,8 +79,8 @@ const tools = isLab ? 'See the Concept step for tools and what you need.' : '';
           <section class="step-card quiz" id="quiz" data-step="quiz">
             <div class="step-label">{String(steps.length + 1).padStart(2, '0')} · Quiz</div>
             <h2 style="font-size:22px;margin:4px 0 4px">Check yourself</h2>
-            <p style="margin:0 0 6px;color:var(--muted)">{quiz.length} questions, in the same four types as the final exam. Pass with 80% to complete this {isLab ? 'lab' : 'lesson'}.</p>
-            <div data-quiz={entry.id}></div>
+            <p style="margin:0 0 6px;color:var(--muted)">10 questions per attempt, drawn from {quiz.length} in the same four types as the final exam. Pass with 80% to complete this {isLab ? 'lab' : 'lesson'}. “New questions” gives you a different set.</p>
+            <div data-quiz={entry.id} data-quiz-mix="mc:4,fill:2,fix:2,order:2"></div>
             <script type="application/json" data-quiz-data={entry.id} set:html={JSON.stringify(quiz)} />
           </section>
         )}

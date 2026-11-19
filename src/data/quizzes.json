@@ -88,6 +88,91 @@
     "The block is linked to the previous block by its hash"
    ],
    "e": "Sign, broadcast, validate, include in a block, then link the block into the chain."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the double-spend check of a shared ledger.",
+   "code": "function accept(payment):\n    if ____:\n        reject(payment)\n    else:\n        mark coin as spent",
+   "o": [
+    "the coin was already spent in an earlier entry",
+    "the payment is larger than 1 coin",
+    "the receiver is new",
+    "the sender is online"
+   ],
+   "a": 0,
+   "e": "A coin may be spent only once. All nodes follow one order of entries, so the second payment finds the coin already spent."
+  },
+  {
+   "t": "fill",
+   "q": "Which of the three blockchain tools solves each problem? Complete the line.",
+   "code": "integrity     -> hashes\nauthorisation -> signatures\nagreement     -> ____",
+   "o": [
+    "consensus",
+    "encryption",
+    "a central bank",
+    "smart contracts"
+   ],
+   "a": 0,
+   "e": "Consensus makes all copies of the ledger agree on one order of transactions."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this description of a bank transfer is wrong.",
+   "code": [
+    "the bank can freeze or reverse a payment",
+    "the bank checks that the payer has the money",
+    "nobody needs to trust the bank",
+    "the bank keeps the ledger"
+   ],
+   "bad": 2,
+   "o": [
+    "customers trust the bank to keep the record correctly",
+    "the bank never keeps records",
+    "the payer keeps the ledger"
+   ],
+   "a": 0,
+   "e": "A bank is a trusted record keeper. A blockchain replaces that trust with many checking copies."
+  },
+  {
+   "t": "fix",
+   "q": "One line overstates what a blockchain proves in the laptop sale.",
+   "code": [
+    "the ledger proves that the laptop arrived",
+    "the payment cannot be quietly changed",
+    "the ledger shows that 1 ETH moved from buyer to escrow",
+    "anyone can verify the payment later"
+   ],
+   "bad": 0,
+   "o": [
+    "delivery needs an arbiter or an oracle to report it",
+    "the ledger proves the laptop's quality",
+    "the ledger proves the seller's identity"
+   ],
+   "a": 0,
+   "e": "Outside facts such as delivery are not on chain until someone reports them."
+  },
+  {
+   "t": "order",
+   "q": "Order how a double spend is stopped on a blockchain.",
+   "steps": [
+    "Alice signs two payments with the same coin",
+    "Both payments reach the network",
+    "Consensus places one payment first in the agreed order",
+    "The second payment finds the coin already spent",
+    "Nodes reject the second payment"
+   ],
+   "e": "One agreed order decides which payment counts."
+  },
+  {
+   "t": "order",
+   "q": "Order the questions that decide whether a blockchain is worth it.",
+   "steps": [
+    "Do several parties need to write to the record?",
+    "Do they want to avoid trusting one of them to keep it?",
+    "Must outsiders be able to verify it later?",
+    "Only if all answers are yes, consider a blockchain"
+   ],
+   "e": "If one party writes or everyone trusts one operator, a database is better."
   }
  ],
  "hash-functions": [
@@ -188,6 +273,92 @@
     "Compare the new hash with the registered one"
    ],
    "e": "Only the hash goes on chain. To prove existence later, you hash the same file again and compare."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the rule that protects a hash of personal data.",
+   "code": "fingerprint = keccak256(____ + date_of_birth)",
+   "o": [
+    "a secret random salt",
+    "the year",
+    "nothing",
+    "the person's name"
+   ],
+   "a": 0,
+   "e": "Dates of birth have few possible values. A random salt stops attackers from hashing every date and comparing."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the line that links a block to the one before it.",
+   "code": "block.header.prevHash = ____",
+   "o": [
+    "hash(previous block header)",
+    "hash(next block)",
+    "the block number",
+    "the miner's address"
+   ],
+   "a": 0,
+   "e": "Each header stores the hash of the previous header, which makes the chain tamper-evident."
+  },
+  {
+   "t": "fix",
+   "q": "One property in this list is described wrongly.",
+   "code": [
+    "avalanche: one changed letter changes the whole hash",
+    "collision-resistant: similar texts get similar hashes",
+    "one-way: you cannot get the input back from the hash",
+    "deterministic: same input, same hash"
+   ],
+   "bad": 1,
+   "o": [
+    "collision-resistant: finding two inputs with the same hash is not practical",
+    "collision-resistant: every hash is unique by law",
+    "collision-resistant: hashes can be reversed"
+   ],
+   "a": 0,
+   "e": "Similar texts give completely different hashes; that is the avalanche effect. Collision resistance means no two inputs share a hash in practice."
+  },
+  {
+   "t": "fix",
+   "q": "One line about Ethereum's hash function is wrong.",
+   "code": [
+    "the output has 256 bits",
+    "it is written as 64 hexadecimal characters",
+    "Ethereum uses Keccak-256",
+    "it is exactly the same as the NIST SHA3-256 standard"
+   ],
+   "bad": 3,
+   "o": [
+    "it differs from SHA3-256 because NIST changed the padding",
+    "it uses 128 bits",
+    "it is the same as SHA-1"
+   ],
+   "a": 0,
+   "e": "Keccak-256 is the original SHA-3 competition winner. The final NIST standard changed the padding, so outputs differ."
+  },
+  {
+   "t": "order",
+   "q": "Order how ETH.BUILD shows that tampering breaks a chain.",
+   "steps": [
+    "Hash the data of block 1",
+    "Put that hash into block 2 as prev",
+    "Hash block 2 including prev",
+    "Change one letter in block 1",
+    "Block 1's hash changes and block 2's prev no longer matches"
+   ],
+   "e": "Changing old data breaks every later link."
+  },
+  {
+   "t": "order",
+   "q": "Order how a court checks a document against a registered hash.",
+   "steps": [
+    "Receive the file from the party",
+    "Compute its hash",
+    "Look up the hash on chain",
+    "Read the block timestamp of the registration",
+    "Conclude whether this exact file existed at that time"
+   ],
+   "e": "The proof needs both the file and the on-chain record."
   }
  ],
  "keys-and-signatures": [
@@ -263,12 +434,12 @@
    "t": "fix",
    "q": "These safety rules for a course wallet contain one dangerous line. Find it.",
    "code": [
-    "type the recovery phrase into a website when asked",
     "write the recovery phrase on paper",
+    "type the recovery phrase into a website when asked",
     "use only Sepolia test ETH",
     "create a new wallet only for this course"
    ],
-   "bad": 0,
+   "bad": 1,
    "o": [
     "never type or share the recovery phrase anywhere",
     "email the phrase to yourself",
@@ -288,6 +459,91 @@
     "The node accepts the transaction because the address matches"
    ],
    "e": "The private key creates the address and the signatures. Nodes never see the private key; they only check that the signature fits the address."
+  },
+  {
+   "t": "fill",
+   "q": "Complete how an Ethereum address is derived.",
+   "code": "publicKey = privateKey * G   (elliptic curve)\naddress   = last 20 bytes of ____",
+   "o": [
+    "keccak256(publicKey)",
+    "the private key",
+    "sha1(address)",
+    "the transaction hash"
+   ],
+   "a": 0,
+   "e": "The address is the last 20 bytes of the Keccak-256 hash of the public key."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what stops a Sepolia transaction from being replayed on mainnet.",
+   "code": "signed data includes: to, value, nonce, gas, ____",
+   "o": [
+    "chainId",
+    "the private key",
+    "the block hash",
+    "the receiver's balance"
+   ],
+   "a": 0,
+   "e": "The chain ID is part of the signed data (EIP-155). A Sepolia signature is invalid on mainnet."
+  },
+  {
+   "t": "fix",
+   "q": "One line about signatures is wrong.",
+   "code": [
+    "the node recovers an address from the signature",
+    "the node needs the private key to check the signature",
+    "a changed transaction recovers a different address",
+    "the wallet signs with the private key"
+   ],
+   "bad": 1,
+   "o": [
+    "the node needs only the transaction and the signature",
+    "the node asks the wallet for the key",
+    "the node uses the recovery phrase"
+   ],
+   "a": 0,
+   "e": "Verification uses public data only. The private key never leaves the wallet."
+  },
+  {
+   "t": "fix",
+   "q": "One step in this wallet backup routine is unsafe.",
+   "code": [
+    "never type the phrase into a website",
+    "store the paper somewhere safe and private",
+    "write the recovery phrase on paper",
+    "take a photo of the phrase as a backup"
+   ],
+   "bad": 3,
+   "o": [
+    "keep a second paper copy in another safe place",
+    "email the phrase to yourself",
+    "upload the photo to the cloud"
+   ],
+   "a": 0,
+   "e": "Photos sync to clouds and leak. Whoever sees the phrase controls the wallet."
+  },
+  {
+   "t": "order",
+   "q": "Order how a key pair and an address come to exist.",
+   "steps": [
+    "Generate a random private key",
+    "Multiply it on the elliptic curve to get the public key",
+    "Hash the public key with Keccak-256",
+    "Take the last 20 bytes as the address"
+   ],
+   "e": "Each step is easy forwards and practically impossible backwards."
+  },
+  {
+   "t": "order",
+   "q": "Order what a node checks for an incoming transaction.",
+   "steps": [
+    "Recover the signer's address from the signature",
+    "Compare it with the claimed sender",
+    "Check that the nonce is the next one",
+    "Check that the balance covers value and fee",
+    "Accept the transaction into the mempool"
+   ],
+   "e": "Signature first, then nonce and balance."
   }
  ],
  "consensus": [
@@ -352,12 +608,12 @@
    "t": "fix",
    "q": "This summary of proof of work has one wrong line.",
    "code": [
-    "miners search for a nonce so the block hash is below a target",
-    "the first valid block is broadcast",
     "miners collect transactions into a block",
-    "the longest chain with the most work loses"
+    "miners search for a nonce so the block hash is below a target",
+    "the longest chain with the most work loses",
+    "the first valid block is broadcast"
    ],
-   "bad": 3,
+   "bad": 2,
    "o": [
     "the chain with the most work wins",
     "the chain with the fewest blocks wins",
@@ -376,6 +632,92 @@
     "After enough epochs, the block becomes final"
    ],
    "e": "Proposer, block, attestations, then finality after two epochs."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the timing of Ethereum Proof of Stake.",
+   "code": "slot  = 12 seconds\nepoch = 32 slots = ____",
+   "o": [
+    "6.4 minutes",
+    "12 minutes",
+    "1 hour",
+    "32 seconds"
+   ],
+   "a": 0,
+   "e": "32 × 12 s = 384 s = 6.4 minutes. Finality takes about two epochs."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the finality rule.",
+   "code": "checkpoint is finalised when attestations from ____ of all stake\nsupport it over two epochs",
+   "o": [
+    "two thirds",
+    "one half",
+    "one third",
+    "all"
+   ],
+   "a": 0,
+   "e": "A two-thirds supermajority of stake justifies and then finalises checkpoints."
+  },
+  {
+   "t": "fix",
+   "q": "One line about Proof of Work is wrong.",
+   "code": [
+    "Ethereum still uses Proof of Work for its blocks",
+    "miners search for a nonce that gives a small enough hash",
+    "nodes follow the chain with the most accumulated work",
+    "finding it is expensive, checking it is cheap"
+   ],
+   "bad": 0,
+   "o": [
+    "Ethereum has used Proof of Stake since September 2022",
+    "Ethereum uses no consensus",
+    "Ethereum uses Proof of Authority on mainnet"
+   ],
+   "a": 0,
+   "e": "The Merge in 2022 switched Ethereum to Proof of Stake."
+  },
+  {
+   "t": "fix",
+   "q": "One line about attacking Proof of Stake is wrong.",
+   "code": [
+    "the protocol detects conflicting votes",
+    "the attackers keep their full stake afterwards",
+    "the offending validators are slashed",
+    "reverting finality needs at least one third of all stake"
+   ],
+   "bad": 1,
+   "o": [
+    "the attackers lose a large part of their stake",
+    "the attackers get a reward",
+    "the attackers are anonymous and safe"
+   ],
+   "a": 0,
+   "e": "Slashing makes attacks cost the attacker's own capital."
+  },
+  {
+   "t": "order",
+   "q": "Order the path of a transaction from inclusion to finality.",
+   "steps": [
+    "The transaction is included in a block in slot n",
+    "Validators attest to the block",
+    "The epoch's checkpoint is justified",
+    "One epoch later the checkpoint is finalised",
+    "Exchanges treat the deposit as final"
+   ],
+   "e": "Included after about 12 s, final after about 13 minutes."
+  },
+  {
+   "t": "order",
+   "q": "Order a Proof of Work block from start to acceptance.",
+   "steps": [
+    "Collect transactions",
+    "Build the block header",
+    "Try nonces until the hash is below the target",
+    "Broadcast the block",
+    "Other nodes check the hash and the transactions"
+   ],
+   "e": "Search is costly, verification is quick."
   }
  ],
  "ethereum-evm-gas": [
@@ -452,11 +794,11 @@
    "q": "One statement about gas in this list is wrong.",
    "code": [
     "unused gas from the gas limit is refunded",
-    "a loop over a growing array can run out of gas",
+    "a failed transaction costs no gas",
     "writing to storage costs much more gas than reading",
-    "a failed transaction costs no gas"
+    "a loop over a growing array can run out of gas"
    ],
-   "bad": 3,
+   "bad": 1,
    "o": [
     "a failed transaction still pays for the gas it used",
     "a failed transaction refunds double",
@@ -476,6 +818,91 @@
     "It returns the result and the receipt with logs"
    ],
    "e": "Load code, run with gas metering, commit state only if successful, then produce the receipt."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the EIP-1559 fee for 50,000 gas.",
+   "code": "base fee = 8 gwei, priority fee = 1 gwei\nfee = 50,000 * ____",
+   "o": [
+    "(8 + 1) gwei",
+    "8 gwei",
+    "1 gwei",
+    "(8 - 1) gwei"
+   ],
+   "a": 0,
+   "e": "Each gas unit costs base fee plus priority fee: 450,000 gwei = 0.00045 ETH."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what happens to the base fee.",
+   "code": "base fee part of the fee -> ____\npriority fee part         -> validator",
+   "o": [
+    "burned",
+    "sent to the Ethereum Foundation",
+    "sent to the contract",
+    "refunded"
+   ],
+   "a": 0,
+   "e": "Since EIP-1559 the base fee is burned."
+  },
+  {
+   "t": "fix",
+   "q": "One line about account types is wrong.",
+   "code": [
+    "only EOAs can start transactions",
+    "EOAs are controlled by private keys",
+    "contract accounts hold code and storage",
+    "contract accounts can start transactions on their own"
+   ],
+   "bad": 3,
+   "o": [
+    "contracts only act when called by a transaction",
+    "contracts have private keys",
+    "EOAs hold bytecode"
+   ],
+   "a": 0,
+   "e": "Contracts react; they never start a transaction by themselves."
+  },
+  {
+   "t": "fix",
+   "q": "One line about the EVM is wrong.",
+   "code": [
+    "the EVM charges gas for each instruction",
+    "the EVM can use real random numbers from the node's clock",
+    "every node runs the same transactions in the same order",
+    "the EVM cannot read the internet"
+   ],
+   "bad": 1,
+   "o": [
+    "the EVM has no access to real randomness or the node's clock",
+    "the EVM reads random.org",
+    "each node uses its own time"
+   ],
+   "a": 0,
+   "e": "Determinism means no outside randomness or clocks; contracts use oracles or special designs."
+  },
+  {
+   "t": "order",
+   "q": "Order the costs of these operations from cheapest to most expensive.",
+   "steps": [
+    "Add two numbers (ADD)",
+    "Read a storage slot that was already read in this transaction",
+    "Write a new non-zero value to storage",
+    "Deploy a new contract"
+   ],
+   "e": "Arithmetic costs a few gas, storage writes about 20,000, deployment far more."
+  },
+  {
+   "t": "order",
+   "q": "Order how a contract call runs.",
+   "steps": [
+    "The wallet signs a call to deposit()",
+    "A validator includes the transaction",
+    "The EVM loads the contract code",
+    "The EVM runs the function and charges gas",
+    "The new state and the receipt are stored"
+   ],
+   "e": "Signed, included, executed, stored."
   }
  ],
  "what-smart-contracts-are": [
@@ -540,12 +967,12 @@
    "t": "fix",
    "q": "One claim about smart contracts is wrong.",
    "code": [
-    "it can hold and move tokens by itself",
     "it runs exactly as written once deployed",
-    "it replaces contract law, so courts are not needed",
-    "a smart contract is a program on a blockchain"
+    "a smart contract is a program on a blockchain",
+    "it can hold and move tokens by itself",
+    "it replaces contract law, so courts are not needed"
    ],
-   "bad": 2,
+   "bad": 3,
    "o": [
     "it can be part of a legal contract, but contract law still applies",
     "it is always a legal contract",
@@ -565,6 +992,90 @@
     "Its state and events record what happened"
    ],
    "e": "Write, test, deploy, use, and the chain keeps the record."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the refund clause of the Escrow as a rule.",
+   "code": "action: refund()\nwho:    ____\nwhen:   AwaitingDelivery\neffect: price back to buyer, state = Refunded",
+   "o": [
+    "arbiter only",
+    "seller only",
+    "anyone",
+    "buyer or seller"
+   ],
+   "a": 0,
+   "e": "In the course Escrow only the arbiter can refund."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what happens when a condition fails.",
+   "code": "require(condition, \"message\")\nif condition is false: ____",
+   "o": [
+    "the whole transaction reverts and nothing changes",
+    "the function skips that line",
+    "the contract deletes itself",
+    "the money goes to the miner"
+   ],
+   "a": 0,
+   "e": "A revert undoes every change of the transaction; gas used is still paid."
+  },
+  {
+   "t": "fix",
+   "q": "One line about smart contracts is wrong.",
+   "code": [
+    "a contract is a program at an address",
+    "it can hold and send ETH",
+    "it runs exactly as written",
+    "it runs on a timer without any transaction"
+   ],
+   "bad": 3,
+   "o": [
+    "nothing runs until someone sends a transaction",
+    "it runs every block by itself",
+    "it runs when the price changes"
+   ],
+   "a": 0,
+   "e": "Contracts have no timers; someone must call them."
+  },
+  {
+   "t": "fix",
+   "q": "One rule in this clause-to-code table is wrong.",
+   "code": [
+    "confirmDelivery(): buyer or arbiter, AwaitingDelivery",
+    "deposit(): buyer, AwaitingPayment, exact price",
+    "confirmDelivery(): seller, AwaitingPayment",
+    "refund(): arbiter, AwaitingDelivery"
+   ],
+   "bad": 2,
+   "o": [
+    "delete it: the seller can never release",
+    "seller in any state",
+    "anyone in Complete"
+   ],
+   "a": 0,
+   "e": "The seller confirming delivery would defeat the escrow."
+  },
+  {
+   "t": "order",
+   "q": "Order the Escrow states in a successful sale.",
+   "steps": [
+    "AwaitingPayment",
+    "AwaitingDelivery",
+    "Complete"
+   ],
+   "e": "Pay in, wait, release."
+  },
+  {
+   "t": "order",
+   "q": "Order how to turn a clause into code.",
+   "steps": [
+    "Write the clause in plain language",
+    "Name who may act",
+    "Name the state in which the action is allowed",
+    "Name what happens to the money",
+    "Write the function with require checks"
+   ],
+   "e": "Who, when, what, then code."
   }
  ],
  "solidity-for-programmers": [
@@ -666,6 +1177,92 @@
     "functions"
    ],
    "e": "License, compiler version, then the contract with state, events, constructor and functions."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the unit so that price is one ether.",
+   "code": "uint256 public price = 1 ____;",
+   "o": [
+    "ether",
+    "wei",
+    "gwei",
+    "eth()"
+   ],
+   "a": 0,
+   "e": "1 ether = 10^18 wei. Writing 1 alone means 1 wei."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the function type that only reads state.",
+   "code": "function getState() external ____ returns (State) { return state; }",
+   "o": [
+    "view",
+    "payable",
+    "pure",
+    "virtual"
+   ],
+   "a": 0,
+   "e": "view reads state without changing it; pure reads nothing."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this modifier is wrong.",
+   "code": [
+    "modifier onlyOwner() {",
+    "    require(msg.sender == owner, \"Only owner\");",
+    "}"
+   ],
+   "bad": 2,
+   "o": [
+    "    _;\n}",
+    "    return;\n}",
+    "    revert();\n}"
+   ],
+   "a": 0,
+   "e": "A modifier must contain _; where the function body runs. Without it the function body never executes."
+  },
+  {
+   "t": "fix",
+   "q": "One line breaks the privacy assumption.",
+   "code": [
+    "uint256 private secretBid;   // students think: nobody can read this",
+    "function bid(uint256 v) external { secretBid = v; }",
+    "// comment: private means hidden from the public",
+    "// comment: use commit-reveal to hide bids"
+   ],
+   "bad": 2,
+   "o": [
+    "// comment: private only hides it from other contracts; anyone can read storage",
+    "// comment: private encrypts the value",
+    "// comment: private deletes the value after a block"
+   ],
+   "a": 0,
+   "e": "All storage is public on chain. private only limits access from other contracts."
+  },
+  {
+   "t": "order",
+   "q": "Order the parts of a function declaration.",
+   "steps": [
+    "function",
+    "name and parameters",
+    "visibility (external)",
+    "state mutability (payable)",
+    "returns (...) if any",
+    "body in braces"
+   ],
+   "e": "For example: function deposit() external payable { … }."
+  },
+  {
+   "t": "order",
+   "q": "Order what happens when a modifier is used.",
+   "steps": [
+    "The function is called",
+    "The modifier's checks run",
+    "At _; the function body runs",
+    "Code after _; in the modifier runs",
+    "The transaction finishes"
+   ],
+   "e": "Modifiers wrap the body."
   }
  ],
  "security-basics": [
@@ -754,6 +1351,95 @@
     "Check that the transfer succeeded"
    ],
    "e": "Change your own state before calling out. This blocks reentrancy."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the defence against reentrancy with a library.",
+   "code": "contract Bank is ____ {\n    function withdraw() external nonReentrant { ... }\n}",
+   "o": [
+    "ReentrancyGuard",
+    "Ownable",
+    "ERC20",
+    "Pausable"
+   ],
+   "a": 0,
+   "e": "OpenZeppelin's ReentrancyGuard provides the nonReentrant modifier."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the order rule.",
+   "code": "checks -> effects -> ____",
+   "o": [
+    "interactions",
+    "events",
+    "approvals",
+    "audits"
+   ],
+   "a": 0,
+   "e": "Call other contracts last, after your own state is updated."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this withdraw is in the wrong order.",
+   "code": [
+    "function withdraw() external {",
+    "    uint256 a = balances[msg.sender];",
+    "    require(a > 0, \"No balance\");",
+    "    (bool ok, ) = msg.sender.call{value: a}(\"\");",
+    "    balances[msg.sender] = 0;",
+    "    require(ok, \"Failed\");",
+    "}"
+   ],
+   "bad": 3,
+   "o": [
+    "move the balance update above the call",
+    "remove the require",
+    "send a + 1"
+   ],
+   "a": 0,
+   "e": "Sending before updating lets the receiver re-enter."
+  },
+  {
+   "t": "fix",
+   "q": "One defence is matched to the wrong bug.",
+   "code": [
+    "reentrancy: checks-effects-interactions",
+    "missing access control: onlyOwner or roles",
+    "tx.origin authentication: use msg.sender",
+    "oracle manipulation: use tx.origin"
+   ],
+   "bad": 3,
+   "o": [
+    "oracle manipulation: decentralised feeds and sanity checks",
+    "oracle manipulation: remove events",
+    "oracle manipulation: more gas"
+   ],
+   "a": 0,
+   "e": "Price manipulation needs robust oracles."
+  },
+  {
+   "t": "order",
+   "q": "Order checks-effects-interactions in a payout.",
+   "steps": [
+    "Check the caller and the state",
+    "Check the amount",
+    "Update the state and balances",
+    "Send the money",
+    "Emit the event"
+   ],
+   "e": "State first, money last."
+  },
+  {
+   "t": "order",
+   "q": "Order the 2016 DAO incident.",
+   "steps": [
+    "The DAO holds a large ETH balance",
+    "The attacker calls the split function",
+    "The contract sends ETH before updating the balance",
+    "The attacker's code calls back again",
+    "About a third of the funds are drained"
+   ],
+   "e": "The classic reentrancy pattern."
   }
  ],
  "token-standards": [
@@ -818,12 +1504,12 @@
    "t": "fix",
    "q": "One line in this standards table is wrong.",
    "code": [
-    "ERC-721: every token has the same value and can be split",
     "ERC-1155: many token types in one contract",
     "ERC-721: non-fungible tokens, each token ID is unique",
-    "ERC-20: fungible tokens, every unit is the same"
+    "ERC-20: fungible tokens, every unit is the same",
+    "ERC-721: every token has the same value and can be split"
    ],
-   "bad": 0,
+   "bad": 3,
    "o": [
     "ERC-721: each token is unique and cannot be split",
     "ERC-721: only for stablecoins",
@@ -843,6 +1529,90 @@
     "The balances change and a Transfer event is emitted"
    ],
    "e": "Approve first, then the spender pulls with transferFrom. Unlimited approvals are a common risk."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the ERC-20 function a DEX uses to pull your tokens.",
+   "code": "token.____(you, pool, amount)",
+   "o": [
+    "transferFrom",
+    "transfer",
+    "approve",
+    "mint"
+   ],
+   "a": 0,
+   "e": "After approve, the spender calls transferFrom."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the ERC-721 function that returns a certificate's holder.",
+   "code": "holder = cert.____(tokenId)",
+   "o": [
+    "ownerOf",
+    "balanceOf",
+    "totalSupply",
+    "allowance"
+   ],
+   "a": 0,
+   "e": "ownerOf returns the owner of one unique token."
+  },
+  {
+   "t": "fix",
+   "q": "One line about approvals is wrong.",
+   "code": [
+    "approvals expire automatically after one day",
+    "transferFrom lowers the allowance",
+    "an unlimited approval is a risk if the spender is hacked",
+    "approve sets how much a spender may move"
+   ],
+   "bad": 0,
+   "o": [
+    "approvals stay until you set them to zero",
+    "approvals expire after one block",
+    "approvals are only for NFTs"
+   ],
+   "a": 0,
+   "e": "Revoke old approvals; they do not expire."
+  },
+  {
+   "t": "fix",
+   "q": "One line about token units is wrong.",
+   "code": [
+    "transfer(to, 5) sends 5 whole CRS",
+    "CourseToken uses 18 decimals",
+    "balanceOf returns the raw number of units",
+    "1 CRS is stored as 10**18 units"
+   ],
+   "bad": 0,
+   "o": [
+    "transfer(to, 5) sends 5 units, 0.000000000000000005 CRS",
+    "transfer(to, 5) sends 5 ETH",
+    "transfer(to, 5) fails"
+   ],
+   "a": 0,
+   "e": "Amounts are raw integers; multiply by 10**decimals."
+  },
+  {
+   "t": "order",
+   "q": "Order a token payment to a shop contract.",
+   "steps": [
+    "Check your token balance",
+    "Approve the shop for the price",
+    "Call the shop's buy function",
+    "The shop calls transferFrom",
+    "Balances and allowance update"
+   ],
+   "e": "Approve before the shop can pull."
+  },
+  {
+   "t": "order",
+   "q": "Order from most to least fungible.",
+   "steps": [
+    "ERC-20 token (every unit equal)",
+    "ERC-1155 edition with 100 copies",
+    "ERC-721 certificate (one of a kind)"
+   ],
+   "e": "Identical units, limited copies, unique items."
   }
  ],
  "law-and-business": [
@@ -919,11 +1689,11 @@
    "q": "One line in this cost comparison is wrong.",
    "code": [
     "smart contract escrow: gas fees and minutes",
-    "smart contract escrow: an arbiter may still be needed",
+    "smart contract escrow: legal advice is never needed",
     "bank escrow: fees and days of processing",
-    "smart contract escrow: legal advice is never needed"
+    "smart contract escrow: an arbiter may still be needed"
    ],
-   "bad": 3,
+   "bad": 1,
    "o": [
     "legal terms are still needed for disputes and liability",
     "gas is always zero",
@@ -943,6 +1713,92 @@
     "Propose a legal clause or a code change for the gap"
    ],
    "e": "This is the core method of the course."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the claim if a minor's contract is invalid but the payment was made on chain.",
+   "code": "on chain: payment final\nin law: the seller must return it under ____",
+   "o": [
+    "unjust enrichment (§ 812 BGB)",
+    "the gas rules",
+    "the token standard",
+    "MiCA"
+   ],
+   "a": 0,
+   "e": "Courts order people to pay back; the chain does not reverse itself."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the business test for a smart contract project.",
+   "code": "automate if: many parties + clear conditions + digital assets + need for ____",
+   "o": [
+    "an independent shared record",
+    "a central database",
+    "paper copies",
+    "more intermediaries"
+   ],
+   "a": 0,
+   "e": "Without these, a normal system is cheaper."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this legal analysis is wrong.",
+   "code": [
+    "jurisdiction: blockchain contracts are outside all national law",
+    "mandatory law: tenancy rules can override code",
+    "identity: an address does not show who or how old",
+    "GDPR: immutable storage meets the right to erasure"
+   ],
+   "bad": 0,
+   "o": [
+    "courts apply conflict-of-law rules to the parties",
+    "only US law applies",
+    "only the developers' law applies"
+   ],
+   "a": 0,
+   "e": "Parties are always somewhere; courts decide which law applies."
+  },
+  {
+   "t": "fix",
+   "q": "One line confuses the two meanings of contract.",
+   "code": [
+    "legal contract: binding agreement by offer and acceptance",
+    "every smart contract is a legal contract",
+    "code can perform a legal agreement",
+    "smart contract: software that moves assets by rules"
+   ],
+   "bad": 1,
+   "o": [
+    "a smart contract may or may not be part of one",
+    "no smart contract can be part of one",
+    "legal contracts must be on chain"
+   ],
+   "a": 0,
+   "e": "It depends on the parties' agreement and the law."
+  },
+  {
+   "t": "order",
+   "q": "Order the clause-to-code method for any agreement.",
+   "steps": [
+    "Write each clause in plain language",
+    "Find the code that implements it",
+    "Mark in code, partly, or not in code",
+    "List what the code cannot express",
+    "Propose a clause or code change"
+   ],
+   "e": "The core method of the course."
+  },
+  {
+   "t": "order",
+   "q": "Order the minor-buyer case.",
+   "steps": [
+    "A 16-year-old deposits into the Escrow",
+    "The seller is paid on confirmation",
+    "The parents refuse consent",
+    "The contract is invalid",
+    "The seller must pay back under civil law"
+   ],
+   "e": "Code completes; law corrects."
   }
  ],
  "lab-simple-storage": [
@@ -1021,6 +1877,93 @@
     "Switch account and see lastWriter change after another set()"
    ],
    "e": "Deploy, read the default, write, read again, then test with another account."
+  },
+  {
+   "t": "fill",
+   "q": "Complete SimpleStorage so the default value is visible right after deploy.",
+   "code": "uint256 public storedValue; // starts as ____",
+   "o": [
+    "0",
+    "1",
+    "undefined",
+    "the deployer's address"
+   ],
+   "a": 0,
+   "e": "Unset storage variables default to zero."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the difference between a call and a transaction in Remix.",
+   "code": "get()  -> blue button, ____\nset(42)-> orange button, transaction, costs gas",
+   "o": [
+    "call, free, no state change",
+    "transaction, costs gas",
+    "deploys a new contract",
+    "sends ETH"
+   ],
+   "a": 0,
+   "e": "View functions are read with a free call."
+  },
+  {
+   "t": "fix",
+   "q": "One line in SimpleStorage is wrong: the event must record the writer.",
+   "code": [
+    "event ValueChanged(address indexed writer, uint256 newValue);",
+    "function set(uint256 newValue) external {",
+    "    storedValue = newValue;",
+    "    emit ValueChanged(address(this), newValue);",
+    "}"
+   ],
+   "bad": 3,
+   "o": [
+    "    emit ValueChanged(msg.sender, newValue);",
+    "    emit ValueChanged(tx.origin, 0);",
+    "    return;"
+   ],
+   "a": 0,
+   "e": "A wrong pointer: address(this) is the contract itself, not the caller."
+  },
+  {
+   "t": "fix",
+   "q": "One expectation is wrong after set(42) from account 2.",
+   "code": [
+    "lastWriter() returns account 2",
+    "the terminal shows a ValueChanged event",
+    "account 2's balance is unchanged",
+    "get() returns 42"
+   ],
+   "bad": 2,
+   "o": [
+    "account 2's balance is slightly lower (gas)",
+    "account 2 gained 42 ETH",
+    "account 2 is deleted"
+   ],
+   "a": 0,
+   "e": "Transactions cost gas, even in the Remix VM."
+  },
+  {
+   "t": "order",
+   "q": "Order the read-write-read check in SimpleStorage.",
+   "steps": [
+    "Deploy SimpleStorage",
+    "Call get() and see 0",
+    "Call set(42)",
+    "Read the event in the terminal",
+    "Call get() and see 42"
+   ],
+   "e": "Read, write, check the log, read again."
+  },
+  {
+   "t": "order",
+   "q": "Order what happens inside set(42).",
+   "steps": [
+    "The transaction reaches the contract",
+    "storedValue becomes 42",
+    "lastWriter becomes msg.sender",
+    "The ValueChanged event is emitted",
+    "The receipt is stored"
+   ],
+   "e": "State changes, then the log, then the receipt."
   }
  ],
  "lab-escrow": [
@@ -1123,6 +2066,94 @@
     "Check that the seller's balance went up and the state is Complete"
    ],
    "e": "Deploy, pay in, check state, release, check balances."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Escrow constructor so the deployer becomes the buyer.",
+   "code": "constructor(address _seller, address _arbiter, uint256 _price) {\n    buyer = ____;\n    seller = _seller; arbiter = _arbiter; price = _price;\n}",
+   "o": [
+    "msg.sender",
+    "_seller",
+    "tx.origin",
+    "address(this)"
+   ],
+   "a": 0,
+   "e": "The account that deploys is msg.sender in the constructor."
+  },
+  {
+   "t": "fill",
+   "q": "Complete refund() so it is only possible while money is held.",
+   "code": "function refund() external inState(____) {\n    require(msg.sender == arbiter, \"Only arbiter\");\n    ...",
+   "o": [
+    "State.AwaitingDelivery",
+    "State.AwaitingPayment",
+    "State.Complete",
+    "State.Refunded"
+   ],
+   "a": 0,
+   "e": "Money is held only in AwaitingDelivery."
+  },
+  {
+   "t": "fix",
+   "q": "This confirmDelivery has one wrong line. Find it.",
+   "code": [
+    "function confirmDelivery() external inState(State.AwaitingDelivery) {",
+    "    require(msg.sender == buyer || msg.sender == arbiter, \"Only buyer or arbiter\");",
+    "    state = State.Complete;",
+    "    (bool ok, ) = payable(buyer).call{value: price}(\"\");",
+    "    require(ok, \"Transfer failed\");",
+    "}"
+   ],
+   "bad": 3,
+   "o": [
+    "    (bool ok, ) = payable(seller).call{value: price}(\"\");",
+    "    (bool ok, ) = payable(arbiter).call{value: price}(\"\");",
+    "    (bool ok, ) = payable(msg.sender).call{value: 0}(\"\");"
+   ],
+   "a": 0,
+   "e": "A wrong pointer: on release the money goes to the seller, not back to the buyer."
+  },
+  {
+   "t": "fix",
+   "q": "One step in this Remix test is wrong.",
+   "code": [
+    "account 3 (arbiter) calls refund in a new instance and it succeeds",
+    "account 1 calls deposit with Value = price",
+    "account 2 (seller) calls confirmDelivery and it succeeds",
+    "account 1 deploys with seller, arbiter, price and Value 0"
+   ],
+   "bad": 2,
+   "o": [
+    "account 2 calls confirmDelivery and sees “Only buyer or arbiter”",
+    "account 2 calls deposit",
+    "account 2 deploys a new Escrow"
+   ],
+   "a": 0,
+   "e": "The seller can never release the payment."
+  },
+  {
+   "t": "order",
+   "q": "Order the refund path in Remix.",
+   "steps": [
+    "Deploy a new Escrow as account 1",
+    "Account 1 deposits the exact price",
+    "Account 2 tries refund and sees the revert",
+    "Account 3 (arbiter) calls refund",
+    "state() returns Refunded and the buyer's balance went up"
+   ],
+   "e": "Only the arbiter can refund while money is held."
+  },
+  {
+   "t": "order",
+   "q": "Order what happens inside a successful confirmDelivery().",
+   "steps": [
+    "Check the state is AwaitingDelivery",
+    "Check the caller is buyer or arbiter",
+    "Set state to Complete",
+    "Send the price to the seller",
+    "Emit the event"
+   ],
+   "e": "Checks, effects, interactions, log."
   }
  ],
  "lab-rental-deposit": [
@@ -1216,6 +2247,97 @@
     "The tenant calls claimAfterTimeout() and gets the full deposit back"
    ],
    "e": "The timeout protects the tenant if the landlord stays silent, close to the idea behind §551 BGB deposit rules."
+  },
+  {
+   "t": "fill",
+   "q": "Complete claimAfterTimeout() so the tenant can recover the deposit.",
+   "code": "function claimAfterTimeout() external {\n    require(msg.sender == tenant, \"Only tenant\");\n    require(paid && !settled, \"Nothing to claim\");\n    require(block.timestamp >= leaseEnd + ____, \"Too early\");\n    ...",
+   "o": [
+    "30 days",
+    "0",
+    "1 hours",
+    "365 days"
+   ],
+   "a": 0,
+   "e": "The tenant can claim if the landlord stays silent for 30 days after the lease ends."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the payout of a settlement with damage.",
+   "code": "landlordShare = damageAmount\ntenantShare   = ____",
+   "o": [
+    "depositAmount - damageAmount",
+    "damageAmount",
+    "depositAmount",
+    "0"
+   ],
+   "a": 0,
+   "e": "The tenant gets back what is left after the damage claim."
+  },
+  {
+   "t": "fix",
+   "q": "One line in payDeposit is wrong.",
+   "code": [
+    "function payDeposit() external payable {",
+    "    require(msg.sender == landlord, \"Only tenant\");",
+    "    require(!paid, \"Already paid\");",
+    "    require(msg.value == depositAmount, \"Wrong amount\");",
+    "    paid = true;",
+    "}"
+   ],
+   "bad": 1,
+   "o": [
+    "    require(msg.sender == tenant, \"Only tenant\");",
+    "    require(msg.sender != tenant, \"Only tenant\");",
+    "    require(msg.value == 0, \"Only tenant\");"
+   ],
+   "a": 0,
+   "e": "The tenant pays the deposit; the condition must match the message."
+  },
+  {
+   "t": "fix",
+   "q": "One line breaks the settlement rule.",
+   "code": [
+    "function settle(uint256 damageAmount) external {",
+    "    require(msg.sender == landlord, \"Only landlord\");",
+    "    require(block.timestamp >= leaseEnd, \"Lease not ended\");",
+    "    require(damageAmount <= depositAmount, \"Damage too high\");",
+    "    _payOut(damageAmount);",
+    "    settled = true;",
+    "}"
+   ],
+   "bad": 4,
+   "o": [
+    "    settled = true; (moved above _payOut)",
+    "    delete this line",
+    "    _payOut(depositAmount);"
+   ],
+   "a": 0,
+   "e": "Set settled before paying out (checks, effects, interactions), so a re-entering call cannot settle twice."
+  },
+  {
+   "t": "order",
+   "q": "Order the RentalDeposit lab with damage.",
+   "steps": [
+    "Landlord deploys with tenant, amount and 0 lease days",
+    "Tenant pays the deposit",
+    "Landlord settles with a damage amount",
+    "The contract pays damage to the landlord",
+    "The rest goes back to the tenant"
+   ],
+   "e": "Deploy, pay, settle, split."
+  },
+  {
+   "t": "order",
+   "q": "Order the legal analysis of the RentalDeposit.",
+   "steps": [
+    "Read §551 BGB on residential deposits",
+    "Compare the cap with depositAmount",
+    "Check who decides the damage in the code",
+    "Check the unfair-terms rule (§307 BGB)",
+    "Propose a code or clause change"
+   ],
+   "e": "Rule, comparison, power, fairness, fix."
   }
  ],
  "lab-document-registry": [
@@ -1294,6 +2416,92 @@
     "Compare the timestamp with the claimed date"
    ],
    "e": "The proof needs both the file and the on-chain record."
+  },
+  {
+   "t": "fill",
+   "q": "Complete verify() so it reports whether a hash exists.",
+   "code": "function verify(bytes32 docHash) external view returns (bool exists, address owner, uint256 timestamp) {\n    Record memory r = records[docHash];\n    return (____, r.owner, r.timestamp);\n}",
+   "o": [
+    "r.timestamp != 0",
+    "r.timestamp == 0",
+    "r.owner == msg.sender",
+    "true"
+   ],
+   "a": 0,
+   "e": "A registered record has a non-zero timestamp."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what the registry stores per document.",
+   "code": "records[hash] = Record(____, block.timestamp)",
+   "o": [
+    "msg.sender",
+    "the document text",
+    "the file name",
+    "tx.gasprice"
+   ],
+   "a": 0,
+   "e": "It stores who registered the hash and when."
+  },
+  {
+   "t": "fix",
+   "q": "One line in register() is wrong.",
+   "code": [
+    "function register(bytes32 docHash) external {",
+    "    require(records[docHash].timestamp == 0, \"Already registered\");",
+    "    records[docHash] = Record(msg.sender, 0);",
+    "    emit DocumentRegistered(docHash, msg.sender, block.timestamp);",
+    "}"
+   ],
+   "bad": 2,
+   "o": [
+    "    records[docHash] = Record(msg.sender, block.timestamp);",
+    "    records[docHash] = Record(address(0), 0);",
+    "    delete records[docHash];"
+   ],
+   "a": 0,
+   "e": "Storing 0 as the time would allow re-registration and lose the proof of existence."
+  },
+  {
+   "t": "fix",
+   "q": "One step in the evidence chain is wrong.",
+   "code": [
+    "the registry proves who wrote the document",
+    "anyone recomputes the hash from the file",
+    "the party keeps the original file",
+    "verify(hash) returns exists, owner and time"
+   ],
+   "bad": 0,
+   "o": [
+    "it proves this exact file existed at that time, not who wrote it",
+    "it proves the content is true",
+    "it proves both parties signed"
+   ],
+   "a": 0,
+   "e": "Authorship and agreement need signatures or other evidence."
+  },
+  {
+   "t": "order",
+   "q": "Order the DocumentRegistry lab.",
+   "steps": [
+    "Deploy the registry",
+    "Call hashText with your text",
+    "Register the returned hash",
+    "Call verify with the same hash",
+    "Change one letter, hash again, and verify: not found"
+   ],
+   "e": "Hash, register, verify, then show tampering fails."
+  },
+  {
+   "t": "order",
+   "q": "Order the privacy-safe design for registering a lease.",
+   "steps": [
+    "Keep the lease PDF in the landlord's archive",
+    "Compute its hash locally",
+    "Register only the hash on chain",
+    "Share the PDF only with the parties and a court if needed"
+   ],
+   "e": "Personal data stays off chain; the hash proves integrity."
   }
  ],
  "lab-course-token": [
@@ -1371,6 +2579,93 @@
     "Call mint as the owner and check totalSupply"
    ],
    "e": "Deploy, read, transfer, test access control, then mint correctly."
+  },
+  {
+   "t": "fill",
+   "q": "Complete CourseToken's parent contracts.",
+   "code": "contract CourseToken is ERC20, ____ {",
+   "o": [
+    "Ownable",
+    "ERC721",
+    "ReentrancyGuard",
+    "Pausable only"
+   ],
+   "a": 0,
+   "e": "Ownable gives the onlyOwner modifier used by mint."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the call that lets account 2 spend 10 CRS of account 1.",
+   "code": "// as account 1\napprove(account2, ____)",
+   "o": [
+    "10 * 10**18",
+    "10",
+    "10 ether ether",
+    "0"
+   ],
+   "a": 0,
+   "e": "With 18 decimals, 10 CRS is 10 × 10^18 units."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this mint is unsafe.",
+   "code": [
+    "function mint(address to, uint256 amount) external {",
+    "    _mint(to, amount);",
+    "}",
+    "// comment: anyone can create tokens"
+   ],
+   "bad": 0,
+   "o": [
+    "function mint(address to, uint256 amount) external onlyOwner {",
+    "function mint(address to, uint256 amount) internal view {",
+    "function mint(address to) external {"
+   ],
+   "a": 0,
+   "e": "Without onlyOwner anyone can inflate the supply."
+  },
+  {
+   "t": "fix",
+   "q": "One expected result is wrong.",
+   "code": [
+    "after transfer of 100 CRS, owner has 900 CRS",
+    "after deploy, balanceOf(owner) = 1000 * 10**18",
+    "totalSupply drops when tokens are transferred",
+    "account 2 calls mint and it reverts"
+   ],
+   "bad": 2,
+   "o": [
+    "totalSupply stays the same on transfers",
+    "totalSupply doubles",
+    "totalSupply becomes 0"
+   ],
+   "a": 0,
+   "e": "Transfers move tokens; only mint and burn change the supply."
+  },
+  {
+   "t": "order",
+   "q": "Order the allowance part of the CourseToken lab.",
+   "steps": [
+    "Account 1 approves account 2 for 10 CRS",
+    "Read allowance(account1, account2)",
+    "Account 2 calls transferFrom(account1, account3, 10 CRS)",
+    "Read the three balances",
+    "Read the allowance again: 0"
+   ],
+   "e": "Approve, check, spend, verify."
+  },
+  {
+   "t": "order",
+   "q": "Order the parts of the CourseToken file.",
+   "steps": [
+    "SPDX licence line",
+    "pragma solidity",
+    "import OpenZeppelin ERC20 and Ownable",
+    "contract CourseToken is ERC20, Ownable",
+    "constructor that mints the start supply",
+    "mint function with onlyOwner"
+   ],
+   "e": "Header, imports, contract, constructor, functions."
   }
  ],
  "lab-reentrancy": [
@@ -1452,6 +2747,95 @@
     "The bank sends again because the balance is not yet zero"
    ],
    "e": "The loop continues until the bank is empty."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Attacker's receive() so it re-enters while the bank has money.",
+   "code": "receive() external payable {\n    if (address(bank).balance >= ____) {\n        bank.withdraw();\n    }\n}",
+   "o": [
+    "1 ether",
+    "0",
+    "address(this).balance",
+    "type(uint256).max"
+   ],
+   "a": 0,
+   "e": "It keeps withdrawing 1 ether while the bank can still pay it."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the attack start.",
+   "code": "function attack() external payable {\n    bank.deposit{value: 1 ether}();\n    bank.____();\n}",
+   "o": [
+    "withdraw",
+    "deposit",
+    "transfer",
+    "selfdestruct"
+   ],
+   "a": 0,
+   "e": "Deposit once, then withdraw to start the loop."
+  },
+  {
+   "t": "fix",
+   "q": "One line in FixedBank is still wrong.",
+   "code": [
+    "function withdraw() external {",
+    "    uint256 amount = balances[msg.sender];",
+    "    require(amount > 0, \"No balance\");",
+    "    (bool ok, ) = msg.sender.call{value: amount}(\"\");",
+    "    balances[msg.sender] = 0;",
+    "    require(ok, \"Transfer failed\");",
+    "}"
+   ],
+   "bad": 4,
+   "o": [
+    "move it above the call",
+    "change it to balances[msg.sender] = amount;",
+    "delete it"
+   ],
+   "a": 0,
+   "e": "This is still the vulnerable order. The update must come before the call."
+  },
+  {
+   "t": "fix",
+   "q": "One expected result after attacking FixedBank is wrong.",
+   "code": [
+    "the bank still holds the other users' 5 ether",
+    "the attacker drains all 6 ether",
+    "the attack transaction reverts or withdraws only 1 ether",
+    "the attacker's balance in the bank becomes 0"
+   ],
+   "bad": 1,
+   "o": [
+    "the attacker cannot take more than its own deposit",
+    "the bank pays double",
+    "the bank is deleted"
+   ],
+   "a": 0,
+   "e": "The fix stops the loop."
+  },
+  {
+   "t": "order",
+   "q": "Order the reentrancy lab.",
+   "steps": [
+    "Deploy VulnerableBank",
+    "Other users deposit 5 ether",
+    "Deploy Attacker with the bank's address",
+    "Call attack with 1 ether",
+    "See the bank drained"
+   ],
+   "e": "Set up victims first, then attack."
+  },
+  {
+   "t": "order",
+   "q": "Order the second half of the lab.",
+   "steps": [
+    "Deploy FixedBank",
+    "Account 2 deposits 5 ether",
+    "Deploy a new Attacker for FixedBank",
+    "Call attack with 1 ether",
+    "See the attack fail and the 5 ether stay"
+   ],
+   "e": "Same attack, fixed order, no loss."
   }
  ],
  "lab-sepolia": [
@@ -1516,12 +2900,12 @@
    "t": "fix",
    "q": "One step in the verification is wrong.",
    "code": [
-    "deploy the Escrow on Sepolia",
+    "verify with a different compiler version than you used",
     "copy the contract address",
     "open it on sepolia.etherscan.io",
-    "verify with a different compiler version than you used"
+    "deploy the Escrow on Sepolia"
    ],
-   "bad": 3,
+   "bad": 0,
    "o": [
     "verify with the same compiler version and settings",
     "verify without source code",
@@ -1541,6 +2925,91 @@
     "Call a function from the Etherscan Write tab"
    ],
    "e": "Fund, deploy, confirm, verify, use."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the price for a cheap Sepolia Escrow test.",
+   "code": "_price = ____  // 0.001 ether",
+   "o": [
+    "1000000000000000",
+    "1000",
+    "0.001",
+    "1000000000000000000"
+   ],
+   "a": 0,
+   "e": "0.001 ether = 10^15 wei."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what verification needs to match.",
+   "code": "same source + same compiler version + same ____",
+   "o": [
+    "optimisation settings",
+    "account",
+    "gas price",
+    "block number"
+   ],
+   "a": 0,
+   "e": "Different settings produce different bytecode."
+  },
+  {
+   "t": "fix",
+   "q": "One setting is wrong for deploying to Sepolia from Remix.",
+   "code": [
+    "MetaMask network: Sepolia",
+    "Remix environment: Remix VM",
+    "Remix environment: Injected Provider - MetaMask",
+    "Account: your course account with SepoliaETH"
+   ],
+   "bad": 1,
+   "o": [
+    "delete it: Remix VM is a local simulation",
+    "Environment: Mainnet fork",
+    "Environment: WalletConnect to mainnet"
+   ],
+   "a": 0,
+   "e": "Only Injected Provider sends to the real Sepolia network."
+  },
+  {
+   "t": "fix",
+   "q": "One expectation after verifying the Escrow is wrong.",
+   "code": [
+    "Read Contract lists price, state and the three addresses",
+    "the Contract tab shows a green check",
+    "Write Contract lets you call deposit with MetaMask",
+    "the private key of the contract is shown"
+   ],
+   "bad": 3,
+   "o": [
+    "contracts have no private key",
+    "the buyer's key is shown",
+    "the arbiter's key is shown"
+   ],
+   "a": 0,
+   "e": "Contracts are controlled by code, not keys."
+  },
+  {
+   "t": "order",
+   "q": "Order part D of the Sepolia lab.",
+   "steps": [
+    "Deploy the Escrow on Sepolia",
+    "Verify its source",
+    "Deposit 0.001 ether as the buyer",
+    "Confirm delivery as the buyer",
+    "Check the seller's incoming transaction on Etherscan"
+   ],
+   "e": "Deploy, verify, pay, release, check."
+  },
+  {
+   "t": "order",
+   "q": "Order how to get ready for the Sepolia lab.",
+   "steps": [
+    "Select Sepolia in MetaMask",
+    "Check you have at least 0.05 SepoliaETH",
+    "Set Remix to Injected Provider",
+    "Check that Remix shows the same account"
+   ],
+   "e": "Network, funds, connection, account."
   }
  ],
  "lab-openzeppelin-wizard": [
@@ -1594,12 +3063,12 @@
    "t": "fix",
    "q": "One setting makes this certificate contract risky for a university.",
    "code": [
-    "Mintable by: anyone",
-    "Mintable: yes",
+    "Access control: Ownable (university wallet)",
     "Name: Course Certificate",
-    "Access control: Ownable (university wallet)"
+    "Mintable by: anyone",
+    "Mintable: yes"
    ],
-   "bad": 0,
+   "bad": 2,
    "o": [
     "Mintable by: only the owner (the university)",
     "Mintable by: the student",
@@ -1619,6 +3088,91 @@
     "Read ownerOf(tokenId) to check the holder"
    ],
    "e": "Configure, open in Remix, deploy, mint, verify ownership."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Wizard choice for a certificate that the university can withdraw.",
+   "code": "Standard: ERC721\nFeatures: Mintable, ____",
+   "o": [
+    "Burnable by the owner only (custom rule)",
+    "Votes",
+    "Flash minting",
+    "Permit"
+   ],
+   "a": 0,
+   "e": "Withdrawing a certificate means burning it; who may burn is a design and legal choice."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the safeMint call in Remix.",
+   "code": "safeMint(to = student address, uri = ____)",
+   "o": [
+    "a short text or an IPFS link to the metadata",
+    "the private key",
+    "the token price",
+    "0x0"
+   ],
+   "a": 0,
+   "e": "The URI points to the certificate's metadata."
+  },
+  {
+   "t": "fix",
+   "q": "One Wizard setting conflicts with the design goal: only the university issues certificates.",
+   "code": [
+    "Access control: none",
+    "Symbol: CERT",
+    "Mintable: yes",
+    "Name: Course Certificate"
+   ],
+   "bad": 0,
+   "o": [
+    "Access control: Ownable (university)",
+    "Access control: anyone",
+    "Symbol: none"
+   ],
+   "a": 0,
+   "e": "Without access control anyone can mint."
+  },
+  {
+   "t": "fix",
+   "q": "One expected result after safeMint is wrong.",
+   "code": [
+    "ownerOf(0) returns the student's address",
+    "balanceOf(student) returns 1",
+    "a Transfer event from the zero address",
+    "ownerOf(0) returns the university's address"
+   ],
+   "bad": 3,
+   "o": [
+    "ownerOf(0) returns the student",
+    "ownerOf(0) returns 0x0",
+    "ownerOf(0) reverts"
+   ],
+   "a": 0,
+   "e": "The certificate belongs to the student who received it."
+  },
+  {
+   "t": "order",
+   "q": "Order the Wizard lab from configuration to first certificate.",
+   "steps": [
+    "Choose ERC721 in the Wizard",
+    "Set name, symbol and features",
+    "Open the code in Remix",
+    "Deploy with your address as initialOwner",
+    "Mint a certificate to a teammate"
+   ],
+   "e": "Configure, open, deploy, mint."
+  },
+  {
+   "t": "order",
+   "q": "Order the check of a minted certificate.",
+   "steps": [
+    "Copy the transaction from the terminal",
+    "Read the Transfer event",
+    "Call ownerOf(tokenId)",
+    "Call tokenURI(tokenId)"
+   ],
+   "e": "Event, owner, metadata."
   }
  ],
  "lab-thirdweb": [
@@ -1672,12 +3226,12 @@
    "t": "fix",
    "q": "One step in this thirdweb lab is wrong.",
    "code": [
-    "set a claim condition",
     "switch to Ethereum mainnet to airdrop the tickets",
+    "connect MetaMask on Sepolia",
     "deploy an Edition Drop contract",
-    "connect MetaMask on Sepolia"
+    "set a claim condition"
    ],
-   "bad": 1,
+   "bad": 0,
    "o": [
     "stay on Sepolia and airdrop with test ETH",
     "ask a classmate for real ETH",
@@ -1697,6 +3251,92 @@
     "Claim a ticket from a second account"
    ],
    "e": "Deploy, add content, set rules, test as a user."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the thirdweb concept: an item that exists but nobody owns yet.",
+   "code": "NFTs tab -> Create -> token 0, supply ____",
+   "o": [
+    "0 (lazy minted)",
+    "1",
+    "100",
+    "unlimited"
+   ],
+   "a": 0,
+   "e": "Lazy minting creates the template; tokens appear when people claim."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the claim phase for a free workshop ticket.",
+   "code": "price = 0\nmax per wallet = 1\nstart = ____",
+   "o": [
+    "now",
+    "never",
+    "after the workshop",
+    "block 0"
+   ],
+   "a": 0,
+   "e": "The phase must have started for claims to work."
+  },
+  {
+   "t": "fix",
+   "q": "One line about thirdweb's Edition Drop is wrong.",
+   "code": [
+    "each token ID is one item with many copies",
+    "claim phases set price, limits and timing",
+    "each holder gets a different unique token ID",
+    "it is an ERC-1155 contract"
+   ],
+   "bad": 2,
+   "o": [
+    "holders of the same item share one token ID",
+    "every claim deploys a new contract",
+    "token IDs are random"
+   ],
+   "a": 0,
+   "e": "ERC-1155 copies share an ID; ERC-721 tokens are unique."
+  },
+  {
+   "t": "fix",
+   "q": "One step is wrong for the course.",
+   "code": [
+    "pay the platform fee in real ETH",
+    "deploy on Sepolia",
+    "set the primary sale recipient to your address",
+    "sign in with the course wallet"
+   ],
+   "bad": 0,
+   "o": [
+    "no real money: free claims on Sepolia",
+    "pay in test USDC from an exchange",
+    "ask the professor for ETH"
+   ],
+   "a": 0,
+   "e": "Everything stays on the testnet."
+  },
+  {
+   "t": "order",
+   "q": "Order the thirdweb lab.",
+   "steps": [
+    "Sign in and open your project",
+    "Deploy an Edition Drop on Sepolia",
+    "Create token 0 in the NFTs tab",
+    "Add the initial claim phase",
+    "Claim from a second account and check the balance"
+   ],
+   "e": "Deploy, create, set rules, claim."
+  },
+  {
+   "t": "order",
+   "q": "Order the comparison with the Wizard contract.",
+   "steps": [
+    "Open the thirdweb contract on Etherscan",
+    "Count the thirdweb contract's functions",
+    "Open your Wizard contract",
+    "Count the Wizard contract's functions",
+    "Write which one is easier to audit and why"
+   ],
+   "e": "Compare the size and readability of both."
   }
  ],
  "lab-safe": [
@@ -1750,12 +3390,12 @@
    "t": "fix",
    "q": "One step in the Safe lab is wrong.",
    "code": [
-    "create a Safe on Sepolia with three owner accounts",
     "set the threshold to 2",
+    "execute after owner 1 signs alone",
     "propose a payment from owner 1",
-    "execute after owner 1 signs alone"
+    "create a Safe on Sepolia with three owner accounts"
    ],
-   "bad": 3,
+   "bad": 1,
    "o": [
     "execute after a second owner also signs",
     "execute without any signature",
@@ -1775,6 +3415,92 @@
     "The payment appears on Etherscan"
    ],
    "e": "Propose, sign twice, execute, verify."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Safe for a team of three where one lost key must not block payments.",
+   "code": "owners = 3\nthreshold = ____",
+   "o": [
+    "2",
+    "3",
+    "1",
+    "0"
+   ],
+   "a": 0,
+   "e": "2-of-3: no single signer can pay, and one lost key does not lock the funds."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what holds the signatures when a Safe transaction executes.",
+   "code": "execTransaction(..., ____)",
+   "o": [
+    "signatures",
+    "privateKeys",
+    "recoveryPhrases",
+    "passwords"
+   ],
+   "a": 0,
+   "e": "The signatures field contains the owners' approvals."
+  },
+  {
+   "t": "fix",
+   "q": "One line about the Safe is wrong.",
+   "code": [
+    "a Safe is a smart contract wallet",
+    "it has its own address",
+    "owners approve; execution needs the threshold",
+    "the Safe has its own private key that can bypass owners"
+   ],
+   "bad": 3,
+   "o": [
+    "it has no key; only owner signatures move funds",
+    "the Safe Labs team can sign",
+    "the deployer can bypass it"
+   ],
+   "a": 0,
+   "e": "Control comes from the owners and the threshold."
+  },
+  {
+   "t": "fix",
+   "q": "One step of the lab is wrong.",
+   "code": [
+    "the payment executes before owner 2 signs",
+    "create the Safe on Sepolia with three owners",
+    "send 0.01 SepoliaETH to the Safe",
+    "owner 1 proposes and signs a payment"
+   ],
+   "bad": 0,
+   "o": [
+    "it executes only after owner 2 also signs",
+    "owner 1 signs twice",
+    "the receiver signs"
+   ],
+   "a": 0,
+   "e": "One signature is below the threshold."
+  },
+  {
+   "t": "order",
+   "q": "Order the Safe lab.",
+   "steps": [
+    "Create the Safe with three owners and threshold 2",
+    "Fund the Safe with test ETH",
+    "Owner 1 proposes and signs a payment",
+    "Owner 2 confirms",
+    "Execute and check Etherscan"
+   ],
+   "e": "Create, fund, propose, confirm, execute."
+  },
+  {
+   "t": "order",
+   "q": "Order a rejected payment.",
+   "steps": [
+    "Owner 3 proposes a payment",
+    "Owner 1 creates a rejection for the same nonce",
+    "Owner 2 signs the rejection",
+    "The rejection executes",
+    "No ETH leaves the Safe"
+   ],
+   "e": "Rejections also need the threshold."
   }
  ],
  "lab-aragon": [
@@ -1828,12 +3554,12 @@
    "t": "fix",
    "q": "One line in the Aragon lab is wrong.",
    "code": [
-    "add three members with tokens",
     "the proposal executes as soon as it is created",
+    "add three members with tokens",
     "create a DAO on Sepolia",
     "create a proposal to pay from the treasury"
    ],
-   "bad": 1,
+   "bad": 0,
    "o": [
     "it executes only after the vote passes",
     "it executes on mainnet",
@@ -1853,6 +3579,92 @@
     "Execute it and check the treasury balance"
    ],
    "e": "Create, configure, fund, decide, execute."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Aragon multisig setting.",
+   "code": "members = 3\napproval threshold = ____ (a majority)",
+   "o": [
+    "2",
+    "1",
+    "3",
+    "0"
+   ],
+   "a": 0,
+   "e": "Two of three is a majority."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the fallback if Ethereum Sepolia is not listed in the Aragon App.",
+   "code": "choose another testnet the app offers, e.g. ____",
+   "o": [
+    "Hoodi or Base Sepolia",
+    "Ethereum mainnet",
+    "Bitcoin",
+    "any network with real ETH"
+   ],
+   "a": 0,
+   "e": "Stay on a testnet and get test ETH for it."
+  },
+  {
+   "t": "fix",
+   "q": "One line about the Aragon DAO is wrong.",
+   "code": [
+    "a proposal executes after enough approvals",
+    "the DAO has its own treasury address",
+    "members create proposals",
+    "any wallet can execute a proposal before approval"
+   ],
+   "bad": 3,
+   "o": [
+    "execution needs the approvals first",
+    "only Aragon staff can execute",
+    "proposals execute automatically on creation"
+   ],
+   "a": 0,
+   "e": "Approvals come first."
+  },
+  {
+   "t": "fix",
+   "q": "One comparison with the Safe is wrong.",
+   "code": [
+    "the Safe has built-in token voting",
+    "the DAO adds proposals with descriptions",
+    "the DAO can add plugins such as token voting",
+    "both need several members to move funds"
+   ],
+   "bad": 0,
+   "o": [
+    "the Safe uses owner signatures, not token votes",
+    "the Safe has no owners",
+    "the Safe is a DAO token"
+   ],
+   "a": 0,
+   "e": "Safes use signatures; DAOs add governance features."
+  },
+  {
+   "t": "order",
+   "q": "Order the Aragon lab from setup to payment.",
+   "steps": [
+    "Create the DAO on a testnet",
+    "Add three members and a threshold",
+    "Fund the treasury",
+    "Create a payment proposal",
+    "Approve and execute it"
+   ],
+   "e": "Set up, fund, propose, decide, act."
+  },
+  {
+   "t": "order",
+   "q": "Order the failing proposal.",
+   "steps": [
+    "Create a proposal to add a fourth member",
+    "Only one member approves",
+    "The voting period ends",
+    "The proposal is not executed",
+    "The member list stays the same"
+   ],
+   "e": "Below threshold means no change."
   }
  ],
  "lab-attestations": [
@@ -1906,12 +3718,12 @@
    "t": "fix",
    "q": "One line in the attestation lab is wrong.",
    "code": [
-    "make an attestation about a document hash",
     "the attestation proves the document content is true",
+    "anyone can check who attested and when",
     "create a schema on sepolia.easscan.org",
-    "anyone can check who attested and when"
+    "make an attestation about a document hash"
    ],
-   "bad": 1,
+   "bad": 0,
    "o": [
     "it proves who claimed it and when, not that the claim is true",
     "it proves the document is secret",
@@ -1931,6 +3743,91 @@
     "Look it up as another student"
    ],
    "e": "Hash, schema, attest, record the UID, verify."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the schema field for a document fingerprint.",
+   "code": "schema: ____ documentHash, string documentType",
+   "o": [
+    "bytes32",
+    "string",
+    "uint8",
+    "address"
+   ],
+   "a": 0,
+   "e": "A Keccak-256 hash is 32 bytes."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what an attestation records.",
+   "code": "attester, recipient, schema, data, ____",
+   "o": [
+    "time",
+    "private key",
+    "password",
+    "ETH price"
+   ],
+   "a": 0,
+   "e": "Each attestation has a timestamp and a unique UID."
+  },
+  {
+   "t": "fix",
+   "q": "One line about EAS is wrong.",
+   "code": [
+    "an attestation is a signed statement by an address",
+    "an attestation proves that its content is true",
+    "a schema defines the fields of an attestation",
+    "onchain attestations cost gas, offchain ones do not"
+   ],
+   "bad": 1,
+   "o": [
+    "it proves who claimed it and when",
+    "it proves payment",
+    "it proves identity under eIDAS"
+   ],
+   "a": 0,
+   "e": "Truth needs other evidence."
+  },
+  {
+   "t": "fix",
+   "q": "One step of the lab is in the wrong order.",
+   "code": [
+    "create the schema",
+    "hash your document",
+    "attest with the schema",
+    "create a second schema after attesting so the attestation can use it"
+   ],
+   "bad": 3,
+   "o": [
+    "the schema must exist before attesting",
+    "schemas are optional",
+    "attest twice"
+   ],
+   "a": 0,
+   "e": "Attestations reference an existing schema."
+  },
+  {
+   "t": "order",
+   "q": "Order the attestation lab.",
+   "steps": [
+    "Hash your document",
+    "Create a schema",
+    "Attest with the schema",
+    "Copy the UID",
+    "A teammate looks it up"
+   ],
+   "e": "Hash, schema, attest, share, verify."
+  },
+  {
+   "t": "order",
+   "q": "Order how to check a received attestation.",
+   "steps": [
+    "Open it by UID",
+    "Check the attester's address",
+    "Check the schema",
+    "Compare the document hash with your file"
+   ],
+   "e": "Who, what format, which document."
   }
  ],
  "lab-accord": [
@@ -1984,12 +3881,12 @@
    "t": "fix",
    "q": "One step in the Accord lab is wrong.",
    "code": [
-    "open the Template Playground",
+    "the legal text stays the same when the data changes",
     "change the data, such as the price",
     "choose a sample template",
-    "the legal text stays the same when the data changes"
+    "open the Template Playground"
    ],
-   "bad": 3,
+   "bad": 0,
    "o": [
     "the rendered text updates with the new data",
     "the template deletes itself",
@@ -2009,6 +3906,91 @@
     "Write which clauses could run as code"
    ],
    "e": "Load, read, change, analyse."
+  },
+  {
+   "t": "fill",
+   "q": "Complete a Concerto field for the deposit amount.",
+   "code": "o Double ____",
+   "o": [
+    "deposit",
+    "{{deposit}}",
+    "EUR",
+    "true"
+   ],
+   "a": 0,
+   "e": "Model fields have a type and a name; braces belong in the text."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the TemplateMark sentence.",
+   "code": "The Landlord returns the deposit within ____ days.",
+   "o": [
+    "{{returnDays}}",
+    "returnDays",
+    "o Integer returnDays",
+    "\"returnDays\""
+   ],
+   "a": 0,
+   "e": "Variables in the text use double braces."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this model is wrong.",
+   "code": [
+    "o Integer returnDays = \"fourteen\"",
+    "o Double deposit",
+    "o String landlord",
+    "o String tenant"
+   ],
+   "bad": 0,
+   "o": [
+    "o Integer returnDays (value comes from the data)",
+    "o String returnDays",
+    "remove the field"
+   ],
+   "a": 0,
+   "e": "Values belong in the JSON data, and an Integer cannot be a word."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of the Playground is wrong.",
+   "code": [
+    "JSON Data: values for one deal",
+    "Concerto Model: types of the variables",
+    "Preview: the code that runs on Ethereum",
+    "TemplateMark: legal text with variables"
+   ],
+   "bad": 2,
+   "o": [
+    "Preview: the rendered contract text",
+    "Preview: the gas cost",
+    "Preview: the wallet"
+   ],
+   "a": 0,
+   "e": "The preview shows the text filled with data."
+  },
+  {
+   "t": "order",
+   "q": "Order the rental-deposit template.",
+   "steps": [
+    "Start from Hello World",
+    "Add the five fields to the model",
+    "Write the clause with variables",
+    "Enter the values in the data",
+    "Check the preview"
+   ],
+   "e": "Model, text, data, preview."
+  },
+  {
+   "t": "order",
+   "q": "Order the analysis after building the template.",
+   "steps": [
+    "Mark which clauses could run as code",
+    "Mark which need a human decision",
+    "Add the §551 BGB cap as a rule",
+    "Decide whether it belongs in the model, logic or text"
+   ],
+   "e": "From text to rules to placement."
   }
  ],
  "lab-quickdapp": [
@@ -2051,12 +4033,12 @@
    "t": "fix",
    "q": "One test step in the QuickDApp lab is wrong.",
    "code": [
-    "the seller clicks Confirm delivery and it succeeds",
-    "the buyer clicks Deposit with the exact price",
     "connect MetaMask on Sepolia",
-    "open the generated app"
+    "open the generated app",
+    "the buyer clicks Deposit with the exact price",
+    "the seller clicks Confirm delivery and it succeeds"
    ],
-   "bad": 0,
+   "bad": 3,
    "o": [
     "the seller clicks Confirm delivery and sees the revert",
     "the seller clicks Refund and it succeeds",
@@ -2076,6 +4058,92 @@
     "Note what the app shows when a call reverts"
    ],
    "e": "Deploy, generate, test every role."
+  },
+  {
+   "t": "fill",
+   "q": "Complete where QuickDApp starts from in Remix.",
+   "code": "Deployed Contracts -> three dots next to the Escrow -> ____",
+   "o": [
+    "Create a DApp",
+    "Debug",
+    "Verify",
+    "Publish to IPFS"
+   ],
+   "a": 0,
+   "e": "Create a DApp opens the QuickDApp panel."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the button that revises the generated app.",
+   "code": "QuickDApp -> ____ -> describe the change -> Update with AI",
+   "o": [
+    "Ask AI to Update",
+    "Delete DApp",
+    "Refresh Preview",
+    "Go to Contract"
+   ],
+   "a": 0,
+   "e": "Ask AI to Update opens the Update DApp dialog."
+  },
+  {
+   "t": "fix",
+   "q": "One line about QuickDApp is wrong.",
+   "code": [
+    "you approve the generated files",
+    "the generated app can let the seller release the payment",
+    "it works best on public networks such as Sepolia",
+    "it generates a front end with RemixAI"
+   ],
+   "bad": 1,
+   "o": [
+    "the contract still rejects the seller",
+    "the app changes the contract rules",
+    "the seller becomes the arbiter"
+   ],
+   "a": 0,
+   "e": "A front end cannot change contract rules."
+  },
+  {
+   "t": "fix",
+   "q": "One line in the test report is wrong.",
+   "code": [
+    "Refund as buyer: expected success, actual revert, fail",
+    "Refund as arbiter: expected success, actual success, pass",
+    "Deposit as buyer: expected success, actual success, pass",
+    "Confirm as seller: expected revert, actual revert, pass"
+   ],
+   "bad": 0,
+   "o": [
+    "Refund as buyer: expected revert, actual revert, pass",
+    "Refund as buyer: skip",
+    "Refund as buyer: expected success, pass"
+   ],
+   "a": 0,
+   "e": "The expectation was wrong: only the arbiter may refund."
+  },
+  {
+   "t": "order",
+   "q": "Order the QuickDApp lab from contract to test report.",
+   "steps": [
+    "Have the Escrow on Sepolia in Remix",
+    "Create a DApp with notes for three role panels",
+    "Approve the generated files",
+    "Test each role in the preview",
+    "Write the test report"
+   ],
+   "e": "Contract, generate, approve, test, report."
+  },
+  {
+   "t": "order",
+   "q": "Order one AI improvement cycle.",
+   "steps": [
+    "Pick one failed or unclear row in the report",
+    "Ask AI to Update with a precise request",
+    "Review the changed files",
+    "Refresh the preview",
+    "Test the row again"
+   ],
+   "e": "Small, checked changes."
   }
  ],
  "lab-tenderly": [
@@ -2129,10 +4197,10 @@
    "t": "fix",
    "q": "One reading of a Tenderly debugger is wrong.",
    "code": [
-    "the call trace lists every internal call",
     "state changes show old and new storage values",
+    "the source view highlights the line that ran",
     "the revert line is where the gas price was set",
-    "the source view highlights the line that ran"
+    "the call trace lists every internal call"
    ],
    "bad": 2,
    "o": [
@@ -2154,6 +4222,92 @@
     "Compare both results"
    ],
    "e": "Import, open, debug, simulate, compare."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what the simulator needs to test refund as the arbiter.",
+   "code": "network: Sepolia\nfrom: ____\nto: your Escrow\nfunction: refund()",
+   "o": [
+    "the arbiter's address",
+    "the seller's address",
+    "0x0",
+    "the Escrow's address"
+   ],
+   "a": 0,
+   "e": "Simulations can use any sender without a signature."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the simulator's answer when the seller calls refund.",
+   "code": "status: ____\nerror: \"Only arbiter\"",
+   "o": [
+    "Reverted",
+    "Success",
+    "Pending",
+    "Mined"
+   ],
+   "a": 0,
+   "e": "The simulation shows the revert without spending anything."
+  },
+  {
+   "t": "fix",
+   "q": "One claim about Tenderly simulations is wrong.",
+   "code": [
+    "it needs no signature",
+    "it changes the contract on Sepolia",
+    "a simulation runs on a copy of the current state",
+    "it costs no gas on the real network"
+   ],
+   "bad": 1,
+   "o": [
+    "it changes nothing on Sepolia",
+    "it deploys a new contract",
+    "it sends test ETH"
+   ],
+   "a": 0,
+   "e": "Simulations are dry runs."
+  },
+  {
+   "t": "fix",
+   "q": "One debugger step is in the wrong order.",
+   "code": [
+    "open the transaction in Tenderly",
+    "find the line with state = State.Complete",
+    "evaluate msg.sender at that line",
+    "search the transaction hash"
+   ],
+   "bad": 3,
+   "o": [
+    "search the hash first, then open it",
+    "skip the search",
+    "evaluate before opening"
+   ],
+   "a": 0,
+   "e": "You must find and open the transaction before stepping through it."
+  },
+  {
+   "t": "order",
+   "q": "Order the Tenderly debugging part.",
+   "steps": [
+    "Add your Sepolia contract",
+    "Open your confirmDelivery transaction",
+    "Step to state = State.Complete",
+    "Step to the line that sends ETH",
+    "Evaluate msg.sender and price"
+   ],
+   "e": "Open, step, inspect."
+  },
+  {
+   "t": "order",
+   "q": "Order the simulation part.",
+   "steps": [
+    "Deploy a fresh Escrow and deposit",
+    "Open the Simulator",
+    "Simulate refund from the seller: reverted",
+    "Simulate refund from the arbiter: success",
+    "Compare the state changes"
+   ],
+   "e": "Same call, two senders, two outcomes."
   }
  ],
  "lab-phalcon": [
@@ -2207,12 +4361,12 @@
    "t": "fix",
    "q": "One reading of a hack trace is wrong.",
    "code": [
+    "Invocation flow: the order of calls between contracts",
     "Fund flow: who sent value to whom",
     "Invocation flow: the price of ETH that day",
-    "Invocation flow: the order of calls between contracts",
     "Balance changes: what each address gained or lost"
    ],
-   "bad": 1,
+   "bad": 2,
    "o": [
     "Invocation flow: nested calls, including re-entered functions",
     "Invocation flow: the block reward",
@@ -2232,6 +4386,92 @@
     "Write the root cause in one sentence"
    ],
    "e": "Find, open, follow the calls, follow the money, explain."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what the Balance Changes view shows.",
+   "code": "Balance Changes: for each address, ____",
+   "o": [
+    "tokens and ETH gained or lost in the transaction",
+    "its private key",
+    "its total history",
+    "its gas price"
+   ],
+   "a": 0,
+   "e": "It summarises who won and lost in that one transaction."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the GMX V1 case (9 July 2025).",
+   "code": "guard on one contract, attacker re-entered ____",
+   "o": [
+    "a different contract (the Vault) during a callback",
+    "the same function only",
+    "Bitcoin",
+    "the oracle network"
+   ],
+   "a": 0,
+   "e": "Cross-contract reentrancy bypassed a single-contract guard."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of a Phalcon trace is wrong.",
+   "code": [
+    "the gas profiler shows who owns the stolen funds",
+    "indentation shows calls inside calls",
+    "the fund flow shows value moving between addresses",
+    "a callback to the attacker shows as a nested call"
+   ],
+   "bad": 0,
+   "o": [
+    "the gas profiler shows where gas was spent",
+    "the gas profiler shows private keys",
+    "the gas profiler shows the attacker's name"
+   ],
+   "a": 0,
+   "e": "Ownership changes are in balance changes and fund flow."
+  },
+  {
+   "t": "fix",
+   "q": "One step of the lab is in the wrong place.",
+   "code": [
+    "find the attack transaction hash",
+    "open it in Phalcon",
+    "write the root cause in one sentence",
+    "read the invocation flow"
+   ],
+   "bad": 2,
+   "o": [
+    "read the invocation and fund flow before writing the root cause",
+    "skip the invocation flow",
+    "write the root cause before finding the hash"
+   ],
+   "a": 0,
+   "e": "Conclusions come after reading the evidence."
+  },
+  {
+   "t": "order",
+   "q": "Order the Phalcon lab on your own transaction.",
+   "steps": [
+    "Copy your Sepolia confirmDelivery hash",
+    "Open Phalcon and choose Sepolia",
+    "Paste the hash",
+    "Read the call tree",
+    "Find the ETH transfer to the seller"
+   ],
+   "e": "Start with a simple case you understand."
+  },
+  {
+   "t": "order",
+   "q": "Order the analysis of a real hack.",
+   "steps": [
+    "Get the attack hash from an incident library",
+    "Open the invocation flow",
+    "Find the callback to the attacker",
+    "Open the fund flow",
+    "Compare with the published root cause"
+   ],
+   "e": "Calls, then money, then the expert view."
   }
  ],
  "lab-see-inside": [
@@ -2274,9 +4514,9 @@
    "t": "fix",
    "q": "One annotation on the Escrow diagram is wrong.",
    "code": [
-    "deposit(): only the buyer",
-    "refund(): the seller",
     "refund(): only the arbiter",
+    "refund(): the seller",
+    "deposit(): only the buyer",
     "confirmDelivery(): the buyer or the arbiter"
    ],
    "bad": 1,
@@ -2299,6 +4539,91 @@
     "Compare with the legal text"
    ],
    "e": "Read, visualise, annotate, compare."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the sol2uml command for a verified Sepolia contract.",
+   "code": "$ sol2uml class ____ -n sepolia -k $ETHERSCAN_KEY",
+   "o": [
+    "<contract address>",
+    "<private key>",
+    "<recovery phrase>",
+    "<transaction hash>"
+   ],
+   "a": 0,
+   "e": "sol2uml reads verified source by address."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what the Remix debugger shows during the reentrancy attack.",
+   "code": "call stack: withdraw <- receive <- withdraw <- ____",
+   "o": [
+    "attack",
+    "constructor",
+    "deposit only",
+    "mint"
+   ],
+   "a": 0,
+   "e": "The attack function starts the nested withdraw calls."
+  },
+  {
+   "t": "fix",
+   "q": "One role annotation on the Escrow class diagram is wrong.",
+   "code": [
+    "seller: nothing to call, receives the price",
+    "buyer: deposit, confirmDelivery",
+    "seller: refund",
+    "arbiter: confirmDelivery, refund"
+   ],
+   "bad": 2,
+   "o": [
+    "delete it: the seller cannot refund",
+    "seller: deposit",
+    "seller: everything"
+   ],
+   "a": 0,
+   "e": "The seller only receives."
+  },
+  {
+   "t": "fix",
+   "q": "One tool is matched to the wrong view.",
+   "code": [
+    "sol2uml: live price charts",
+    "ETH.BUILD: hashes, keys and blocks visually",
+    "Remix debugger: each step of a transaction",
+    "sol2uml: class diagram of contracts"
+   ],
+   "bad": 0,
+   "o": [
+    "sol2uml: storage layout or class diagrams",
+    "sol2uml: wallet balances",
+    "sol2uml: gas prices"
+   ],
+   "a": 0,
+   "e": "sol2uml draws contract structure."
+  },
+  {
+   "t": "order",
+   "q": "Order the four views of the See inside lab.",
+   "steps": [
+    "Build a hash chain in ETH.BUILD",
+    "Debug the reentrancy attack in Remix",
+    "Draw the Escrow with sol2uml",
+    "Annotate who may call each function",
+    "Compare the diagram with the legal text"
+   ],
+   "e": "Concepts, execution, structure, roles, law."
+  },
+  {
+   "t": "order",
+   "q": "Order how to read one debugger step.",
+   "steps": [
+    "Move the slider to a step",
+    "Read the highlighted source line",
+    "Read the call stack",
+    "Read local and state variables"
+   ],
+   "e": "Where, who called, what values."
   }
  ],
  "lab-dashboards": [
@@ -2341,12 +4666,12 @@
    "t": "fix",
    "q": "One reading of an L2BEAT page is wrong.",
    "code": [
-    "Data availability: where the transaction data is published",
-    "TVS: value secured by the rollup",
+    "Stage 0/1/2: how much users depend on the operators",
     "Stage 0 means fully decentralised with no training wheels",
-    "Stage 0/1/2: how much users depend on the operators"
+    "Data availability: where the transaction data is published",
+    "TVS: value secured by the rollup"
    ],
-   "bad": 2,
+   "bad": 1,
    "o": [
     "Stage 0 means the operators still have strong control",
     "Stage 0 means the rollup is closed",
@@ -2366,6 +4691,92 @@
     "Write one conclusion with its limits"
    ],
    "e": "Question, data, chart, check definitions, conclude."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Dune query filter for one day.",
+   "code": "WHERE block_time >= TIMESTAMP '2026-11-01'\n  AND block_time <  TIMESTAMP '____'",
+   "o": [
+    "2026-11-02",
+    "2026-11-01",
+    "2025-11-01",
+    "2026-12-01"
+   ],
+   "a": 0,
+   "e": "One day: from midnight to the next midnight."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what L2BEAT's risk view answers.",
+   "code": "who can upgrade, how fast, and can users ____ first?",
+   "o": [
+    "exit",
+    "vote",
+    "mine",
+    "stake"
+   ],
+   "a": 0,
+   "e": "Exit windows protect users from bad upgrades."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of DefiLlama's hacks page is wrong.",
+   "code": [
+    "the list shows only code bugs",
+    "entries name the technique",
+    "each entry has date, amount and chain",
+    "totals can be compared by year"
+   ],
+   "bad": 0,
+   "o": [
+    "it includes key compromises and other techniques",
+    "it shows only Bitcoin",
+    "it shows only 2016"
+   ],
+   "a": 0,
+   "e": "Many entries are operational attacks."
+  },
+  {
+   "t": "fix",
+   "q": "One conclusion overreaches the data.",
+   "code": [
+    "the data supports “operations matter as much as code”",
+    "key compromises make up a large share of losses",
+    "the data proves no audited contract was ever hacked",
+    "Bybit is the largest 2025 entry"
+   ],
+   "bad": 2,
+   "o": [
+    "audited contracts also appear in the list",
+    "only audited contracts were hacked",
+    "audits cause hacks"
+   ],
+   "a": 0,
+   "e": "Draw only conclusions the data supports."
+  },
+  {
+   "t": "order",
+   "q": "Order a dashboard research task.",
+   "steps": [
+    "Pick a research question",
+    "Find data on L2BEAT, DefiLlama or Dune",
+    "Build or fork a chart",
+    "Check how the numbers are defined",
+    "Write one conclusion with its limits"
+   ],
+   "e": "Question, data, chart, definitions, conclusion."
+  },
+  {
+   "t": "order",
+   "q": "Order the L2BEAT part.",
+   "steps": [
+    "Sort rollups by value secured",
+    "Pick three",
+    "Note each stage",
+    "Note who can upgrade and how fast",
+    "Compare whether users can exit first"
+   ],
+   "e": "From ranking to governance risk."
   }
  ],
  "ethereum-today": [
@@ -2430,12 +4841,12 @@
    "t": "fix",
    "q": "One line about Ethereum in 2025–2026 is wrong.",
    "code": [
-    "rollups (L2s) run most user transactions",
-    "L2 transactions never depend on Ethereum security",
+    "EIP-4844 blobs made rollup data cheaper",
     "Ethereum uses proof of stake since The Merge (2022)",
-    "EIP-4844 blobs made rollup data cheaper"
+    "L2 transactions never depend on Ethereum security",
+    "rollups (L2s) run most user transactions"
    ],
-   "bad": 1,
+   "bad": 2,
    "o": [
     "L2s post data and proofs to Ethereum and rely on it for security",
     "L2s use Bitcoin for security",
@@ -2455,6 +4866,92 @@
     "The transaction is final on Ethereum"
    ],
    "e": "Fast on L2 first, final on L1 later."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the upgrade that introduced blobs.",
+   "code": "Dencun (March 2024): EIP-____",
+   "o": [
+    "4844",
+    "1559",
+    "7702",
+    "20"
+   ],
+   "a": 0,
+   "e": "EIP-4844 added blob-carrying transactions for rollups."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the optimistic rollup withdrawal.",
+   "code": "withdraw from L2 to L1 -> wait for the ____",
+   "o": [
+    "challenge window (about 7 days)",
+    "next block only",
+    "next hard fork",
+    "sequencer's approval forever"
+   ],
+   "a": 0,
+   "e": "Fraud proofs need time to be submitted."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this upgrade timeline is wrong.",
+   "code": [
+    "Fusaka: December 2025, introduced Proof of Work again",
+    "The Merge: September 2022, Proof of Stake",
+    "Pectra: May 2025, EIP-7702",
+    "Dencun: March 2024, blobs"
+   ],
+   "bad": 0,
+   "o": [
+    "Fusaka: December 2025, PeerDAS",
+    "Fusaka: December 2025, The Merge",
+    "Fusaka: cancelled"
+   ],
+   "a": 0,
+   "e": "Fusaka brought PeerDAS for more blob capacity."
+  },
+  {
+   "t": "fix",
+   "q": "One line about L2BEAT stages is wrong.",
+   "code": [
+    "Stage 0 is the most decentralised",
+    "Stage 2: users can exit and challenge without special trust",
+    "Stage 1: limited training wheels, a security council",
+    "Stage 0: operators still have strong control"
+   ],
+   "bad": 0,
+   "o": [
+    "Stage 2 is the most decentralised",
+    "all stages are equal",
+    "Stage 1 has no rules"
+   ],
+   "a": 0,
+   "e": "Higher stage, fewer training wheels."
+  },
+  {
+   "t": "order",
+   "q": "Order Ethereum's upgrades by date.",
+   "steps": [
+    "The Merge",
+    "Dencun",
+    "Pectra",
+    "Fusaka",
+    "Glamsterdam (live on Sepolia, mainnet pending as of Nov 2026)"
+   ],
+   "e": "2022, 2024, 2025, 2025, 2026+."
+  },
+  {
+   "t": "order",
+   "q": "Order a ZK rollup batch.",
+   "steps": [
+    "Users send transactions to the sequencer",
+    "The sequencer executes a batch",
+    "A prover creates a validity proof",
+    "The batch data and proof go to Ethereum",
+    "Ethereum's contract verifies the proof"
+   ],
+   "e": "Execute off chain, prove, verify on chain."
   }
  ],
  "zero-knowledge": [
@@ -2509,11 +5006,11 @@
    "q": "One line about ZK rollups is wrong.",
    "code": [
     "a ZK rollup posts a validity proof to Ethereum",
-    "Ethereum checks the proof in a contract",
+    "the proof reveals all user data publicly",
     "no challenge window is needed for correctness",
-    "the proof reveals all user data publicly"
+    "Ethereum checks the proof in a contract"
    ],
-   "bad": 3,
+   "bad": 1,
    "o": [
     "the proof shows the state change is valid; data availability is a separate question",
     "the proof is a password",
@@ -2533,6 +5030,91 @@
     "The verifier accepts without seeing the secret"
    ],
    "e": "Statement, prove, send, verify, accept."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the three properties of a proof system.",
+   "code": "completeness, soundness, ____",
+   "o": [
+    "zero knowledge",
+    "immutability",
+    "decentralisation",
+    "liquidity"
+   ],
+   "a": 0,
+   "e": "The verifier learns nothing beyond the truth of the statement."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what a SNARK on Ethereum costs to verify.",
+   "code": "verify(proof) -> ____",
+   "o": [
+    "a small, fixed amount of gas",
+    "re-running every transaction",
+    "nothing",
+    "a trusted bank"
+   ],
+   "a": 0,
+   "e": "Verification is cheap compared with re-execution."
+  },
+  {
+   "t": "fix",
+   "q": "One line about SNARKs and STARKs is wrong.",
+   "code": [
+    "STARKs need no trusted setup",
+    "SNARK proofs are very small",
+    "some SNARKs need a trusted setup",
+    "STARK proofs are smaller than SNARK proofs"
+   ],
+   "bad": 3,
+   "o": [
+    "STARK proofs are larger",
+    "STARKs need a trusted setup",
+    "they are the same"
+   ],
+   "a": 0,
+   "e": "STARKs trade size for transparency and quantum resistance."
+  },
+  {
+   "t": "fix",
+   "q": "One line about an age proof is wrong.",
+   "code": [
+    "the shop checks the proof and the issuer's key",
+    "the shop learns the exact date of birth",
+    "the user proves age >= 18",
+    "the issuer signs the date of birth"
+   ],
+   "bad": 1,
+   "o": [
+    "the shop learns only that the statement is true",
+    "the shop learns the passport number",
+    "the shop learns nothing at all"
+   ],
+   "a": 0,
+   "e": "Selective disclosure in practice."
+  },
+  {
+   "t": "order",
+   "q": "Order a ZK age check.",
+   "steps": [
+    "A trusted issuer gives the user a signed credential",
+    "The shop asks: over 18?",
+    "The user's wallet creates a proof",
+    "The shop verifies the proof",
+    "The shop sells without seeing the birth date"
+   ],
+   "e": "Issue, ask, prove, verify, act."
+  },
+  {
+   "t": "order",
+   "q": "Order from most to least data revealed.",
+   "steps": [
+    "Showing the full ID card",
+    "Showing the date of birth only",
+    "Showing a signed “over 18: yes” statement",
+    "A zero-knowledge proof of age >= 18 that cannot be linked"
+   ],
+   "e": "Data minimisation step by step."
   }
  ],
  "ai-agents": [
@@ -2622,6 +5204,92 @@
     "The owner pauses the wallet"
    ],
    "e": "Rules first, then normal use, then the limits and the pause switch."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the HTTP status code an x402 service returns before payment.",
+   "code": "GET /data -> ____ Payment Required",
+   "o": [
+    "402",
+    "200",
+    "404",
+    "500"
+   ],
+   "a": 0,
+   "e": "x402 builds on the long-unused HTTP 402 status."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the ERC-8004 registry that records feedback.",
+   "code": "identity registry, ____ registry, validation registry",
+   "o": [
+    "reputation",
+    "payment",
+    "token",
+    "storage"
+   ],
+   "a": 0,
+   "e": "Identity, reputation and validation."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this agent setup is unsafe.",
+   "code": [
+    "the agent uses a contract wallet with a daily limit",
+    "the agent also holds the owner's private key",
+    "the owner can pause the wallet",
+    "the owner keeps an allow-list of payees"
+   ],
+   "bad": 1,
+   "o": [
+    "the agent holds only its own limited key",
+    "the agent holds the recovery phrase",
+    "the agent has no key"
+   ],
+   "a": 0,
+   "e": "Separate the agent's power from the owner's."
+  },
+  {
+   "t": "fix",
+   "q": "One expectation after a prompt-injection attack is wrong.",
+   "code": [
+    "the contract checks the allow-list",
+    "the agent tries to pay a new address",
+    "the payment reverts",
+    "the contract pays because the agent asked politely"
+   ],
+   "bad": 3,
+   "o": [
+    "the rules in code decide, not the agent's request",
+    "the contract asks the owner by e-mail",
+    "the contract splits the payment"
+   ],
+   "a": 0,
+   "e": "Code limits the damage an agent can do."
+  },
+  {
+   "t": "order",
+   "q": "Order a paid API call by an agent.",
+   "steps": [
+    "Find the service in the ERC-8004 registry",
+    "Check its reputation",
+    "Call the API and receive 402 with a price",
+    "Pay through the wallet contract",
+    "Receive the data"
+   ],
+   "e": "Discover, trust, request, pay, receive."
+  },
+  {
+   "t": "order",
+   "q": "Order the AgentWallet checks in pay().",
+   "steps": [
+    "Caller is the agent",
+    "Wallet is not paused",
+    "Payee is allowed",
+    "Amount fits the daily limit",
+    "Increase spentToday, then send"
+   ],
+   "e": "Checks, then effect, then interaction."
   }
  ],
  "quantum": [
@@ -2676,11 +5344,11 @@
    "q": "One line about quantum risk is wrong.",
    "code": [
     "hash functions are weakened less than signatures",
-    "large quantum computers could break ECDSA signatures",
     "all addresses are broken today",
+    "large quantum computers could break ECDSA signatures",
     "NIST standardised post-quantum signatures in 2024"
    ],
-   "bad": 2,
+   "bad": 1,
    "o": [
     "no quantum computer can break ECDSA today; the risk is future",
     "only Bitcoin is affected",
@@ -2700,6 +5368,90 @@
     "Retire the old scheme"
    ],
    "e": "Inventory, choose, prepare, migrate, retire."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the algorithm that breaks elliptic-curve signatures.",
+   "code": "quantum attack on ECDSA: ____'s algorithm",
+   "o": [
+    "Shor",
+    "Grover",
+    "Dijkstra",
+    "RSA"
+   ],
+   "a": 0,
+   "e": "Shor's algorithm breaks the discrete-logarithm problem; Grover only speeds up search."
+  },
+  {
+   "t": "fill",
+   "q": "Complete when an Ethereum account's public key becomes visible.",
+   "code": "public key exposed after the account ____",
+   "o": [
+    "sends its first transaction",
+    "receives ETH",
+    "is created",
+    "is viewed on Etherscan"
+   ],
+   "a": 0,
+   "e": "Signatures reveal the public key; receiving does not."
+  },
+  {
+   "t": "fix",
+   "q": "One statement about quantum-safe cryptography is wrong.",
+   "code": [
+    "NIST IR 8547 deprecates vulnerable signatures after 2030",
+    "Keccak-256 keeps about 128-bit security against Grover",
+    "ECDSA and BLS signatures are vulnerable to Shor",
+    "hash-based signatures are broken by quantum computers"
+   ],
+   "bad": 3,
+   "o": [
+    "hash-based signatures are considered quantum-safe",
+    "Keccak is broken",
+    "NIST bans hashes"
+   ],
+   "a": 0,
+   "e": "SLH-DSA is a hash-based post-quantum standard."
+  },
+  {
+   "t": "fix",
+   "q": "One step in the migration plan is in the wrong place.",
+   "code": [
+    "list all uses of signatures",
+    "make the verifier replaceable",
+    "retire the old key",
+    "switch to the post-quantum scheme"
+   ],
+   "bad": 2,
+   "o": [
+    "switch to the new scheme before retiring the old key",
+    "never retire the key",
+    "retire first, then list"
+   ],
+   "a": 0,
+   "e": "Retiring the old key first would leave no valid signer."
+  },
+  {
+   "t": "order",
+   "q": "Order the NIST timeline.",
+   "steps": [
+    "Post-quantum standards FIPS 203-205 published (2024)",
+    "NIST IR 8547 finalised (October 2026)",
+    "Vulnerable signatures deprecated (after 2030)",
+    "Vulnerable signatures disallowed (after 2035)"
+   ],
+   "e": "Standards, plan, deprecation, ban."
+  },
+  {
+   "t": "order",
+   "q": "Order the exposure of an account.",
+   "steps": [
+    "Generate a key",
+    "Receive ETH (public key still hidden)",
+    "Send a transaction (public key revealed)",
+    "A future quantum attacker could derive the private key"
+   ],
+   "e": "Exposure begins at the first signature."
   }
  ],
  "security-in-practice": [
@@ -2764,12 +5516,12 @@
    "t": "fix",
    "q": "One step in this signing routine for a company multisig is unsafe.",
    "code": [
-    "sign because the interface shows the right address",
-    "read the transaction on a second device",
+    "check the target address and the amount",
     "compare the hash with the other signers",
-    "check the target address and the amount"
+    "sign because the interface shows the right address",
+    "read the transaction on a second device"
    ],
-   "bad": 0,
+   "bad": 2,
    "o": [
     "sign only after the decoded data matches on an independent device",
     "sign quickly to save gas",
@@ -2789,6 +5541,92 @@
     "Unpause or migrate to a fixed version"
    ],
    "e": "Stop the damage first, communicate, then analyse and fix."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what Bybit's signers should have checked in February 2025.",
+   "code": "check on an independent device:\n    target address, value and ____",
+   "o": [
+    "the call type and data (e.g. a delegatecall that changes the wallet)",
+    "the colour of the website",
+    "the gas price only",
+    "the block number"
+   ],
+   "a": 0,
+   "e": "The attack changed the call type, not the visible receiver."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the 2025 figure (Chainalysis).",
+   "code": "stolen in 2025 ≈ $3.4 billion\nlargest single incident ≈ ____",
+   "o": [
+    "Bybit, about $1.5 billion",
+    "GMX, about $42 million",
+    "The DAO",
+    "Ronin"
+   ],
+   "a": 0,
+   "e": "Bybit was about 44% of the year's total."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this treasury policy is weak.",
+   "code": [
+    "admin actions wait in a 48-hour timelock",
+    "all signers use the same laptop to save time",
+    "signers verify the decoded transaction independently",
+    "3-of-5 multisig with hardware wallets"
+   ],
+   "bad": 1,
+   "o": [
+    "each signer uses a separate device",
+    "one signer approves for all",
+    "skip the timelock"
+   ],
+   "a": 0,
+   "e": "Shared devices create a single point of failure."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of the 2025 numbers is wrong.",
+   "code": [
+    "about $3.4 billion was stolen in 2025",
+    "North Korea-linked hackers took at least $2.02 billion",
+    "many losses came from keys and operations",
+    "most losses came from simple reentrancy bugs"
+   ],
+   "bad": 3,
+   "o": [
+    "operational attacks caused most losses",
+    "no losses came from code",
+    "losses fell to zero"
+   ],
+   "a": 0,
+   "e": "Code bugs matter, but operations dominated in 2025."
+  },
+  {
+   "t": "order",
+   "q": "Order the Bybit attack chain (2025).",
+   "steps": [
+    "Attackers compromise a developer machine of the wallet provider",
+    "They inject code into the signing website",
+    "Signers see a normal transfer",
+    "Signers approve a hidden change to the wallet",
+    "Attackers drain the cold wallet"
+   ],
+   "e": "A supply-chain and interface attack, not a contract bug."
+  },
+  {
+   "t": "order",
+   "q": "Order how a signer checks a multisig payment safely.",
+   "steps": [
+    "Receive the proposed transaction",
+    "Decode it on an independent device",
+    "Compare target, value and call type with the request",
+    "Sign on the hardware wallet",
+    "Wait for the other signers before execution"
+   ],
+   "e": "Independent checking is the step Bybit's signers lacked."
   }
  ],
  "regulation": [
@@ -2843,8 +5681,8 @@
    "q": "One line in this GDPR check is wrong.",
    "code": [
     "use hashes or off-chain storage for personal data",
-    "personal data on a public chain cannot be deleted",
     "identify the controller of the processing",
+    "personal data on a public chain cannot be deleted",
     "a pseudonymous address is never personal data"
    ],
    "bad": 3,
@@ -2867,6 +5705,91 @@
     "Check data protection and consumer rules"
    ],
    "e": "Function first, then the right regime, then duties."
+  },
+  {
+   "t": "fill",
+   "q": "Complete MiCA's stablecoin category for a basket of currencies.",
+   "code": "references one official currency -> EMT\nreferences several assets or a basket -> ____",
+   "o": [
+    "ART (asset-referenced token)",
+    "utility token",
+    "NFT",
+    "security"
+   ],
+   "a": 0,
+   "e": "Asset-referenced tokens reference a basket or other assets."
+  },
+  {
+   "t": "fill",
+   "q": "Complete when the GENIUS Act takes effect at the latest.",
+   "code": "signed July 2025 -> takes effect by ____",
+   "o": [
+    "18 January 2027",
+    "1 January 2026",
+    "July 2025",
+    "never"
+   ],
+   "a": 0,
+   "e": "The earlier of 18 months after enactment or 120 days after final rules."
+  },
+  {
+   "t": "fix",
+   "q": "One line about MiCA is wrong.",
+   "code": [
+    "it regulates tokens that are financial instruments",
+    "it applies fully since 30 December 2024",
+    "CASPs need a licence to serve EU clients",
+    "the transitional period ended on 1 July 2026"
+   ],
+   "bad": 0,
+   "o": [
+    "those fall under MiFID II, not MiCA",
+    "it regulates only NFTs",
+    "it regulates only banks"
+   ],
+   "a": 0,
+   "e": "MiCA covers crypto-assets outside existing financial law."
+  },
+  {
+   "t": "fix",
+   "q": "One line about token labels is wrong.",
+   "code": [
+    "a profit share points to a security",
+    "calling it a utility token avoids securities law",
+    "the rights a token gives decide its classification",
+    "redeemable 1:1 for euros points to an EMT"
+   ],
+   "bad": 1,
+   "o": [
+    "the label does not matter; the economics do",
+    "utility tokens are always securities",
+    "labels are mandatory"
+   ],
+   "a": 0,
+   "e": "Substance over form."
+  },
+  {
+   "t": "order",
+   "q": "Order a classification check.",
+   "steps": [
+    "Describe the token's rights",
+    "Test for a financial instrument (MiFID II)",
+    "If not, test EMT or ART under MiCA",
+    "Otherwise treat it as another crypto-asset",
+    "List the duties of issuer and service providers"
+   ],
+   "e": "Securities law first, then MiCA categories, then duties."
+  },
+  {
+   "t": "order",
+   "q": "Order these EU rules by when they started to apply.",
+   "steps": [
+    "DLT Pilot Regime (March 2023)",
+    "MiCA fully applicable (December 2024)",
+    "End of MiCA transition (July 2026)",
+    "New EU AML Regulation (July 2027)"
+   ],
+   "e": "2023, 2024, 2026, 2027."
   }
  ],
  "research": [
@@ -2920,12 +5843,12 @@
    "t": "fix",
    "q": "One line in this research checklist is wrong.",
    "code": [
-    "a preprint is always peer reviewed",
-    "read the abstract and the conclusion first",
     "note the method and its limits",
-    "check the date and the venue"
+    "a preprint is always peer reviewed",
+    "check the date and the venue",
+    "read the abstract and the conclusion first"
    ],
-   "bad": 0,
+   "bad": 1,
    "o": [
     "a preprint is not yet peer reviewed",
     "a preprint is a law",
@@ -2945,6 +5868,92 @@
     "Write what is still open"
    ],
    "e": "Question, search, select, summarise, find the gap."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the paper summary format.",
+   "code": "problem -> method -> result -> ____",
+   "o": [
+    "one line per lens and one limitation",
+    "the authors' salaries",
+    "the journal's logo",
+    "nothing"
+   ],
+   "a": 0,
+   "e": "Tie each paper to technology, business and law."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the check before citing a preprint.",
+   "code": "is it ____?",
+   "o": [
+    "peer reviewed or still a preprint",
+    "on mainnet",
+    "a token",
+    "in German"
+   ],
+   "a": 0,
+   "e": "arXiv papers are not yet peer reviewed."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this source evaluation is wrong.",
+   "code": [
+    "a high citation count proves the result is correct",
+    "check the date and venue",
+    "check the method and sample",
+    "read the limitations"
+   ],
+   "bad": 0,
+   "o": [
+    "citations show attention, not correctness",
+    "citations prove nothing at all",
+    "citations are fake"
+   ],
+   "a": 0,
+   "e": "Judge the method, not popularity."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this review plan is in the wrong place.",
+   "code": [
+    "define the question",
+    "search Google Scholar and arXiv",
+    "write the conclusion",
+    "select and summarise five papers"
+   ],
+   "bad": 2,
+   "o": [
+    "write the conclusion last",
+    "skip the search",
+    "summarise before searching"
+   ],
+   "a": 0,
+   "e": "Conclusions follow the reading."
+  },
+  {
+   "t": "order",
+   "q": "Order a mini literature review.",
+   "steps": [
+    "Define the question",
+    "Search",
+    "Select five papers",
+    "Summarise each",
+    "Write what is still open"
+   ],
+   "e": "Question to gap."
+  },
+  {
+   "t": "order",
+   "q": "Order reading a paper efficiently.",
+   "steps": [
+    "Title and abstract",
+    "Conclusion",
+    "Figures and tables",
+    "Method",
+    "Limitations"
+   ],
+   "e": "Skim first, then go deep where it matters."
   }
  ],
  "blocks-and-state-models": [
@@ -2998,12 +6007,12 @@
    "t": "fix",
    "q": "This pseudo code spends Bitcoin-style outputs (UTXO). One line is wrong.",
    "code": [
+    "outputs = [payment_to_receiver, change_back_to_owner]",
     "mark inputs as still unspent",
-    "require(sum(inputs) >= sum(outputs))",
     "inputs = select_unspent_outputs(owner)",
-    "outputs = [payment_to_receiver, change_back_to_owner]"
+    "require(sum(inputs) >= sum(outputs))"
    ],
-   "bad": 0,
+   "bad": 1,
    "o": [
     "mark inputs as spent",
     "delete the outputs",
@@ -3023,6 +6032,91 @@
     "Propose the block to the network"
    ],
    "e": "Transactions first, then the resulting state and the Merkle root, then the header that links to the previous block."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Merkle tree for four transactions.",
+   "code": "hAB  = hash(hA + hB)\nhCD  = hash(hC + hD)\nroot = ____",
+   "o": [
+    "hash(hAB + hCD)",
+    "hash(hA + hD)",
+    "hAB + hCD",
+    "hash(hC)"
+   ],
+   "a": 0,
+   "e": "Pairs are hashed upwards until one hash, the root, remains."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the account-model update for a payment of 0.6 ETH.",
+   "code": "balance[Alice] -= 0.6 + fee\nbalance[Bob]   += 0.6\nnonce[Alice]   = ____",
+   "o": [
+    "nonce[Alice] + 1",
+    "0",
+    "nonce[Bob]",
+    "the block number"
+   ],
+   "a": 0,
+   "e": "Each transaction increases the sender's nonce by one, which blocks replays."
+  },
+  {
+   "t": "fix",
+   "q": "One line about a UTXO payment is wrong.",
+   "code": [
+    "inputs: Alice's outputs of 0.5 and 0.2 BTC",
+    "fee: 0.001 BTC",
+    "outputs: 0.6 BTC to Bob and 0.099 BTC change to Alice",
+    "the 0.5 and 0.2 outputs can be spent again later"
+   ],
+   "bad": 3,
+   "o": [
+    "the 0.5 and 0.2 outputs are now spent forever",
+    "the change is lost",
+    "Bob receives 0.7 BTC"
+   ],
+   "a": 0,
+   "e": "In the UTXO model each output is spent exactly once."
+  },
+  {
+   "t": "fix",
+   "q": "One claim about Merkle proofs is wrong.",
+   "code": [
+    "a light client can check it against the header",
+    "it proves that the transaction is valid and paid enough",
+    "a Merkle proof shows that a transaction is in a block",
+    "it needs only a few hashes, not all transactions"
+   ],
+   "bad": 1,
+   "o": [
+    "it proves inclusion only, not validity",
+    "it proves the sender's identity",
+    "it proves the block is final"
+   ],
+   "a": 0,
+   "e": "Inclusion is not validity. Validity comes from full nodes executing the block."
+  },
+  {
+   "t": "order",
+   "q": "Order the proof that transaction C is in a block with A, B, C, D.",
+   "steps": [
+    "Hash transaction C",
+    "Combine it with the given hash of D",
+    "Combine the result with the given hash of AB",
+    "Compare the final hash with the Merkle root in the header"
+   ],
+   "e": "Two given hashes are enough for four transactions."
+  },
+  {
+   "t": "order",
+   "q": "Order what happens to Ethereum's state in one block.",
+   "steps": [
+    "Start from the state after the previous block",
+    "Execute the block's transactions in order",
+    "Write the changed balances and storage",
+    "Compute the new state root",
+    "Put the state root in the block header"
+   ],
+   "e": "The state root summarises the state after all transactions."
   }
  ],
  "types-of-blockchains": [
@@ -3076,12 +6170,12 @@
    "t": "fix",
    "q": "One line in this comparison is wrong. Find it.",
    "code": [
+    "consortium chain: several known organisations validate",
     "private chain: one organisation controls who writes",
     "private chain: no single party can change the rules",
-    "consortium chain: several known organisations validate",
     "public chain: anyone can join as a validator"
    ],
-   "bad": 1,
+   "bad": 2,
    "o": [
     "private chain: the operator can change the rules",
     "private chain: miners compete with proof of work",
@@ -3100,6 +6194,90 @@
     "Choose public, consortium, private or a normal database"
    ],
    "e": "Start with who writes and who is trusted. Public readability comes next. The choice of chain type follows from the answers."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the rule for a single company's internal log.",
+   "code": "writers = 1 organisation\noutside verifiers = none\nchoose = ____",
+   "o": [
+    "a normal database with an audit log",
+    "a public blockchain",
+    "a consortium chain",
+    "a sidechain"
+   ],
+   "a": 0,
+   "e": "With one writer and no outside verifier, a blockchain adds cost without benefit."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the description of a consortium chain.",
+   "code": "who validates: ____\nwho reads: as agreed by the members",
+   "o": [
+    "a fixed group of known organisations",
+    "anyone with stake",
+    "one company",
+    "nobody"
+   ],
+   "a": 0,
+   "e": "A consortium chain is run by several known organisations."
+  },
+  {
+   "t": "fix",
+   "q": "One line about public chains is wrong.",
+   "code": [
+    "data on a public chain is private by default",
+    "anyone can become a validator with enough stake",
+    "anyone can read all data",
+    "anyone can send transactions"
+   ],
+   "bad": 0,
+   "o": [
+    "data is public unless it is encrypted or kept off chain",
+    "data is deleted after a year",
+    "only validators can read data"
+   ],
+   "a": 0,
+   "e": "Public chains publish everything. Privacy needs extra techniques."
+  },
+  {
+   "t": "fix",
+   "q": "One line about a diploma registry design is wrong.",
+   "code": [
+    "the chain stores the student's full transcript",
+    "employers worldwide must verify",
+    "the university is the only writer",
+    "the chain stores a hash or an attestation"
+   ],
+   "bad": 0,
+   "o": [
+    "the transcript stays in the university's system",
+    "the chain stores the student's password",
+    "the chain stores nothing at all"
+   ],
+   "a": 0,
+   "e": "Personal data stays off chain; only proof data goes on chain."
+  },
+  {
+   "t": "order",
+   "q": "Order the decision for a new shared record.",
+   "steps": [
+    "List who must write",
+    "List who must read and verify",
+    "Decide whom users are willing to trust",
+    "Choose public, consortium, private chain or database"
+   ],
+   "e": "Roles and trust come before the technology choice."
+  },
+  {
+   "t": "order",
+   "q": "Order from most open to most controlled.",
+   "steps": [
+    "Public permissionless chain",
+    "Public chain with an allow-listed token",
+    "Consortium chain",
+    "Private chain run by one company"
+   ],
+   "e": "Each step gives more control to fewer parties."
   }
  ],
  "lab-eth-build": [
@@ -3167,6 +6345,92 @@
     "See that both hashes change"
    ],
    "e": "The demo shows that a change in an old block breaks every hash after it."
+  },
+  {
+   "t": "fill",
+   "q": "In ETH.BUILD you show that a signature belongs to an address. Complete the wiring.",
+   "code": "[Message] + [Signature] --> [ ____ ] --> [Address]",
+   "o": [
+    "Recover",
+    "Hash only",
+    "Key Pair",
+    "Text"
+   ],
+   "a": 0,
+   "e": "Recover takes a message and a signature and returns the signing address."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the ETH.BUILD demo of the avalanche effect.",
+   "code": "type \"rent 900\"  -> hash 0x8a…\ntype \"rent 990\"  -> hash ____",
+   "o": [
+    "a completely different value",
+    "0x8a… with one changed digit",
+    "the same value",
+    "an error"
+   ],
+   "a": 0,
+   "e": "One changed character changes the whole hash."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of the ETH.BUILD Key Pair module is wrong.",
+   "code": [
+    "address: 40 hex characters with 0x",
+    "you can compute the private key from the address",
+    "public key: derived from the private key",
+    "private key: 64 hex characters, keep secret"
+   ],
+   "bad": 1,
+   "o": [
+    "you cannot compute the private key from the address",
+    "the address is the private key",
+    "the public key is random"
+   ],
+   "a": 0,
+   "e": "Each derivation step is one-way."
+  },
+  {
+   "t": "fix",
+   "q": "One step in this hash demo is in the wrong place.",
+   "code": [
+    "add a Text input module",
+    "add a Hash module",
+    "read the hash output",
+    "connect the text output to the hash input"
+   ],
+   "bad": 3,
+   "o": [
+    "connect before reading: the hash has no input yet",
+    "remove the Hash module",
+    "read the private key"
+   ],
+   "a": 0,
+   "e": "Without a connection the hash module has nothing to hash."
+  },
+  {
+   "t": "order",
+   "q": "Order the ETH.BUILD signing demo.",
+   "steps": [
+    "Create a key pair",
+    "Type a message",
+    "Sign the message with the private key",
+    "Recover the address from message and signature",
+    "Compare it with the key pair's address"
+   ],
+   "e": "Sign with the key, recover with public data, compare."
+  },
+  {
+   "t": "order",
+   "q": "Order the build-up of the ETH.BUILD blockchain demo.",
+   "steps": [
+    "Make a block with data and a nonce",
+    "Hash the block",
+    "Add a second block that includes the first hash",
+    "Change the first block's data",
+    "See the second block become invalid"
+   ],
+   "e": "Linking by hash makes a change visible downstream."
   }
  ],
  "forks-and-governance": [
@@ -3221,11 +6485,11 @@
    "q": "One line in this timeline of The DAO case (2016) is wrong.",
    "code": [
     "an attacker drained about a third using reentrancy",
-    "the community chose a hard fork that returned the funds",
     "everyone accepted the fork, so only one chain exists",
-    "The DAO raised about 150 million dollars in ETH"
+    "The DAO raised about 150 million dollars in ETH",
+    "the community chose a hard fork that returned the funds"
    ],
-   "bad": 2,
+   "bad": 1,
    "o": [
     "a minority kept the old chain, now Ethereum Classic",
     "the attacker reversed the fork",
@@ -3245,6 +6509,92 @@
     "The fork activates at a set block or time"
    ],
    "e": "Proposal, discussion, implementation and testing, upgrade, then activation."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what happens when a group refuses a hard fork.",
+   "code": "if many nodes keep running the old rules:\n    result = ____",
+   "o": [
+    "two chains continue side by side",
+    "the old nodes join automatically",
+    "the fork is cancelled by law",
+    "all funds are lost"
+   ],
+   "a": 0,
+   "e": "That is how Ethereum Classic continued after the DAO fork in 2016."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the order of networks for testing an upgrade.",
+   "code": "devnets -> Sepolia -> ____ -> mainnet",
+   "o": [
+    "Hoodi",
+    "Goerli",
+    "Ropsten",
+    "Bitcoin"
+   ],
+   "a": 0,
+   "e": "Sepolia and Hoodi are the public testnets used before mainnet (as of 2026)."
+  },
+  {
+   "t": "fix",
+   "q": "One line about who governs Ethereum is wrong.",
+   "code": [
+    "the Ethereum Foundation can force every node to upgrade",
+    "node operators choose which software to run",
+    "client teams discuss and implement it",
+    "anyone can write an EIP"
+   ],
+   "bad": 0,
+   "o": [
+    "nobody can force nodes; they choose to upgrade",
+    "only miners vote",
+    "exchanges write the code"
+   ],
+   "a": 0,
+   "e": "Adoption is voluntary. Power is spread across developers, operators and users."
+  },
+  {
+   "t": "fix",
+   "q": "One line about the Glamsterdam delay (autumn 2026) is wrong.",
+   "code": [
+    "Glamsterdam went live on Sepolia in October 2026",
+    "the Hoodi step was postponed over gas-repricing risks",
+    "some deployed contracts could break under the new rules",
+    "mainnet activation was fixed for 1 November 2026"
+   ],
+   "bad": 3,
+   "o": [
+    "no mainnet date was set as of 20 November 2026",
+    "it was cancelled for good",
+    "it went live on mainnet in October"
+   ],
+   "a": 0,
+   "e": "As of 20 November 2026 there was no mainnet date."
+  },
+  {
+   "t": "order",
+   "q": "Order the life of an Ethereum Improvement Proposal.",
+   "steps": [
+    "An author drafts the EIP",
+    "It is discussed publicly and in All Core Devs calls",
+    "It is included in a named upgrade",
+    "Client teams implement and test it on testnets",
+    "The upgrade activates on mainnet"
+   ],
+   "e": "Draft, discuss, bundle, implement and test, activate."
+  },
+  {
+   "t": "order",
+   "q": "Order the events of the 2016 DAO fork.",
+   "steps": [
+    "The DAO raises about 150 million dollars in ETH",
+    "An attacker drains about a third with reentrancy",
+    "The community debates a hard fork",
+    "Most nodes adopt the fork that returns the funds",
+    "A minority keeps the old chain as Ethereum Classic"
+   ],
+   "e": "A code bug led to a social decision and a chain split."
   }
  ],
  "lab-read-the-chain": [
@@ -3287,12 +6637,12 @@
    "t": "fix",
    "q": "A student reads a transaction. One reading is wrong.",
    "code": [
-    "To: the receiver or the contract called",
-    "Transaction fee: the amount the receiver paid",
+    "From: the account that signed and paid gas",
     "Value: the ETH sent with the transaction",
-    "From: the account that signed and paid gas"
+    "Transaction fee: the amount the receiver paid",
+    "To: the receiver or the contract called"
    ],
-   "bad": 1,
+   "bad": 2,
    "o": [
     "Transaction fee: the amount the sender paid for gas",
     "Transaction fee: always zero on Sepolia",
@@ -3312,6 +6662,92 @@
     "Follow the receiver address to see its balance"
    ],
    "e": "Find the transaction, confirm it succeeded, read the parties, then follow the tokens."
+  },
+  {
+   "t": "fill",
+   "q": "Complete how to see the latest blocks on Etherscan.",
+   "code": "open etherscan.io -> section ____",
+   "o": [
+    "Latest Blocks",
+    "Token Approvals",
+    "Gas Tracker settings",
+    "Verified Contracts"
+   ],
+   "a": 0,
+   "e": "The home page lists the latest blocks and transactions."
+  },
+  {
+   "t": "fill",
+   "q": "A transaction on Etherscan has these numbers. Complete the fee.",
+   "code": "Gas used: 21,000\nGas price: 10 gwei\nFee = ____",
+   "o": [
+    "210,000 gwei = 0.00021 ETH",
+    "21,010 gwei",
+    "0.21 ETH",
+    "10 ETH"
+   ],
+   "a": 0,
+   "e": "21,000 × 10 gwei = 210,000 gwei = 0.00021 ETH."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of a block page is wrong.",
+   "code": [
+    "Block height: the number of the block",
+    "Gas used: the ETH price on that day",
+    "Fee recipient: the validator that proposed it",
+    "Transactions: how many are in it"
+   ],
+   "bad": 1,
+   "o": [
+    "Gas used: the total gas of all transactions in the block",
+    "Gas used: the number of nodes",
+    "Gas used: the block reward"
+   ],
+   "a": 0,
+   "e": "Gas used measures work, not price."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of a token page is wrong.",
+   "code": [
+    "Holders: number of addresses with a balance",
+    "Holders: the people who created the token",
+    "Contract: the token's address, verified if green",
+    "Total supply: tokens in existence"
+   ],
+   "bad": 1,
+   "o": [
+    "Holders: addresses that currently hold the token",
+    "Holders: validators",
+    "Holders: auditors"
+   ],
+   "a": 0,
+   "e": "Holders counts addresses with a non-zero balance."
+  },
+  {
+   "t": "order",
+   "q": "Order the steps to read your own course transaction.",
+   "steps": [
+    "Copy your address from MetaMask",
+    "Search it on sepolia.etherscan.io",
+    "Open the latest transaction",
+    "Check Status, From, To and Value",
+    "Note the fee"
+   ],
+   "e": "Find, open, read, note."
+  },
+  {
+   "t": "order",
+   "q": "Order how to inspect a stablecoin on Etherscan.",
+   "steps": [
+    "Search the token name",
+    "Open the token page",
+    "Read total supply and holders",
+    "Open the Contract tab",
+    "Check that the source is verified"
+   ],
+   "e": "From overview to the verified code."
   }
  ],
  "wallets-and-testnets": [
@@ -3365,12 +6801,12 @@
    "t": "fix",
    "q": "One step in this wallet setup is wrong.",
    "code": [
-    "create a new wallet only for the course",
     "send real ETH from an exchange to test the labs",
-    "install MetaMask from the official site",
-    "add the Sepolia network"
+    "add the Sepolia network",
+    "create a new wallet only for the course",
+    "install MetaMask from the official site"
    ],
-   "bad": 1,
+   "bad": 0,
    "o": [
     "get free Sepolia ETH from a faucet",
     "buy a hardware wallet first",
@@ -3390,6 +6826,92 @@
     "Check the transaction on Sepolia Etherscan"
    ],
    "e": "Wallet, network, test ETH, transaction, then verify on the explorer."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the course setting.",
+   "code": "real money in the course wallet = ____",
+   "o": [
+    "0",
+    "0.05 ETH",
+    "as little as possible",
+    "only for gas"
+   ],
+   "a": 0,
+   "e": "The course wallet never holds real money."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what EIP-7702 (Pectra, May 2025) lets a normal account do.",
+   "code": "EOA can temporarily act as a ____",
+   "o": [
+    "smart account (batch calls, spending rules, sponsored gas)",
+    "validator",
+    "mining pool",
+    "bridge"
+   ],
+   "a": 0,
+   "e": "EIP-7702 lets an EOA use smart-account features."
+  },
+  {
+   "t": "fix",
+   "q": "One line about wallets is wrong.",
+   "code": [
+    "a hardware wallet signs inside a separate device",
+    "a browser wallet is as safe as a hardware wallet for real money",
+    "a wallet holds keys, not coins",
+    "a custodial exchange wallet means the exchange holds the keys"
+   ],
+   "bad": 1,
+   "o": [
+    "a browser wallet is more exposed to malware",
+    "a browser wallet cannot sign",
+    "a hardware wallet holds coins"
+   ],
+   "a": 0,
+   "e": "Keys on a general-purpose computer face more risks."
+  },
+  {
+   "t": "fix",
+   "q": "One line about testnets is wrong.",
+   "code": [
+    "test ETH can be sold for euros",
+    "Hoodi is used for validator and staking tests",
+    "Sepolia is the standard testnet for applications",
+    "test ETH comes from faucets"
+   ],
+   "bad": 0,
+   "o": [
+    "test ETH has no value",
+    "test ETH becomes real after a year",
+    "test ETH is only for validators"
+   ],
+   "a": 0,
+   "e": "Offers to buy or sell test ETH are scams."
+  },
+  {
+   "t": "order",
+   "q": "Order a safe wallet setup for the course.",
+   "steps": [
+    "Install MetaMask from the official site",
+    "Create a new wallet just for the course",
+    "Write the recovery phrase on paper",
+    "Switch to the Sepolia network",
+    "Get test ETH from a faucet"
+   ],
+   "e": "Install, create, back up, then use the testnet."
+  },
+  {
+   "t": "order",
+   "q": "Order what you see when you send 0.001 SepoliaETH.",
+   "steps": [
+    "MetaMask shows the amount and the fee",
+    "You confirm",
+    "The transaction is pending",
+    "It appears in a block",
+    "Etherscan shows Success"
+   ],
+   "e": "Confirm, pending, included, visible."
   }
  ],
  "nodes-and-providers": [
@@ -3444,8 +6966,8 @@
    "q": "One line about node types is wrong.",
    "code": [
     "a full node checks every block and keeps the recent state",
-    "a light client checks block headers and asks others for data",
     "an archive node also keeps all historical states",
+    "a light client checks block headers and asks others for data",
     "an RPC provider such as Infura must hold your private key"
    ],
    "bad": 3,
@@ -3468,6 +6990,91 @@
     "The node broadcasts it to the network"
    ],
    "e": "The dApp prepares, the wallet signs, the node broadcasts."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the two programs of an Ethereum node.",
+   "code": "execution client: runs transactions (e.g. Geth)\nconsensus client: follows Proof of Stake (e.g. ____)",
+   "o": [
+    "Lighthouse",
+    "MetaMask",
+    "Etherscan",
+    "Remix"
+   ],
+   "a": 0,
+   "e": "Lighthouse, Prysm, Teku, Nimbus, Lodestar and Grandine are consensus clients."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the JSON-RPC method that sends a signed transaction.",
+   "code": "provider.call(\"____\", [signedTxHex])",
+   "o": [
+    "eth_sendRawTransaction",
+    "eth_getBalance",
+    "eth_call",
+    "eth_blockNumber"
+   ],
+   "a": 0,
+   "e": "eth_sendRawTransaction forwards already-signed bytes."
+  },
+  {
+   "t": "fix",
+   "q": "One line about client diversity is wrong.",
+   "code": [
+    "no client should have more than one third of validators",
+    "several clients implement the same protocol",
+    "it is safest if everyone runs the most popular client",
+    "a bug in one client should not affect most validators"
+   ],
+   "bad": 2,
+   "o": [
+    "it is safest if validators spread across clients",
+    "client choice does not matter",
+    "only one client exists"
+   ],
+   "a": 0,
+   "e": "A majority client bug could split the chain or stop finality."
+  },
+  {
+   "t": "fix",
+   "q": "One line about RPC providers is wrong.",
+   "code": [
+    "providers answer read requests for many apps",
+    "they can change your signed transaction without anyone noticing",
+    "they could delay or refuse to forward a transaction",
+    "they can see which addresses you look up"
+   ],
+   "bad": 1,
+   "o": [
+    "a change would break the signature",
+    "they can spend from your account",
+    "they hold your key"
+   ],
+   "a": 0,
+   "e": "Signed data cannot be altered without invalidating the signature."
+  },
+  {
+   "t": "order",
+   "q": "Order a balance lookup in MetaMask.",
+   "steps": [
+    "MetaMask sends eth_getBalance to the provider",
+    "The provider's node reads the account in its state",
+    "The node returns the balance in wei",
+    "MetaMask converts wei to ETH",
+    "MetaMask shows the balance"
+   ],
+   "e": "Request, lookup, answer in wei, convert, show."
+  },
+  {
+   "t": "order",
+   "q": "Order from least to most trust in someone else's node.",
+   "steps": [
+    "Run your own full node",
+    "Run a light client that checks proofs",
+    "Use two independent RPC providers and compare",
+    "Use one RPC provider"
+   ],
+   "e": "The more you verify yourself, the less you trust others."
   }
  ],
  "toolchain": [
@@ -3510,12 +7117,12 @@
    "t": "fix",
    "q": "One line in this tool map is wrong.",
    "code": [
-    "Remix: browser IDE for writing and deploying",
     "Foundry: command-line testing and scripting",
     "Etherscan: compiles your contract locally",
-    "Hardhat: JavaScript-based development environment"
+    "Hardhat: JavaScript-based development environment",
+    "Remix: browser IDE for writing and deploying"
    ],
-   "bad": 2,
+   "bad": 1,
    "o": [
     "Etherscan: block explorer that shows and verifies contracts",
     "Etherscan: a wallet",
@@ -3535,6 +7142,91 @@
     "Verify the source on Etherscan"
    ],
    "e": "Code, tests, local run, testnet deployment, verification."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Foundry tool for talking to a chain from the command line.",
+   "code": "$ ____ call <address> \"price()(uint256)\" --rpc-url $SEPOLIA",
+   "o": [
+    "cast",
+    "forge",
+    "anvil",
+    "chisel only"
+   ],
+   "a": 0,
+   "e": "cast sends calls and transactions; forge builds and tests; anvil runs a local chain."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the step that lets users read deployed code.",
+   "code": "deploy -> ____ on Etherscan -> users read the source",
+   "o": [
+    "verify",
+    "pin",
+    "burn",
+    "mint"
+   ],
+   "a": 0,
+   "e": "Verification matches source and bytecode."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this team workflow is unsafe.",
+   "code": [
+    "work on a Git branch",
+    "commit the deployer's private key in .env to GitHub",
+    "open a pull request for review",
+    "run forge test before each push"
+   ],
+   "bad": 1,
+   "o": [
+    "keep keys in an encrypted keystore, never in Git",
+    "commit the key in a private repo",
+    "paste the key in the README"
+   ],
+   "a": 0,
+   "e": "Leaked keys are drained within minutes."
+  },
+  {
+   "t": "fix",
+   "q": "One tool is matched to the wrong job.",
+   "code": [
+    "forge: compile and test",
+    "cast: send calls and transactions",
+    "Etherscan: run unit tests for your contract",
+    "anvil: run a local chain"
+   ],
+   "bad": 2,
+   "o": [
+    "Etherscan: explore and verify deployed contracts",
+    "Etherscan: compile Rust",
+    "Etherscan: host your front end"
+   ],
+   "a": 0,
+   "e": "Etherscan is an explorer."
+  },
+  {
+   "t": "order",
+   "q": "Order a change from idea to testnet.",
+   "steps": [
+    "Create a branch",
+    "Change the code and tests",
+    "Run the tests locally",
+    "Get a review and merge",
+    "Deploy and verify on Sepolia with a script"
+   ],
+   "e": "Branch, change, test, review, deploy."
+  },
+  {
+   "t": "order",
+   "q": "Order the tools from most beginner-friendly to most professional for a team.",
+   "steps": [
+    "Remix in the browser",
+    "Remix with GitHub sync",
+    "Foundry or Hardhat project with Git",
+    "Framework plus CI, static analysis and scripted deployment"
+   ],
+   "e": "Each step adds repeatability and review."
   }
  ],
  "testing-contracts": [
@@ -3612,6 +7304,91 @@
     "Repeat for the failure case"
    ],
    "e": "Arrange, act, assert, and always test what must fail."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the invariant for the Escrow.",
+   "code": "invariant: address(escrow).balance == 0 || address(escrow).balance == ____",
+   "o": [
+    "price",
+    "2 * price",
+    "1 wei",
+    "buyer.balance"
+   ],
+   "a": 0,
+   "e": "The escrow holds either nothing or exactly the price."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the test type that tries hundreds of random inputs.",
+   "code": "function testFuzz_Deposit(uint256 amount) public { ... }\n// type: ____",
+   "o": [
+    "fuzz test",
+    "unit test",
+    "fork test",
+    "manual test"
+   ],
+   "a": 0,
+   "e": "A parameter in the test makes Foundry fuzz it."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this test is wrong.",
+   "code": [
+    "function test_ArbiterRefunds() public {",
+    "    vm.prank(buyer); escrow.deposit{value: 1 ether}();",
+    "    vm.prank(seller); escrow.refund();",
+    "    assertEq(uint(escrow.state()), uint(Escrow.State.Refunded));",
+    "}"
+   ],
+   "bad": 2,
+   "o": [
+    "    vm.prank(arbiter); escrow.refund();",
+    "    vm.prank(buyer); escrow.refund();",
+    "    escrow.refund{value: 1 ether}();"
+   ],
+   "a": 0,
+   "e": "Only the arbiter can refund; as the seller the call reverts and the test fails."
+  },
+  {
+   "t": "fix",
+   "q": "One claim about testing is wrong.",
+   "code": [
+    "100% line coverage proves the contract is correct",
+    "happy paths check that normal use works",
+    "invariants check rules after any sequence",
+    "failure tests check forbidden actions revert"
+   ],
+   "bad": 0,
+   "o": [
+    "coverage shows which lines ran, not that rules are right",
+    "coverage proves gas is low",
+    "coverage replaces audits"
+   ],
+   "a": 0,
+   "e": "Coverage is a hint, not a proof."
+  },
+  {
+   "t": "order",
+   "q": "Order the derivation of tests from a clause.",
+   "steps": [
+    "Read the clause",
+    "Mark each “only”, “after” and “at most”",
+    "Write one happy-path test",
+    "Write one failure test per condition",
+    "Write one invariant for the money"
+   ],
+   "e": "From legal words to tests."
+  },
+  {
+   "t": "order",
+   "q": "Order the four test techniques from narrowest to broadest.",
+   "steps": [
+    "Unit test with chosen inputs",
+    "Fuzz test with random inputs for one function",
+    "Invariant test with random sequences of calls"
+   ],
+   "e": "Each step covers more of the real world."
   }
  ],
  "lab-foundry-test": [
@@ -3679,6 +7456,92 @@
     "Run forge test and read the results"
    ],
    "e": "Install, init, add the contract, write tests, run."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Foundry cheat code that sets the next caller.",
+   "code": "vm.____(buyer);\nescrow.deposit{value: 1 ether}();",
+   "o": [
+    "prank",
+    "warp",
+    "deal",
+    "roll"
+   ],
+   "a": 0,
+   "e": "prank sets msg.sender for the next call; warp changes time; deal sets balances."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the test setup that gives the buyer ETH.",
+   "code": "function setUp() public {\n    escrow = new Escrow(seller, arbiter, 1 ether);\n    vm.____(buyer, 10 ether);\n}",
+   "o": [
+    "deal",
+    "prank",
+    "expectRevert",
+    "label"
+   ],
+   "a": 0,
+   "e": "deal sets an address's balance in the test."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this revert test is wrong.",
+   "code": [
+    "function test_SellerCannotConfirm() public {",
+    "    vm.prank(buyer); escrow.deposit{value: 1 ether}();",
+    "    escrow.confirmDelivery();",
+    "    vm.expectRevert(\"Only buyer or arbiter\");",
+    "}"
+   ],
+   "bad": 2,
+   "o": [
+    "    vm.expectRevert(\"Only buyer or arbiter\"); vm.prank(seller); escrow.confirmDelivery();",
+    "    vm.prank(arbiter); escrow.confirmDelivery();",
+    "    delete this line"
+   ],
+   "a": 0,
+   "e": "expectRevert must come before the call, and the call must be made as the seller."
+  },
+  {
+   "t": "fix",
+   "q": "One expectation about forge test output is wrong.",
+   "code": [
+    "[PASS] lines for passing tests",
+    "[PASS] means the contract is audited",
+    "[FAIL] lines with the reason for failures",
+    "a gas number for each test"
+   ],
+   "bad": 1,
+   "o": [
+    "[PASS] means only that this test's assertions held",
+    "[PASS] means it is deployed",
+    "[PASS] means it has no bugs"
+   ],
+   "a": 0,
+   "e": "Tests check what you wrote, nothing more."
+  },
+  {
+   "t": "order",
+   "q": "Order a Foundry revert test.",
+   "steps": [
+    "Deposit as the buyer",
+    "Set the caller to the seller and expect the revert message",
+    "Call confirmDelivery",
+    "Run forge test and see [PASS]"
+   ],
+   "e": "Set up, expect, act, run."
+  },
+  {
+   "t": "order",
+   "q": "Order the Foundry lab setup.",
+   "steps": [
+    "Install with foundryup",
+    "forge init the project",
+    "Remove the Counter samples",
+    "Copy the Escrow into src/",
+    "forge build"
+   ],
+   "e": "Install, init, clean, add, build."
   }
  ],
  "audits-and-analysis": [
@@ -3732,12 +7595,12 @@
    "t": "fix",
    "q": "One line in this audit plan is wrong.",
    "code": [
-    "run a static analyser such as Slither",
     "an audit proves the contract has no bugs",
+    "read the specification and the code",
     "write tests for each risk",
-    "read the specification and the code"
+    "run a static analyser such as Slither"
    ],
-   "bad": 1,
+   "bad": 0,
    "o": [
     "an audit lowers risk but cannot prove there are no bugs",
     "an audit replaces testing",
@@ -3757,6 +7620,92 @@
     "Report findings with severity and a fix"
    ],
    "e": "Understand intent, map access, use tools, test attacks, report."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the tool category.",
+   "code": "Slither, Aderyn -> ____ analysis (fast pattern scans)",
+   "o": [
+    "static",
+    "dynamic",
+    "manual",
+    "economic"
+   ],
+   "a": 0,
+   "e": "Static analysers read the code without running it."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the audit finding.",
+   "code": "Title: Owner can drain user deposits\nSeverity: ____\nFix: remove the function or put it behind a timelock",
+   "o": [
+    "High or Critical",
+    "Informational",
+    "Gas",
+    "Low"
+   ],
+   "a": 0,
+   "e": "Loss of user funds is high or critical."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this audit process is wrong.",
+   "code": [
+    "auditors review and report findings",
+    "the team fixes and the auditors re-check the fixes",
+    "the team adds new features after the audit and deploys them unreviewed",
+    "freeze the code version to audit"
+   ],
+   "bad": 2,
+   "o": [
+    "new code needs a new review",
+    "new features need no tests",
+    "the audit covers future code"
+   ],
+   "a": 0,
+   "e": "An audit covers one version."
+  },
+  {
+   "t": "fix",
+   "q": "One claim about AI tools is wrong (2025 research).",
+   "code": [
+    "LLMs alone reliably replace Slither and auditors",
+    "hybrids of LLMs and classic tools work best",
+    "LLMs help explain code",
+    "LLMs can propose vulnerability hypotheses"
+   ],
+   "bad": 0,
+   "o": [
+    "LLMs are not yet reliable enough alone; confirm with tests",
+    "LLMs cannot read Solidity",
+    "LLMs are banned in audits"
+   ],
+   "a": 0,
+   "e": "Every AI finding needs confirmation."
+  },
+  {
+   "t": "order",
+   "q": "Order a security programme for a launch.",
+   "steps": [
+    "Internal tests and static analysis",
+    "External audit",
+    "Fix findings and re-review",
+    "Launch with caps and a pause switch",
+    "Raise the caps after weeks without incidents"
+   ],
+   "e": "Layers of defence before and after launch."
+  },
+  {
+   "t": "order",
+   "q": "Order the parts of an audit finding.",
+   "steps": [
+    "Title",
+    "Severity",
+    "Description and impact",
+    "Recommended fix",
+    "Team response"
+   ],
+   "e": "What, how bad, why, how to fix, what was done."
   }
  ],
  "upgrades-and-operations": [
@@ -3810,12 +7759,12 @@
    "t": "fix",
    "q": "One line in this upgrade policy is risky.",
    "code": [
-    "one developer key can upgrade at once in an emergency",
     "users can exit during the timelock",
     "every upgrade waits 48 hours in a timelock",
-    "upgrades need a 3-of-5 multisig"
+    "upgrades need a 3-of-5 multisig",
+    "one developer key can upgrade at once in an emergency"
    ],
-   "bad": 0,
+   "bad": 3,
    "o": [
     "a pause switch for emergencies, upgrades still through the multisig",
     "remove the timelock",
@@ -3835,6 +7784,92 @@
     "Execute the upgrade and verify the new code"
    ],
    "e": "Test, review, propose, wait, execute."
+  },
+  {
+   "t": "fill",
+   "q": "Complete how a proxy runs the implementation's code on its own storage.",
+   "code": "proxy fallback: ____(implementation, msg.data)",
+   "o": [
+    "delegatecall",
+    "call",
+    "staticcall",
+    "selfdestruct"
+   ],
+   "a": 0,
+   "e": "delegatecall runs the other contract's code in the proxy's storage context."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the rule for a safe upgrade of storage.",
+   "code": "new implementation: keep old variables in the same order,\nadd new variables ____",
+   "o": [
+    "only at the end",
+    "at the top",
+    "anywhere",
+    "in a second proxy"
+   ],
+   "a": 0,
+   "e": "Changing the order shifts storage slots and corrupts data."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this storage layout upgrade is wrong.",
+   "code": [
+    "// v1: address owner; uint256 total;",
+    "// v2 below",
+    "uint256 fee;          // new",
+    "address owner;",
+    "uint256 total;"
+   ],
+   "bad": 2,
+   "o": [
+    "move uint256 fee; below uint256 total;",
+    "delete owner",
+    "rename total"
+   ],
+   "a": 0,
+   "e": "New variables must go after the existing ones."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this admin setup is risky.",
+   "code": [
+    "upgrades wait 48 hours in a timelock",
+    "a pause role can stop deposits quickly",
+    "the upgrade role sits in a 3-of-5 multisig",
+    "a single developer key can also upgrade instantly"
+   ],
+   "bad": 3,
+   "o": [
+    "remove the single-key upgrade path",
+    "make every user an admin",
+    "remove the pause role"
+   ],
+   "a": 0,
+   "e": "One key that can bypass the timelock defeats it."
+  },
+  {
+   "t": "order",
+   "q": "Order the parts of a safe upgrade.",
+   "steps": [
+    "Write the new implementation",
+    "Test it on a mainnet fork",
+    "Check the storage layout",
+    "Propose in the multisig and wait for the timelock",
+    "Execute and verify the new code"
+   ],
+   "e": "Test, check, govern, execute, verify."
+  },
+  {
+   "t": "order",
+   "q": "Order a user's view of an announced upgrade.",
+   "steps": [
+    "See the upgrade proposal on chain",
+    "Read the new code during the timelock",
+    "Decide to stay or withdraw",
+    "The upgrade executes after the timelock"
+   ],
+   "e": "The timelock gives users time to decide."
   }
  ],
  "dapp-architecture": [
@@ -3877,9 +7912,9 @@
    "t": "fix",
    "q": "One line about dApps is wrong.",
    "code": [
-    "the front end is often a normal website",
-    "the website is as trustless as the contract",
     "the website can be changed or blocked",
+    "the website is as trustless as the contract",
+    "the front end is often a normal website",
     "the contract logic runs on chain"
    ],
    "bad": 1,
@@ -3902,6 +7937,91 @@
     "The front end reads the event and updates"
    ],
    "e": "Read, build, sign, include, update."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what reads cost in a dApp.",
+   "code": "reading state() through eth_call: ____",
+   "o": [
+    "free, no transaction",
+    "gas paid by the user",
+    "gas paid by the provider",
+    "a signature"
+   ],
+   "a": 0,
+   "e": "Calls are free reads; only transactions cost gas."
+  },
+  {
+   "t": "fill",
+   "q": "Complete where many teams host the front end to avoid a single server.",
+   "code": "front end on ____, reachable through any gateway",
+   "o": [
+    "IPFS",
+    "the smart contract storage",
+    "MetaMask",
+    "the RPC provider"
+   ],
+   "a": 0,
+   "e": "IPFS hosting lets anyone serve the same files."
+  },
+  {
+   "t": "fix",
+   "q": "One line about dApp layers is wrong.",
+   "code": [
+    "the front end prepares transactions",
+    "the front end can sign for the user without asking",
+    "the wallet asks the user to sign",
+    "contracts hold the rules and the money"
+   ],
+   "bad": 1,
+   "o": [
+    "only the wallet can sign, after the user confirms",
+    "the provider signs",
+    "the indexer signs"
+   ],
+   "a": 0,
+   "e": "Keys stay in the wallet."
+  },
+  {
+   "t": "fix",
+   "q": "One step in this pay flow is wrong.",
+   "code": [
+    "prepare deposit() with value = price",
+    "wallet shows the call and the user confirms",
+    "the app shows Complete before the transaction is included",
+    "read price() from the contract"
+   ],
+   "bad": 2,
+   "o": [
+    "show Pending until the receipt arrives",
+    "show Complete before signing",
+    "skip the receipt"
+   ],
+   "a": 0,
+   "e": "Only a receipt proves inclusion."
+  },
+  {
+   "t": "order",
+   "q": "Order a write action in a dApp.",
+   "steps": [
+    "Read the current state",
+    "Build the transaction",
+    "The wallet asks for confirmation",
+    "The transaction is sent and included",
+    "The app reads the event and updates"
+   ],
+   "e": "Read, build, sign, include, update."
+  },
+  {
+   "t": "order",
+   "q": "Order what to do if the official website is down.",
+   "steps": [
+    "Find the contract address from a trusted source",
+    "Open it on Etherscan",
+    "Check the source is verified",
+    "Use Write Contract to call the function"
+   ],
+   "e": "The contract still works without the website."
   }
  ],
  "oracles": [
@@ -3955,12 +8075,12 @@
    "t": "fix",
    "q": "One line makes this oracle design fragile.",
    "code": [
-    "reject values older than one hour",
-    "trust one price from one exchange in the same block",
     "use several independent data sources",
-    "take the median value"
+    "reject values older than one hour",
+    "take the median value",
+    "trust one price from one exchange in the same block"
    ],
-   "bad": 1,
+   "bad": 3,
    "o": [
     "use a decentralised feed or a time-weighted average",
     "use the highest price",
@@ -3980,6 +8100,92 @@
     "Your contract reads the latest value"
    ],
    "e": "Fetch, report, aggregate, store, read."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the stale-price check.",
+   "code": "(price, updatedAt) = feed.latest()\nrequire(block.timestamp - updatedAt <= ____, \"Stale\")",
+   "o": [
+    "the feed's heartbeat, e.g. 1 hours",
+    "0",
+    "1 years",
+    "updatedAt"
+   ],
+   "a": 0,
+   "e": "Reject prices older than the feed's update interval."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the optimistic oracle rule.",
+   "code": "answer accepted unless disputed within ____ (with a bond)",
+   "o": [
+    "a challenge period",
+    "one block",
+    "one second",
+    "never"
+   ],
+   "a": 0,
+   "e": "Disputers must post a bond during the window."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this price logic is unsafe.",
+   "code": [
+    "reject moves above 20% from the last price",
+    "read price from a decentralised feed",
+    "fall back to the spot price of one small pool",
+    "reject prices older than the heartbeat"
+   ],
+   "bad": 2,
+   "o": [
+    "pause instead of using a manipulable source",
+    "use the highest price seen",
+    "use a price from social media"
+   ],
+   "a": 0,
+   "e": "The fallback reintroduces the manipulation risk."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of the oracle problem is wrong.",
+   "code": [
+    "wrong input gives wrong results from correct code",
+    "contracts cannot fetch web data themselves",
+    "a decentralised oracle guarantees the data is true",
+    "an oracle brings outside facts on chain"
+   ],
+   "bad": 2,
+   "o": [
+    "it makes manipulation hard; sources can still be wrong",
+    "it makes data private",
+    "it removes all fees"
+   ],
+   "a": 0,
+   "e": "Decentralisation reduces, not removes, trust."
+  },
+  {
+   "t": "order",
+   "q": "Order the steps of a flash-loan oracle attack.",
+   "steps": [
+    "Borrow a large amount",
+    "Move the price in a small pool",
+    "Use the wrong price in the victim protocol",
+    "Swap back and repay the loan",
+    "Keep the profit"
+   ],
+   "e": "All in one transaction."
+  },
+  {
+   "t": "order",
+   "q": "Order a weather insurance payout.",
+   "steps": [
+    "Farmer buys a policy on chain",
+    "The season ends",
+    "The oracle reports rainfall",
+    "The contract compares it with the threshold",
+    "The contract pays if the rule is met"
+   ],
+   "e": "Data in, rule applied, payment out."
   }
  ],
  "decentralised-storage": [
@@ -4033,8 +8239,8 @@
    "t": "fix",
    "q": "One line is wrong for personal data under GDPR.",
    "code": [
-    "keep the right to delete the off-chain copy",
     "store a hash of the document on chain",
+    "keep the right to delete the off-chain copy",
     "store the document itself off chain",
     "store the person's full name and address on chain"
    ],
@@ -4058,6 +8264,91 @@
     "Mint the token with tokenURI = ipfs://<metadata CID>"
    ],
    "e": "Image first, then metadata pointing to it, then the token pointing to the metadata."
+  },
+  {
+   "t": "fill",
+   "q": "Complete what keeps an IPFS file available.",
+   "code": "someone must ____ the file",
+   "o": [
+    "pin",
+    "burn",
+    "mint",
+    "hash twice"
+   ],
+   "a": 0,
+   "e": "Unpinned files can disappear."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the NFT metadata link.",
+   "code": "tokenURI = \"ipfs://\" + ____",
+   "o": [
+    "the CID of the metadata JSON",
+    "the image file name",
+    "the owner",
+    "the token ID"
+   ],
+   "a": 0,
+   "e": "The metadata JSON points to the image CID."
+  },
+  {
+   "t": "fix",
+   "q": "One line about storage options is wrong.",
+   "code": [
+    "IPFS: content-addressed, needs pinning",
+    "a normal web server: the file can never change",
+    "Filecoin: paid storage with proofs",
+    "Arweave: pay once for permanent storage"
+   ],
+   "bad": 1,
+   "o": [
+    "a normal web server: the owner can change the file behind the URL",
+    "a web server is on chain",
+    "a web server is content-addressed"
+   ],
+   "a": 0,
+   "e": "Location-based URLs do not fix the content."
+  },
+  {
+   "t": "fix",
+   "q": "One line in this GDPR design is wrong.",
+   "code": [
+    "the hash uses a random salt",
+    "encrypted personal data on chain is always allowed",
+    "names and addresses stay in a database that can delete",
+    "only a hash goes on chain"
+   ],
+   "bad": 1,
+   "o": [
+    "avoid personal data on chain, even encrypted",
+    "store names on IPFS",
+    "store data in events"
+   ],
+   "a": 0,
+   "e": "Encryption can be broken later and the key holder can identify people."
+  },
+  {
+   "t": "order",
+   "q": "Order publishing an NFT certificate.",
+   "steps": [
+    "Upload the image to IPFS",
+    "Write metadata JSON with the image CID",
+    "Upload the metadata and get its CID",
+    "Mint with tokenURI = ipfs://<metadata CID>",
+    "Pin both files"
+   ],
+   "e": "Image, metadata, mint, keep available."
+  },
+  {
+   "t": "order",
+   "q": "Order from easiest to change to hardest to change.",
+   "steps": [
+    "File on a normal web server",
+    "File on IPFS (new version = new CID)",
+    "File on Arweave",
+    "Data in Ethereum contract storage"
+   ],
+   "e": "Content addressing and permanence reduce what can change."
   }
  ],
  "channels-sidechains-bridges": [
@@ -4136,6 +8427,91 @@
     "The contract pays out the final balances"
    ],
    "e": "Open on chain, trade off chain, close on chain."
+  },
+  {
+   "t": "fill",
+   "q": "Complete how a payment channel closes.",
+   "code": "submit the ____ signed balance update on chain",
+   "o": [
+    "latest",
+    "first",
+    "random",
+    "unsigned"
+   ],
+   "a": 0,
+   "e": "The latest state counts; old states can be challenged."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the return trip of a lock-and-mint bridge.",
+   "code": "burn wrapped tokens on chain B -> ____ on chain A",
+   "o": [
+    "unlock the originals",
+    "mint more",
+    "burn the originals",
+    "nothing"
+   ],
+   "a": 0,
+   "e": "Burning the copy releases the original."
+  },
+  {
+   "t": "fix",
+   "q": "One line about sidechains is wrong.",
+   "code": [
+    "a sidechain has its own validators",
+    "it is usually cheap and fast",
+    "it inherits Ethereum's security like a rollup",
+    "it is connected to Ethereum by a bridge"
+   ],
+   "bad": 2,
+   "o": [
+    "its security depends on its own validators",
+    "it is secured by Bitcoin",
+    "it has no security"
+   ],
+   "a": 0,
+   "e": "That is the key difference to rollups."
+  },
+  {
+   "t": "fix",
+   "q": "One line about bridge risk is wrong.",
+   "code": [
+    "the vault holds many users' locked funds",
+    "a few signers often control releases",
+    "Ronin (2022) lost about $600 million",
+    "a bridge hack cannot affect the wrapped tokens' value"
+   ],
+   "bad": 3,
+   "o": [
+    "unbacked wrapped tokens lose value",
+    "wrapped tokens double",
+    "wrapped tokens convert back automatically"
+   ],
+   "a": 0,
+   "e": "Wrapped tokens depend on the vault."
+  },
+  {
+   "t": "order",
+   "q": "Order a payment channel's life.",
+   "steps": [
+    "Both parties lock funds on chain",
+    "They exchange signed updates off chain",
+    "Each new update replaces the previous one",
+    "One party submits the latest update",
+    "The contract pays out the balances"
+   ],
+   "e": "Open, update, close."
+  },
+  {
+   "t": "order",
+   "q": "Order the Ronin-style bridge hack.",
+   "steps": [
+    "Attackers obtain enough validator keys",
+    "They sign fake withdrawal messages",
+    "The bridge releases the locked funds",
+    "Wrapped tokens on the other chain lose their backing"
+   ],
+   "e": "Key compromise drains the vault."
   }
  ],
  "defi": [
@@ -4214,6 +8590,92 @@
     "Repay the flash loan in the same transaction"
    ],
    "e": "Everything happens in one transaction. The defence is robust oracles."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the swap in a pool with 100 ETH and 300,000 USDC after selling 10 ETH (no fee).",
+   "code": "k = 100 * 300,000 = 30,000,000\nnew USDC reserve = 30,000,000 / 110 = 272,727\ntrader receives = ____",
+   "o": [
+    "27,273 USDC",
+    "30,000 USDC",
+    "272,727 USDC",
+    "3,000 USDC"
+   ],
+   "a": 0,
+   "e": "300,000 − 272,727 = 27,273 USDC, an average below the starting price (slippage)."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the liquidation rule.",
+   "code": "if loan > collateral_value * ____:\n    liquidate(position)",
+   "o": [
+    "the loan-to-value limit, e.g. 0.75",
+    "2",
+    "0",
+    "the ETH price"
+   ],
+   "a": 0,
+   "e": "Positions above the limit are liquidated to protect lenders."
+  },
+  {
+   "t": "fix",
+   "q": "One line about stablecoins is wrong.",
+   "code": [
+    "fiat-backed: reserves held by an issuer",
+    "crypto-backed: over-collateralised by other tokens",
+    "algorithmic: held by incentives; TerraUSD failed in 2022",
+    "fiat-backed coins can never lose their peg"
+   ],
+   "bad": 3,
+   "o": [
+    "they depend on the issuer's reserves and redemptions",
+    "they are backed by gold only",
+    "they have no issuer"
+   ],
+   "a": 0,
+   "e": "USDC briefly depegged in March 2023 when part of its reserves sat in a failing bank."
+  },
+  {
+   "t": "fix",
+   "q": "One line about MEV is wrong.",
+   "code": [
+    "MEV only exists on Bitcoin",
+    "sandwich bots buy before and sell after a large swap",
+    "MEV is profit from ordering transactions",
+    "users can reduce it with slippage limits and private order flow"
+   ],
+   "bad": 0,
+   "o": [
+    "MEV exists wherever block builders order transactions",
+    "MEV was removed by the Merge",
+    "MEV is a token"
+   ],
+   "a": 0,
+   "e": "MEV is a central topic on Ethereum and its rollups."
+  },
+  {
+   "t": "order",
+   "q": "Order a sandwich attack.",
+   "steps": [
+    "A user sends a large swap to the mempool",
+    "A bot sees it",
+    "The bot buys first, raising the price",
+    "The user's swap executes at the worse price",
+    "The bot sells right after"
+   ],
+   "e": "Front-run, victim, back-run."
+  },
+  {
+   "t": "order",
+   "q": "Order borrowing on a lending protocol.",
+   "steps": [
+    "Deposit collateral",
+    "Borrow up to the limit",
+    "The collateral price falls",
+    "The position crosses the liquidation threshold",
+    "A liquidator repays part and takes collateral"
+   ],
+   "e": "Collateral, loan, price drop, liquidation."
   }
  ],
  "daos-and-governance": [
@@ -4267,12 +8729,12 @@
    "t": "fix",
    "q": "One line in this DAO design is risky.",
    "code": [
+    "passed proposals wait in a timelock",
     "votes are weighted by tokens held at a snapshot block",
     "votes count tokens borrowed in the same block",
-    "members can exit during the timelock",
-    "passed proposals wait in a timelock"
+    "members can exit during the timelock"
    ],
-   "bad": 1,
+   "bad": 2,
    "o": [
     "count tokens held at an earlier snapshot block",
     "count only the founder's votes",
@@ -4292,6 +8754,92 @@
     "The proposal executes on chain"
    ],
    "e": "Propose, vote, wait, execute."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the defence against flash-loan voting.",
+   "code": "votingPower(member) = balanceAt(member, ____)",
+   "o": [
+    "the snapshot block when the proposal was created",
+    "the current block",
+    "the next block",
+    "any block the member picks"
+   ],
+   "a": 0,
+   "e": "Past balances cannot be borrowed in the voting transaction."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the DAO rule that gives members time to leave.",
+   "code": "passed proposal -> ____ -> execute",
+   "o": [
+    "timelock",
+    "airdrop",
+    "new vote",
+    "bridge"
+   ],
+   "a": 0,
+   "e": "A timelock delays execution after a vote passes."
+  },
+  {
+   "t": "fix",
+   "q": "One rule in this student-club DAO is risky.",
+   "code": [
+    "quorum of 30% of tokens",
+    "voting power from a snapshot block",
+    "proposals can execute in the same block they are created",
+    "2-day timelock before execution"
+   ],
+   "bad": 2,
+   "o": [
+    "proposals need a voting period and timelock",
+    "proposals skip the quorum",
+    "proposals execute before voting"
+   ],
+   "a": 0,
+   "e": "Same-block execution enabled the Beanstalk attack."
+  },
+  {
+   "t": "fix",
+   "q": "One legal statement is wrong.",
+   "code": [
+    "legal wrappers include foundations and associations",
+    "an unregistered DAO can be treated as a partnership",
+    "token holders are never liable under any law",
+    "members may then be personally liable"
+   ],
+   "bad": 2,
+   "o": [
+    "liability depends on the law and structure",
+    "only developers are liable",
+    "DAOs cannot be sued"
+   ],
+   "a": 0,
+   "e": "Ooki DAO and Sarcuni v. bZx (2023) show liability risk."
+  },
+  {
+   "t": "order",
+   "q": "Order the Beanstalk attack (2022).",
+   "steps": [
+    "Take a flash loan of governance-relevant tokens",
+    "Gain a majority of votes",
+    "Pass a malicious proposal",
+    "Execute it to send treasury funds to the attacker",
+    "Repay the flash loan"
+   ],
+   "e": "All in one transaction because there was no delay."
+  },
+  {
+   "t": "order",
+   "q": "Order a delegated governance cycle.",
+   "steps": [
+    "Members delegate votes to a representative",
+    "The delegate studies the proposal",
+    "The delegate votes",
+    "The proposal passes or fails",
+    "Members can change their delegate"
+   ],
+   "e": "Delegation keeps voting power active."
   }
  ],
  "smart-legal-contracts": [
@@ -4346,11 +8894,11 @@
    "q": "One line about smart legal contracts is wrong.",
    "code": [
     "the legal text stays readable for people",
+    "a smart legal contract is a legal contract with parts in code",
     "the data model links variables to code",
-    "the code always overrides the written terms",
-    "a smart legal contract is a legal contract with parts in code"
+    "the code always overrides the written terms"
    ],
-   "bad": 2,
+   "bad": 3,
    "o": [
     "the parties agree which prevails; often the text does",
     "the code has no legal effect at all",
@@ -4370,6 +8918,90 @@
     "Both parties sign"
    ],
    "e": "Text, model, data, logic, signatures."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the priority clause.",
+   "code": "\"In case of conflict between this text and the code, ____ prevails.\" ",
+   "o": [
+    "the text (as the parties choose)",
+    "the gas price",
+    "the blockchain",
+    "nobody"
+   ],
+   "a": 0,
+   "e": "The parties should decide in writing."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Accord Project parts.",
+   "code": "template = text (TemplateMark) + model (Concerto) + ____",
+   "o": [
+    "logic",
+    "blockchain",
+    "wallet",
+    "gas"
+   ],
+   "a": 0,
+   "e": "Data fills the variables for each deal."
+  },
+  {
+   "t": "fix",
+   "q": "One line about the UK Law Commission forms is wrong.",
+   "code": [
+    "hybrid: some terms in text, some in code",
+    "code-only: the code is the whole agreement",
+    "code-only contracts are always invalid in England",
+    "natural-language: text is the contract, code performs"
+   ],
+   "bad": 2,
+   "o": [
+    "English law can support them, with practical challenges",
+    "they are mandatory",
+    "they are only for banks"
+   ],
+   "a": 0,
+   "e": "The 2021 report found existing law can accommodate them."
+  },
+  {
+   "t": "fix",
+   "q": "One line about the EU Data Act (Article 36) is wrong.",
+   "code": [
+    "it requires safe termination or interruption",
+    "it bans all smart contracts in the EU",
+    "it requires access control and robustness",
+    "it covers smart contracts that execute data-sharing agreements"
+   ],
+   "bad": 1,
+   "o": [
+    "it sets requirements; it does not ban them",
+    "it applies only to tokens",
+    "it applies only in Germany"
+   ],
+   "a": 0,
+   "e": "It sets essential requirements for certain smart contracts."
+  },
+  {
+   "t": "order",
+   "q": "Order building a template in the Accord Playground.",
+   "steps": [
+    "Define the fields in the model",
+    "Write the text with {{variables}}",
+    "Fill the data",
+    "Check the preview",
+    "Fix any variable errors"
+   ],
+   "e": "Model, text, data, check."
+  },
+  {
+   "t": "order",
+   "q": "Order from more text to more code.",
+   "steps": [
+    "Natural-language contract",
+    "Hybrid contract",
+    "Code-only contract"
+   ],
+   "e": "The UK Law Commission's three forms."
   }
  ],
  "lab-remix-tour": [
@@ -4390,12 +9022,12 @@
    "t": "fix",
    "q": "One setting in this Remix tour is wrong for a first test.",
    "code": [
-    "Value: 0 for a normal deploy",
-    "Environment: Injected Provider on Ethereum mainnet",
     "Environment: Remix VM (Cancun)",
-    "Account: the first test account with 100 ETH"
+    "Account: the first test account with 100 ETH",
+    "Value: 0 for a normal deploy",
+    "Environment: Injected Provider on Ethereum mainnet"
    ],
-   "bad": 1,
+   "bad": 3,
    "o": [
     "keep Remix VM for the first tests",
     "Environment: any public RPC",
@@ -4415,6 +9047,92 @@
     "Call a function and read the terminal output"
    ],
    "e": "Open, write, compile, deploy, interact."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the Remix panel order you use in every code lab.",
+   "code": "File explorer -> Solidity compiler -> ____",
+   "o": [
+    "Deploy & run transactions",
+    "Plugin manager",
+    "Settings",
+    "Git"
+   ],
+   "a": 0,
+   "e": "Write, compile, then deploy and run."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the unit setting for sending 1 ether in Remix.",
+   "code": "Value: 1   Unit: ____",
+   "o": [
+    "Ether",
+    "Wei",
+    "Gwei",
+    "Finney"
+   ],
+   "a": 0,
+   "e": "With Wei selected, 1 would be 10^-18 ether."
+  },
+  {
+   "t": "fix",
+   "q": "One Remix setting is wrong for deploying the Escrow without paying.",
+   "code": [
+    "Account: account 1",
+    "Contract: Escrow",
+    "Environment: Remix VM",
+    "Value: 1 Ether"
+   ],
+   "bad": 3,
+   "o": [
+    "Value: 0",
+    "Value: 100 Ether",
+    "Value: 1 Wei"
+   ],
+   "a": 0,
+   "e": "The constructor is not payable. A deploy with value reverts."
+  },
+  {
+   "t": "fix",
+   "q": "One reading of the Remix terminal is wrong.",
+   "code": [
+    "a red cross means it reverted",
+    "the line shows from, to and value",
+    "a green check means the transaction succeeded",
+    "the terminal shows your recovery phrase"
+   ],
+   "bad": 3,
+   "o": [
+    "the terminal never shows secrets",
+    "the terminal shows other students' keys",
+    "the terminal shows the compiler licence"
+   ],
+   "a": 0,
+   "e": "The terminal shows transactions and logs, never secrets."
+  },
+  {
+   "t": "order",
+   "q": "Order the Remix tour.",
+   "steps": [
+    "Open remix.ethereum.org",
+    "Create a .sol file",
+    "Compile it",
+    "Deploy it on the Remix VM",
+    "Click a function and read the terminal"
+   ],
+   "e": "Open, write, compile, deploy, interact."
+  },
+  {
+   "t": "order",
+   "q": "Order how to read one transaction in the Remix terminal.",
+   "steps": [
+    "Find the line with the green check",
+    "Click it to expand",
+    "Read status and gas used",
+    "Read the decoded input",
+    "Read the logs (events)"
+   ],
+   "e": "Status first, then input and events."
   }
  ],
  "tools-to-evaluate": [
@@ -4436,9 +9154,9 @@
    "q": "One line in this evaluation is a red flag.",
    "code": [
     "the tool asks for your recovery phrase to connect",
-    "deployments are verified on Etherscan",
+    "the tool works on Sepolia",
     "the tool shows the full contract source",
-    "the tool works on Sepolia"
+    "deployments are verified on Etherscan"
    ],
    "bad": 0,
    "o": [
@@ -4460,6 +9178,91 @@
     "Score it with the checklist"
    ],
    "e": "Origin, trial, code, control, score."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the first safety check for a new tool.",
+   "code": "does it ever ask for the ____? -> stop",
+   "o": [
+    "recovery phrase",
+    "network name",
+    "contract name",
+    "e-mail"
+   ],
+   "a": 0,
+   "e": "No legitimate tool needs your recovery phrase."
+  },
+  {
+   "t": "fill",
+   "q": "Complete the transparency check.",
+   "code": "can you read and ____ the generated contract on Etherscan?",
+   "o": [
+    "verify",
+    "burn",
+    "mint",
+    "hide"
+   ],
+   "a": 0,
+   "e": "Unverifiable code is a red flag."
+  },
+  {
+   "t": "fix",
+   "q": "One property of this no-code tool is a red flag.",
+   "code": [
+    "open-source contracts",
+    "works on Sepolia",
+    "deployments verified on Etherscan",
+    "admin key held by the tool's company with no timelock"
+   ],
+   "bad": 3,
+   "o": [
+    "admin rights with a timelock or none",
+    "admin key shared on Discord",
+    "no admin and no code"
+   ],
+   "a": 0,
+   "e": "Hidden admin power is a risk to users."
+  },
+  {
+   "t": "fix",
+   "q": "One step of the evaluation is in the wrong place.",
+   "code": [
+    "read who built it",
+    "try it on Sepolia",
+    "recommend it to the class",
+    "read the generated contract"
+   ],
+   "bad": 2,
+   "o": [
+    "recommend only after reading the contract",
+    "never read the contract",
+    "recommend before trying"
+   ],
+   "a": 0,
+   "e": "Evidence before recommendation."
+  },
+  {
+   "t": "order",
+   "q": "Order the tool evaluation.",
+   "steps": [
+    "Read who built it and when",
+    "Try it on Sepolia",
+    "Read the generated contract",
+    "Check admin powers",
+    "Score it with the checklist"
+   ],
+   "e": "Origin, trial, code, control, score."
+  },
+  {
+   "t": "order",
+   "q": "Order the red flags from most to least severe.",
+   "steps": [
+    "Asks for your recovery phrase",
+    "Deploys unverified code",
+    "Admin can upgrade without delay",
+    "No documentation"
+   ],
+   "e": "Key theft first, then hidden code and power."
   }
  ]
 }

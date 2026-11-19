@@ -6,12 +6,23 @@ EAS, Tenderly, Phalcon, Dune, L2BEAT), and look at every contract through three 
 business and law. Everyone does every lab and takes the same final exam.
 
 - 13 modules, 56 lessons and labs, every lesson in the same five steps: Problem → Concept → Build → Apply → Ship
-- Quizzes on all 56 units, with four question types: fill the missing logic, fix the wrong line,
-  put steps in order, and concept multiple choice (no code writing)
+- 33 lessons with in-depth sections, worked examples and common mistakes; 17 inline SVG diagrams
+- 22 labs with an expected result for every step; lab contracts compile with Solidity 0.8.24 to 0.8.30
+- A bank of 680 questions in four types: concept, fill the missing logic, fix the wrong line, put steps
+  in order (no code writing). Each lesson attempt draws 10 questions; pass with 80%
 - One final exam for everyone: 40 questions (10 of each type, spread across all modules), pass with 70%
 - A placement check that shows which modules a learner can move through quickly
-- Question sources: `src/data/quizzes.json`; the fill/fix/order items are authored in
-  `tools/quiz_types_*.py` and merged with `python3 tools/quiz_types.py`
+
+## Maintaining the content
+
+| Task | Command or file |
+|---|---|
+| Edit quiz questions | `tools/quiz_types_*.py`, `tools/quiz_more_*.py`, then `python3 tools/quiz_types.py` |
+| Export the question bank for review | `python3 tools/export_questions.py` → `docs/question-bank.csv` |
+| Edit in-depth sections and worked examples | `tools/deepen_*.py`, then `python3 tools/deepen.py` |
+| Edit diagrams | `tools/diagrams.py`, then `python3 tools/diagrams.py` |
+| Edit expected results in labs | `tools/lab_expect.py`, then `python3 tools/lab_expect.py` |
+| Re-check volatile facts each semester | `docs/fact-check.md` |
 - Progress, quiz scores and a lab log saved in the learner’s browser (no accounts, no server)
 - Every lab runs on the Sepolia test network or reads public data. No real money is used.
 
