@@ -27,8 +27,8 @@ problem: "A landlord says the lease you signed said 990 EUR, not 900. How could 
       <tr><td>Collision-resistant</td><td>It is not practical to find two inputs with the same hash.</td><td>A hash identifies one document.</td></tr>
     </table></div>
     <ul>
-      <li>Each block contains the hash of the previous block. If someone changes an old block, its hash changes and all later links break. ETH.BUILD (G10) shows this visually.</li>
-      <li>Law use: store only the hash of a document on chain to prove it existed at a time (labs L4 and G5).</li>
+      <li>Each block contains the hash of the previous block. If someone changes an old block, its hash changes and all later links break. ETH.BUILD (<a href="/lessons/lab-eth-build/">1.6</a>) shows this visually.</li>
+      <li>Law use: store only the hash of a document on chain to prove it existed at a time (labs <a href="/lessons/lab-document-registry/">4.5 Document registry</a> and <a href="/lessons/lab-attestations/">9.4 Attestations</a>).</li>
     </ul>
     <div class="callout law"><h5>Law lens</h5><p>A hash proves integrity (“this exact text”) and, with a block timestamp, existence at a time. It does not prove who wrote the text or that anyone agreed to it. A hash of personal data may still be personal data under the GDPR if the data can be guessed and re-hashed.</p></div>
 

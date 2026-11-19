@@ -48,7 +48,7 @@ problem: "An events team wants tickets on chain, with a limit per person, by nex
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>Technology lens</h5><ul><li>Compare the deployed code with the Wizard contract in G1. Which one is easier to audit? Is the thirdweb contract upgradeable?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Compare the deployed code with the Wizard contract in <a href="/lessons/lab-openzeppelin-wizard/">5.3 OpenZeppelin Wizard</a>. Which one is easier to audit? Is the thirdweb contract upgradeable?</li></ul></div>
       <div class="bi"><h5>Business lens</h5><ul><li>Vendor lock-in: what happens to your tickets if the vendor’s dashboard closes or changes its prices?</li><li>Read the vendor’s fee terms. Who earns what on a paid mint?</li></ul></div>
       <div class="lw"><h5>Law lens</h5><ul><li>A ticket sold with “limit 1 per wallet” can still be bought many times with many wallets. Is the rule an effective anti-scalping term?</li><li>The admin role can change claim rules later. What must the ticket terms say about this?</li></ul></div>
     </div>

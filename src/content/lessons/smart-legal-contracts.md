@@ -16,14 +16,14 @@ problem: "A law firm wants contracts that a court can read and a computer can pe
 <h3>Three forms (UK Law Commission, 2021)</h3>
 <div class="tw"><table>
 <tr><th>Form</th><th>Where the terms are</th><th>Example</th></tr>
-<tr><td>Natural language, performed by code</td><td>In the text; code only performs some obligations</td><td>A lease whose deposit is held by the L3 contract</td></tr>
+<tr><td>Natural language, performed by code</td><td>In the text; code only performs some obligations</td><td>A lease whose deposit is held by the <a href="/lessons/lab-rental-deposit/">4.4 Rental deposit</a> contract</td></tr>
 <tr><td>Hybrid</td><td>Some terms in text, some only in code</td><td>Escrow terms plus the contract address and its rules</td></tr>
 <tr><td>Code only</td><td>Entirely in code</td><td>Trading on a DEX by calling its contract</td></tr>
 </table></div>
 <h3>Design patterns</h3>
 <ul>
 <li><b>Ricardian contract:</b> the legal text and the code are linked by a hash, so each points to the exact other.</li>
-<li><b>Template languages:</b> the Accord Project (lab G6) separates the data model, the text and the logic. Catala writes statutes as code; Lexon reads like plain English; Stipula (research, 2025) imports mandatory rules such as consumer protection.</li>
+<li><b>Template languages:</b> the Accord Project (lab <a href="/lessons/lab-accord/">12.4 Accord Project</a>) separates the data model, the text and the logic. Catala writes statutes as code; Lexon reads like plain English; Stipula (research, 2025) imports mandatory rules such as consumer protection.</li>
 <li><b>Precedence clause:</b> the text says which version prevails if text and code disagree, and how errors are corrected.</li>
 </ul>
 <h3>Checklist for a smart legal contract</h3>
@@ -47,7 +47,7 @@ problem: "A law firm wants contracts that a court can read and a computer can pe
 
 ## Try it
 
-<p>Write a one-page smart legal contract for the laptop sale in lab L2: parties, price, the contract address, which clauses the code performs, a precedence clause and a dispute clause. Mark each clause “in code”, “partly in code” or “not in code”.</p>
+<p>Write a one-page smart legal contract for the laptop sale in lab <a href="/lessons/lab-escrow/">4.3 Escrow</a>: parties, price, the contract address, which clauses the code performs, a precedence clause and a dispute clause. Mark each clause “in code”, “partly in code” or “not in code”.</p>
 
 ## Apply
 

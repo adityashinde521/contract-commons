@@ -41,7 +41,7 @@ problem: "A university wants a certificate contract but has no Solidity develope
       <li>Call <span class="ui">safeMint</span>: <code>to</code> = a teammate’s address, <code>uri</code> = a short text such as <code>Smart Contracts Lab 2026 – passed</code>.<span class="exp">Logs: <code>Transfer</code> from the zero address. Token ID 0.</span></li>
       <li>Call <span class="ui">ownerOf</span>(0) and <span class="ui">tokenURI</span>(0).<span class="exp">The teammate’s address and your text.</span></li>
       <li>Switch to the teammate’s account and try <span class="ui">safeMint</span>.<span class="exp">Revert: only the owner (issuer) can mint.</span></li>
-      <li>On Sepolia: verify the contract (L7, step C) and issue a second certificate from Etherscan’s <span class="ui">Write Contract</span> tab.<span class="exp">A form-based interface for your own contract, with no Remix needed.</span></li>
+      <li>On Sepolia: verify the contract (<a href="/lessons/lab-sepolia/">8.2 Sepolia deployment</a>, step C) and issue a second certificate from Etherscan’s <span class="ui">Write Contract</span> tab.<span class="exp">A form-based interface for your own contract, with no Remix needed.</span></li>
     </ol>
 
 ## Apply

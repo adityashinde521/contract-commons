@@ -19,7 +19,7 @@ problem: "A student cooperative wants its members to decide on spending together
       <div><b>Tool</b><a href="https://app.aragon.org" target="_blank" rel="noopener">Aragon App</a>, a no-code DAO builder. It supports Ethereum, Polygon, Arbitrum and Base, and their testnets including Sepolia.</div>
       <div><b>You need</b>MetaMask with three accounts on Sepolia, about 0.03 SepoliaETH in account 1.</div>
     </div>
-    <p>A DAO is a group whose rules (who is a member, how decisions are made, who controls the money) are written in smart contracts. A <b>proposal</b> bundles actions, for example “pay 0.002 ETH to X”. The actions run only if the vote passes. Compared with the Safe in G3, the DAO adds proposals, voting periods and a public record of decisions.</p>
+    <p>A DAO is a group whose rules (who is a member, how decisions are made, who controls the money) are written in smart contracts. A <b>proposal</b> bundles actions, for example “pay 0.002 ETH to X”. The actions run only if the vote passes. Compared with the Safe in <a href="/lessons/lab-safe/">11.3 Safe</a>, the DAO adds proposals, voting periods and a public record of decisions.</p>
 
 ## Build
 
@@ -58,4 +58,4 @@ problem: "A student cooperative wants its members to decide on spending together
       <li>You passed and executed a proposal, and know what happens when it fails.</li>
       <li>You can compare a DAO with a Safe and with a legal entity.</li>
     </ul>
-    <div class="callout lab"><h5>Lab log</h5><p>DAO address, proposal link, Etherscan link of the execution, and a table comparing G3 Safe and G4 DAO.</p></div>
+    <div class="callout lab"><h5>Lab log</h5><p>DAO address, proposal link, Etherscan link of the execution, and a table comparing <a href="/lessons/lab-safe/">11.3 Safe</a> and <a href="/lessons/lab-aragon/">11.4 Aragon DAO</a>.</p></div>

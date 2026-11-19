@@ -17,7 +17,7 @@ problem: "A quantum computer could one day derive private keys from public ones.
 <div class="goal"><b>Goal:</b> you can say which parts of a blockchain a quantum computer could break, and how Ethereum prepares.</div>
     <h4>What is at risk</h4>
     <ul>
-      <li><b>Shor’s algorithm</b> on a large quantum computer can calculate a private key from a public key. This breaks <b>ECDSA</b> (account signatures, T3) and other elliptic-curve systems.</li>
+      <li><b>Shor’s algorithm</b> on a large quantum computer can calculate a private key from a public key. This breaks <b>ECDSA</b> (account signatures, <a href="/lessons/keys-and-signatures/">1.3 Keys and signatures</a>) and other elliptic-curve systems.</li>
       <li>In February 2026, Vitalik Buterin listed four vulnerable areas of Ethereum: BLS signatures (validators), KZG commitments (blobs), ECDSA signatures (accounts) and some ZK proofs (Groth16).</li>
       <li><b>Hash functions</b> (Keccak-256) stay mostly safe. Grover’s algorithm only reduces their strength, and a 256-bit hash keeps a large margin.</li>
       <li>Your address is a hash of your public key. The public key becomes visible after your first transaction, so accounts that have sent transactions are more exposed.</li>
@@ -30,7 +30,7 @@ problem: "A quantum computer could one day derive private keys from public ones.
       <li>Post-quantum signatures are much larger. This costs block space and gas.</li>
     </ul>
     <div class="callout law"><h5>Law and business lens</h5><ul>
-      <li>Long-lived records (land registers, notarised documents, L4, G5) must stay valid for decades. Should a contract require <b>crypto-agility</b>, the ability to change algorithms?</li>
+      <li>Long-lived records (land registers, notarised documents, <a href="/lessons/lab-document-registry/">4.5 Document registry</a>, <a href="/lessons/lab-attestations/">9.4 Attestations</a>) must stay valid for decades. Should a contract require <b>crypto-agility</b>, the ability to change algorithms?</li>
       <li>If a quantum attacker takes funds from an old account, is that theft? Who is liable?</li>
       <li>Business: plan the migration cost like any other technology risk.</li>
     </ul></div>

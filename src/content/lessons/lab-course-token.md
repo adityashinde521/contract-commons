@@ -50,7 +50,7 @@ contract CourseToken is ERC20, Ownable {
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>Technology lens</h5><ul><li>Add an allow-list so only “verified investors” can receive tokens (programmable compliance, F6).</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Add an allow-list so only “verified investors” can receive tokens (programmable compliance, <a href="/lessons/regulation/">12.3 Regulation</a>).</li></ul></div>
       <div class="bi"><h5>Business lens</h5><ul><li>The token could be a course credit, a voucher or a loyalty point. Which business model fits, and who sets the supply?</li></ul></div>
       <div class="lw"><h5>Law lens</h5><ul><li>When is a token a financial instrument (MiFID II), an e-money token, or another crypto-asset under MiCA? Does a voucher fall under an exemption?</li></ul></div>
     </div>

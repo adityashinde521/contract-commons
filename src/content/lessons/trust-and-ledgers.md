@@ -21,7 +21,7 @@ problem: "Two companies that do not trust each other must keep one shared list o
       <li>Usually one trusted party keeps the ledger: a bank, a land registry, a notary, a stock exchange.</li>
       <li>A <b>blockchain</b> lets many parties keep the same ledger. No single party controls it, and every party can check it.</li>
       <li>The core problem for digital money is <b>double spending</b>: digital data is easy to copy, so a person must not spend the same coin two times.</li>
-      <li>Three tools solve it together: hashes (T2) make history tamper-evident, signatures (T3) prove who sent a transaction, consensus (T4) makes everyone agree on one order.</li>
+      <li>Three tools solve it together: hashes (<a href="/lessons/hash-functions/">1.2 Hash functions</a>) make history tamper-evident, signatures (<a href="/lessons/keys-and-signatures/">1.3</a>) prove who sent a transaction, consensus (<a href="/lessons/consensus/">2.1</a>) makes everyone agree on one order.</li>
       <li>Result: the ledger is <b>tamper-evident</b> and <b>append-only</b>. You can add data. You cannot change old data without everyone noticing.</li>
     </ul>
     <h4>Worked example</h4>
@@ -30,7 +30,7 @@ problem: "Two companies that do not trust each other must keep one shared list o
     <ul>
       <li>One trusted party already exists and all parties accept it. A normal database is cheaper, faster and private.</li>
       <li>The data must be secret. Public chains show all data to everyone.</li>
-      <li>The data comes from the real world. The chain cannot check if “the goods arrived” is true (the oracle problem, T6).</li>
+      <li>The data comes from the real world. The chain cannot check if “the goods arrived” is true (the oracle problem, <a href="/lessons/what-smart-contracts-are/">4.1 What smart contracts are</a>).</li>
       <li>Decisions need human judgment or must be reversible.</li>
     </ul>
     <div class="aud">
@@ -42,7 +42,7 @@ problem: "Two companies that do not trust each other must keep one shared list o
 ### Watch and read
 
 <div class="vids">
-      <a class="vid" href="https://www.youtube.com/watch?v=bBC-nXj3Ng4" target="_blank" rel="noopener"><span class="play"></span><span><b>But how does bitcoin actually work?</b><small>3Blue1Brown, 25 min. Best single video for T1–T4.</small></span></a>
+      <a class="vid" href="https://www.youtube.com/watch?v=bBC-nXj3Ng4" target="_blank" rel="noopener"><span class="play"></span><span><b>But how does bitcoin actually work?</b><small>3Blue1Brown, 25 min. Best single video for lessons 1.1 to 2.1.</small></span></a>
       <a class="vid" href="https://www.youtube.com/watch?v=_160oMzblY8" target="_blank" rel="noopener"><span class="play"></span><span><b>Blockchain 101: a visual demo</b><small>Anders Brownworth, 18 min</small></span></a>
     </div>
 

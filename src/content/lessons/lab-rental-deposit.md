@@ -113,7 +113,7 @@ contract RentalDeposit {
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>Technology lens</h5><ul><li>Add an arbiter for disputed damage, as in L2.</li><li>Validators can shift <code>block.timestamp</code> a little. Does it matter here?</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Add an arbiter for disputed damage, as in <a href="/lessons/lab-escrow/">4.3 Escrow</a>.</li><li>Validators can shift <code>block.timestamp</code> a little. Does it matter here?</li></ul></div>
       <div class="bi"><h5>Business lens</h5><ul><li>The deposit earns no interest in the contract. What would a tenant lose over three years?</li></ul></div>
       <div class="lw"><h5>Law lens (German tenancy law)</h5><ul><li>§551 BGB limits a residential deposit to three months’ net rent and requires the landlord to keep it separate from its own assets, with interest. Does a contract-held deposit meet this?</li><li>The landlord alone decides the damage. Who must prove it? Is this clause valid in a standard-form contract (§307 BGB)?</li></ul></div>
     </div>

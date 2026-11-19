@@ -29,7 +29,7 @@ problem: "Alice sends the same 10 coins to Bob and to Carol one second apart. Th
     </table></div>
     <ul>
       <li><b>Finality:</b> the point after which a block cannot change. On Ethereum, about two epochs (approximately 13 minutes).</li>
-      <li>Immutability is economic and social, not absolute. In 2016, after the DAO hack, the Ethereum community changed history with a hard fork because a majority agreed (see T8 and L6).</li>
+      <li>Immutability is economic and social, not absolute. In 2016, after the DAO hack, the Ethereum community changed history with a hard fork because a majority agreed (see <a href="/lessons/security-basics/">7.1 Security basics</a> and <a href="/lessons/lab-reentrancy/">7.4 Reentrancy</a>).</li>
     </ul>
     <div class="callout law"><h5>Law lens</h5><p>When is a payment “final” in law? The EU Settlement Finality Directive defines legal finality for payment systems. Technical finality on a blockchain and legal finality are separate questions.</p></div>
 

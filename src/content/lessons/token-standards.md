@@ -21,9 +21,9 @@ problem: "A university wants to issue course credits and degree certificates on 
       <li><b>ERC-20</b>: fungible tokens, each unit equal. Functions: <code>totalSupply</code>, <code>balanceOf</code>, <code>transfer</code>, <code>approve</code>, <code>allowance</code>, <code>transferFrom</code>.</li>
       <li><code>approve</code> + <code>transferFrom</code> let another address move your tokens, up to a limit. Example: a shop contract collects a payment.</li>
       <li><b>ERC-721</b>: non-fungible tokens (NFTs). Each has a unique ID. Uses: certificates, tickets, ownership records.</li>
-      <li>Do not write token code from scratch. Use audited <b>OpenZeppelin</b> contracts (L5) or the OpenZeppelin Wizard (G1).</li>
+      <li>Do not write token code from scratch. Use audited <b>OpenZeppelin</b> contracts (<a href="/lessons/lab-course-token/">5.2 Course token</a>) or the OpenZeppelin Wizard (<a href="/lessons/lab-openzeppelin-wizard/">5.3</a>).</li>
     </ul>
-    <div class="callout law"><h5>Law lens</h5><p>A token is a record in a contract. Whether it gives a legal right (ownership of a bond, a claim against an issuer, nothing at all) depends on the legal terms around it. Under MiCA and MiFID II, the rights the token gives decide its classification (F6).</p></div>
+    <div class="callout law"><h5>Law lens</h5><p>A token is a record in a contract. Whether it gives a legal right (ownership of a bond, a claim against an issuer, nothing at all) depends on the legal terms around it. Under MiCA and MiFID II, the rights the token gives decide its classification (<a href="/lessons/regulation/">12.3 Regulation</a>).</p></div>
 
 ### Watch and read
 

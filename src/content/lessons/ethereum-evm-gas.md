@@ -40,7 +40,7 @@ problem: "You click transact in Remix and a fee appears. What exactly did you ju
       <tr><td>Where</td><td>Your browser</td><td>Public network</td><td>Public network</td></tr>
       <tr><td>Speed</td><td>Instant</td><td>About 12 s per block</td><td>About 12 s per block</td></tr>
       <tr><td>Money</td><td>Fake, 100 ETH per account</td><td>Free test ETH from a faucet</td><td>Real money</td></tr>
-      <tr><td>Used in</td><td>L1–L6</td><td>L7, G1–G8</td><td>Never in this course</td></tr>
+      <tr><td>Used in</td><td>Most code labs (Remix VM)</td><td>Sepolia deployment and most tool labs</td><td>Never in this course</td></tr>
     </table></div>
 
 ### Watch and read
@@ -53,7 +53,7 @@ problem: "You click transact in Remix and a fee appears. What exactly did you ju
 
 ## Try it
 
-<p>Do labs <a href="../lab-remix-tour/">L0 Remix tour</a> and <a href="../lab-simple-storage/">L1 SimpleStorage</a> right after this lesson. Watch the gas field of every transaction.</p>
+<p>Do labs <a href="../lab-remix-tour/">3.4 Remix tour</a> and <a href="../lab-simple-storage/">3.5 SimpleStorage</a> right after this lesson. Watch the gas field of every transaction.</p>
 
 ## Apply
 

@@ -9,11 +9,11 @@ minutes: "4 weeks"
     <h4>Deliverables</h4>
     <p>The team hands in all three parts. Split the writing, but every member must be able to explain every part.</p>
     <div class="aud">
-      <div class="cs"><h5>Technology</h5><ul><li>Combine Escrow (L2) and AgentWallet (F3).</li><li>Add a deadline and a pause switch.</li><li>Deploy and verify on Sepolia.</li><li>Tests for each rule (Remix or Foundry).</li></ul></div>
-      <div class="bi"><h5>Business</h5><ul><li>Process model (BPMN) with all failure paths.</li><li>Cost model per transaction on L1 and L2.</li><li>Comparison with a traditional escrow service.</li></ul></div>
+      <div class="cs"><h5>Technology</h5><ul><li>Combine Escrow (<a href="/lessons/lab-escrow/">4.3</a>) and AgentWallet (<a href="/lessons/ai-agents/">13.1 AI agents</a>).</li><li>Add a deadline and a pause switch.</li><li>Deploy and verify on Sepolia.</li><li>Tests for each rule (Remix or Foundry).</li></ul></div>
+      <div class="bi"><h5>Business</h5><ul><li>Process model (BPMN) with all failure paths.</li><li>Cost model per transaction on L1 and <a href="/lessons/lab-escrow/">4.3 Escrow</a>.</li><li>Comparison with a traditional escrow service.</li></ul></div>
       <div class="lw"><h5>Law</h5><ul><li>The agent mandate: what the agent may do.</li><li>Purchase terms and a dispute clause.</li><li>A clause-to-code map: each clause is “in code”, “partly in code” or “not in code”.</li></ul></div>
     </div>
-    <p>You can build parts of the system from market tools instead of code: G1 or G2 for the contracts, G3 Safe or G4 Aragon as the company treasury, G5 attestations for delivery evidence, G6 for the legal template, and G8 simulations to test every role.</p>
+    <p>You can build parts of the system from market tools instead of code: <a href="/lessons/lab-openzeppelin-wizard/">5.3 OpenZeppelin Wizard</a> or <a href="/lessons/lab-thirdweb/">5.4 thirdweb</a> for the contracts, <a href="/lessons/lab-safe/">11.3 Safe</a> or <a href="/lessons/lab-aragon/">11.4 Aragon DAO</a> as the company treasury, <a href="/lessons/lab-attestations/">9.4 Attestations</a> for delivery evidence, <a href="/lessons/lab-accord/">12.4 Accord Project</a> for the legal template, and <a href="/lessons/lab-tenderly/">8.3 Tenderly</a> simulations to test every role.</p>
     <h4>Milestones</h4>
     <div class="tw"><table>
       <tr><th>Week</th><th>Milestone</th></tr>

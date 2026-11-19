@@ -25,7 +25,7 @@ problem: "About $3.4 billion was stolen in crypto in 2025, but most of it not th
     <h4>The weakest point is often not the contract</h4>
     <ul>
       <li>Large losses now often come from <b>operations</b>: compromised developer machines, manipulated signing interfaces, stolen keys, insiders.</li>
-      <li>“Blind signing”: a signer approves a transaction that the wallet cannot show clearly. The contract works correctly but does the attacker’s will (compare G3).</li>
+      <li>“Blind signing”: a signer approves a transaction that the wallet cannot show clearly. The contract works correctly but does the attacker’s will (compare <a href="/lessons/lab-safe/">11.3 Safe</a>).</li>
     </ul>
     <h4>AI changes both attack and defence</h4>
     <ul>
@@ -55,7 +55,7 @@ problem: "About $3.4 billion was stolen in crypto in 2025, but most of it not th
 
 ## Try it
 
-<p>Do <a href="../lab-phalcon/">lab G9 Phalcon</a> after this lesson: you will trace one of the 2025 incidents call by call.</p>
+<p>Do <a href="../lab-phalcon/">lab 7.5 Phalcon</a> after this lesson: you will trace one of the 2025 incidents call by call.</p>
 
 ## Apply
 

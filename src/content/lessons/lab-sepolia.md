@@ -16,7 +16,7 @@ problem: "So far everything ran in your browser. Now your contract goes on a pub
 
 <div class="ov">
       <div><b>You will</b>Deploy two contracts to the public Sepolia testnet, verify the source and use them from Etherscan.</div>
-      <div><b>Before</b>S2 done. At least 0.05 SepoliaETH in MetaMask account 1, a little in account 2.</div>
+      <div><b>Before</b>Setup done. At least 0.05 SepoliaETH in MetaMask account 1, a little in account 2.</div>
       <div><b>You produce</b>Two verified contracts with Etherscan links in your lab log.</div>
     </div>
     <div class="callout warn"><h5>Safety</h5><ul>
@@ -43,7 +43,7 @@ problem: "So far everything ran in your browser. Now your contract goes on a pub
       <li>In Remix, open the <span class="ui">Plugin manager</span> (plug icon, bottom left). Activate <span class="ui">Contract Verification</span>.</li>
       <li>Choose the network Sepolia, paste the contract address, select the contract, and verify with <b>Sourcify</b> (no API key) or Etherscan (free API key).<span class="exp">Status “verified” or “perfect match”.</span></li>
       <li>Reload the contract on Etherscan. Open the <span class="ui">Contract</span> tab.<span class="exp">Green check, readable source, and the tabs <span class="ui">Read Contract</span> and <span class="ui">Write Contract</span>.</span></li>
-      <li>In <span class="ui">Write Contract</span>, click <span class="ui">Connect to Web3</span>, then call <code>register</code> with a new hash.<span class="exp">A transaction from Etherscan itself. This is a no-code interface to your contract that anyone can use (see G1).</span></li>
+      <li>In <span class="ui">Write Contract</span>, click <span class="ui">Connect to Web3</span>, then call <code>register</code> with a new hash.<span class="exp">A transaction from Etherscan itself. This is a no-code interface to your contract that anyone can use (see <a href="/lessons/lab-openzeppelin-wizard/">5.3 OpenZeppelin Wizard</a>).</span></li>
     </ol>
     <h4>D. Escrow on a real network</h4>
     <ol class="steps">
@@ -68,7 +68,7 @@ problem: "So far everything ran in your browser. Now your contract goes on a pub
 
 <div class="aud">
       <div class="cs"><h5>Technology lens</h5><ul><li>Compare gas used on Sepolia with the Remix VM. Why are they almost the same?</li></ul></div>
-      <div class="bi"><h5>Business lens</h5><ul><li>Convert the gas used to euros at today’s Mainnet gas price and ETH price. Then compare with a Layer 2 (F1).</li></ul></div>
+      <div class="bi"><h5>Business lens</h5><ul><li>Convert the gas used to euros at today’s Mainnet gas price and ETH price. Then compare with a Layer 2 (<a href="/lessons/ethereum-today/">10.1 Ethereum today</a>).</li></ul></div>
       <div class="lw"><h5>Law lens</h5><ul><li>Verified code is public. Can a party claim “I did not know the terms”? Does publishing code satisfy transparency rules for standard terms?</li></ul></div>
     </div>
 

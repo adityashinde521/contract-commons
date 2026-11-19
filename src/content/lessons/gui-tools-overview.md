@@ -20,36 +20,36 @@ problem: "Law and business students need to use blockchains, not only read about
     <h4>A. Build: create and deploy contracts without code</h4>
     <div class="tw"><table>
       <tr><th>Lab</th><th>Tool</th><th>What you create</th><th>Account</th><th>Main lens</th></tr>
-      <tr><td>G1</td><td><a href="https://wizard.openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin Contracts Wizard</a> + Remix</td><td>An audited ERC-721 certificate contract, configured with checkboxes and deployed with buttons</td><td>None (MetaMask for Sepolia)</td><td>All</td></tr>
-      <tr><td>G2</td><td><a href="https://thirdweb.com/explore" target="_blank" rel="noopener">thirdweb</a> dashboard</td><td>A ready-made NFT “Edition Drop” (tickets or certificates) with claim rules and an airdrop, managed from a dashboard</td><td>thirdweb sign-in + MetaMask</td><td>Business, law</td></tr>
-      <tr><td>G3</td><td><a href="https://app.safe.global/welcome?chain=sep" target="_blank" rel="noopener">Safe{Wallet}</a></td><td>A 2-of-3 company wallet: no payment without two signatures</td><td>MetaMask (3 accounts)</td><td>Law, business</td></tr>
-      <tr><td>G4</td><td><a href="https://app.aragon.org" target="_blank" rel="noopener">Aragon App</a></td><td>A DAO with members, a treasury and proposals that execute on chain</td><td>MetaMask (3 accounts)</td><td>Law, business</td></tr>
-      <tr><td>G5</td><td><a href="https://sepolia.easscan.org" target="_blank" rel="noopener">Ethereum Attestation Service</a></td><td>Your own record format and a signed on-chain statement about a document</td><td>MetaMask</td><td>Law</td></tr>
-      <tr><td>G6</td><td><a href="https://playground.accordproject.org" target="_blank" rel="noopener">Accord Project Template Playground</a></td><td>A smart legal contract template: legal text, data model and data</td><td>None</td><td>Law</td></tr>
-      <tr><td>G7</td><td>Remix QuickDApp</td><td>A clickable web app for your team’s Escrow, generated with AI</td><td>MetaMask</td><td>All</td></tr>
+      <tr><td><a href="/lessons/lab-openzeppelin-wizard/">5.3</a></td><td><a href="https://wizard.openzeppelin.com" target="_blank" rel="noopener">OpenZeppelin Contracts Wizard</a> + Remix</td><td>An audited ERC-721 certificate contract, configured with checkboxes and deployed with buttons</td><td>None (MetaMask for Sepolia)</td><td>All</td></tr>
+      <tr><td><a href="/lessons/lab-thirdweb/">5.4</a></td><td><a href="https://thirdweb.com/explore" target="_blank" rel="noopener">thirdweb</a> dashboard</td><td>A ready-made NFT “Edition Drop” (tickets or certificates) with claim rules and an airdrop, managed from a dashboard</td><td>thirdweb sign-in + MetaMask</td><td>Business, law</td></tr>
+      <tr><td><a href="/lessons/lab-safe/">11.3</a></td><td><a href="https://app.safe.global/welcome?chain=sep" target="_blank" rel="noopener">Safe{Wallet}</a></td><td>A 2-of-3 company wallet: no payment without two signatures</td><td>MetaMask (3 accounts)</td><td>Law, business</td></tr>
+      <tr><td><a href="/lessons/lab-aragon/">11.4</a></td><td><a href="https://app.aragon.org" target="_blank" rel="noopener">Aragon App</a></td><td>A DAO with members, a treasury and proposals that execute on chain</td><td>MetaMask (3 accounts)</td><td>Law, business</td></tr>
+      <tr><td><a href="/lessons/lab-attestations/">9.4</a></td><td><a href="https://sepolia.easscan.org" target="_blank" rel="noopener">Ethereum Attestation Service</a></td><td>Your own record format and a signed on-chain statement about a document</td><td>MetaMask</td><td>Law</td></tr>
+      <tr><td><a href="/lessons/lab-accord/">12.4</a></td><td><a href="https://playground.accordproject.org" target="_blank" rel="noopener">Accord Project Template Playground</a></td><td>A smart legal contract template: legal text, data model and data</td><td>None</td><td>Law</td></tr>
+      <tr><td><a href="/lessons/lab-quickdapp/">9.5</a></td><td>Remix QuickDApp</td><td>A clickable web app for your team’s Escrow, generated with AI</td><td>MetaMask</td><td>All</td></tr>
     </table></div>
     <h4>B. Inspect and visualise: see what a contract really does</h4>
     <div class="tw"><table>
       <tr><th>Lab</th><th>Tool</th><th>What you see</th><th>Account</th></tr>
-      <tr><td>G8</td><td><a href="https://dashboard.tenderly.co" target="_blank" rel="noopener">Tenderly</a></td><td>Visual debugger with the call trace next to the source code; a simulator that runs a transaction as any address without signing or paying</td><td>Free Tenderly account</td></tr>
-      <tr><td>G9</td><td><a href="https://blocksec.com/explorer" target="_blank" rel="noopener">Phalcon Explorer</a> (BlockSec)</td><td>Invocation flow, fund flow and balance changes of any transaction, including real hacks</td><td>None for basic use</td></tr>
-      <tr><td>G10</td><td>Remix debugger, <a href="https://github.com/naddison36/sol2uml" target="_blank" rel="noopener">sol2uml</a>, <a href="https://eth.build" target="_blank" rel="noopener">ETH.BUILD</a></td><td>Step-by-step execution, UML class diagrams of contracts, a drag-and-drop sandbox for hashes, keys and transactions</td><td>None</td></tr>
+      <tr><td><a href="/lessons/lab-tenderly/">8.3</a></td><td><a href="https://dashboard.tenderly.co" target="_blank" rel="noopener">Tenderly</a></td><td>Visual debugger with the call trace next to the source code; a simulator that runs a transaction as any address without signing or paying</td><td>Free Tenderly account</td></tr>
+      <tr><td><a href="/lessons/lab-phalcon/">7.5</a></td><td><a href="https://blocksec.com/explorer" target="_blank" rel="noopener">Phalcon Explorer</a> (BlockSec)</td><td>Invocation flow, fund flow and balance changes of any transaction, including real hacks</td><td>None for basic use</td></tr>
+      <tr><td><a href="/lessons/lab-see-inside/">8.4</a></td><td>Remix debugger, <a href="https://github.com/naddison36/sol2uml" target="_blank" rel="noopener">sol2uml</a>, <a href="https://eth.build" target="_blank" rel="noopener">ETH.BUILD</a></td><td>Step-by-step execution, UML class diagrams of contracts, a drag-and-drop sandbox for hashes, keys and transactions</td><td>None</td></tr>
     </table></div>
     <h4>C. Research: on-chain data dashboards</h4>
     <div class="tw"><table>
       <tr><th>Lab</th><th>Tool</th><th>What you research</th><th>Account</th></tr>
-      <tr><td>G11</td><td><a href="https://dune.com" target="_blank" rel="noopener">Dune</a>, <a href="https://l2beat.com" target="_blank" rel="noopener">L2BEAT</a>, <a href="https://defillama.com" target="_blank" rel="noopener">DefiLlama</a></td><td>Network activity, rollup risk and governance, value locked and hacks over time</td><td>None (Dune free account to edit)</td></tr>
+      <tr><td><a href="/lessons/lab-dashboards/">10.4</a></td><td><a href="https://dune.com" target="_blank" rel="noopener">Dune</a>, <a href="https://l2beat.com" target="_blank" rel="noopener">L2BEAT</a>, <a href="https://defillama.com" target="_blank" rel="noopener">DefiLlama</a></td><td>Network activity, rollup risk and governance, value locked and hacks over time</td><td>None (Dune free account to edit)</td></tr>
     </table></div>
-    <p>G12 lists newer visual builders that are not yet part of the course and gives a checklist to evaluate them.</p>
+    <p><a href="/lessons/tools-to-evaluate/">13.4 Tools to evaluate</a> lists newer visual builders that are not yet part of the course and gives a checklist to evaluate them.</p>
 <h3>Safety</h3>
 <div class="callout warn"><h5>Rules for every GUI lab</h5><ol>
-      <li>Use only the course MetaMask wallet (S2). It must never hold real money.</li>
+      <li>Use only the course MetaMask wallet (see Setup). It must never hold real money.</li>
       <li>Before every signature, check the network in MetaMask: it must say <b>Sepolia</b>. If it says Ethereum Mainnet, Arbitrum One or any other main network, click <span class="ui">Reject</span>.</li>
       <li>Never enter your recovery phrase on any website. No tool in this course asks for it.</li>
       <li>When a tool offers a paid plan, a card form or a mainnet option, skip it. Every lab works on the free tier.</li>
-      <li>Read-only labs (G9, G11) may show mainnet data. You look at it; you never sign anything there.</li>
+      <li>Read-only labs (<a href="/lessons/lab-phalcon/">7.5 Phalcon</a>, <a href="/lessons/lab-dashboards/">10.4 Dashboards</a>) may show mainnet data. You look at it; you never sign anything there.</li>
     </ol></div>
-    <div class="callout tip"><h5>Signing in to tools</h5><p>thirdweb (G2) and Tenderly (G8) need a free account. Use your university e-mail or the course wallet. You can delete the account after the course.</p></div>
+    <div class="callout tip"><h5>Signing in to tools</h5><p>thirdweb (<a href="/lessons/lab-thirdweb/">5.4</a>) and Tenderly (<a href="/lessons/lab-tenderly/">8.3</a>) need a free account. Use your university e-mail or the course wallet. You can delete the account after the course.</p></div>
 <h3>Limits</h3>
 <ul>
       <li>No-code builders offer fixed templates. A new rule (for example “partial refund after an expert opinion”) still needs code.</li>

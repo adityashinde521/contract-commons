@@ -24,7 +24,7 @@ problem: "You know Java or Python. Which habits work in Solidity, and which ones
       <tr><td><code>modifier</code></td><td>decorator</td><td><code>_;</code> marks where the function body runs.</td></tr>
       <tr><td><code>require(cond, "msg")</code></td><td>guard + throw</td><td>Reverts all changes of the transaction. The message appears in Remix.</td></tr>
       <tr><td><code>event</code> / <code>emit</code></td><td>log</td><td>Off-chain apps read them. Contracts cannot.</td></tr>
-      <tr><td><code>enum</code></td><td>enum</td><td>Use it for a state machine (L2). Remix shows values as numbers 0, 1, 2…</td></tr>
+      <tr><td><code>enum</code></td><td>enum</td><td>Use it for a state machine (<a href="/lessons/lab-escrow/">4.3 Escrow</a>). Remix shows values as numbers 0, 1, 2…</td></tr>
     </table></div>
     <h4>Special words</h4>
     <ul>
@@ -51,7 +51,7 @@ problem: "You know Java or Python. Which habits work in Solidity, and which ones
 
 ## Try it
 
-<p>Open <a href="https://solidity-by-example.org/hello-world/" target="_blank" rel="noopener">Solidity by Example</a>. Read “Hello World”, “Mapping”, “Function Modifier” and “Events”. Then predict what <code>require(msg.sender == buyer)</code> does when account 2 calls it, and check your answer in lab L2.</p>
+<p>Open <a href="https://solidity-by-example.org/hello-world/" target="_blank" rel="noopener">Solidity by Example</a>. Read “Hello World”, “Mapping”, “Function Modifier” and “Events”. Then predict what <code>require(msg.sender == buyer)</code> does when account 2 calls it, and check your answer in lab <a href="/lessons/lab-escrow/">4.3 Escrow</a>.</p>
 
 ## Apply
 

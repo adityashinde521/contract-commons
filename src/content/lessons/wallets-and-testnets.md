@@ -24,7 +24,7 @@ problem: "A student loses a laptop with MetaMask on it. Is the money gone? What 
 <tr><td>Software wallet (MetaMask, Rabby)</td><td>You, on your device</td><td>Everyday use, development, this course</td></tr>
 <tr><td>Hardware wallet</td><td>You, on a separate device</td><td>Larger amounts, signing for a company</td></tr>
 <tr><td>Smart account (ERC-4337, EIP-7702)</td><td>Rules in a contract: several keys, limits, recovery</td><td>Companies, families, AI agents (Module 13)</td></tr>
-<tr><td>Multisig (Safe)</td><td>Several owners, a threshold</td><td>Company treasuries (lab G3)</td></tr>
+<tr><td>Multisig (Safe)</td><td>Several owners, a threshold</td><td>Company treasuries (lab <a href="/lessons/lab-safe/">11.3 Safe</a>)</td></tr>
 </table></div>
 <h3>Test networks</h3>
 <ul>

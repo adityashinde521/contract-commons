@@ -36,11 +36,11 @@ problem: "In the Escrow lab you checked each rule by clicking. A real contract h
 
 ## Try it
 
-<p>Take the clause-to-code table from lab <a href="../lab-escrow/">L2</a>. For each clause, write one test name in plain words, for example “seller cannot refund”. Then do the <a href="../lab-foundry-test/">Foundry lab</a>.</p>
+<p>Take the clause-to-code table from lab <a href="../lab-escrow/">4.3</a>. For each clause, write one test name in plain words, for example “seller cannot refund”. Then do the <a href="../lab-foundry-test/">Foundry lab</a>.</p>
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which invariant would have caught the reentrancy bug in L6?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Turn a business rule into an acceptance test written in plain language.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Write three test names from a rental agreement. Which clause is impossible to test?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Which invariant would have caught the reentrancy bug in <a href="/lessons/lab-reentrancy/">7.4 Reentrancy</a>?</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Turn a business rule into an acceptance test written in plain language.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Write three test names from a rental agreement. Which clause is impossible to test?</li></ul></div></div>
 
 ## Ship
 

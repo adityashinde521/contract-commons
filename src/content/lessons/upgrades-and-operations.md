@@ -22,10 +22,10 @@ problem: "Code on a blockchain cannot be changed, yet many large protocols ship 
 <div class="cc-callout cc-callout--warn"><div><b>The trade-off.</b> Whoever controls the upgrade can change every rule, including who owns the funds. An upgradeable contract is only as trustworthy as its admin key.</div></div>
 <h3>Making the power safe</h3>
 <ul>
-<li>Admin held by a <b>multisig</b> (lab G3), not one key.</li>
+<li>Admin held by a <b>multisig</b> (lab <a href="/lessons/lab-safe/">11.3 Safe</a>), not one key.</li>
 <li>A <b>timelock</b>: every upgrade is announced and waits, for example 48 hours, so users can leave.</li>
 <li>A <b>pause</b> function for emergencies, with clear limits on who can use it and for how long.</li>
-<li>Rollup risk sites such as L2BEAT grade exactly these powers (lab G11).</li>
+<li>Rollup risk sites such as L2BEAT grade exactly these powers (lab <a href="/lessons/lab-dashboards/">10.4 Dashboards</a>).</li>
 </ul>
 <h3>Operating a contract</h3>
 <ul>

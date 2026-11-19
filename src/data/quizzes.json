@@ -2247,7 +2247,7 @@
    "e": "It reads the verified source and draws its structure."
   },
   {
-   "q": "In the Remix debugger during the L6 attack, what do you see?",
+   "q": "In the Remix debugger during the 7.4 reentrancy attack, what do you see?",
    "o": [
     "One call to withdraw",
     "withdraw entered again and again before the balance is set to 0",
@@ -2578,7 +2578,7 @@
     "Only with ERC-8004"
    ],
    "a": 1,
-   "e": "This is the key legal discussion question for F3."
+   "e": "This is the key legal discussion question for 13.1 AI agents."
   },
   {
    "t": "fill",

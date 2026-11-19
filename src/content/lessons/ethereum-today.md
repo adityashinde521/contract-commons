@@ -30,11 +30,11 @@ problem: "Fees on Ethereum were once tens of dollars. Today most activity costs 
       <tr><td>Pectra</td><td>May 2025</td><td>EIP-7702: a normal account can act as a smart account (batch calls, spending rules, sponsored gas).</td></tr>
       <tr><td>Fusaka</td><td>3 Dec 2025</td><td>PeerDAS: nodes check data by sampling small parts. Much more blob capacity, lower rollup fees.</td></tr>
       <tr><td>Glamsterdam</td><td>Live on Sepolia since 6 Oct 2026. The Hoodi testnet fork was postponed on 22 Oct 2026 over a gas-repricing change (EIP-8037). No mainnet date set as of mid-November 2026.</td><td>ePBS (block building inside the protocol), block-level access lists (parallel validation), gas repricing.</td></tr>
-      <tr><td>Post-quantum work</td><td>Target around 2029</td><td>Replace quantum-vulnerable cryptography (F4).</td></tr>
+      <tr><td>Post-quantum work</td><td>Target around 2029</td><td>Replace quantum-vulnerable cryptography (<a href="/lessons/quantum/">13.2 Quantum</a>).</td></tr>
     </table></div>
     <p class="note">Ethereum now aims for about two hard forks a year, and dates often move. Check ethereum.org before you rely on a date.</p>
     <div class="aud">
-      <div class="cs"><h5>Technology lens</h5><ul><li>Deploy L2 Escrow on an L2 testnet and compare fees with Sepolia.</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>Deploy the Escrow on an L2 testnet and compare fees with Sepolia.</li></ul></div>
       <div class="bi"><h5>Business lens</h5><ul><li>Low L2 fees make micro-payments and process automation economic.</li></ul></div>
       <div class="lw"><h5>Law lens</h5><ul><li>A rollup has an operator and a bridge. Who is responsible if a bridge fails? Users trust more parties than on L1.</li></ul></div>
     </div>

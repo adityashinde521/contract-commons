@@ -38,7 +38,7 @@ problem: "A startup will hold €2 million in a new contract next month. How do 
 
 ## Try it
 
-<p>In your Foundry project from the Foundry lab, add <code>VulnerableBank</code> from lab L6 to <code>src/</code>, install Slither (<code>pip install slither-analyzer</code>) and run <code>slither .</code>.<span class="exp" style="display:block">A finding named <code>reentrancy-eth</code> pointing to <code>withdraw</code>.</span> Everyone: open a public audit report from an audit firm’s website and find its scope and its highest-severity finding.</p>
+<p>In your Foundry project from the Foundry lab, add <code>VulnerableBank</code> from lab <a href="/lessons/lab-reentrancy/">7.4 Reentrancy</a> to <code>src/</code>, install Slither (<code>pip install slither-analyzer</code>) and run <code>slither .</code>.<span class="exp" style="display:block">A finding named <code>reentrancy-eth</code> pointing to <code>withdraw</code>.</span> Everyone: open a public audit report from an audit firm’s website and find its scope and its highest-severity finding.</p>
 
 ## Apply
 

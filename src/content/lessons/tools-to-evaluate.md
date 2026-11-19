@@ -19,7 +19,7 @@ problem: "A new tool promises to build contracts visually with AI. Should your c
     <div class="tw"><table>
       <tr><th>Tool</th><th>What it claims</th><th>Status (Nov 2026)</th></tr>
       <tr><td><a href="https://peerpush.com/p/doodledapp" target="_blank" rel="noopener">DoodleDapp</a></td><td>Build, test and deploy Solidity contracts visually, without code</td><td>Listed as newly launched in April 2026 after a beta. Chains, pricing and code export not confirmed.</td></tr>
-      <tr><td>AI contract generators</td><td>Write a contract from a text prompt</td><td>Many tools, quality varies. Compare the output with OpenZeppelin (G1) and test it (G8).</td></tr>
+      <tr><td>AI contract generators</td><td>Write a contract from a text prompt</td><td>Many tools, quality varies. Compare the output with OpenZeppelin (<a href="/lessons/lab-openzeppelin-wizard/">5.3</a>) and test it (<a href="/lessons/lab-tenderly/">8.3 Tenderly</a>).</td></tr>
     </table></div>
 
 ## Try it

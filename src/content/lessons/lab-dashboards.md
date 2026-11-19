@@ -22,17 +22,17 @@ problem: "A claim in a paper or a pitch says â€œmost losses come from key theftâ
 
 ## Build
 
-<h4>A. L2BEAT: who controls a rollup? (F1)</h4>
+<h4>A. L2BEAT: who controls a rollup? (<a href="/lessons/ethereum-today/">10.1 Ethereum today</a>)</h4>
     <ol class="steps">
       <li>Open <a href="https://l2beat.com" target="_blank" rel="noopener">l2beat.com</a>. Sort the scaling list by value secured.</li>
       <li>Open two rollups with different <b>stages</b> (0, 1 or 2).<span class="exp">A risk summary and sections on upgrades, permissions and exit windows.</span></li>
       <li>For each, note: who can upgrade the contracts, how fast, and whether users can leave before an upgrade.</li>
     </ol>
-    <h4>B. DefiLlama: losses over time (F5)</h4>
+    <h4>B. DefiLlama: losses over time (<a href="/lessons/security-in-practice/">7.2 Security in practice</a>)</h4>
     <ol class="steps">
       <li>Open <a href="https://defillama.com" target="_blank" rel="noopener">defillama.com</a> and find its hacks section.</li>
       <li>Filter by 2025. Find Bybit and GMX.<span class="exp">Amount, date, chain, technique.</span></li>
-      <li>Compare totals by technique. Does the data support the claim in F5 that operations cause more losses than code bugs?</li>
+      <li>Compare totals by technique. Does the data support the claim in <a href="/lessons/security-in-practice/">7.2 Security in practice</a> that operations cause more losses than code bugs?</li>
     </ol>
     <h4>C. Dune: build one chart</h4>
     <ol class="steps">

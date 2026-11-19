@@ -86,7 +86,7 @@ contract Escrow {
         emit Refunded(buyer, amount);
     }
 }</code></pre><button class="copy" type="button">Copy</button></div>
-    <div class="callout gui"><h5>See it in a real tool</h5><p>After L7, open your Escrow transactions in <a href="../lab-tenderly/">Tenderly (G8)</a>: every step of this lab becomes visible in the debugger, and the simulator lets you test each role without signing.</p></div>
+    <div class="callout gui"><h5>See it in a real tool</h5><p>After <a href="/lessons/lab-sepolia/">8.2 Sepolia deployment</a>, open your Escrow transactions in <a href="../lab-tenderly/">Tenderly (8.3)</a>: every step of this lab becomes visible in the debugger, and the simulator lets you test each role without signing.</p></div>
 
 ## Build
 

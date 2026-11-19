@@ -15,7 +15,7 @@ problem: "Remix is great for learning, but a real project has many files, a team
 
 <div class="tw"><table>
 <tr><th>Tool</th><th>What it is</th><th>When to use it</th></tr>
-<tr><td><b>Remix</b></td><td>Browser IDE with compiler, deployer and debugger</td><td>Learning, quick experiments, demos (labs L0–L7)</td></tr>
+<tr><td><b>Remix</b></td><td>Browser IDE with compiler, deployer and debugger</td><td>Learning, quick experiments, demos (the code labs)</td></tr>
 <tr><td><b>Foundry</b></td><td>Command-line toolkit: <code>forge</code> (build, test), <code>cast</code> (call chains), <code>anvil</code> (local chain). Tests in Solidity.</td><td>Most new professional projects; fast tests and fuzzing</td></tr>
 <tr><td><b>Hardhat</b></td><td>JavaScript and TypeScript toolkit with plugins and a local network</td><td>Teams with a web or TypeScript background</td></tr>
 <tr><td><b>Git and GitHub</b></td><td>Version control and code review</td><td>Always: every change reviewed, every release tagged</td></tr>

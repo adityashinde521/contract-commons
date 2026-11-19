@@ -29,7 +29,7 @@ problem: "A vendor promises that its “smart contract” makes lawyers unnecess
       <li><b>Public data.</b> <code>private</code> only blocks other contracts, not human readers.</li>
       <li><b>No flexibility.</b> Code cannot judge good faith, reasonableness or unforeseen events (force majeure).</li>
     </ol>
-    <div class="callout gui"><h5>See it with real tools</h5><p>Open a real contract transaction in <a href="../lab-tenderly/">Tenderly (G8)</a> or <a href="../lab-phalcon/">Phalcon (G9)</a> and watch each state change and payment.</p></div>
+    <div class="callout gui"><h5>See it with real tools</h5><p>Open a real contract transaction in <a href="../lab-tenderly/">Tenderly (8.3)</a> or <a href="../lab-phalcon/">Phalcon (7.5)</a> and watch each state change and payment.</p></div>
 
 ### Watch and read
 
@@ -41,7 +41,7 @@ problem: "A vendor promises that its “smart contract” makes lawyers unnecess
 
 ## Try it
 
-<p>Read the Escrow contract in <a href="../lab-escrow/">lab L2</a> without running it. Mark each line as “enforces a rule”, “moves money” or “records a fact”. Then list two things the buyer and seller agreed that the code cannot check.</p>
+<p>Read the Escrow contract in <a href="../lab-escrow/">lab 4.3</a> without running it. Mark each line as “enforces a rule”, “moves money” or “records a fact”. Then list two things the buyer and seller agreed that the code cannot check.</p>
 
 ## Apply
 

@@ -41,13 +41,13 @@ problem: "A startup’s founders want no single person to be able to move the co
       <li>Switch MetaMask to account 2. Reload the Safe app if needed.</li>
       <li>Open the queued transaction, click <span class="ui">Confirm</span>, then <span class="ui">Execute</span>. Confirm in MetaMask.<span class="exp">“2 of 2”, then “Success”. The recipient gets 0.002 ETH. Account 2 paid the gas.</span></li>
       <li>Optional: as account 3, propose a payment and reject it as another owner.</li>
-      <li>Open the executed transaction in Tenderly or Phalcon (G8, G9) and find the two signatures in the call data.</li>
+      <li>Open the executed transaction in Tenderly or Phalcon (<a href="/lessons/lab-tenderly/">8.3 Tenderly</a>, <a href="/lessons/lab-phalcon/">7.5 Phalcon</a>) and find the two signatures in the call data.</li>
     </ol>
 
 ## Apply
 
 <div class="aud">
-      <div class="cs"><h5>Technology lens</h5><ul><li>The Bybit hack (2025) drained a Safe: injected code in the signing interface showed the signers a harmless transaction. How can signers check what they sign? (F5)</li></ul></div>
+      <div class="cs"><h5>Technology lens</h5><ul><li>The Bybit hack (2025) drained a Safe: injected code in the signing interface showed the signers a harmless transaction. How can signers check what they sign? (<a href="/lessons/security-in-practice/">7.2 Security in practice</a>)</li></ul></div>
       <div class="bi"><h5>Business lens</h5><ul><li>Design a four-eyes principle for payments above €10,000 and a single signature below it.</li></ul></div>
       <div class="lw"><h5>Law lens</h5><ul><li>Map the Safe to a GmbH: managing directors, joint representation (§35 GmbHG). What happens if a director leaves, dies or loses a key?</li><li>Who is liable if two directors sign a fraudulent payment?</li></ul></div>
     </div>

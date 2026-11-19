@@ -27,6 +27,6 @@ minutes: "15 min"
     <h4>Portfolio (end of course)</h4>
     <ul>
       <li>A shared repository or folder with all lab logs and contracts.</li>
-      <li>The capstone (P1): working contract, process model, legal text and a 10-minute presentation.</li>
+      <li>The <a href="/capstone/">capstone</a>: working contract, process model, legal text and a 10-minute presentation.</li>
     </ul>
     <div class="callout tip"><h5>How you are assessed</h5><p>The instructor notes (I3) contain the rubric: a shared part for the team (does it work, do the three parts match?) and an individual part: each student is questioned on any part of the system.</p></div>

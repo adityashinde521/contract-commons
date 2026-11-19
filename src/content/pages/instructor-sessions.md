@@ -7,7 +7,7 @@ minutes: "15 min"
 
 <ol>
       <li><b>0–10 min.</b> Show the business or legal problem first (for example: “How do strangers buy safely online?”).</li>
-      <li><b>10–25 min.</b> Live demo in Remix or in G1. Students watch and predict each result before you click.</li>
+      <li><b>10–25 min.</b> Live demo in Remix or in <a href="/lessons/lab-openzeppelin-wizard/">5.3 OpenZeppelin Wizard</a>. Students watch and predict each result before you click.</li>
       <li><b>25–60 min.</b> Teams do the lab. The builder reads each step aloud; the analysts explain it in their words.</li>
       <li><b>60–80 min.</b> Teams change one rule (an extension task) and present the effect in two minutes.</li>
       <li><b>80–90 min.</b> Three-question check: one per lens: technology, business, law. Quiz as homework.</li>
@@ -16,13 +16,13 @@ minutes: "15 min"
 ## Preparation checklist
 
 <ul>
-      <li><b>Test ETH:</b> faucets often need a login or a small Mainnet balance. Fund a course wallet a week before L7 and the GUI labs, and send each team about 0.1 SepoliaETH.</li>
-      <li><b>Tool accounts:</b> students need free accounts for thirdweb (G2) and Tenderly (G8), and an Etherscan API key for sol2uml (G10). Ask them to sign up before the session. No tool needs a payment method.</li>
+      <li><b>Test ETH:</b> faucets often need a login or a small Mainnet balance. Fund a course wallet a week before <a href="/lessons/lab-sepolia/">8.2 Sepolia deployment</a> and the GUI labs, and send each team about 0.1 SepoliaETH.</li>
+      <li><b>Tool accounts:</b> students need free accounts for thirdweb (<a href="/lessons/lab-thirdweb/">5.4</a>) and Tenderly (<a href="/lessons/lab-tenderly/">8.3</a>), and an Etherscan API key for sol2uml (<a href="/lessons/lab-see-inside/">8.4 See inside</a>). Ask them to sign up before the session. No tool needs a payment method.</li>
       <li><b>Compiler:</b> open every lab file in Remix the day before. Remix updates often.</li>
       <li><b>Accounts:</b> Remix VM addresses are the same for everyone. Put account 1–4 addresses on a slide.</li>
       <li><b>Hosted tools:</b> check easscan, Safe and the Wizard the day before. Labels change.</li>
       <li><b>Testnet:</b> a proposal from May 2026 would replace Sepolia and sunset it in Q2/Q3 2027. Check the status each semester.</li>
-      <li><b>Safety:</b> repeat the five rules (S2) at the start of every Sepolia session.</li>
+      <li><b>Safety:</b> repeat the five safety rules (Setup) at the start of every Sepolia session.</li>
     </ul>
 
 ## Common errors

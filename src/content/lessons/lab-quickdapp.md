@@ -17,15 +17,15 @@ problem: "The team’s Escrow works in Remix, but the buyer and seller will neve
 <div class="ov">
       <div><b>You will</b>Generate a simple web app for the team’s Escrow, so anyone can use it with buttons.</div>
       <div><b>Tool</b>Remix <b>QuickDApp</b>, which uses RemixAI to create a React front end from a deployed contract.</div>
-      <div><b>You need</b>An Escrow deployed on Sepolia (L7, part D). One team member at the keyboard; rotate for part B.</div>
+      <div><b>You need</b>An Escrow deployed on Sepolia (<a href="/lessons/lab-sepolia/">8.2 Sepolia deployment</a>, part D). One team member at the keyboard; rotate for part B.</div>
     </div>
-    <div class="callout warn"><h5>AI-generated code</h5><p>QuickDApp writes the interface with AI. Test every button against the expected results from L2 before you trust it.</p></div>
+    <div class="callout warn"><h5>AI-generated code</h5><p>QuickDApp writes the interface with AI. Test every button against the expected results from <a href="/lessons/lab-escrow/">4.3 Escrow</a> before you trust it.</p></div>
 
 ## Build
 
 <h4>A. Generate</h4>
     <ol class="steps">
-      <li>In Remix, set Environment to Injected Provider – MetaMask (Sepolia). Make sure the Escrow is listed under Deployed Contracts: deploy a new one, or load the one from L7 by pasting its address and clicking <span class="ui">At Address</span>.</li>
+      <li>In Remix, set Environment to Injected Provider – MetaMask (Sepolia). Make sure the Escrow is listed under Deployed Contracts: deploy a new one, or load the one from <a href="/lessons/lab-sepolia/">8.2 Sepolia deployment</a> by pasting its address and clicking <span class="ui">At Address</span>.</li>
       <li>Click the three dots next to the Escrow and choose <span class="ui">Create a DApp</span>.</li>
       <li>Keep the Escrow as primary contract. Add notes written by the law student: “Three role panels: Buyer, Seller, Arbiter. Show the current state in words. Show the price in ether, not wei. Show clear error messages.”</li>
       <li>Click <span class="ui">Generate DApp</span>. Review the proposed files and approve them.<span class="exp">A live preview in the QuickDApp tab.</span></li>

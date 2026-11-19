@@ -26,7 +26,7 @@ problem: "A certificate NFT points to an image on a startup’s server. The star
 <tr><td>Arweave</td><td>No</td><td>Designed not to</td></tr>
 <tr><td>On chain</td><td>No</td><td>No, but costly and public</td></tr>
 </table></div>
-<div class="cc-callout cc-callout--law"><div><b>Law lens.</b> Permanent storage meets the GDPR right to erasure. Never store personal data in permanent storage; store it in a system that can delete, and put only a hash on chain (see labs L4 and G5).</div></div>
+<div class="cc-callout cc-callout--law"><div><b>Law lens.</b> Permanent storage meets the GDPR right to erasure. Never store personal data in permanent storage; store it in a system that can delete, and put only a hash on chain (see labs <a href="/lessons/lab-document-registry/">4.5 Document registry</a> and <a href="/lessons/lab-attestations/">9.4 Attestations</a>).</div></div>
 
 ### Watch and read
 

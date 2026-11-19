@@ -21,24 +21,24 @@ problem: "A smart contract paid the seller, then a court says the sale was void.
       <li>A <b>smart contract</b> is code that performs actions. Code alone does not prove an agreement.</li>
       <li>A <b>smart legal contract</b> is a binding contract where code defines or performs some or all obligations.</li>
       <li>The UK Law Commission (2021) found that existing English law can support smart legal contracts. Three forms: natural-language text performed by code, hybrid, and code only. Open issues: deeds and jurisdiction.</li>
-      <li>A <b>Ricardian contract</b> links a human-readable legal text to the code, often through a hash of the text (G5, G6).</li>
+      <li>A <b>Ricardian contract</b> links a human-readable legal text to the code, often through a hash of the text (<a href="/lessons/lab-attestations/">9.4 Attestations</a>, <a href="/lessons/lab-accord/">12.4 Accord Project</a>).</li>
     </ul>
     <h4>Seven legal questions</h4>
     <div class="tw"><table>
       <tr><th>Problem</th><th>Example</th><th>Where in the labs</th></tr>
-      <tr><td>Identity and capacity</td><td>An address is a pseudonym. Is the party a company, a person, a minor?</td><td>L1, G3, G4</td></tr>
-      <tr><td>Error, fraud, rescission</td><td>The law cancels a contract, but the on-chain payment cannot be reversed.</td><td>L2, G9</td></tr>
-      <tr><td>Interpretation</td><td>Text and code say different things. Which wins?</td><td>G6</td></tr>
-      <tr><td>Oracles</td><td>Who is liable if the oracle reports a wrong delivery date?</td><td>L2</td></tr>
-      <tr><td>GDPR</td><td>Right to erasure versus immutable storage. Store hashes, not personal data.</td><td>L4, G5</td></tr>
-      <tr><td>Jurisdiction</td><td>Nodes are in many countries. Which court and which law apply?</td><td>P1</td></tr>
-      <tr><td>Mandatory law</td><td>Consumer or tenancy rules override the code.</td><td>L3</td></tr>
+      <tr><td>Identity and capacity</td><td>An address is a pseudonym. Is the party a company, a person, a minor?</td><td><a href="/lessons/lab-simple-storage/">3.5 SimpleStorage</a>, <a href="/lessons/lab-safe/">11.3 Safe</a>, <a href="/lessons/lab-aragon/">11.4 Aragon DAO</a></td></tr>
+      <tr><td>Error, fraud, rescission</td><td>The law cancels a contract, but the on-chain payment cannot be reversed.</td><td><a href="/lessons/lab-escrow/">4.3 Escrow</a>, <a href="/lessons/lab-phalcon/">7.5 Phalcon</a></td></tr>
+      <tr><td>Interpretation</td><td>Text and code say different things. Which wins?</td><td><a href="/lessons/lab-accord/">12.4 Accord Project</a></td></tr>
+      <tr><td>Oracles</td><td>Who is liable if the oracle reports a wrong delivery date?</td><td><a href="/lessons/lab-escrow/">4.3 Escrow</a></td></tr>
+      <tr><td>GDPR</td><td>Right to erasure versus immutable storage. Store hashes, not personal data.</td><td><a href="/lessons/lab-document-registry/">4.5 Document registry</a>, <a href="/lessons/lab-attestations/">9.4 Attestations</a></td></tr>
+      <tr><td>Jurisdiction</td><td>Nodes are in many countries. Which court and which law apply?</td><td><a href="/capstone/">Capstone</a></td></tr>
+      <tr><td>Mandatory law</td><td>Consumer or tenancy rules override the code.</td><td><a href="/lessons/lab-rental-deposit/">4.4 Rental deposit</a></td></tr>
     </table></div>
     <h4>EU notes</h4>
     <ul>
       <li><b>EU Data Act</b> (Regulation 2023/2854, Article 36): requirements for smart contracts that perform data-sharing agreements, for example access control, safe termination or interruption, and archiving.</li>
-      <li><b>MiCA</b> regulates the issue of many crypto-assets and the services around them in the EU (F6).</li>
-      <li><b>eIDAS 2.0</b>: electronic signatures and the EU Digital Identity Wallet (F2).</li>
+      <li><b>MiCA</b> regulates the issue of many crypto-assets and the services around them in the EU (<a href="/lessons/regulation/">12.3 Regulation</a>).</li>
+      <li><b>eIDAS 2.0</b>: electronic signatures and the EU Digital Identity Wallet (<a href="/lessons/zero-knowledge/">10.3 Zero knowledge</a>).</li>
     </ul>
     <h4>Business informatics view</h4>
     <ul>
@@ -56,7 +56,7 @@ problem: "A smart contract paid the seller, then a court says the sale was void.
 
 ## Try it
 
-<p>Take the Escrow from <a href="../lab-escrow/">lab L2</a>. For each of the seven legal questions in the table above, write one sentence on how it applies to the laptop sale.</p>
+<p>Take the Escrow from <a href="../lab-escrow/">lab 4.3</a>. For each of the seven legal questions in the table above, write one sentence on how it applies to the laptop sale.</p>
 
 ## Apply
 

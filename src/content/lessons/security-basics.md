@@ -17,12 +17,12 @@ problem: "In 2016 an attacker took about a third of the funds in The DAO using t
 <div class="goal"><b>Goal:</b> you can name four common bugs and the defence for each.</div>
     <div class="tw"><table>
       <tr><th>Bug</th><th>What happens</th><th>Defence</th></tr>
-      <tr><td>Reentrancy</td><td>The contract sends ETH before it updates state. The receiver calls back and withdraws again.</td><td>Checks-effects-interactions, or OpenZeppelin <code>ReentrancyGuard</code>. Lab L6.</td></tr>
-      <tr><td>Missing access control</td><td>Anyone can call an admin function, for example <code>withdraw</code> or <code>mint</code>.</td><td>Check <code>msg.sender</code> or use <code>Ownable</code>. Lab L5.</td></tr>
+      <tr><td>Reentrancy</td><td>The contract sends ETH before it updates state. The receiver calls back and withdraws again.</td><td>Checks-effects-interactions, or OpenZeppelin <code>ReentrancyGuard</code>. Lab <a href="/lessons/lab-reentrancy/">7.4 Reentrancy</a>.</td></tr>
+      <tr><td>Missing access control</td><td>Anyone can call an admin function, for example <code>withdraw</code> or <code>mint</code>.</td><td>Check <code>msg.sender</code> or use <code>Ownable</code>. Lab <a href="/lessons/lab-course-token/">5.2 Course token</a>.</td></tr>
       <tr><td><code>tx.origin</code> authentication</td><td>A malicious contract tricks the user into calling it, then acts with the user’s authority.</td><td>Use <code>msg.sender</code>.</td></tr>
       <tr><td>Oracle manipulation</td><td>The contract trusts one bad price or data source.</td><td>Use several sources or a trusted oracle network.</td></tr>
     </table></div>
-    <p>Bugs cost real money because code is public and immutable. Audits, tests and bug bounties are standard practice. In 2025, most large losses came from operations (stolen keys, tricked signers) rather than code bugs: see F5.</p>
+    <p>Bugs cost real money because code is public and immutable. Audits, tests and bug bounties are standard practice. In 2025, most large losses came from operations (stolen keys, tricked signers) rather than code bugs: see <a href="/lessons/security-in-practice/">7.2 Security in practice</a>.</p>
     <div class="callout law"><h5>Law lens</h5><p>The DAO attacker in 2016 used the code exactly as written. Was it theft? Prosecutors have since charged people for similar “code exploits”, for example in the US Mango Markets case, with mixed results in court. The idea “code is law” is a good topic for debate, not a legal defence.</p></div>
 
 ### Watch and read
@@ -35,7 +35,7 @@ problem: "In 2016 an attacker took about a third of the funds in The DAO using t
 
 ## Try it
 
-<p>Read the vulnerable <code>withdraw</code> function in <a href="../lab-reentrancy/">lab L6</a> and write, in one sentence, the order in which it should do its three steps. Then run the lab.</p>
+<p>Read the vulnerable <code>withdraw</code> function in <a href="../lab-reentrancy/">lab 7.4</a> and write, in one sentence, the order in which it should do its three steps. Then run the lab.</p>
 
 ## Apply
 

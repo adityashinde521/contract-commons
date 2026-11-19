@@ -33,7 +33,7 @@ problem: "A bank wants to issue a tokenised bond to EU clients. Which rules appl
       <li>Does a token give legal ownership of the bond, or only a claim against the issuer?</li>
       <li>Can MiCA apply to a fully decentralised protocol with no intermediary?</li>
     </ul></div>
-    <div class="callout lab"><h5>Connect to the labs</h5><p>L5 CourseToken is a starting point. Add an allow-list so only “verified investors” can receive tokens: programmable compliance in about ten lines of code.</p></div>
+    <div class="callout lab"><h5>Connect to the labs</h5><p><a href="/lessons/lab-course-token/">5.2 Course token</a> CourseToken is a starting point. Add an allow-list so only “verified investors” can receive tokens: programmable compliance in about ten lines of code.</p></div>
 
 ### Watch and read
 
@@ -48,7 +48,7 @@ problem: "A bank wants to issue a tokenised bond to EU clients. Which rules appl
 
 ## Apply
 
-<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Add an investor allow-list to the L5 token.</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Write the business case for a tokenised bond.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is the token a financial instrument or a crypto-asset under MiCA?</li></ul></div></div>
+<div class="aud"><div class="cs"><h5>Technology lens</h5><ul><li>Add an investor allow-list to the <a href="/lessons/lab-course-token/">5.2 Course token</a>.</li></ul></div><div class="bi"><h5>Business lens</h5><ul><li>Write the business case for a tokenised bond.</li></ul></div><div class="lw"><h5>Law lens</h5><ul><li>Is the token a financial instrument or a crypto-asset under MiCA?</li></ul></div></div>
 
 ## Ship
 

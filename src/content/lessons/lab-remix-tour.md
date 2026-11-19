@@ -16,7 +16,7 @@ problem: "Before you write a contract you need a place to run it safely. Remix g
 
 <div class="ov">
       <div><b>You will</b>Open Remix, create a workspace and find the four panels used in every lab.</div>
-      <div><b>Before</b>S2 setup. T5 recommended.</div>
+      <div><b>Before</b>Setup and safety. Lesson 3.1 recommended.</div>
       <div><b>You produce</b>A workspace named <code>course-labs</code>, backed up to GitHub.</div>
     </div>
     <h4>Remix in one paragraph</h4>

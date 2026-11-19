@@ -20,7 +20,7 @@ problem: "Two parties want a neutral, permanent record that they both had the sa
       <div><b>You need</b>MetaMask on Sepolia, about 0.01 SepoliaETH, and a document hash.</div>
     </div>
     <p>An attestation is a signed statement by one address about something: a person, a document, an event. EAS stores the attester, the time, the data and, if allowed, a later revocation. Anyone can verify it. It is used for certificates, notarisation, credentials and audit evidence.</p>
-    <div class="callout tip"><h5>Get a document hash</h5><p>In Remix, deploy <code>DocumentRegistry</code> from L4 on the Remix VM and call <span class="ui">hashText</span> with your document text. It is free and gives a 0x… value with 64 hex characters.</p></div>
+    <div class="callout tip"><h5>Get a document hash</h5><p>In Remix, deploy <code>DocumentRegistry</code> from <a href="/lessons/lab-document-registry/">4.5 Document registry</a> on the Remix VM and call <span class="ui">hashText</span> with your document text. It is free and gives a 0x… value with 64 hex characters.</p></div>
 
 ## Build
 

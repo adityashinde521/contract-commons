@@ -13,14 +13,14 @@ problem: "You will prove, with code, that the Escrow pays the seller, refuses th
 
 ## Concept
 
-<div class="ov"><div><b>You will</b>Create a Foundry project, add the Escrow from L2 and write three tests: a unit test, a revert test and a fuzz test.</div><div><b>Before</b>Lab L2 and lesson “Testing smart contracts”.</div><div><b>You need</b>macOS, Linux or Windows with WSL; a terminal; Git.</div></div>
+<div class="ov"><div><b>You will</b>Create a Foundry project, add the Escrow from <a href="/lessons/lab-escrow/">4.3 Escrow</a> and write three tests: a unit test, a revert test and a fuzz test.</div><div><b>Before</b>Lab <a href="/lessons/lab-escrow/">4.3 Escrow</a> and lesson “Testing smart contracts”.</div><div><b>You need</b>macOS, Linux or Windows with WSL; a terminal; Git.</div></div>
 
 ## Build
 
 <ol class="steps">
 <li>Install Foundry: <code>curl -L https://foundry.paradigm.xyz | bash</code>, open a new terminal, then run <code>foundryup</code>.<span class="exp"><code>forge --version</code> prints a version.</span></li>
 <li>Create a project: <code>forge init escrow-tests</code> and <code>cd escrow-tests</code>.<span class="exp">Folders <code>src</code>, <code>test</code>, <code>script</code>, <code>lib/forge-std</code>.</span></li>
-<li>Delete the sample <code>src/Counter.sol</code>, <code>test/Counter.t.sol</code> and <code>script/Counter.s.sol</code>. Copy the Escrow from lab L2 into <code>src/Escrow.sol</code>.</li>
+<li>Delete the sample <code>src/Counter.sol</code>, <code>test/Counter.t.sol</code> and <code>script/Counter.s.sol</code>. Copy the Escrow from lab <a href="/lessons/lab-escrow/">4.3 Escrow</a> into <code>src/Escrow.sol</code>.</li>
 <li>Run <code>forge build</code>.<span class="exp">“Compiler run successful”.</span></li>
 <li>Create <code>test/Escrow.t.sol</code> with the code below.</li>
 </ol>
