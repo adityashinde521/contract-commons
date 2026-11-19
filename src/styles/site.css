@@ -439,3 +439,5 @@ dialog.search::backdrop { background: rgba(11,59,44,0.35); }
 .dg .k-axis { stroke: var(--muted-2); stroke-width: 1.5; }
 .dg .k-curve { fill: none; stroke: var(--cs-600); stroke-width: 3; }
 .dg .k-dot { fill: var(--brand-700); } .dg .k-dot2 { fill: var(--danger-700); }
+.prose .checked { display: block; margin: 0 0 14px; padding: 10px 14px; border-radius: 12px; background: var(--cs-100); color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+.prose .checked b { color: var(--cs-600); }

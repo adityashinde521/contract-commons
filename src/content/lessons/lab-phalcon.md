@@ -24,19 +24,21 @@ problem: "On 9 July 2025 about $42 million left GMX V1 in one attack. What actua
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <h4>A. Warm-up with your own transaction</h4>
     <ol class="steps">
-      <li>Open <a href="https://blocksec.com/explorer" target="_blank" rel="noopener">blocksec.com/explorer</a>. Choose Sepolia and paste the hash of your <a href="/lessons/lab-sepolia/">8.2 Sepolia deployment</a> <code>confirmDelivery</code>.</li>
+      <li>Open <a href="https://blocksec.com/explorer" target="_blank" rel="noopener">blocksec.com/explorer</a>. Choose Sepolia and paste the hash of your <a href="/lessons/lab-sepolia/">8.2 Sepolia deployment</a> <code>confirmDelivery</code>.<span class="exp">Phalcon shows the call tree of your transaction with the function confirmDelivery and one ETH transfer to the seller.</span></li>
       <li>Open the <span class="ui">Invocation Flow</span>.<span class="exp">One call into Escrow and one internal call that sends ETH to the seller.</span></li>
       <li>Open <span class="ui">Fund Flow</span> and <span class="ui">Balance Changes</span>.<span class="exp">A graph: Escrow → seller, 0.001 ETH.</span></li>
     </ol>
     <h4>B. The real attack</h4>
     <ol class="steps">
-      <li>Open BlockSec’s <a href="https://blocksec.com/blog/top-10-awesome-security-incidents-in-2025" target="_blank" rel="noopener">Top 10 security incidents of 2025</a>. Find GMX V1 and follow the link to its entry in the security incident library to get the attack transaction hash.</li>
+      <li>Open BlockSec’s <a href="https://blocksec.com/blog/top-10-awesome-security-incidents-in-2025" target="_blank" rel="noopener">Top 10 security incidents of 2025</a>. Find GMX V1 and follow the link to its entry in the security incident library to get the attack transaction hash.<span class="exp">An attack transaction hash on Arbitrum that starts with 0x, dated 9 July 2025.</span></li>
       <li>In Phalcon Explorer, choose <b>Arbitrum</b> and paste the hash.<span class="exp">A very long invocation flow with many nested calls.</span></li>
-      <li>Collapse the tree and find where control passes back to the attacker’s contract (a callback), and the calls into the Vault that follow inside it.<span class="why">This is the re-entry. Compare with the Attacker’s <code>receive</code> in <a href="/lessons/lab-reentrancy/">7.4 Reentrancy</a>.</span></li>
-      <li>Open the fund flow graph. Follow where the value goes: which contracts lose, which address gains.</li>
-      <li>Read BlockSec’s root-cause write-up linked from the incident entry. Check each claim against what you saw.</li>
+      <li>Collapse the tree and find where control passes back to the attacker’s contract (a callback), and the calls into the Vault that follow inside it.<span class="why">This is the re-entry. Compare with the Attacker’s <code>receive</code> in <a href="/lessons/lab-reentrancy/">7.4 Reentrancy</a>.</span><span class="exp">A highlighted point where the attacker’s contract is called back, followed by further calls into the GMX Vault inside that callback.</span></li>
+      <li>Open the fund flow graph. Follow where the value goes: which contracts lose, which address gains.<span class="exp">A graph where value flows from GMX contracts to the attacker’s address; the balance-change view shows the attacker gaining tens of millions of dollars in tokens.</span></li>
+      <li>Read BlockSec’s root-cause write-up linked from the incident entry. Check each claim against what you saw.<span class="exp">Each claim in the write-up matched to one node in the call tree or one edge in the fund flow, in your lab log.</span></li>
     </ol>
 
 ## Apply

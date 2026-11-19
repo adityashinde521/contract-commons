@@ -27,9 +27,11 @@ problem: "So far everything ran in your browser. Now your contract goes on a pub
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <h4>A. Connect Remix to Sepolia</h4>
     <ol class="steps">
-      <li>In MetaMask, select Sepolia and account 1.</li>
+      <li>In MetaMask, select Sepolia and account 1.<span class="exp">MetaMask shows Sepolia at the top and a balance of at least 0.05 SepoliaETH.</span></li>
       <li>In Remix Deploy &amp; run, set Environment to <span class="ui">Injected Provider – MetaMask</span>. Approve the connection in MetaMask.<span class="exp">Remix shows “Sepolia (11155111) network” and your MetaMask address with its SepoliaETH balance.</span></li>
     </ol>
     <h4>B. Deploy DocumentRegistry</h4>
@@ -40,17 +42,17 @@ problem: "So far everything ran in your browser. Now your contract goes on a pub
     </ol>
     <h4>C. Verify the source code</h4>
     <ol class="steps">
-      <li>In Remix, open the <span class="ui">Plugin manager</span> (plug icon, bottom left). Activate <span class="ui">Contract Verification</span>.</li>
+      <li>In Remix, open the <span class="ui">Plugin manager</span> (plug icon, bottom left). Activate <span class="ui">Contract Verification</span>.<span class="exp">A new Contract Verification icon in the left bar.</span></li>
       <li>Choose the network Sepolia, paste the contract address, select the contract, and verify with <b>Sourcify</b> (no API key) or Etherscan (free API key).<span class="exp">Status “verified” or “perfect match”.</span></li>
       <li>Reload the contract on Etherscan. Open the <span class="ui">Contract</span> tab.<span class="exp">Green check, readable source, and the tabs <span class="ui">Read Contract</span> and <span class="ui">Write Contract</span>.</span></li>
       <li>In <span class="ui">Write Contract</span>, click <span class="ui">Connect to Web3</span>, then call <code>register</code> with a new hash.<span class="exp">A transaction from Etherscan itself. This is a no-code interface to your contract that anyone can use (see <a href="/lessons/lab-openzeppelin-wizard/">5.3 OpenZeppelin Wizard</a>).</span></li>
     </ol>
     <h4>D. Escrow on a real network</h4>
     <ol class="steps">
-      <li>In MetaMask, copy the address of account 2 (seller). Use account 1’s address or a classmate’s address as arbiter.</li>
-      <li>Account 1, Value 0. Deploy <code>Escrow</code> with price <code>1000000000000000</code> (0.001 ether).</li>
+      <li>In MetaMask, copy the address of account 2 (seller). Use account 1’s address or a classmate’s address as arbiter.<span class="exp">Two addresses in your text file: seller and arbiter.</span></li>
+      <li>Account 1, Value 0. Deploy <code>Escrow</code> with price <code>1000000000000000</code> (0.001 ether).<span class="exp">MetaMask asks to confirm a contract deployment with a small fee. After about 12 seconds the Escrow appears under Deployed Contracts with a Sepolia address.</span></li>
       <li>Value 0.001 Ether, call <span class="ui">deposit</span>. Then Value 0, call <span class="ui">confirmDelivery</span>.<span class="exp">On Etherscan: three transactions and an internal transaction that pays account 2.</span></li>
-      <li>Verify the Escrow as in C.</li>
+      <li>Verify the Escrow as in C.<span class="exp">Etherscan shows a green check and “Contract Source Code Verified” on the Escrow’s Contract tab.</span></li>
     </ol>
 
 ### If something goes wrong

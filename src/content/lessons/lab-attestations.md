@@ -24,17 +24,19 @@ problem: "Two parties want a neutral, permanent record that they both had the sa
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <h4>A. Create a schema (the form)</h4>
     <ol class="steps">
       <li>Open <a href="https://sepolia.easscan.org" target="_blank" rel="noopener">sepolia.easscan.org</a>. Click <span class="ui">Connect wallet</span>, choose MetaMask, approve.<span class="exp">Your address appears at the top right. Network: Sepolia.</span></li>
-      <li>Go to <span class="ui">Schemas</span> and click <span class="ui">Create schema</span>.</li>
-      <li>Add four fields: <code>bytes32 documentHash</code>, <code>string documentType</code>, <code>string jurisdiction</code>, <code>string team</code>.<span class="why">No names, no personal data: only the fingerprint and neutral metadata. The team field makes the schema unique.</span></li>
+      <li>Go to <span class="ui">Schemas</span> and click <span class="ui">Create schema</span>.<span class="exp">A form with a schema builder: field type, field name, and a Revocable switch.</span></li>
+      <li>Add four fields: <code>bytes32 documentHash</code>, <code>string documentType</code>, <code>string jurisdiction</code>, <code>string team</code>.<span class="why">No names, no personal data: only the fingerprint and neutral metadata. The team field makes the schema unique.</span><span class="exp">Four rows in the schema builder in that order.</span></li>
       <li>Keep <span class="ui">Revocable</span> on. Leave the resolver empty. Create and confirm in MetaMask.<span class="exp">A schema page with a <b>Schema UID</b> (0x…).</span></li>
     </ol>
     <h4>B. Make an attestation</h4>
     <ol class="steps">
-      <li>On your schema page, click <span class="ui">Attest with schema</span>.</li>
-      <li>Recipient: a teammate’s address (the counterparty). Fields: <code>documentHash</code> = your hash, <code>documentType</code> = “Lease agreement”, <code>jurisdiction</code> = “DE”, <code>team</code> = your team.</li>
+      <li>On your schema page, click <span class="ui">Attest with schema</span>.<span class="exp">A form with the recipient field and one input per schema field.</span></li>
+      <li>Recipient: a teammate’s address (the counterparty). Fields: <code>documentHash</code> = your hash, <code>documentType</code> = “Lease agreement”, <code>jurisdiction</code> = “DE”, <code>team</code> = your team.<span class="exp">All fields filled; documentHash starts with 0x and has 64 hex characters.</span></li>
       <li>Choose <span class="ui">Onchain</span>. Click <span class="ui">Make attestation</span> and confirm.<span class="exp">An attestation page: UID, attester (you), recipient, time, decoded data.</span></li>
       <li>Open the transaction on Etherscan from the link on the page.<span class="exp">A call to the EAS contract with an <code>Attested</code> event.</span></li>
     </ol>
@@ -42,7 +44,7 @@ problem: "Two parties want a neutral, permanent record that they both had the sa
     <ol class="steps">
       <li>Your teammate searches the attestation UID on easscan, hashes the same document text in Remix and compares.<span class="exp">Same hash: the document is the one you attested.</span></li>
       <li>Make a second attestation, then revoke it with <span class="ui">Revoke</span>.<span class="exp">“Revoked” with a time. The original data stays visible: revocation adds a fact, it does not delete.</span></li>
-      <li>Optional: make an <span class="ui">Offchain</span> attestation. It is signed but not stored on chain, and costs no gas.</li>
+      <li>Optional: make an <span class="ui">Offchain</span> attestation. It is signed but not stored on chain, and costs no gas.<span class="exp">An attestation with an “Offchain” badge and a UID; no MetaMask fee, only a signature request.</span></li>
     </ol>
 
 ## Apply

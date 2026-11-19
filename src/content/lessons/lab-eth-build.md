@@ -18,11 +18,13 @@ problem: "Hashes and signatures are abstract until you see them change. ETH.BUIL
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <ol class="steps">
-<li>Open <a href="https://eth.build" target="_blank" rel="noopener">eth.build</a>. Close the intro or watch it (about 3 minutes).</li>
-<li>Right-click or use the menu to add an <b>Input → Text</b> module and a <b>Crypto → Hash</b> module. Connect the text output to the hash input.</li>
+<li>Open <a href="https://eth.build" target="_blank" rel="noopener">eth.build</a>. Close the intro or watch it (about 3 minutes).<span class="exp">An empty canvas with a menu. A double-click or right-click opens the module list.</span></li>
+<li>Right-click or use the menu to add an <b>Input → Text</b> module and a <b>Crypto → Hash</b> module. Connect the text output to the hash input.<span class="exp">Two boxes joined by a line. The hash box shows a 0x… value of 64 hex characters, which changes with every key you type.</span></li>
 <li>Type <code>Lease Kiel: rent 900 EUR</code>.<span class="exp">A 0x… hash appears and changes completely with every key press.</span></li>
-<li>Add a <b>Crypto → Key Pair</b> module. Note the private key, the public key and the address it shows.</li>
+<li>Add a <b>Crypto → Key Pair</b> module. Note the private key, the public key and the address it shows.<span class="exp">Three values: a private key (64 hex characters), a longer public key, and a 0x address of 40 hex characters derived from it.</span></li>
 <li>Add <b>Crypto → Sign</b>: connect the private key and the text. Then add <b>Crypto → Recover</b> (or Verify): connect the signature and the text.<span class="exp">The recovered address equals the key pair’s address.</span></li>
 <li>Change one character of the text after signing.<span class="exp">The recovered address changes: the signature no longer matches the message.</span></li>
 </ol>

@@ -86,16 +86,18 @@ contract RentalDeposit {
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <h4>A. Settle a deposit</h4>
     <ol class="steps">
-      <li>Create <code>RentalDeposit.sol</code>, paste, compile. Copy account 2’s address (tenant).</li>
-      <li>Account 1 (landlord), Value 0. Deploy with: <code>_tenant</code> = account 2, <code>_depositAmount</code> = <code>2000000000000000000</code> (2 ether), <code>_leaseDays</code> = <code>0</code>.<span class="why">0 days makes the lease end at once, so you can test settlement without waiting.</span></li>
+      <li>Create <code>RentalDeposit.sol</code>, paste, compile. Copy account 2’s address (tenant).<span class="exp">A green compiler check and one address in your clipboard (ends in 35cb2 in the Remix VM).</span></li>
+      <li>Account 1 (landlord), Value 0. Deploy with: <code>_tenant</code> = account 2, <code>_depositAmount</code> = <code>2000000000000000000</code> (2 ether), <code>_leaseDays</code> = <code>0</code>.<span class="why">0 days makes the lease end at once, so you can test settlement without waiting.</span><span class="exp">A RentalDeposit instance. depositAmount() returns 2000000000000000000; leaseEnd() equals the block time (lease already ended).</span></li>
       <li>Select account 2. Value 2 Ether. Click <span class="ui">payDeposit</span>. Then Value back to 0.<span class="exp"><span class="ui">paid</span> = true. Logs: <code>DepositPaid</code>.</span></li>
       <li>Select account 1. Call <span class="ui">settle</span> with <code>500000000000000000</code> (0.5 ether damage).<span class="exp">Logs: <code>Settled</code> with toLandlord 0.5 and toTenant 1.5 ether (in wei). Balances change accordingly.</span></li>
     </ol>
     <h4>B. Time protects the tenant</h4>
     <ol class="steps">
-      <li>Deploy again with <code>_leaseDays</code> = <code>30</code>. Tenant pays 2 Ether.</li>
+      <li>Deploy again with <code>_leaseDays</code> = <code>30</code>. Tenant pays 2 Ether.<span class="exp">A new instance; leaseEnd() is about 30 × 86,400 seconds later than now. paid() returns true after the tenant’s payment.</span></li>
       <li>Landlord calls <span class="ui">settle</span> with any amount.<span class="exp">Revert: “Lease not ended”.</span></li>
       <li>On the same contract, the tenant calls <span class="ui">claimAfterTimeout</span>.<span class="exp">Revert: “Too early”. In real use it works 30 days after the lease ends if the landlord does nothing.</span></li>
       <li>Deploy a third contract with <code>_leaseDays</code> = <code>0</code>. Tenant pays 2 Ether. Landlord calls <span class="ui">settle</span> with <code>3000000000000000000</code> (3 ether).<span class="exp">Revert: “Damage too high”. The landlord cannot keep more than the deposit.</span></li>

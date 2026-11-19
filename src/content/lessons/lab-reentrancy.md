@@ -92,19 +92,21 @@ contract FixedBank {
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <h4>A. The attack</h4>
     <ol class="steps">
-      <li>Create <code>Reentrancy.sol</code>, paste, compile. The file contains three contracts.</li>
-      <li>Contract = <code>VulnerableBank</code>. Deploy as account 1, Value 0. Copy its address (copy icon next to the deployed instance).</li>
+      <li>Create <code>Reentrancy.sol</code>, paste, compile. The file contains three contracts.<span class="exp">A green compiler check. The Contract dropdown lists VulnerableBank, Attacker and FixedBank.</span></li>
+      <li>Contract = <code>VulnerableBank</code>. Deploy as account 1, Value 0. Copy its address (copy icon next to the deployed instance).<span class="exp">A VulnerableBank instance; its address is in your clipboard.</span></li>
       <li>Account 2, Value 5 Ether: call <span class="ui">deposit</span>. Value back to 0.<span class="exp"><span class="ui">bankBalance</span> = 5 ether (in wei).</span><span class="why">This is an honest customer.</span></li>
-      <li>Account 3, Contract = <code>Attacker</code>, constructor field <code>_bank</code> = the bank’s address. Deploy (Value 0).</li>
+      <li>Account 3, Contract = <code>Attacker</code>, constructor field <code>_bank</code> = the bank’s address. Deploy (Value 0).<span class="exp">An Attacker instance whose bank() returns the bank’s address.</span></li>
       <li>Still account 3: Value 1 Ether, call <span class="ui">attack</span> on the Attacker.<span class="exp">The transaction succeeds. <span class="ui">bankBalance</span> = 0. <span class="ui">stolen</span> = 6 ether: the customer’s 5 plus the attacker’s own 1.</span></li>
-      <li>Open the transaction in the terminal and click <span class="ui">Debug</span>. Step through and see <code>withdraw</code> entered several times before the balance is set to 0.</li>
+      <li>Open the transaction in the terminal and click <span class="ui">Debug</span>. Step through and see <code>withdraw</code> entered several times before the balance is set to 0.<span class="exp">The debugger’s call stack shows withdraw inside receive inside withdraw, several levels deep, before the line balances[msg.sender] = 0 runs.</span></li>
     </ol>
     <h4>B. The fix</h4>
     <ol class="steps">
-      <li>Deploy <code>FixedBank</code>. Account 2 deposits 5 Ether.</li>
-      <li>Deploy a new <code>Attacker</code> with the FixedBank’s address.</li>
+      <li>Deploy <code>FixedBank</code>. Account 2 deposits 5 Ether.<span class="exp">A FixedBank instance; balanceOf the contract (or its Balance in the list) shows 5 ETH.</span></li>
+      <li>Deploy a new <code>Attacker</code> with the FixedBank’s address.<span class="exp">A second Attacker whose bank() returns the FixedBank address.</span></li>
       <li>Account 3, Value 1 Ether, call <span class="ui">attack</span>.<span class="exp">The whole transaction reverts (“Transfer failed”). FixedBank still holds 5 ether.</span></li>
     </ol>
 

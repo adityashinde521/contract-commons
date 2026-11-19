@@ -17,12 +17,14 @@ problem: "You will prove, with code, that the Escrow pays the seller, refuses th
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <ol class="steps">
 <li>Install Foundry: <code>curl -L https://foundry.paradigm.xyz | bash</code>, open a new terminal, then run <code>foundryup</code>.<span class="exp"><code>forge --version</code> prints a version.</span></li>
 <li>Create a project: <code>forge init escrow-tests</code> and <code>cd escrow-tests</code>.<span class="exp">Folders <code>src</code>, <code>test</code>, <code>script</code>, <code>lib/forge-std</code>.</span></li>
-<li>Delete the sample <code>src/Counter.sol</code>, <code>test/Counter.t.sol</code> and <code>script/Counter.s.sol</code>. Copy the Escrow from lab <a href="/lessons/lab-escrow/">4.3 Escrow</a> into <code>src/Escrow.sol</code>.</li>
+<li>Delete the sample <code>src/Counter.sol</code>, <code>test/Counter.t.sol</code> and <code>script/Counter.s.sol</code>. Copy the Escrow from lab <a href="/lessons/lab-escrow/">4.3 Escrow</a> into <code>src/Escrow.sol</code>.<span class="exp">src/ contains only Escrow.sol; forge build prints “Compiler run successful”.</span></li>
 <li>Run <code>forge build</code>.<span class="exp">“Compiler run successful”.</span></li>
-<li>Create <code>test/Escrow.t.sol</code> with the code below.</li>
+<li>Create <code>test/Escrow.t.sol</code> with the code below.<span class="exp">A new file test/Escrow.t.sol. forge build compiles it without errors.</span></li>
 </ol>
 <div class="pre-wrap"><pre><code>// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;

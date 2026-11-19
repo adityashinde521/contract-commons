@@ -24,17 +24,19 @@ problem: "An events team wants tickets on chain, with a limit per person, by nex
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <h4>A. Deploy</h4>
     <ol class="steps">
-      <li>Open <a href="https://thirdweb.com/explore" target="_blank" rel="noopener">thirdweb.com/explore</a>. Sign in with MetaMask (account 1) or e-mail. If asked, create a team and a project named “Smart Contracts Lab”.</li>
+      <li>Open <a href="https://thirdweb.com/explore" target="_blank" rel="noopener">thirdweb.com/explore</a>. Sign in with MetaMask (account 1) or e-mail. If asked, create a team and a project named “Smart Contracts Lab”.<span class="exp">Your thirdweb dashboard (thirdweb.com/team) with a project. The contract catalogue is still at thirdweb.com/explore.</span></li>
       <li>In the catalogue, open <span class="ui">Edition Drop</span>. Read the description and the list of functions. Click <span class="ui">Deploy</span>.<span class="exp">A deployment form with name, symbol, description and image.</span></li>
-      <li>Name: <code>Lab Workshop Tickets</code>, symbol <code>LWT</code>. Leave the primary sale recipient as your own address.</li>
+      <li>Name: <code>Lab Workshop Tickets</code>, symbol <code>LWT</code>. Leave the primary sale recipient as your own address.<span class="exp">The deploy form shows your address as primary sale recipient and Sepolia as the network.</span></li>
       <li>Under network or chain, choose <b>Sepolia</b>. Click <span class="ui">Deploy now</span> and confirm in MetaMask.<span class="exp">After about 15 seconds, the contract’s own dashboard opens with tabs such as Overview, NFTs, Claim conditions, Permissions, Explorer and Settings.</span></li>
     </ol>
     <h4>B. Create a ticket and claim rules</h4>
     <ol class="steps">
       <li>In the NFTs tab, click <span class="ui">Create</span> (sometimes “Lazy mint”). Name: “Workshop ticket, 3 Dec 2026”. Add a short description. Save and confirm in MetaMask.<span class="exp">Token ID 0 appears with supply 0. Nothing is owned yet: the item only exists as a template.</span></li>
-      <li>Open token 0 and its claim conditions. Click <span class="ui">Add initial claim phase</span> (or similar). Set: start now, price 0, limit 1 per wallet. Save and confirm.<span class="why">This is a rule in the contract, not a setting in a website. Anyone can read it on Etherscan.</span></li>
+      <li>Open token 0 and its claim conditions. Click <span class="ui">Add initial claim phase</span> (or similar). Set: start now, price 0, limit 1 per wallet. Save and confirm.<span class="why">This is a rule in the contract, not a setting in a website. Anyone can read it on Etherscan.</span><span class="exp">One claim phase listed for token 0: price 0, limit 1 per wallet, start time now.</span></li>
       <li>Claim one ticket yourself from the token page (button such as <span class="ui">Claim</span>).<span class="exp">Supply 1, owner = account 1.</span></li>
       <li>Switch MetaMask to account 1 again and try to claim a second ticket.<span class="exp">The transaction fails or the dashboard refuses: the limit is 1 per wallet.</span></li>
     </ol>

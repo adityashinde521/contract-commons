@@ -57,8 +57,10 @@ contract DocumentRegistry {
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <ol class="steps">
-      <li>Create <code>DocumentRegistry.sol</code>, paste, compile, deploy (account 1, Value 0).</li>
+      <li>Create <code>DocumentRegistry.sol</code>, paste, compile, deploy (account 1, Value 0).<span class="exp">A DocumentRegistry instance with buttons hashText, register, verify and records.</span></li>
       <li>Call <span class="ui">hashText</span> with <code>Contract v1: rent 900 EUR</code>. Copy the <code>0x…</code> result.<span class="exp">A 66-character value starting with 0x. Free: it is a <code>pure</code> function.</span></li>
       <li>Call <span class="ui">register</span> with this hash.<span class="exp">Logs: <code>DocumentRegistered</code> with your address and a timestamp.</span></li>
       <li>Call <span class="ui">verify</span> with the same hash.<span class="exp"><code>exists: true</code>, your address, a timestamp in Unix seconds.</span></li>

@@ -23,12 +23,14 @@ problem: "A student cooperative wants its members to decide on spending together
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <h4>A. Create the DAO</h4>
     <ol class="steps">
-      <li>Open <a href="https://app.aragon.org" target="_blank" rel="noopener">app.aragon.org</a>. Connect MetaMask (account 1). Click <span class="ui">Create a DAO</span>.</li>
-      <li>Blockchain: choose the <b>Sepolia</b> testnet.<span class="why">The blockchain is the only setting that cannot be changed later by a vote.</span></li>
-      <li>Name: “Lab Cooperative”, a short description. No logo needed.</li>
-      <li>Membership: choose <b>multisig members</b>. Add account 1, account 2 and account 3. Allow only members to create proposals.</li>
+      <li>Open <a href="https://app.aragon.org" target="_blank" rel="noopener">app.aragon.org</a>. Connect MetaMask (account 1). Click <span class="ui">Create a DAO</span>.<span class="exp">The DAO creation wizard opens.</span></li>
+      <li>Blockchain: choose the <b>Sepolia</b> testnet.<span class="why">The blockchain is the only setting that cannot be changed later by a vote.</span><span class="exp">Sepolia is selected. If the app does not list Ethereum Sepolia, choose another testnet it offers, such as Hoodi or Base Sepolia, and get test ETH for that network first.</span></li>
+      <li>Name: “Lab Cooperative”, a short description. No logo needed.<span class="exp">The name and description appear in the summary on the right or at the last step.</span></li>
+      <li>Membership: choose <b>multisig members</b>. Add account 1, account 2 and account 3. Allow only members to create proposals.<span class="exp">Three member addresses; proposal creation limited to members; threshold set in the next step.</span></li>
       <li>Approval threshold: <b>2</b>. Review all settings, deploy and confirm in MetaMask.<span class="exp">After a short wait, the DAO homepage opens with its address, members, treasury and proposals.</span></li>
     </ol>
     <h4>B. Fund the treasury and propose</h4>
@@ -40,7 +42,7 @@ problem: "A student cooperative wants its members to decide on spending together
     <ol class="steps">
       <li>As account 1, approve the proposal. Switch to account 2 and approve it too.<span class="exp">2 of 2 approvals. Status changes to “approved” or “executable”.</span></li>
       <li>Click <span class="ui">Execute</span> and confirm.<span class="exp">Status “executed”. The recipient receives 0.002 ETH. Anyone can see the decision and its reason forever.</span></li>
-      <li>Optional: create a second proposal that adds a fourth member, and let it fail with only one approval.</li>
+      <li>Optional: create a second proposal that adds a fourth member, and let it fail with only one approval.<span class="exp">The proposal stays open or expires without execution; the member list is unchanged.</span></li>
     </ol>
 
 ## Apply

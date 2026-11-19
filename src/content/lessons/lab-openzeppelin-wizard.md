@@ -23,17 +23,19 @@ problem: "A university wants a certificate contract but has no Solidity develope
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <h4>A. Configure</h4>
     <ol class="steps">
-      <li>Open <a href="https://wizard.openzeppelin.com" target="_blank" rel="noopener">wizard.openzeppelin.com</a>. Select <span class="ui">ERC721</span>.</li>
-      <li>Name: <code>Course Certificate</code>. Symbol: <code>CERT</code>.</li>
+      <li>Open <a href="https://wizard.openzeppelin.com" target="_blank" rel="noopener">wizard.openzeppelin.com</a>. Select <span class="ui">ERC721</span>.<span class="exp">The Wizard shows ERC721 settings on the left and Solidity code on the right.</span></li>
+      <li>Name: <code>Course Certificate</code>. Symbol: <code>CERT</code>.<span class="exp">The code updates live: contract CourseCertificate is ERC721, with “Course Certificate”, “CERT” in the constructor.</span></li>
       <li>Features: tick <span class="ui">Mintable</span>, <span class="ui">Auto Increment Ids</span> and <span class="ui">URI Storage</span>. Access control: <span class="ui">Ownable</span>.<span class="exp">The code on the right updates with every click. Find the <code>safeMint</code> function and <code>onlyOwner</code>.</span></li>
-      <li>Do not tick <span class="ui">Burnable</span> yet. Discuss first: should a holder be able to destroy a certificate?</li>
+      <li>Do not tick <span class="ui">Burnable</span> yet. Discuss first: should a holder be able to destroy a certificate?<span class="exp">No ERC721Burnable import in the code. Your team’s one-sentence answer is in the lab log.</span></li>
     </ol>
     <h4>B. Deploy</h4>
     <ol class="steps">
       <li>Click <span class="ui">Open in Remix</span>.<span class="exp">Remix opens with the contract file.</span></li>
-      <li>Compile. In Deploy &amp; run, select the certificate contract. The constructor asks for <code>initialOwner</code>: paste your own account address.</li>
+      <li>Compile. In Deploy &amp; run, select the certificate contract. The constructor asks for <code>initialOwner</code>: paste your own account address.<span class="exp">A deployed CourseCertificate with orange buttons safeMint and transferFrom and blue buttons such as owner and name.</span></li>
       <li>Deploy on Remix VM, or on Sepolia with Injected Provider – MetaMask.<span class="exp">A deployed contract with many buttons: these are the ERC-721 functions.</span></li>
     </ol>
     <h4>C. Issue and check a certificate</h4>

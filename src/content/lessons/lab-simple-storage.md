@@ -44,6 +44,8 @@ contract SimpleStorage {
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <ol class="steps">
       <li>In the file explorer, create <code>SimpleStorage.sol</code>. Paste the code. Compile (or wait for auto compile).<span class="exp">A green check on the compiler icon. No red errors.</span></li>
       <li>In Deploy &amp; run: Environment = Remix VM, Account = account 1, Value = 0, Contract = SimpleStorage. Click <span class="ui">Deploy</span>.<span class="exp">A green line in the terminal. Under <span class="ui">Deployed Contracts</span>: “SIMPLESTORAGE AT 0x…”.</span></li>

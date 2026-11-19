@@ -90,18 +90,20 @@ contract Escrow {
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <div class="callout warn"><h5>The Value rule</h5><p>Value must be <b>0</b> for Deploy and for every function except <code>deposit</code>. Remix keeps the last Value you typed. Check it before every click.</p></div>
     <h4>A. Prepare</h4>
     <ol class="steps">
       <li>Create <code>Escrow.sol</code>, paste the code and compile.<span class="exp">Green check on the compiler icon.</span></li>
-      <li>Under Deployed Contracts, click the trash icon to remove old instances.</li>
-      <li>Open the Account list. Copy the address of <b>account 2</b> (seller, ends in <code>35cb2</code>) and <b>account 3</b> (arbiter, ends in <code>C02db</code>) with the copy icons. Paste them in a text file.<span class="why">Remix VM addresses are the same for everyone, which helps in class.</span></li>
+      <li>Under Deployed Contracts, click the trash icon to remove old instances.<span class="exp">The Deployed Contracts list is empty.</span></li>
+      <li>Open the Account list. Copy the address of <b>account 2</b> (seller, ends in <code>35cb2</code>) and <b>account 3</b> (arbiter, ends in <code>C02db</code>) with the copy icons. Paste them in a text file.<span class="why">Remix VM addresses are the same for everyone, which helps in class.</span><span class="exp">Two full addresses (42 characters each, starting 0x) in your text file.</span></li>
     </ol>
     <h4>B. Deploy</h4>
     <ol class="steps">
-      <li>Select <b>account 1</b>. It becomes the buyer, because the constructor sets <code>buyer = msg.sender</code>.</li>
-      <li>Set Value to <b>0</b>. Choose Contract <code>Escrow</code>.</li>
-      <li>Click the small arrow next to <span class="ui">Deploy</span> to open three fields: <code>_seller</code>, <code>_arbiter</code>, <code>_price</code>.</li>
+      <li>Select <b>account 1</b>. It becomes the buyer, because the constructor sets <code>buyer = msg.sender</code>.<span class="exp">The Account field shows 0x5B38… The deployer becomes the buyer.</span></li>
+      <li>Set Value to <b>0</b>. Choose Contract <code>Escrow</code>.<span class="exp">Value 0 Wei; the Contract dropdown shows Escrow – Escrow.sol.</span></li>
+      <li>Click the small arrow next to <span class="ui">Deploy</span> to open three fields: <code>_seller</code>, <code>_arbiter</code>, <code>_price</code>.<span class="exp">Three empty input fields and a transact button.</span></li>
       <li>Paste the seller and arbiter addresses. Type the price <code>1000000000000000000</code> (1 ether in wei: a 1 and 18 zeros, no spaces or quotes). Click <span class="ui">transact</span>.<span class="exp">Terminal: green line, <code>value: 0 wei</code>. A new “ESCROW AT 0x…” entry.</span></li>
       <li>Expand it and click <span class="ui">state</span>.<span class="exp"><code>0</code> (AwaitingPayment).</span></li>
     </ol>
@@ -113,7 +115,7 @@ contract Escrow {
     </ol>
     <h4>D. Refund path and a revert on purpose</h4>
     <ol class="steps">
-      <li>Account 1, Value 0: deploy a second Escrow with the same three fields. Work only on this new instance.</li>
+      <li>Account 1, Value 0: deploy a second Escrow with the same three fields. Work only on this new instance.<span class="exp">A second Escrow under Deployed Contracts with a new address. Its state() returns 0 (AwaitingPayment).</span></li>
       <li>Value 1 Ether, click <span class="ui">deposit</span>. Then Value back to 0.<span class="exp"><span class="ui">state</span> = 1.</span></li>
       <li>Select account 2 (seller). Click <span class="ui">refund</span>.<span class="exp">Revert: “Only arbiter”. Take a screenshot: this is the most important picture of the lab.</span></li>
       <li>Select account 3 (arbiter). Click <span class="ui">refund</span>.<span class="exp">Logs show <code>Refunded</code>. <span class="ui">state</span> = 3. Account 1 has about 100 ETH again, minus gas.</span></li>

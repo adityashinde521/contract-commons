@@ -23,25 +23,27 @@ problem: "A startup’s founders want no single person to be able to move the co
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <h4>A. Create the Safe</h4>
     <ol class="steps">
-      <li>Open <a href="https://app.safe.global/welcome?chain=sep" target="_blank" rel="noopener">app.safe.global</a> with network Sepolia. Connect MetaMask with account 1.</li>
-      <li>Click <span class="ui">Create account</span>. Name it “Team Treasury”. Network: Sepolia.</li>
-      <li>Add owners: account 1, account 2, account 3. Set the threshold to <b>2 out of 3</b>.<span class="why">One director alone cannot move money. Any two can.</span></li>
+      <li>Open <a href="https://app.safe.global/welcome?chain=sep" target="_blank" rel="noopener">app.safe.global</a> with network Sepolia. Connect MetaMask with account 1.<span class="exp">The Safe app shows Sepolia and your connected address. You may be asked to accept Safe Labs’ terms first.</span></li>
+      <li>Click <span class="ui">Create account</span>. Name it “Team Treasury”. Network: Sepolia.<span class="exp">A setup screen with the name and network.</span></li>
+      <li>Add owners: account 1, account 2, account 3. Set the threshold to <b>2 out of 3</b>.<span class="why">One director alone cannot move money. Any two can.</span><span class="exp">Three owner rows and “2 out of 3 owner(s)” for the threshold. After creation and a MetaMask confirmation, your Safe has its own address.</span></li>
       <li>Review and create. Confirm the deployment in MetaMask.<span class="exp">A Safe address (0x…). This is a new contract on Sepolia.</span></li>
     </ol>
     <h4>B. Fund it and propose a payment</h4>
     <ol class="steps">
       <li>In MetaMask (account 1), send 0.01 SepoliaETH to the Safe address.<span class="exp">The Safe dashboard shows 0.01 ETH.</span></li>
-      <li>In the Safe, click <span class="ui">New transaction</span> → <span class="ui">Send tokens</span>. Recipient: a classmate’s course address. Amount: 0.002 ETH.</li>
+      <li>In the Safe, click <span class="ui">New transaction</span> → <span class="ui">Send tokens</span>. Recipient: a classmate’s course address. Amount: 0.002 ETH.<span class="exp">A transaction in the queue with 1 of 2 confirmations.</span></li>
       <li>Sign as account 1. MetaMask shows a signature request, not a transaction.<span class="exp">The transaction is queued: “1 of 2 confirmations”. No money has moved.</span></li>
     </ol>
     <h4>C. Second signature and execution</h4>
     <ol class="steps">
-      <li>Switch MetaMask to account 2. Reload the Safe app if needed.</li>
+      <li>Switch MetaMask to account 2. Reload the Safe app if needed.<span class="exp">The queued transaction shows a Confirm button for account 2.</span></li>
       <li>Open the queued transaction, click <span class="ui">Confirm</span>, then <span class="ui">Execute</span>. Confirm in MetaMask.<span class="exp">“2 of 2”, then “Success”. The recipient gets 0.002 ETH. Account 2 paid the gas.</span></li>
-      <li>Optional: as account 3, propose a payment and reject it as another owner.</li>
-      <li>Open the executed transaction in Tenderly or Phalcon (<a href="/lessons/lab-tenderly/">8.3 Tenderly</a>, <a href="/lessons/lab-phalcon/">7.5 Phalcon</a>) and find the two signatures in the call data.</li>
+      <li>Optional: as account 3, propose a payment and reject it as another owner.<span class="exp">The proposal shows as rejected; no ETH moved. On Etherscan the Safe’s nonce still advances.</span></li>
+      <li>Open the executed transaction in Tenderly or Phalcon (<a href="/lessons/lab-tenderly/">8.3 Tenderly</a>, <a href="/lessons/lab-phalcon/">7.5 Phalcon</a>) and find the two signatures in the call data.<span class="exp">The input data of execTransaction contains a signatures field with two 65-byte signatures (130 bytes in total).</span></li>
     </ol>
 
 ## Apply

@@ -23,17 +23,19 @@ problem: "A law firm has 2,000 leases in Word files. It wants the key terms as d
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026</b> against the tool’s official documentation. Tools change their screens often. If a button has a different name, look for the closest one and note the difference in your lab log.</div>
+
 <h4>A. Explore a sample</h4>
     <ol class="steps">
       <li>Open <a href="https://playground.accordproject.org" target="_blank" rel="noopener">playground.accordproject.org</a>.<span class="exp">Panels for Concerto Model, TemplateMark, JSON Data and a Preview.</span></li>
-      <li>From the sample list, load <span class="ui">Hello World</span>.</li>
+      <li>From the sample list, load <span class="ui">Hello World</span>.<span class="exp">Hello World loads: the Concerto Model, TemplateMark and JSON Data panels fill, and the Preview shows “Hello John Doe!” or similar.</span></li>
       <li>In the JSON Data panel, change the <code>name</code> value to your own name.<span class="exp">The Preview updates at once.</span></li>
-      <li>Load two or three other samples. For each, find one variable in the model, the text and the data.</li>
+      <li>Load two or three other samples. For each, find one variable in the model, the text and the data.<span class="exp">For each sample, one variable written down three times: its type in the model, {{name}} in the text, its value in the data.</span></li>
     </ol>
     <h4>B. Write your own clause</h4>
     <ol class="steps">
-      <li>Start from Hello World. In the model, define fields for a rental deposit: <code>String landlord</code>, <code>String tenant</code>, <code>Double monthlyRent</code>, <code>Double deposit</code>, <code>Integer returnDays</code>.</li>
-      <li>In the TemplateMark, write: “The Tenant {{tenant}} pays a deposit of {{deposit}} EUR to the Landlord {{landlord}}. The Landlord returns the deposit within {{returnDays}} days after the end of the lease, less proven damages.”</li>
+      <li>Start from Hello World. In the model, define fields for a rental deposit: <code>String landlord</code>, <code>String tenant</code>, <code>Double monthlyRent</code>, <code>Double deposit</code>, <code>Integer returnDays</code>.<span class="exp">The model panel shows no errors and the five fields with their types.</span></li>
+      <li>In the TemplateMark, write: “The Tenant {{tenant}} pays a deposit of {{deposit}} EUR to the Landlord {{landlord}}. The Landlord returns the deposit within {{returnDays}} days after the end of the lease, less proven damages.”<span class="exp">The Preview shows the sentence with your values. A typo in a variable name shows an error instead.</span></li>
       <li>Fill the JSON data with matching values.<span class="exp">The Preview shows your finished clause. Red errors mean the model, text and data do not match.</span></li>
       <li>Change <code>deposit</code> to text, for example <code>"three months"</code>.<span class="exp">A type error. The model protects the contract from invalid data.</span></li>
     </ol>

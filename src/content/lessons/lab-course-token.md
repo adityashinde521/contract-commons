@@ -38,6 +38,8 @@ contract CourseToken is ERC20, Ownable {
 
 ## Build
 
+<div class="checked"><b>Checked on 20 November 2026.</b> The contract code in this lab compiles with Solidity 0.8.24 to 0.8.30. Remix screens change between releases: if a label differs, look for the closest one and note it in your lab log.</div>
+
 <ol class="steps">
       <li>Create <code>CourseToken.sol</code>, paste, compile.<span class="exp">Remix downloads OpenZeppelin automatically. A <code>.deps</code> folder appears.</span></li>
       <li>Deploy as account 1 (Value 0). Call <span class="ui">balanceOf</span> with account 1’s address.<span class="exp"><code>1000000000000000000000</code> = 1000 tokens × 10<sup>18</sup>.</span></li>
