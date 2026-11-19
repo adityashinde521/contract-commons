@@ -1,0 +1,12 @@
+[
+{"q":"What does a hash function do?","o":["Encrypts a file so only the owner can read it","Turns any data into a fixed-length fingerprint","Compresses data"],"a":1,"m":1},
+{"q":"Why can a blockchain record not be changed unnoticed?","o":["Each block stores the previous block’s hash","A company checks it","It is encrypted"],"a":0,"m":1},
+{"q":"What does Proof of Stake use to keep validators honest?","o":["Electricity","Locked ETH that can be slashed","Legal contracts"],"a":1,"m":2},
+{"q":"What is gas on Ethereum?","o":["A token you mine","The unit of computation you pay for","A wallet"],"a":1,"m":3},
+{"q":"What happens when a transaction reverts?","o":["All changes are undone, but gas is paid","Nothing is charged","Only part of it runs"],"a":0,"m":3},
+{"q":"In Solidity, what does require(msg.sender == buyer) do?","o":["Logs the buyer","Stops the call unless the buyer made it","Pays the buyer"],"a":1,"m":4},
+{"q":"What is ERC-20?","o":["A blockchain","A standard interface for fungible tokens","A law"],"a":1,"m":5},
+{"q":"What is reentrancy?","o":["A contract called back before it updates its state","A second deployment","A fork"],"a":0,"m":7},
+{"q":"What does a rollup post to Ethereum?","o":["Nothing","Transaction data and proofs","Only fees"],"a":1,"m":10},
+{"q":"Is “code is law” a legal rule in the EU?","o":["Yes","No; contract law still decides validity and remedies","Only for tokens"],"a":1,"m":12}
+]

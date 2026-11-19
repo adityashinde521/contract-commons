@@ -1,0 +1,73 @@
+---
+import '../styles/tokens.css';
+import '../styles/components.css';
+import '../styles/site.css';
+import Logo from '../components/Logo.astro';
+import { url } from '../lib/course';
+interface Props { title: string; description?: string; active?: string; wide?: boolean }
+const { title, description = 'An Ethereum-focused smart contracts course for computer science, business informatics and law students.', active = '', wide = false } = Astro.props;
+const nav = [
+  ['curriculum', 'Curriculum', '/curriculum/'],
+  ['paths', 'Paths', '/paths/'],
+  ['labs', 'Labs & tools', '/labs/'],
+  ['glossary', 'Glossary', '/glossary/'],
+  ['instructors', 'For instructors', '/instructors/'],
+];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{title === 'Contract Commons' ? title : `${title} · Contract Commons`}</title>
+  <meta name="description" content={description}>
+  <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+</head>
+<body data-base={base}>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class={wide ? 'wrap wrap-wide' : 'wrap'}>
+      <Logo href={url('/')} />
+      <nav class="main-nav" aria-label="Main">
+        {nav.map(([id, label, href]) => <a href={url(href)} aria-current={active === id ? 'page' : undefined}>{label}</a>)}
+      </nav>
+      <div class="header-actions">
+        <button class="search-btn" type="button" data-search-open aria-label="Search the course">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="lbl">Search lessons, tools, terms</span><kbd>⌘K</kbd>
+        </button>
+        <a class="cc-btn cc-btn--primary" href={url('/dashboard/')}>My progress</a>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <slot />
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <b style="color: var(--ink)">Contract Commons</b>
+      <a href={url('/curriculum/')}>Curriculum</a>
+      <a href={url('/setup/')}>Setup and safety</a>
+      <a href={url('/glossary/')}>Glossary</a>
+      <a href={url('/placement/')}>Placement check</a>
+      <a href={url('/final-exam/')}>Final exam</a>
+      <a href={url('/instructors/')}>For instructors</a>
+      <span class="note">Teaching material on test networks only. Not legal or financial advice.</span>
+    </div>
+  </footer>
+  <dialog class="search" id="search" aria-label="Search">
+    <div class="search-in">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted-2)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label for="search-q" class="sr-only">Search</label>
+      <input id="search-q" type="search" placeholder="Search lessons, tools and terms" autocomplete="off">
+      <button class="cc-btn cc-btn--secondary" type="button" data-search-close style="min-height:36px;padding:0 12px">Close</button>
+    </div>
+    <ul class="search-res" id="search-res"></ul>
+  </dialog>
+  <script is:inline src={url('/app.js')} defer></script>
+</body>
+</html>

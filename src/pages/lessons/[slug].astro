@@ -1,0 +1,126 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { orderedLessons, splitSteps, KIND_LABEL, KIND_CHIP, url } from '../../lib/course';
+import quizzes from '../../data/quizzes.json';
+
+export async function getStaticPaths() {
+  const all = await getCollection('lessons');
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const ordered = await orderedLessons();
+const idx = ordered.findIndex((l) => l.entry.id === entry.id);
+const here = idx >= 0 ? ordered[idx] : null;
+const prev = idx > 0 ? ordered[idx - 1] : null;
+const next = idx >= 0 && idx < ordered.length - 1 ? ordered[idx + 1] : null;
+const d = entry.data;
+const steps = splitSteps(entry.body || '');
+const SUB: Record<string, string> = { problem: 'The question', concept: 'Ideas and terms', build: 'Do it, step by step', 'try-it': 'A short exercise', apply: 'CS · BI · Law', ship: 'Keep the result' };
+const quiz = (quizzes as Record<string, unknown[]>)[entry.id] || null;
+const isLab = d.kind.startsWith('lab');
+const tools = isLab ? 'See the Concept step for tools and what you need.' : '';
+---
+<Base title={d.title} description={d.problem} active="curriculum" wide>
+  <div class="wrap wrap-wide">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={url('/curriculum/')}>Curriculum</a><span aria-hidden="true">/</span>
+      {here ? <a href={url(`/modules/${here.mod.slug}/`)}>Module {here.mod.n} · {here.mod.title}</a> : <a href={url('/labs/')}>Labs and tools</a>}
+      <span aria-hidden="true">/</span><span style="color:var(--ink);font-weight:600">{here ? `${here.code} ` : ''}{d.title}</span>
+    </nav>
+    <div class="lesson-grid" data-lesson={entry.id} data-has-quiz={quiz ? '1' : '0'}>
+      <nav class="lesson-nav" aria-label="Lesson steps">
+        <div class="lbl">This {isLab ? 'lab' : 'lesson'}</div>
+        <ol class="outline">
+          {steps.map((s, i) => (
+            <li><a href={`#${s.id}`} data-step-link={s.id}><span class="dot">{i + 1}</span><span style="display:flex;flex-direction:column"><b>{s.title}</b><span style="font-size:12.5px;color:var(--muted-2)">{SUB[s.id] || ''}</span></span></a></li>
+          ))}
+          {quiz && <li><a href="#quiz" data-step-link="quiz"><span class="dot">{steps.length + 1}</span><span style="display:flex;flex-direction:column"><b>Quiz</b><span style="font-size:12.5px;color:var(--muted-2)">Pass with 80%</span></span></a></li>}
+        </ol>
+        <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px;font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between"><span>Status</span><b style="color:var(--ink)" data-status>Not started</b></div>
+          <div class="cc-progress"><span data-step-bar style="width:0%"></span></div>
+        </div>
+      </nav>
+
+      <div class="lesson-main">
+        <section class="lesson-title">
+          <div class="meta-chips">
+            <span class={`cc-chip ${KIND_CHIP[d.kind]}`}>{KIND_LABEL[d.kind]}</span>
+            {d.minutes && <span class="cc-chip">{d.minutes}</span>}
+            {here && <span class="cc-chip">Module {here.mod.n}</span>}
+            <span class="cc-chip">CS · BI · Law</span>
+          </div>
+          <h1>{d.title}</h1>
+        </section>
+        {steps.map((s, i) => (
+          <section class={`step-card${s.id === 'build' ? ' is-build' : ''}`} id={s.id} data-step={s.id}>
+            <div class="step-label">{String(i + 1).padStart(2, '0')} · {s.title}</div>
+            {s.id !== 'problem' && <h2 class="sr-only">{s.title}</h2>}
+            <div class="prose" set:html={s.html.replace(/^\s*<div class="cc-callout cc-callout--problem">/, '<div class="cc-callout cc-callout--problem" style="margin-top:10px">')} />
+            {s.id === 'ship' && (
+              <form class="cc-card" data-lablog style="margin-top:16px;background:var(--surface-muted);border:0">
+                <h3 style="margin:0 0 8px;font-size:17px">Save to your lab log</h3>
+                <label for={`log-${entry.id}`} style="display:block;font-size:14px;font-weight:600;margin-bottom:6px">What you did and found (one paragraph)</label>
+                <textarea id={`log-${entry.id}`} name="note" rows="3" style="width:100%;font:inherit;font-size:15px;border:1px solid var(--line-strong);border-radius:12px;padding:10px;background:var(--surface);resize:vertical"></textarea>
+                <label for={`ev-${entry.id}`} style="display:block;font-size:14px;font-weight:600;margin:10px 0 6px">Evidence: transaction hash, Etherscan link or UID (optional)</label>
+                <input id={`ev-${entry.id}`} name="evidence" type="text" style="width:100%;font:500 14px var(--font-mono);border:1px solid var(--line-strong);border-radius:12px;padding:10px;background:var(--surface);min-height:44px">
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center">
+                  <button class="cc-btn cc-btn--primary" type="submit">Save to lab log</button>
+                  {!quiz && <button class="cc-btn cc-btn--secondary" type="button" data-mark-done>Mark as complete</button>}
+                  <span data-log-status style="font-size:14px;color:var(--brand-700);font-weight:600" aria-live="polite"></span>
+                </div>
+                <p style="margin:10px 0 0;font-size:13px;color:var(--muted-2)">Saved in this browser only. Export it from My progress.</p>
+              </form>
+            )}
+          </section>
+        ))}
+        {quiz && (
+          <section class="step-card quiz" id="quiz" data-step="quiz">
+            <div class="step-label">{String(steps.length + 1).padStart(2, '0')} · Quiz</div>
+            <h2 style="font-size:22px;margin:4px 0 4px">Check yourself</h2>
+            <p style="margin:0 0 6px;color:var(--muted)">{quiz.length} questions. Pass with 80% to complete this {isLab ? 'lab' : 'lesson'}.</p>
+            <div data-quiz={entry.id}></div>
+            <script type="application/json" data-quiz-data={entry.id} set:html={JSON.stringify(quiz)} />
+          </section>
+        )}
+        <nav style="display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between" aria-label="Lesson navigation">
+          {prev ? <a class="cc-btn cc-btn--secondary" href={url(`/lessons/${prev.entry.id}/`)}>← {prev.code} {prev.entry.data.title}</a> : <span></span>}
+          {next && <a class="cc-btn cc-btn--primary" href={url(`/lessons/${next.entry.id}/`)}>{next.code} {next.entry.data.title} →</a>}
+        </nav>
+      </div>
+
+      <aside class="lesson-aside">
+        {here && (
+          <section class="cc-card">
+            <h2>Module {here.mod.n}: {here.mod.title}</h2>
+            <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px">
+              {ordered.filter((l) => l.mod.n === here.mod.n).map((l) => (
+                <li><a href={url(`/lessons/${l.entry.id}/`)} data-lesson-link={l.entry.id} style={`text-decoration:none;color:${l.entry.id === entry.id ? 'var(--brand-900)' : 'var(--ink-2)'};font-weight:${l.entry.id === entry.id ? 700 : 500};display:flex;gap:8px`}><span style="font-family:var(--font-mono);color:var(--muted-2);min-width:34px">{l.code}</span><span>{l.entry.data.title}</span></a></li>
+              ))}
+            </ol>
+          </section>
+        )}
+        <section class="cc-card">
+          <h2>Your role today</h2>
+          <label for="role" class="sr-only">Your discipline</label>
+          <select id="role" class="select" data-role-select style="width:100%">
+            <option value="">Choose your discipline</option>
+            <option value="cs">Computer science</option>
+            <option value="bi">Business informatics</option>
+            <option value="law">Law</option>
+          </select>
+          <p style="font-size:14px;color:var(--muted);margin:10px 0 0" data-role-hint>In mixed teams, roles rotate each lab: builder, process analyst, legal analyst, recorder. <a href={url('/teamwork/')}>Team roles</a></p>
+        </section>
+        <section class="cc-callout cc-callout--warn" style="display:block">
+          <b>Safety.</b> Test networks only. Never share or type your recovery phrase. <a href={url('/setup/')}>Setup and safety</a>
+        </section>
+        {here && (
+          <section class="cc-callout cc-callout--tool" style="display:block">
+            <b>Where this comes from.</b> {here.mod.sources}.
+          </section>
+        )}
+      </aside>
+    </div>
+  </div>
+</Base>

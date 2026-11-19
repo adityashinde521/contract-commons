@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import terms from '../data/glossary.json';
+import { url } from '../lib/course';
+const sorted = [...terms].sort((a, b) => a.t.localeCompare(b.t));
+---
+<Base title="Glossary" active="glossary">
+  <div class="wrap">
+    <header class="page-head">
+      <div class="cc-eyebrow">Glossary</div>
+      <h1>{sorted.length} terms in plain English</h1>
+      <p class="lead">Each term links to the lesson that explains it.</p>
+    </header>
+    <label for="gfilter" class="sr-only">Filter terms</label>
+    <input id="gfilter" type="search" placeholder="Filter terms" class="select" style="width:100%;max-width:420px;margin-top:20px" data-gloss-filter>
+    <dl class="grid" style="margin-top:18px" data-gloss-list>
+      {sorted.map((g) => (
+        <div class="cc-card" data-term={g.t.toLowerCase()} id={g.t.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+          <dt style="font-weight:800;font-size:17px">{g.t}</dt>
+          <dd style="margin:6px 0 10px;color:var(--muted);font-size:15px">{g.d}</dd>
+          <dd style="margin:0"><a href={url(`/lessons/${g.l}/`)} style="font-weight:700;font-size:14px">Read the lesson →</a></dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</Base>

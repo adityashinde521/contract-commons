@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import { MODULES, TINT, KIND_LABEL, KIND_CHIP, orderedLessons, url } from '../../lib/course';
+export function getStaticPaths() { return MODULES.map((m) => ({ params: { slug: m.slug }, props: { m } })); }
+const { m } = Astro.props;
+const lessons = (await orderedLessons()).filter((l) => l.mod.n === m.n);
+const prev = MODULES.find((x) => x.n === m.n - 1);
+const next = MODULES.find((x) => x.n === m.n + 1);
+---
+<Base title={`Module ${m.n}: ${m.title}`} description={m.summary} active="curriculum">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href={url('/curriculum/')}>Curriculum</a><span aria-hidden="true">/</span><span>Module {m.n}</span></nav>
+    <header class="page-head">
+      <span class={`mod-num ${TINT[m.tint]}`}>{String(m.n).padStart(2, '0')}</span>
+      <h1>{m.title}</h1>
+      <p class="lead">{m.summary}</p>
+      <div class="meta-chips" style="margin-top:14px"><span class="cc-chip" data-mod-progress={m.lessons.join(',')}>0 of {m.lessons.length} done</span></div>
+    </header>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
+      {lessons.map((l) => (
+        <a class="mod-card" href={url(`/lessons/${l.entry.id}/`)} data-lesson-link={l.entry.id}>
+          <span class="mod-num" style="background:var(--surface-muted);color:var(--ink-2);font-family:var(--font-mono);font-weight:500;font-size:14px">{l.code}</span>
+          <span style="min-width:0;flex:1"><b>{l.entry.data.title}</b><span class="d">{l.entry.data.problem}</span></span>
+          <span class="meta-chips" style="flex:none"><span class={`cc-chip ${KIND_CHIP[l.entry.data.kind]}`}>{KIND_LABEL[l.entry.data.kind]}</span>{l.entry.data.minutes && <span class="cc-chip">{l.entry.data.minutes}</span>}</span>
+        </a>
+      ))}
+    </div>
+    <section class="cc-callout cc-callout--tool" style="display:block;margin-top:20px"><b>Sources for this module.</b> {m.sources}.</section>
+    <nav style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:24px">
+      {prev ? <a class="cc-btn cc-btn--secondary" href={url(`/modules/${prev.slug}/`)}>← Module {prev.n}</a> : <span></span>}
+      {next && <a class="cc-btn cc-btn--primary" href={url(`/modules/${next.slug}/`)}>Module {next.n}: {next.title} →</a>}
+    </nav>
+  </div>
+</Base>

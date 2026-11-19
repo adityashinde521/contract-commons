@@ -1,0 +1,33 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+body{margin:0;background:var(--ground)}
+.wrap{position:relative;width:960px;height:288px;overflow:hidden;background:var(--ground);font-family:var(--font-sans)}
+svg{position:absolute;left:0;top:0}
+.b900{fill:var(--brand-900)} .b300{fill:var(--brand-300)} .b100{fill:var(--brand-100)}
+.law{fill:var(--law-600)} .bi{fill:var(--bi-600)} .cs{fill:var(--cs-100)}
+.name{position:absolute;left:40px;bottom:64px;max-width:440px;margin:0;font-weight:800;font-size:88px;line-height:.95;letter-spacing:-.02em;color:var(--ink)}
+.tag{position:absolute;left:40px;bottom:32px;max-width:440px;margin:0;font-size:14px;color:var(--muted-2)}
+</style></head><body>
+<div class="wrap">
+<svg width="960" height="288" viewBox="0 0 960 288" aria-hidden="true">
+<!-- blocks: brand-900 slab 248x288 (bleeds top/bottom), brand-100 tile 152x120 r28, cs-100 tile 152x136 r28, law-600 80x80 r18, bi-600 48x48 r12
+     arrangement: one tall brand slab with satellites, right of x=480, slab bleeds off the right edge
+     pattern: pills (radius-pill), because the README says chips are pills and radii grow with size; brand-300 pills on the slab like the hero's CTA chips
+     steps and radii: gaps 16/24/32 (space-4/6/8), radius-xl 22, radius-2xl 28, radius-lg 18, radius-md 12, pills half of 24 -->
+<rect class="b100" x="504" y="24" width="152" height="120" rx="28"/>
+<rect class="cs" x="504" y="168" width="152" height="136" rx="28"/>
+<rect class="law" x="680" y="24" width="80" height="80" rx="18"/>
+<rect class="bi" x="712" y="128" width="48" height="48" rx="12"/>
+<rect class="b900" x="784" y="-16" width="200" height="320" rx="28"/>
+<rect class="b300" x="808" y="40" width="112" height="24" rx="12"/>
+<rect class="b300" x="808" y="80" width="72" height="24" rx="12"/>
+<rect class="b300" x="808" y="120" width="136" height="24" rx="12"/>
+<rect class="b100" x="808" y="184" width="88" height="24" rx="12"/>
+<rect class="b100" x="808" y="224" width="120" height="24" rx="12"/>
+</svg>
+<h1 class="name">Contract<br>Commons</h1>
+<p class="tag">Smart contracts in code, in business and in law.</p>
+</div>
+</body></html>

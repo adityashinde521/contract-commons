@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contract Commons – landing page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F6F4}
+a{color:#136F4F}a:hover{color:#0B3B2C}
+</style>
+</helmet>
+<div style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0F1A16; background: #F3F6F4; min-height: 100%;">
+
+  <!-- Top navigation -->
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E3E9E6;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0F1A16;">
+        <span style="width: 34px; height: 34px; border-radius: 10px; background: #0B3B2C; display: grid; place-items: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B9F0D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h7l4 4v12H7z"/><path d="M14 4v4h4"/><path d="M10 13h5M10 17h3"/></svg>
+        </span>
+        <span style="font-weight: 800; font-size: 18px; letter-spacing: -0.01em;">Contract Commons</span>
+      </a>
+      <nav aria-label="Main" style="display: flex; gap: 22px; flex-wrap: wrap; font-size: 15px; font-weight: 500;">
+        <a href="#curriculum" style="color: #33433C; text-decoration: none;">Curriculum</a>
+        <a href="#paths" style="color: #33433C; text-decoration: none;">Learning paths</a>
+        <a href="#labs" style="color: #33433C; text-decoration: none;">Labs &amp; tools</a>
+        <a href="#" style="color: #33433C; text-decoration: none;">Glossary</a>
+        <a href="#" style="color: #33433C; text-decoration: none;">For instructors</a>
+      </nav>
+      <div style="margin-left: auto; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <label for="search" style="position: absolute; left: -9999px;">Search lessons</label>
+        <div style="display: flex; align-items: center; gap: 8px; background: #F3F6F4; border: 1px solid #E3E9E6; border-radius: 12px; padding: 9px 12px; min-width: 220px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6B64" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="search" type="search" placeholder="Search lessons, tools, terms" style="border: 0; background: transparent; font: inherit; font-size: 14px; outline: none; flex: 1; min-width: 0; color: #0F1A16;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5B6B64; border: 1px solid #D5DED9; border-radius: 6px; padding: 1px 6px;">⌘K</span>
+        </div>
+        <a href="Dashboard.dc.html" style="background: #0B3B2C; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 14px; padding: 11px 18px; border-radius: 12px;">Start learning</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section style="padding: 32px 24px 0;">
+    <div style="max-width: 1240px; margin: 0 auto; background: #0B3B2C; border-radius: 28px; padding: 56px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; color: #FFFFFF;">
+      <div style="flex: 1 1 460px; min-width: 0;">
+        <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(185,240,212,0.14); color: #B9F0D4; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px;">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: #4ADE9B;"></span>Free · in your browser · testnet only
+        </span>
+        <h1 style="font-size: 56px; line-height: 1.05; letter-spacing: -0.025em; font-weight: 800; margin: 20px 0 18px;">Learn smart contracts the way they are used: in code, in business and in law.</h1>
+        <p style="font-size: 18px; line-height: 1.6; color: #CFE3DA; margin: 0 0 30px; max-width: 560px;">An Ethereum-focused course for computer science, business informatics and law students. Build real contracts in Remix, use the tools professionals use, and learn to ask the questions that code cannot answer.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="Dashboard.dc.html" style="background: #4ADE9B; color: #062A1E; text-decoration: none; font-weight: 700; font-size: 16px; padding: 15px 24px; border-radius: 14px; display: inline-flex; gap: 10px; align-items: center;">Start the course
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#paths" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.22); color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 15px 24px; border-radius: 14px;">Find your starting point</a>
+        </div>
+        <div style="display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; font-size: 14px; color: #CFE3DA;">
+          <div><b style="display: block; font-size: 26px; color: #FFFFFF; font-weight: 800;">3</b>disciplines, one team</div>
+          <div><b style="display: block; font-size: 26px; color: #FFFFFF; font-weight: 800;">8</b>Remix code labs</div>
+          <div><b style="display: block; font-size: 26px; color: #FFFFFF; font-weight: 800;">12</b>labs with market tools</div>
+          <div><b style="display: block; font-size: 26px; color: #FFFFFF; font-weight: 800;">0 €</b>real money, ever</div>
+        </div>
+      </div>
+
+      <!-- Hero product visual: a live contract card -->
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: #FFFFFF; color: #0F1A16; border-radius: 22px; padding: 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.28);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; color: #5B6B64; letter-spacing: 0.06em; text-transform: uppercase;">Lab L2 · Escrow</div>
+              <div style="font-size: 19px; font-weight: 700; margin-top: 2px;">Laptop purchase, 1 ETH</div>
+            </div>
+            <span style="background: #FFF1DE; color: #8A4B00; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px;">Awaiting delivery</span>
+          </div>
+          <!-- State stepper -->
+          <ol aria-label="Contract states" style="list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+            <li style="background: #E3F7EC; border-radius: 12px; padding: 10px 12px;">
+              <div style="font-size: 11px; font-weight: 700; color: #136F4F; text-transform: uppercase; letter-spacing: 0.05em;">Done</div>
+              <div style="font-size: 14px; font-weight: 600;">Payment held</div>
+            </li>
+            <li style="background: #FFFFFF; border: 2px solid #E8912D; border-radius: 12px; padding: 8px 10px;">
+              <div style="font-size: 11px; font-weight: 700; color: #8A4B00; text-transform: uppercase; letter-spacing: 0.05em;">Now</div>
+              <div style="font-size: 14px; font-weight: 600;">Delivery</div>
+            </li>
+            <li style="background: #F3F6F4; border-radius: 12px; padding: 10px 12px;">
+              <div style="font-size: 11px; font-weight: 700; color: #5B6B64; text-transform: uppercase; letter-spacing: 0.05em;">Next</div>
+              <div style="font-size: 14px; font-weight: 600; color: #33433C;">Released</div>
+            </li>
+          </ol>
+          <!-- Parties -->
+          <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+            <div style="border: 1px solid #E3E9E6; border-radius: 12px; padding: 10px 12px;">
+              <div style="font-size: 12px; color: #5B6B64;">Buyer</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px;">0x5B38…eddC4</div>
+            </div>
+            <div style="border: 1px solid #E3E9E6; border-radius: 12px; padding: 10px 12px;">
+              <div style="font-size: 12px; color: #5B6B64;">Seller</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px;">0xAb84…35cb2</div>
+            </div>
+            <div style="border: 1px solid #E3E9E6; border-radius: 12px; padding: 10px 12px;">
+              <div style="font-size: 12px; color: #5B6B64;">Arbiter</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px;">0x4B20…C02db</div>
+            </div>
+          </div>
+          <!-- Clause to code -->
+          <div style="margin-top: 16px; background: #F5F3FF; border-radius: 14px; padding: 14px 16px;">
+            <div style="display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">
+              <span style="color: #5B3FC4;">§4 Release · legal text</span>
+              <span style="font-family: 'JetBrains Mono', monospace; color: #5B3FC4; text-transform: none; letter-spacing: 0;">→ confirmDelivery()</span>
+            </div>
+            <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.55; color: #2A2350;">When the Buyer or the Arbiter confirms delivery, the payment is released to the Seller.</p>
+          </div>
+        </div>
+        <!-- Revert toast -->
+        <div style="background: #FFFFFF; color: #0F1A16; border-radius: 16px; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; box-shadow: 0 16px 40px rgba(0,0,0,0.22); margin-left: 40px;">
+          <span style="flex: none; width: 32px; height: 32px; border-radius: 10px; background: #FDECEA; display: grid; place-items: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 8v5M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg>
+          </span>
+          <div style="min-width: 0;">
+            <div style="font-size: 14px; font-weight: 700;">Seller tried to release the payment</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #B42318; margin-top: 2px;">revert: “Only buyer or arbiter”</div>
+            <div style="font-size: 13px; color: #5B6B64; margin-top: 4px;">The contract enforced §4. That is the lesson.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start where you are -->
+  <section id="paths" style="padding: 88px 24px 0;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+        <div style="max-width: 640px;">
+          <div style="font-size: 13px; font-weight: 700; color: #136F4F; letter-spacing: 0.08em; text-transform: uppercase;">Start where you are</div>
+          <h2 style="font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; margin: 10px 0 12px;">One course, four ways in</h2>
+          <p style="font-size: 17px; line-height: 1.6; color: #4A5A53; margin: 0;">Pick the card that sounds like you. A 10-question placement check then marks what you can skip.</p>
+        </div>
+        <a href="#" style="font-weight: 700; color: #136F4F; text-decoration: none; font-size: 15px;">Take the placement check →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 32px;">
+        <a href="Dashboard.dc.html" style="background: #FFFFFF; border: 1px solid #E3E9E6; border-radius: 20px; padding: 24px; text-decoration: none; color: #0F1A16; display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 48px; height: 48px; border-radius: 14px; background: #EFEAFE; display: grid; place-items: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B3FC4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 21h14M6 7h12M4 7l-2 6a3 3 0 0 0 6 0zM20 7l-2 6a3 3 0 0 0 6 0z"/></svg>
+          </span>
+          <div>
+            <div style="font-size: 19px; font-weight: 700;">I study law</div>
+            <p style="font-size: 15px; line-height: 1.55; color: #4A5A53; margin: 6px 0 0;">No code. Learn the technology, then run real contracts with GUI tools and analyse them legally.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; font-weight: 600;">
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">Starts at Module 1</span>
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">No programming</span>
+          </div>
+        </a>
+        <a href="Dashboard.dc.html" style="background: #FFFFFF; border: 1px solid #E3E9E6; border-radius: 20px; padding: 24px; text-decoration: none; color: #0F1A16; display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 48px; height: 48px; border-radius: 14px; background: #FFEDE0; display: grid; place-items: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B54708" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg>
+          </span>
+          <div>
+            <div style="font-size: 19px; font-weight: 700;">I study business informatics</div>
+            <p style="font-size: 15px; line-height: 1.55; color: #4A5A53; margin: 6px 0 0;">Model processes as state machines, price transactions and judge when a blockchain is worth it.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; font-weight: 600;">
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">Starts at Module 1</span>
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">Light code</span>
+          </div>
+        </a>
+        <a href="Dashboard.dc.html" style="background: #FFFFFF; border: 1px solid #E3E9E6; border-radius: 20px; padding: 24px; text-decoration: none; color: #0F1A16; display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 48px; height: 48px; border-radius: 14px; background: #E2F0FD; display: grid; place-items: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F5FA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
+          </span>
+          <div>
+            <div style="font-size: 19px; font-weight: 700;">I study computer science</div>
+            <p style="font-size: 15px; line-height: 1.55; color: #4A5A53; margin: 6px 0 0;">Write Solidity, break it on purpose, test it with Foundry and ship it to a public testnet.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; font-weight: 600;">
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">Skip to Module 3</span>
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">Solidity</span>
+          </div>
+        </a>
+        <a href="Dashboard.dc.html" style="background: #FFFFFF; border: 1px solid #E3E9E6; border-radius: 20px; padding: 24px; text-decoration: none; color: #0F1A16; display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 48px; height: 48px; border-radius: 14px; background: #E3F7EC; display: grid; place-items: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#136F4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </span>
+          <div>
+            <div style="font-size: 19px; font-weight: 700;">I already work</div>
+            <p style="font-size: 15px; line-height: 1.55; color: #4A5A53; margin: 6px 0 0;">Lawyers, analysts and engineers who need the essentials fast. Choose modules, skip the rest.</p>
+          </div>
+          <div style="margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px; font-weight: 600;">
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">Self-paced</span>
+            <span style="background: #F3F6F4; padding: 5px 10px; border-radius: 999px; color: #33433C;">Pick modules</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How every lesson works -->
+  <section style="padding: 88px 24px 0;">
+    <div style="max-width: 1240px; margin: 0 auto; background: #FFFFFF; border: 1px solid #E3E9E6; border-radius: 28px; padding: 48px;">
+      <div style="font-size: 13px; font-weight: 700; color: #136F4F; letter-spacing: 0.08em; text-transform: uppercase;">How every lesson works</div>
+      <h2 style="font-size: 36px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; margin: 10px 0 30px; max-width: 720px;">Five steps, always in the same order, so you always know what comes next</h2>
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px;">
+        <sc-for list="{{steps}}" as="s" hint-placeholder-count="5">
+          <li style="background: #F7FAF8; border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: #136F4F;">{{s.n}}</span>
+            <span style="font-size: 18px; font-weight: 700;">{{s.title}}</span>
+            <span style="font-size: 14.5px; line-height: 1.55; color: #4A5A53;">{{s.text}}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Curriculum -->
+  <section id="curriculum" style="padding: 88px 24px 0;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+        <div style="max-width: 640px;">
+          <div style="font-size: 13px; font-weight: 700; color: #136F4F; letter-spacing: 0.08em; text-transform: uppercase;">Curriculum</div>
+          <h2 style="font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; margin: 10px 0 12px;">From first hash to your own DAO</h2>
+          <p style="font-size: 17px; line-height: 1.6; color: #4A5A53; margin: 0;">Ethereum-focused modules, each ending with a lab and a quiz. Draft outline, to be finalised with syllabi from leading universities.</p>
+        </div>
+        <a href="#" style="font-weight: 700; color: #136F4F; text-decoration: none; font-size: 15px;">See the full roadmap →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 32px;">
+        <sc-for list="{{modules}}" as="m" hint-placeholder-count="12">
+          <a href="Lesson.dc.html" style="background: #FFFFFF; border: 1px solid #E3E9E6; border-radius: 18px; padding: 20px; text-decoration: none; color: #0F1A16; display: flex; gap: 14px; align-items: flex-start;">
+            <span style="flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 15px; background: {{m.bg}}; color: {{m.fg}};">{{m.n}}</span>
+            <span style="min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-size: 16.5px; font-weight: 700;">{{m.title}}</span>
+              <span style="font-size: 14px; line-height: 1.5; color: #4A5A53;">{{m.topics}}</span>
+              <span style="font-size: 12.5px; font-weight: 600; color: #136F4F; margin-top: 4px;">{{m.lab}}</span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning paths -->
+  <section style="padding: 88px 24px 0;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="font-size: 13px; font-weight: 700; color: #136F4F; letter-spacing: 0.08em; text-transform: uppercase;">Learning paths</div>
+      <h2 style="font-size: 40px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; margin: 10px 0 32px;">Where the course can take you</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+        <div style="background: #E2F0FD; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="font-size: 21px; font-weight: 800; color: #12345E;">Smart contract developer</div>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #24466F;">Solidity, testing, security and deployment, ending with an audited capstone on a testnet.</p>
+          <div style="font-size: 13.5px; font-weight: 600; color: #1F5FA8;">Modules 1–12 · Remix, Foundry, Tenderly</div>
+        </div>
+        <div style="background: #EFEAFE; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="font-size: 21px; font-weight: 800; color: #2A2160;">Legal-tech analyst</div>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3E3480;">Read and question contracts without writing them: smart legal contracts, MiCA, GDPR, liability.</p>
+          <div style="font-size: 13.5px; font-weight: 600; color: #5B3FC4;">Modules 1–3, 9–12 · EAS, Safe, Accord Project</div>
+        </div>
+        <div style="background: #FFEDE0; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="font-size: 21px; font-weight: 800; color: #5A2A06;">Blockchain product analyst</div>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #6E3A12;">Process design, cost of trust, token models and on-chain data, ending with a business case.</p>
+          <div style="font-size: 13.5px; font-weight: 600; color: #B54708;">Modules 1–4, 9–12 · thirdweb, Aragon, Dune</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section id="labs" style="padding: 88px 24px 0;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; background: #FFFFFF; border: 1px solid #E3E9E6; border-radius: 28px; padding: 48px;">
+      <div style="flex: 1 1 360px; min-width: 0;">
+        <div style="font-size: 13px; font-weight: 700; color: #136F4F; letter-spacing: 0.08em; text-transform: uppercase;">Labs &amp; tools</div>
+        <h2 style="font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; margin: 10px 0 12px;">The tools professionals use, on a free test network</h2>
+        <p style="font-size: 16px; line-height: 1.6; color: #4A5A53; margin: 0;">Every lab runs on Sepolia or reads public data. Your course wallet never holds real money.</p>
+      </div>
+      <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+        <sc-for list="{{tools}}" as="t" hint-placeholder-count="12">
+          <span style="background: #F3F6F4; border: 1px solid #E3E9E6; border-radius: 14px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 15px; font-weight: 700;">{{t.name}}</span>
+            <span style="font-size: 12.5px; color: #5B6B64;">{{t.use}}</span>
+          </span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section style="padding: 88px 24px 64px;">
+    <div style="max-width: 1240px; margin: 0 auto; background: #D7F5E6; border-radius: 28px; padding: 48px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between;">
+      <div style="max-width: 620px;">
+        <h2 style="font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; margin: 0 0 10px; color: #0B3B2C;">Run your first contract in 20 minutes</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #1D4D3B;">No sign-up needed to start. Progress is saved in your browser.</p>
+      </div>
+      <a href="Lesson.dc.html" style="background: #0B3B2C; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 16px; padding: 15px 24px; border-radius: 14px;">Open Module 1</a>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid #E3E9E6; background: #FFFFFF;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 18px 32px; font-size: 14px; color: #5B6B64;">
+      <span style="font-weight: 700; color: #0F1A16;">Contract Commons</span>
+      <a href="#" style="color: #5B6B64; text-decoration: none;">Curriculum</a>
+      <a href="#" style="color: #5B6B64; text-decoration: none;">Glossary</a>
+      <a href="#" style="color: #5B6B64; text-decoration: none;">Cheat sheets</a>
+      <a href="#" style="color: #5B6B64; text-decoration: none;">For instructors</a>
+      <span style="margin-left: auto;">Teaching material, not legal or financial advice.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var CS = { bg: '#E2F0FD', fg: '#1F5FA8' }, LAW = { bg: '#EFEAFE', fg: '#5B3FC4' }, BI = { bg: '#FFEDE0', fg: '#B54708' }, CORE = { bg: '#E3F7EC', fg: '#136F4F' };
+    function m(n, title, topics, lab, c) { return { n: n, title: title, topics: topics, lab: lab, bg: c.bg, fg: c.fg }; }
+    return {
+      steps: [
+        { n: '01', title: 'Problem', text: 'A real case: a purchase between strangers, a lost key, a 2025 hack.' },
+        { n: '02', title: 'Concept', text: 'The idea behind it, in plain words, with one diagram and key terms.' },
+        { n: '03', title: 'Build', text: 'Do it yourself in Remix or a market tool, with the expected result for every step.' },
+        { n: '04', title: 'Apply', text: 'The same contract seen by CS, business and law, with questions for your team.' },
+        { n: '05', title: 'Ship', text: 'Something you keep: a verified contract, an Etherscan link, a lab log entry.' }
+      ],
+      modules: [
+        m('01', 'Blockchain foundations', 'Ledgers, hashing, keys, blocks, types of blockchain, UTXO vs. accounts', 'Lab: hash and sign in ETH.BUILD', CORE),
+        m('02', 'Consensus and decentralisation', 'PoW, PoS, BFT, finality, forks, incentives, energy', 'Lab: read blocks on Etherscan', CORE),
+        m('03', 'Ethereum and the EVM', 'Accounts, gas, transactions, clients, wallets, testnets', 'Lab: Remix tour and SimpleStorage', CS),
+        m('04', 'Solidity smart contracts', 'State machines, access control, time, events, Vyper overview', 'Lab: Escrow and rental deposit', CS),
+        m('05', 'Tokens and standards', 'ERC-20, ERC-721, ERC-1155, OpenZeppelin', 'Lab: certificate with the Wizard', CS),
+        m('06', 'Developer tooling', 'Foundry, Hardhat, Git, node providers, frameworks', 'Lab: first Foundry test', CS),
+        m('07', 'Testing and security', 'Unit tests, fuzzing, Slither, threat vectors, audits', 'Lab: reentrancy attack and fix', CS),
+        m('08', 'Deploy, verify, operate', 'Sepolia, verification, upgrades, monitoring', 'Lab: deploy and debug in Tenderly', CS),
+        m('09', 'Oracles, storage, interoperability', 'Chainlink, IPFS, bridges, randomness', 'Lab: attest a document with EAS', BI),
+        m('10', 'Scaling and Layer 2', 'Rollups, sidechains, channels, L2 risk', 'Lab: rollup risk on L2BEAT', BI),
+        m('11', 'DeFi, DAOs and governance', 'Stablecoins, DAOs, multisig, payments', 'Lab: Safe and Aragon DAO', BI),
+        m('12', 'Law, regulation and business', 'Smart legal contracts, MiCA, GDPR, Data Act, liability', 'Lab: Accord Project template', LAW)
+      ],
+      tools: [
+        { name: 'Remix', use: 'Write and deploy' }, { name: 'MetaMask', use: 'Test wallet' }, { name: 'OpenZeppelin', use: 'Audited building blocks' },
+        { name: 'Foundry', use: 'Testing' }, { name: 'thirdweb', use: 'Ready-made contracts' }, { name: 'Safe', use: 'Multisig' },
+        { name: 'Aragon', use: 'DAOs' }, { name: 'EAS', use: 'Attestations' }, { name: 'Tenderly', use: 'Debug and simulate' },
+        { name: 'Phalcon', use: 'Trace real hacks' }, { name: 'Dune', use: 'On-chain data' }, { name: 'L2BEAT', use: 'Rollup risk' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

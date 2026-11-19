@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import quizzes from '../data/quizzes.json';
+const pool = Object.values(quizzes).flat();
+---
+<Base title="Final exam" active="">
+  <div class="wrap" style="max-width:860px">
+    <header class="page-head">
+      <div class="cc-eyebrow">Final exam</div>
+      <h1>20 questions from the whole course</h1>
+      <p class="lead">Each attempt draws new questions from {pool.length} in the course. Pass with 80% or more.</p>
+    </header>
+    <section class="step-card quiz" style="margin-top:20px">
+      <div data-quiz="final-exam" data-quiz-sample="20"></div>
+      <script type="application/json" data-quiz-data="final-exam" set:html={JSON.stringify(pool)} />
+    </section>
+  </div>
+</Base>

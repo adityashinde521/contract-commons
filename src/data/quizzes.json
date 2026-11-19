@@ -1,0 +1,2046 @@
+{
+ "trust-and-ledgers": [
+  {
+   "q": "Which problem does a blockchain solve without a central party?",
+   "o": [
+    "Data compression",
+    "Double spending",
+    "Fast internet payments",
+    "Full anonymity"
+   ],
+   "a": 1,
+   "e": "Without a central ledger keeper, the network must stop a person from spending the same money two times."
+  },
+  {
+   "q": "When is a normal database the better choice?",
+   "o": [
+    "When many parties do not trust each other",
+    "When one trusted party exists and all parties accept it",
+    "When data must be tamper-evident",
+    "Never"
+   ],
+   "a": 1,
+   "e": "If a trusted operator already exists, a blockchain adds cost without benefit."
+  },
+  {
+   "q": "What does “tamper-evident” mean?",
+   "o": [
+    "Nobody can read the data",
+    "Changes to old data are detectable",
+    "Data is encrypted",
+    "Data is stored on one server"
+   ],
+   "a": 1,
+   "e": "A change to an old block changes its hash, so all nodes see the break."
+  },
+  {
+   "q": "A contract receives a wrong delivery date from an outside system. What does the blockchain do?",
+   "o": [
+    "It rejects the false data",
+    "It corrects the date",
+    "It stores the data; it cannot check if the data is true",
+    "It asks the validators"
+   ],
+   "a": 2,
+   "e": "Garbage in, garbage out: the chain cannot check real-world truth."
+  }
+ ],
+ "hash-functions": [
+  {
+   "q": "You hash the same input two times. What is the result?",
+   "o": [
+    "Two different hashes",
+    "The same hash",
+    "A longer hash the second time",
+    "An error"
+   ],
+   "a": 1,
+   "e": "Hash functions are deterministic."
+  },
+  {
+   "q": "You change one character in a document. What happens to its hash?",
+   "o": [
+    "It changes a little",
+    "It stays the same",
+    "It changes completely",
+    "It becomes zero"
+   ],
+   "a": 2,
+   "e": "This is the avalanche effect."
+  },
+  {
+   "q": "Which property lets you put the hash of a confidential document on a public chain?",
+   "o": [
+    "One-way",
+    "Fixed length",
+    "Fast calculation",
+    "Collision"
+   ],
+   "a": 0,
+   "e": "Nobody can calculate the document from the hash."
+  },
+  {
+   "q": "Which hash function does Solidity give you as a built-in?",
+   "o": [
+    "MD5",
+    "SHA-1",
+    "keccak256",
+    "bcrypt"
+   ],
+   "a": 2,
+   "e": "Ethereum uses Keccak-256: keccak256(...)."
+  },
+  {
+   "q": "Someone changes data in block 2 of 5. What happens?",
+   "o": [
+    "Only block 2 changes",
+    "The hash of block 2 changes and the links of blocks 3–5 break",
+    "Nothing",
+    "Block 5 deletes itself"
+   ],
+   "a": 1,
+   "e": "Each block stores the previous block’s hash, so the chain breaks after the change."
+  }
+ ],
+ "keys-and-signatures": [
+  {
+   "q": "What do you use to sign a transaction?",
+   "o": [
+    "Public key",
+    "Private key",
+    "Address",
+    "Block hash"
+   ],
+   "a": 1,
+   "e": "Only the owner has the private key, so only the owner can sign."
+  },
+  {
+   "q": "What do other nodes use to verify your signature?",
+   "o": [
+    "Your private key",
+    "Your password",
+    "Your public key",
+    "The validator’s key"
+   ],
+   "a": 2,
+   "e": "The public key verifies; it cannot sign."
+  },
+  {
+   "q": "Can someone copy your signature to a different transaction?",
+   "o": [
+    "Yes, signatures are reusable",
+    "No, a signature depends on the message",
+    "Only on testnets",
+    "Only with your address"
+   ],
+   "a": 1,
+   "e": "A digital signature changes with the content it signs."
+  },
+  {
+   "q": "In Solidity, what is <code>msg.sender</code>?",
+   "o": [
+    "The contract owner",
+    "The address that called the function",
+    "The validator",
+    "The first account in Remix"
+   ],
+   "a": 1,
+   "e": "The network verified the signature, so msg.sender is the caller."
+  },
+  {
+   "q": "What does the recovery phrase of a wallet give?",
+   "o": [
+    "Read access only",
+    "Full control of all keys in the wallet",
+    "Nothing without a password",
+    "Access to one transaction"
+   ],
+   "a": 1,
+   "e": "Anyone with the phrase can recreate the keys. Never share it."
+  }
+ ],
+ "consensus": [
+  {
+   "q": "What links a block to the block before it?",
+   "o": [
+    "A timestamp",
+    "The hash of the previous block",
+    "The validator’s address",
+    "A block number only"
+   ],
+   "a": 1,
+   "e": "The previous hash is the chain link."
+  },
+  {
+   "q": "Proof of Work is useful because the work is…",
+   "o": [
+    "easy to do and hard to check",
+    "hard to do and easy to check",
+    "free",
+    "secret"
+   ],
+   "a": 1,
+   "e": "Others can check the result fast without doing the work again."
+  },
+  {
+   "q": "Which consensus does Ethereum use today?",
+   "o": [
+    "Proof of Work",
+    "Proof of Stake",
+    "Proof of Authority",
+    "No consensus"
+   ],
+   "a": 1,
+   "e": "Ethereum moved to Proof of Stake in 2022."
+  },
+  {
+   "q": "What is slashing?",
+   "o": [
+    "A cut in gas prices",
+    "A validator loses part of its stake for cheating",
+    "Deleting old blocks",
+    "Splitting the chain"
+   ],
+   "a": 1,
+   "e": "Slashing gives validators an economic reason to be honest."
+  }
+ ],
+ "ethereum-evm-gas": [
+  {
+   "q": "Which account type can start a transaction?",
+   "o": [
+    "Contract account",
+    "Externally owned account (EOA)",
+    "Both",
+    "Neither"
+   ],
+   "a": 1,
+   "e": "A contract runs only when an EOA (directly or indirectly) calls it."
+  },
+  {
+   "q": "You click a <code>view</code> function in Remix. What happens?",
+   "o": [
+    "A transaction with gas",
+    "A free read, no transaction",
+    "A new block",
+    "A revert"
+   ],
+   "a": 1,
+   "e": "Reads do not change state, so no transaction is necessary."
+  },
+  {
+   "q": "A transaction reverts. What about the gas?",
+   "o": [
+    "All gas returns",
+    "You pay for the gas used",
+    "The contract pays",
+    "The validator pays"
+   ],
+   "a": 1,
+   "e": "State changes are undone, but the computation already happened."
+  },
+  {
+   "q": "How many wei are in 1 ether?",
+   "o": [
+    "10^9",
+    "10^12",
+    "10^18",
+    "1000"
+   ],
+   "a": 2,
+   "e": "1 ether = 10^18 wei. Solidity amounts are in wei."
+  },
+  {
+   "q": "Why must contract code be deterministic?",
+   "o": [
+    "To save gas",
+    "All nodes must get the same result",
+    "For privacy",
+    "Because of Remix"
+   ],
+   "a": 1,
+   "e": "Every node runs the code; different results would break consensus."
+  }
+ ],
+ "what-smart-contracts-are": [
+  {
+   "q": "What is the oracle problem?",
+   "o": [
+    "Contracts are too slow",
+    "The chain cannot know real-world facts by itself",
+    "Oracles are expensive",
+    "Code is public"
+   ],
+   "a": 1,
+   "e": "An oracle must bring facts in, and you must trust it."
+  },
+  {
+   "q": "A state variable is <code>private</code>. Who can read its value?",
+   "o": [
+    "Only the owner",
+    "Nobody",
+    "Anyone who reads the chain data",
+    "Only other contracts"
+   ],
+   "a": 2,
+   "e": "private only blocks other contracts. All chain data is public."
+  },
+  {
+   "q": "Who used the term “smart contract” first?",
+   "o": [
+    "Vitalik Buterin",
+    "Satoshi Nakamoto",
+    "Nick Szabo",
+    "Alan Turing"
+   ],
+   "a": 2,
+   "e": "Nick Szabo, in the 1990s, with the vending machine example."
+  },
+  {
+   "q": "You find a bug in a deployed contract. What can you do?",
+   "o": [
+    "Edit the code on chain",
+    "Deploy a new contract (or use a planned upgrade pattern)",
+    "Ask the validators to fix it",
+    "Restart Ethereum"
+   ],
+   "a": 1,
+   "e": "Deployed code is immutable."
+  }
+ ],
+ "solidity-for-programmers": [
+  {
+   "q": "You read a <code>mapping</code> key that was never set. What do you get?",
+   "o": [
+    "An error",
+    "null",
+    "The default value (for example 0)",
+    "A random value"
+   ],
+   "a": 2,
+   "e": "All keys exist with the default value."
+  },
+  {
+   "q": "A <code>require</code> fails. What happens?",
+   "o": [
+    "Only that line is skipped",
+    "The whole transaction reverts",
+    "The contract is deleted",
+    "A warning is logged"
+   ],
+   "a": 1,
+   "e": "All state changes of the transaction are undone."
+  },
+  {
+   "q": "Which keyword must a function have to receive ETH?",
+   "o": [
+    "view",
+    "pure",
+    "payable",
+    "external"
+   ],
+   "a": 2,
+   "e": "Without payable, a call with value reverts."
+  },
+  {
+   "q": "In a modifier, what does <code>_;</code> mean?",
+   "o": [
+    "End of file",
+    "Where the function body runs",
+    "A comment",
+    "Return zero"
+   ],
+   "a": 1,
+   "e": "The modifier code runs before and/or after _;."
+  },
+  {
+   "q": "Who can read events?",
+   "o": [
+    "Other contracts",
+    "Off-chain apps and explorers",
+    "Nobody",
+    "Only the deployer"
+   ],
+   "a": 1,
+   "e": "Events go to logs; contracts cannot read them."
+  }
+ ],
+ "security-basics": [
+  {
+   "q": "What is the root cause of reentrancy?",
+   "o": [
+    "Integer overflow",
+    "Sending ETH before updating state",
+    "Using events",
+    "Using view functions"
+   ],
+   "a": 1,
+   "e": "The receiver calls back while the old state is still there."
+  },
+  {
+   "q": "What is the correct order?",
+   "o": [
+    "Interactions, effects, checks",
+    "Checks, interactions, effects",
+    "Checks, effects, interactions",
+    "Effects, checks, interactions"
+   ],
+   "a": 2,
+   "e": "Check conditions, update state, then call outside."
+  },
+  {
+   "q": "Which should you use for authentication?",
+   "o": [
+    "tx.origin",
+    "msg.sender",
+    "block.timestamp",
+    "address(this)"
+   ],
+   "a": 1,
+   "e": "tx.origin lets a malicious middle contract trick the user."
+  },
+  {
+   "q": "In Solidity 0.8, what happens on integer overflow?",
+   "o": [
+    "The number wraps around",
+    "The transaction reverts",
+    "It becomes zero",
+    "Nothing"
+   ],
+   "a": 1,
+   "e": "Overflow checks are built in since 0.8."
+  }
+ ],
+ "token-standards": [
+  {
+   "q": "ERC-20 tokens are…",
+   "o": [
+    "unique",
+    "fungible",
+    "always NFTs",
+    "not transferable"
+   ],
+   "a": 1,
+   "e": "Each unit is equal, like euros."
+  },
+  {
+   "q": "What do <code>approve</code> and <code>transferFrom</code> allow?",
+   "o": [
+    "Minting new tokens",
+    "Another address spends your tokens up to a limit",
+    "Burning tokens",
+    "Changing the token name"
+   ],
+   "a": 1,
+   "e": "Example: a shop contract collects your payment."
+  },
+  {
+   "q": "What makes an ERC-721 token special?",
+   "o": [
+    "It has decimals",
+    "Each token has a unique ID",
+    "It is free",
+    "It has no owner"
+   ],
+   "a": 1,
+   "e": "NFTs are non-fungible."
+  },
+  {
+   "q": "Why use OpenZeppelin?",
+   "o": [
+    "It is faster",
+    "It is audited and standard",
+    "It is required by law",
+    "It removes gas"
+   ],
+   "a": 1,
+   "e": "Audited code reduces the risk of bugs."
+  }
+ ],
+ "law-and-business": [
+  {
+   "q": "Is “code is law” a legal rule?",
+   "o": [
+    "Yes, everywhere",
+    "Yes, in the EU",
+    "No; the law decides if a binding contract exists",
+    "Only for tokens"
+   ],
+   "a": 2,
+   "e": "Code performs; contract law still decides formation, validity and remedies."
+  },
+  {
+   "q": "What did the UK Law Commission conclude in 2021?",
+   "o": [
+    "Smart contracts are illegal",
+    "Existing English law can support smart legal contracts",
+    "A new statute is necessary",
+    "Only code-only contracts are valid"
+   ],
+   "a": 1,
+   "e": "Open issues remain for deeds and jurisdiction."
+  },
+  {
+   "q": "Which GDPR right conflicts with immutable storage?",
+   "o": [
+    "Right to access",
+    "Right to erasure",
+    "Right to object",
+    "Right to portability"
+   ],
+   "a": 1,
+   "e": "Best practice: store hashes, not personal data, on chain."
+  },
+  {
+   "q": "What is a Ricardian contract?",
+   "o": [
+    "A contract with no code",
+    "Legal text linked to code, often by a hash",
+    "A token standard",
+    "An oracle"
+   ],
+   "a": 1,
+   "e": "It joins the human-readable terms to the executable part."
+  },
+  {
+   "q": "Which case fits a smart contract best?",
+   "o": [
+    "One company’s internal payroll",
+    "Many parties with low trust and clear digital rules",
+    "Private medical records",
+    "Decisions that need human judgment"
+   ],
+   "a": 1,
+   "e": "Smart contracts add value where trust between parties is low."
+  }
+ ],
+ "lab-simple-storage": [
+  {
+   "q": "What happens when you call <code>set</code>?",
+   "o": [
+    "A free read",
+    "A transaction that costs gas",
+    "Nothing",
+    "The contract redeploys"
+   ],
+   "a": 1,
+   "e": "set changes state."
+  },
+  {
+   "q": "Where do you find the <code>ValueChanged</code> event?",
+   "o": [
+    "In the compiler panel",
+    "In the transaction logs in the terminal",
+    "In the file explorer",
+    "In the Account list"
+   ],
+   "a": 1,
+   "e": "Click the transaction in the terminal and look at logs."
+  },
+  {
+   "q": "Why does <code>lastWriter</code> change after you switch accounts?",
+   "o": [
+    "Remix resets",
+    "It stores msg.sender",
+    "Random value",
+    "It stores the deployer"
+   ],
+   "a": 1,
+   "e": "Each call stores the caller."
+  }
+ ],
+ "lab-escrow": [
+  {
+   "q": "The seller calls <code>refund</code>. What happens?",
+   "o": [
+    "The buyer gets the money",
+    "It reverts with “Only arbiter”",
+    "The seller gets the money",
+    "State becomes Refunded"
+   ],
+   "a": 1,
+   "e": "Only the arbiter can refund."
+  },
+  {
+   "q": "Why does <code>confirmDelivery</code> set the state before it sends ETH?",
+   "o": [
+    "To save gas",
+    "To block reentrancy",
+    "For the event",
+    "No reason"
+   ],
+   "a": 1,
+   "e": "Checks-effects-interactions."
+  },
+  {
+   "q": "Which constructor value is a price of 1 ether?",
+   "o": [
+    "1",
+    "1000",
+    "1000000000000000000",
+    "0.1"
+   ],
+   "a": 2,
+   "e": "Amounts are in wei: 10^18."
+  },
+  {
+   "q": "Deploy reverts and Remix says the function should be payable. Most likely cause?",
+   "o": [
+    "Compiler too old",
+    "Value is not 0 during Deploy",
+    "Wrong network",
+    "Missing event"
+   ],
+   "a": 1,
+   "e": "The constructor is not payable. Set Value to 0."
+  },
+  {
+   "q": "The buyer calls <code>deposit</code> after the deal is Complete. Result?",
+   "o": [
+    "Second payment accepted",
+    "Reverts with “Wrong state”",
+    "Refund",
+    "Nothing"
+   ],
+   "a": 1,
+   "e": "The inState modifier blocks it."
+  }
+ ],
+ "lab-rental-deposit": [
+  {
+   "q": "Why deploy with lease days = 0 in the test?",
+   "o": [
+    "To save gas",
+    "To call settle at once",
+    "Days are not supported",
+    "It is required"
+   ],
+   "a": 1,
+   "e": "The lease ends immediately, so you can test settle."
+  },
+  {
+   "q": "Deposit 2 ether, damage 0.5 ether. What does the tenant get?",
+   "o": [
+    "2 ether",
+    "0.5 ether",
+    "1.5 ether",
+    "0"
+   ],
+   "a": 2,
+   "e": "Deposit minus damage."
+  },
+  {
+   "q": "What protects the tenant if the landlord does nothing?",
+   "o": [
+    "Nothing",
+    "claimAfterTimeout after 30 days",
+    "The arbiter",
+    "The validator"
+   ],
+   "a": 1,
+   "e": "It is a safety net in code."
+  },
+  {
+   "q": "Which German rule limits a residential deposit to three months’ rent?",
+   "o": [
+    "§433 BGB",
+    "§551 BGB",
+    "§823 BGB",
+    "§35 GmbHG"
+   ],
+   "a": 1,
+   "e": "§551 BGB also requires separate, interest-bearing investment."
+  }
+ ],
+ "lab-document-registry": [
+  {
+   "q": "What does the registry store?",
+   "o": [
+    "The full document",
+    "Only the hash, owner and timestamp",
+    "An encrypted copy",
+    "A PDF link"
+   ],
+   "a": 1,
+   "e": "Never the document itself."
+  },
+  {
+   "q": "What does a record prove?",
+   "o": [
+    "Who wrote the text",
+    "That the parties agreed",
+    "That this exact text existed at that time",
+    "That the text is legal"
+   ],
+   "a": 2,
+   "e": "Proof of existence, not of authorship or agreement."
+  },
+  {
+   "q": "Why hash files off-chain in real use?",
+   "o": [
+    "It is faster",
+    "Transaction input is public",
+    "Solidity cannot hash",
+    "Gas is free off-chain"
+   ],
+   "a": 1,
+   "e": "Sending private text in a transaction makes it public."
+  }
+ ],
+ "lab-course-token": [
+  {
+   "q": "Account 2 calls <code>mint</code>. What happens?",
+   "o": [
+    "Tokens are minted",
+    "It fails: only the owner can mint",
+    "Account 2 becomes owner",
+    "The token burns"
+   ],
+   "a": 1,
+   "e": "onlyOwner protects mint."
+  },
+  {
+   "q": "Why is the start balance 1000 × 10^18?",
+   "o": [
+    "A bug",
+    "ERC-20 uses 18 decimals by default",
+    "Gas cost",
+    "Remix adds zeros"
+   ],
+   "a": 1,
+   "e": "1000 tokens with 18 decimal places."
+  },
+  {
+   "q": "How does Remix get the OpenZeppelin code?",
+   "o": [
+    "You must download it manually",
+    "Remix downloads it when you compile",
+    "It is built into Solidity",
+    "From MetaMask"
+   ],
+   "a": 1,
+   "e": "Remix resolves npm imports automatically."
+  }
+ ],
+ "lab-reentrancy": [
+  {
+   "q": "What does the Attacker’s <code>receive</code> function do?",
+   "o": [
+    "Logs the payment",
+    "Calls withdraw again",
+    "Returns the ETH",
+    "Nothing"
+   ],
+   "a": 1,
+   "e": "That is the re-entry."
+  },
+  {
+   "q": "After the attack, what is the bank balance?",
+   "o": [
+    "5 ether",
+    "6 ether",
+    "1 ether",
+    "0"
+   ],
+   "a": 3,
+   "e": "The attacker takes 6 ether: the customer’s 5 plus its own 1."
+  },
+  {
+   "q": "Why does the attack fail on FixedBank?",
+   "o": [
+    "FixedBank has no receive",
+    "The balance is 0 before the send, so re-entry reverts",
+    "Gas runs out",
+    "The attacker has no ETH"
+   ],
+   "a": 1,
+   "e": "The second withdraw hits “No balance” and the whole attack reverts."
+  }
+ ],
+ "lab-sepolia": [
+  {
+   "q": "Which Remix environment connects to Sepolia?",
+   "o": [
+    "Remix VM",
+    "Injected Provider – MetaMask",
+    "Hardhat",
+    "JavaScript VM"
+   ],
+   "a": 1,
+   "e": "MetaMask injects the network connection."
+  },
+  {
+   "q": "What is Sepolia ETH worth?",
+   "o": [
+    "Same as ETH",
+    "Nothing; it is test money",
+    "1 euro",
+    "Depends on the faucet"
+   ],
+   "a": 1,
+   "e": "It only pays gas on the testnet."
+  },
+  {
+   "q": "What does contract verification do?",
+   "o": [
+    "Audits the code",
+    "Makes the source readable and usable on Etherscan",
+    "Lowers gas",
+    "Moves it to Mainnet"
+   ],
+   "a": 1,
+   "e": "Anyone can then read and call the contract from Etherscan."
+  },
+  {
+   "q": "What must you never share?",
+   "o": [
+    "Your address",
+    "Your contract address",
+    "Your recovery phrase",
+    "Your Etherscan link"
+   ],
+   "a": 2,
+   "e": "The recovery phrase gives full control of the wallet."
+  }
+ ],
+ "lab-openzeppelin-wizard": [
+  {
+   "q": "What does the OpenZeppelin Wizard produce?",
+   "o": [
+    "A deployed contract",
+    "Audited contract code from your choices",
+    "A wallet",
+    "A legal contract"
+   ],
+   "a": 1,
+   "e": "You still deploy the code, for example from Remix."
+  },
+  {
+   "q": "A teammate who is not the owner calls <code>safeMint</code>. Result?",
+   "o": [
+    "A certificate is issued",
+    "A revert: only the owner can mint",
+    "The teammate becomes owner",
+    "Gas is refunded"
+   ],
+   "a": 1,
+   "e": "Ownable restricts minting to the issuer."
+  },
+  {
+   "q": "Why might a degree certificate be non-transferable?",
+   "o": [
+    "To save gas",
+    "So it cannot be sold or given to someone else",
+    "Because ERC-721 forbids transfer",
+    "For speed"
+   ],
+   "a": 1,
+   "e": "A credential should stay with the person who earned it."
+  }
+ ],
+ "lab-thirdweb": [
+  {
+   "q": "What is a claim phase in a thirdweb Edition Drop?",
+   "o": [
+    "A website setting only",
+    "A rule in the contract: who may claim, how many, when and at what price",
+    "A wallet",
+    "A marketing campaign"
+   ],
+   "a": 1,
+   "e": "The dashboard writes the rule into the contract, where anyone can read it."
+  },
+  {
+   "q": "What does “lazy minting” mean?",
+   "o": [
+    "Minting very slowly",
+    "Defining an item first; tokens are created only when someone claims",
+    "Minting without gas",
+    "Deleting tokens"
+   ],
+   "a": 1,
+   "e": "Token 0 exists as a template with supply 0 until it is claimed."
+  },
+  {
+   "q": "The vendor’s dashboard closes. What happens to the tickets?",
+   "o": [
+    "They disappear",
+    "They stay on chain; only the convenient interface is gone",
+    "They move to Mainnet",
+    "They are refunded"
+   ],
+   "a": 1,
+   "e": "The dashboard is a view on the contract, not the contract itself."
+  }
+ ],
+ "lab-safe": [
+  {
+   "q": "A Safe has three owners and threshold 2. One owner proposes a payment. When does money move?",
+   "o": [
+    "At once",
+    "After a second owner confirms and someone executes",
+    "After all three sign",
+    "Never"
+   ],
+   "a": 1,
+   "e": "Two of three signatures, then execution on chain."
+  },
+  {
+   "q": "What costs gas in a Safe?",
+   "o": [
+    "Each owner’s signature",
+    "Execution of the transaction",
+    "Viewing the dashboard",
+    "Nothing"
+   ],
+   "a": 1,
+   "e": "Signatures are off-chain; execution is a transaction."
+  },
+  {
+   "q": "Which company-law idea does a 2-of-3 Safe resemble?",
+   "o": [
+    "Sole representation",
+    "Joint representation by directors",
+    "Limited liability",
+    "Annual general meeting"
+   ],
+   "a": 1,
+   "e": "No director can act alone."
+  }
+ ],
+ "lab-aragon": [
+  {
+   "q": "In the Aragon App, which DAO setting cannot be changed later by a vote?",
+   "o": [
+    "The members",
+    "The approval threshold",
+    "The blockchain",
+    "The name"
+   ],
+   "a": 2,
+   "e": "Everything else can be changed by a proposal."
+  },
+  {
+   "q": "A proposal has 1 of 2 required approvals. What happens to its actions?",
+   "o": [
+    "They run",
+    "They do not run",
+    "Half of the payment is sent",
+    "The DAO is deleted"
+   ],
+   "a": 1,
+   "e": "Actions execute only after the threshold is met."
+  },
+  {
+   "q": "What does a DAO add compared with a plain Safe multisig?",
+   "o": [
+    "Nothing",
+    "Proposals with reasons, voting rules and a public decision record",
+    "Real money",
+    "Faster blocks"
+   ],
+   "a": 1,
+   "e": "Both control a treasury; the DAO adds a governance process."
+  }
+ ],
+ "lab-attestations": [
+  {
+   "q": "What is an EAS schema?",
+   "o": [
+    "A token",
+    "The format (fields and types) of an attestation",
+    "A wallet",
+    "A block"
+   ],
+   "a": 1,
+   "e": "Attestations are made with a schema, like a form."
+  },
+  {
+   "q": "What happens when you revoke an on-chain attestation?",
+   "o": [
+    "It is deleted",
+    "It is marked as revoked; the original data stays visible",
+    "The gas is refunded",
+    "The schema is deleted"
+   ],
+   "a": 1,
+   "e": "Revocation adds a fact; it does not erase history."
+  },
+  {
+   "q": "Why store a document hash rather than the document?",
+   "o": [
+    "Hashes are prettier",
+    "It proves integrity without publishing the content",
+    "Documents cannot be stored",
+    "It is required by EAS"
+   ],
+   "a": 1,
+   "e": "Data minimisation and confidentiality."
+  }
+ ],
+ "lab-accord": [
+  {
+   "q": "What are the three layers of an Accord Project template?",
+   "o": [
+    "Wallet, token, chain",
+    "Data model, template text, data",
+    "Code, compiler, bytecode",
+    "Hash, block, signature"
+   ],
+   "a": 1,
+   "e": "Concerto model, TemplateMark text and JSON data."
+  },
+  {
+   "q": "You enter text in a number field. What happens?",
+   "o": [
+    "It is accepted",
+    "A type error: the model rejects invalid data",
+    "The text is deleted",
+    "The contract is signed"
+   ],
+   "a": 1,
+   "e": "Typed variables protect the contract from invalid data."
+  },
+  {
+   "q": "Which part of a deposit clause needs human judgment?",
+   "o": [
+    "The amount",
+    "The return deadline in days",
+    "“Less proven damages”",
+    "The names"
+   ],
+   "a": 2,
+   "e": "What counts as proven damage is a legal question."
+  }
+ ],
+ "lab-quickdapp": [
+  {
+   "q": "QuickDApp creates a front end with AI. What should the team do first?",
+   "o": [
+    "Trust it",
+    "Test every button against the contract and expected results",
+    "Deploy to Mainnet",
+    "Delete the contract"
+   ],
+   "a": 1,
+   "e": "The contract is the source of truth; the interface may be wrong."
+  },
+  {
+   "q": "What does QuickDApp need?",
+   "o": [
+    "Nothing",
+    "A deployed contract, ideally on a public network",
+    "A bank account",
+    "A Safe"
+   ],
+   "a": 1,
+   "e": "It builds the interface from a deployed contract."
+  }
+ ],
+ "lab-tenderly": [
+  {
+   "q": "In the Tenderly simulator you call <code>refund</code> from the seller’s address. What happens on Sepolia?",
+   "o": [
+    "The buyer is refunded",
+    "Nothing: it is a simulation, and it shows a revert “Only arbiter”",
+    "The seller is paid",
+    "You pay gas"
+   ],
+   "a": 1,
+   "e": "Simulations use impersonation and never touch the real chain."
+  },
+  {
+   "q": "What does the Tenderly debugger show that Etherscan does not?",
+   "o": [
+    "The transaction hash",
+    "Each executed line of source code and internal call",
+    "The block number",
+    "The sender"
+   ],
+   "a": 1,
+   "e": "It links the execution trace to the source code."
+  },
+  {
+   "q": "Why do professional teams simulate payments before signing?",
+   "o": [
+    "It is cheaper than gas",
+    "To see exactly what a transaction will do before it is irreversible",
+    "Simulations are required by law",
+    "To speed up blocks"
+   ],
+   "a": 1,
+   "e": "Simulation is a control against tricked signers and bugs."
+  }
+ ],
+ "lab-phalcon": [
+  {
+   "q": "What was the root cause of the GMX V1 hack in July 2025?",
+   "o": [
+    "A stolen key",
+    "Cross-contract reentrancy that manipulated a price mid-transaction",
+    "A quantum attack",
+    "A phishing website"
+   ],
+   "a": 1,
+   "e": "A guard on one contract did not stop re-entry into the Vault."
+  },
+  {
+   "q": "In Phalcon, which view shows where the value went?",
+   "o": [
+    "Gas profiler",
+    "Fund flow",
+    "Source code",
+    "Settings"
+   ],
+   "a": 1,
+   "e": "The fund flow graph follows value between addresses."
+  },
+  {
+   "q": "Do you connect a wallet in the Phalcon lab?",
+   "o": [
+    "Yes, on Arbitrum",
+    "No, it is read-only analysis of public data",
+    "Yes, with real ETH",
+    "Only on Mainnet"
+   ],
+   "a": 1,
+   "e": "You only read; you never sign."
+  }
+ ],
+ "lab-see-inside": [
+  {
+   "q": "What does sol2uml produce from a verified contract?",
+   "o": [
+    "A new contract",
+    "A UML class diagram of its variables, functions and events",
+    "A transaction",
+    "An audit report"
+   ],
+   "a": 1,
+   "e": "It reads the verified source and draws its structure."
+  },
+  {
+   "q": "In the Remix debugger during the L6 attack, what do you see?",
+   "o": [
+    "One call to withdraw",
+    "withdraw entered again and again before the balance is set to 0",
+    "A compiler error",
+    "Nothing"
+   ],
+   "a": 1,
+   "e": "The call stack grows with each re-entry."
+  }
+ ],
+ "lab-dashboards": [
+  {
+   "q": "On L2BEAT, what does a rollup at stage 0 mean?",
+   "o": [
+    "It is fully decentralised",
+    "Its operators still have strong control, for example over upgrades",
+    "It is shut down",
+    "It runs on Bitcoin"
+   ],
+   "a": 1,
+   "e": "Stages describe how much users depend on the operators."
+  },
+  {
+   "q": "Why can a dashboard chart be wrong even if the chain data is correct?",
+   "o": [
+    "Charts are always correct",
+    "The query may decode or filter the data wrongly",
+    "Blocks change after finality",
+    "Dune edits the chain"
+   ],
+   "a": 1,
+   "e": "Always open the query behind a chart and check its assumptions."
+  }
+ ],
+ "ethereum-today": [
+  {
+   "q": "Where does most Ethereum user activity happen in 2026?",
+   "o": [
+    "Only on Layer 1",
+    "On Layer 2 rollups that post data to Layer 1",
+    "On Bitcoin",
+    "On private databases"
+   ],
+   "a": 1,
+   "e": "Layer 1 is mainly the settlement and data layer for rollups."
+  },
+  {
+   "q": "How does a ZK rollup show that its batch is correct?",
+   "o": [
+    "A challenge period",
+    "A validity proof checked by Ethereum",
+    "A vote of users",
+    "An oracle"
+   ],
+   "a": 1,
+   "e": "Optimistic rollups use challenges; ZK rollups use validity proofs."
+  },
+  {
+   "q": "What did Fusaka (Dec 2025) mainly add?",
+   "o": [
+    "Proof of Stake",
+    "PeerDAS: data checks by sampling, more blob capacity",
+    "New token standard",
+    "Quantum-safe signatures"
+   ],
+   "a": 1,
+   "e": "PeerDAS lets nodes verify data availability without downloading everything."
+  },
+  {
+   "q": "What is the status of Glamsterdam in mid-November 2026?",
+   "o": [
+    "Live on mainnet",
+    "Live on Sepolia; Hoodi postponed; no mainnet date",
+    "Cancelled",
+    "Not yet on any testnet"
+   ],
+   "a": 1,
+   "e": "Activated on Sepolia on 6 Oct 2026; the Hoodi fork was postponed on 22 Oct."
+  }
+ ],
+ "zero-knowledge": [
+  {
+   "q": "What does a zero-knowledge proof show?",
+   "o": [
+    "All the data",
+    "That a statement is true, and nothing else",
+    "Only the hash",
+    "The private key"
+   ],
+   "a": 1,
+   "e": "Example: “over 18” without the birth date."
+  },
+  {
+   "q": "Which proof type needs no trusted setup and is based on hashes?",
+   "o": [
+    "SNARK (Groth16)",
+    "STARK",
+    "ECDSA",
+    "RSA"
+   ],
+   "a": 1,
+   "e": "STARKs are larger but transparent and considered quantum-resistant."
+  },
+  {
+   "q": "Which GDPR principle do ZK proofs support?",
+   "o": [
+    "Data portability",
+    "Data minimisation",
+    "Right to object",
+    "Profiling"
+   ],
+   "a": 1,
+   "e": "You prove compliance with less personal data."
+  }
+ ],
+ "ai-agents": [
+  {
+   "q": "What does ERC-8004 provide for AI agents?",
+   "o": [
+    "A payment protocol",
+    "Identity, reputation and validation registries",
+    "A new blockchain",
+    "An AI model"
+   ],
+   "a": 1,
+   "e": "Payments come from protocols such as x402; ERC-8004 gives discovery and trust."
+  },
+  {
+   "q": "What is x402 based on?",
+   "o": [
+    "A new blockchain",
+    "The HTTP status code 402 “Payment Required”",
+    "Email",
+    "Bank transfers"
+   ],
+   "a": 1,
+   "e": "An API asks for payment inside the normal request-response flow."
+  },
+  {
+   "q": "A web page tells an agent to send all funds to an attacker. What protects the funds best?",
+   "o": [
+    "A stronger prompt",
+    "Limits in a smart contract: allow-list, daily limit, pause",
+    "Hoping the model refuses",
+    "A longer password"
+   ],
+   "a": 1,
+   "e": "A prompt can be manipulated; contract rules cannot be persuaded."
+  },
+  {
+   "q": "Is an AI agent a legal person that is bound by a contract?",
+   "o": [
+    "Yes, everywhere",
+    "No; the question is which person is bound by its action",
+    "Only in the US",
+    "Only with ERC-8004"
+   ],
+   "a": 1,
+   "e": "This is the key legal discussion question for F3."
+  }
+ ],
+ "quantum": [
+  {
+   "q": "Which algorithm lets a quantum computer find a private key from a public key?",
+   "o": [
+    "Grover",
+    "Shor",
+    "Dijkstra",
+    "Keccak"
+   ],
+   "a": 1,
+   "e": "Shor breaks elliptic-curve and RSA cryptography."
+  },
+  {
+   "q": "Which part of Ethereum stays mostly safe against quantum attacks?",
+   "o": [
+    "ECDSA signatures",
+    "BLS signatures",
+    "Keccak-256 hashes",
+    "KZG commitments"
+   ],
+   "a": 2,
+   "e": "Grover only reduces hash strength; 256-bit hashes keep a large margin."
+  },
+  {
+   "q": "Can a quantum computer break Ethereum’s cryptography today?",
+   "o": [
+    "Yes",
+    "No, but migration takes years, so work starts now",
+    "Only on testnets",
+    "Only for old blocks"
+   ],
+   "a": 1,
+   "e": "The Ethereum Foundation targets full Layer 1 protection around 2029."
+  }
+ ],
+ "security-in-practice": [
+  {
+   "q": "What was the largest single crypto theft in 2025?",
+   "o": [
+    "The DAO",
+    "Bybit, about $1.5 billion",
+    "Mt. Gox",
+    "FTX"
+   ],
+   "a": 1,
+   "e": "It was about 44% of all stolen value in 2025."
+  },
+  {
+   "q": "Where do many large losses now come from?",
+   "o": [
+    "Only Solidity bugs",
+    "Operations: compromised machines, signing interfaces, keys, insiders",
+    "Gas prices",
+    "Quantum computers"
+   ],
+   "a": 1,
+   "e": "A correct contract can still do an attacker’s will if signers are tricked."
+  },
+  {
+   "q": "What did SCONE-bench (Dec 2025) show?",
+   "o": [
+    "AI cannot read Solidity",
+    "AI agents can exploit many real vulnerable contracts, and this ability grew fast",
+    "All contracts are safe",
+    "Audits are not needed"
+   ],
+   "a": 1,
+   "e": "On post-March-2025 exploits, success rose from about 2% to about 56% in one year."
+  },
+  {
+   "q": "What is “blind signing”?",
+   "o": [
+    "Signing without a key",
+    "Approving a transaction the wallet cannot show clearly",
+    "Signing at night",
+    "A multisig"
+   ],
+   "a": 1,
+   "e": "Defence: clear signing and separate devices."
+  }
+ ],
+ "regulation": [
+  {
+   "q": "When did MiCA’s transitional period end?",
+   "o": [
+    "30 Dec 2024",
+    "1 July 2026",
+    "July 2027",
+    "It has no end"
+   ],
+   "a": 1,
+   "e": "After that, crypto service providers need a MiCA licence to serve EU clients."
+  },
+  {
+   "q": "What is the GENIUS Act?",
+   "o": [
+    "An EU AI law",
+    "The US federal framework for payment stablecoins (July 2025)",
+    "An Ethereum upgrade",
+    "A token standard"
+   ],
+   "a": 1,
+   "e": "Its rules are finalised through 2026."
+  },
+  {
+   "q": "Which is a benefit of tokenised bonds?",
+   "o": [
+    "No regulation",
+    "Fast settlement and programmable compliance",
+    "No issuer",
+    "Guaranteed profit"
+   ],
+   "a": 1,
+   "e": "Example: only verified investors can hold the token."
+  }
+ ],
+ "research": [
+  {
+   "q": "What did the 2025 systematic review (Ince et al.) conclude about LLM-based vulnerability tools?",
+   "o": [
+    "They replace Slither and Mythril",
+    "They are not yet ready to replace classic tools; hybrids work best",
+    "They find every bug",
+    "They are useless"
+   ],
+   "a": 1,
+   "e": "Small fine-tuned models and hybrid approaches showed the most promise."
+  },
+  {
+   "q": "What does the Stipula research (CLSR, Dec 2025) add to computable contracts?",
+   "o": [
+    "Faster gas",
+    "A way to import statutory rules, for example consumer protection",
+    "A new blockchain",
+    "An AI model"
+   ],
+   "a": 1,
+   "e": "It helps keep code-based contracts compliant with mandatory law."
+  },
+  {
+   "q": "How should you treat an arXiv preprint?",
+   "o": [
+    "As settled fact",
+    "With care: it is not peer-reviewed yet",
+    "Ignore it",
+    "As law"
+   ],
+   "a": 1,
+   "e": "Preprints are the newest work but have not passed review."
+  }
+ ],
+ "blocks-and-state-models": [
+  {
+   "q": "What does the Merkle root in a block header summarise?",
+   "o": [
+    "The miner’s identity",
+    "All transactions in the block",
+    "The previous block only",
+    "The gas price"
+   ],
+   "a": 1,
+   "e": "One hash commits to every transaction."
+  },
+  {
+   "q": "Which model does Ethereum use?",
+   "o": [
+    "UTXO",
+    "Account model",
+    "Both equally",
+    "Neither"
+   ],
+   "a": 1,
+   "e": "Accounts keep balances and contract storage."
+  },
+  {
+   "q": "A light client checks that a transaction is in a block. What does it need?",
+   "o": [
+    "The whole chain",
+    "A Merkle proof: a few hashes",
+    "The miner’s key",
+    "Nothing"
+   ],
+   "a": 1,
+   "e": "A proof grows with the logarithm of the block size."
+  }
+ ],
+ "types-of-blockchains": [
+  {
+   "q": "One trusted operator exists and everyone accepts it. Best choice?",
+   "o": [
+    "Public blockchain",
+    "Consortium chain",
+    "A database with audit logs",
+    "A sidechain"
+   ],
+   "a": 2,
+   "e": "A blockchain adds cost without benefit here."
+  },
+  {
+   "q": "Which chain is EVM-compatible?",
+   "o": [
+    "Bitcoin",
+    "Polygon PoS",
+    "Cardano",
+    "TON"
+   ],
+   "a": 1,
+   "e": "It runs the same Solidity contracts as Ethereum."
+  },
+  {
+   "q": "Where should personal data go in a blockchain design?",
+   "o": [
+    "On chain",
+    "Off chain, with only a hash or proof on chain",
+    "In an NFT",
+    "In the block header"
+   ],
+   "a": 1,
+   "e": "Public chains cannot erase data."
+  }
+ ],
+ "lab-eth-build": [
+  {
+   "q": "You change the text after signing it. What happens to the recovered address?",
+   "o": [
+    "It stays the same",
+    "It changes: the signature no longer matches",
+    "It becomes zero",
+    "The key changes"
+   ],
+   "a": 1,
+   "e": "A signature belongs to one exact message."
+  },
+  {
+   "q": "What does a signature prove?",
+   "o": [
+    "The signer’s legal identity",
+    "Control of a private key",
+    "That the text is true",
+    "That the text is legal"
+   ],
+   "a": 1,
+   "e": "Identity needs more, for example an eIDAS certificate."
+  }
+ ],
+ "forks-and-governance": [
+  {
+   "q": "Which fork makes old nodes reject new blocks?",
+   "o": [
+    "Soft fork",
+    "Hard fork",
+    "Reorg",
+    "Merge"
+   ],
+   "a": 1,
+   "e": "Everyone must upgrade."
+  },
+  {
+   "q": "What is Ethereum Classic?",
+   "o": [
+    "A testnet",
+    "The original chain kept after the DAO fork",
+    "A layer 2",
+    "A token"
+   ],
+   "a": 1,
+   "e": "The minority refused the 2016 hard fork."
+  },
+  {
+   "q": "Who finally decides whether an upgrade is adopted on Ethereum?",
+   "o": [
+    "The Ethereum Foundation alone",
+    "Node operators, validators and users who run the software",
+    "A court",
+    "Miners only"
+   ],
+   "a": 1,
+   "e": "No vote is binding; adoption is."
+  }
+ ],
+ "lab-read-the-chain": [
+  {
+   "q": "Why can Etherscan decode a contract call’s input?",
+   "o": [
+    "Every contract is decoded",
+    "The contract’s source or ABI is verified",
+    "MetaMask tells it",
+    "It guesses"
+   ],
+   "a": 1,
+   "e": "Verification publishes the interface."
+  },
+  {
+   "q": "What happens to the base fee when blocks are more than half full?",
+   "o": [
+    "It falls",
+    "It rises",
+    "It stays fixed",
+    "It resets to zero"
+   ],
+   "a": 1,
+   "e": "EIP-1559 targets half-full blocks."
+  }
+ ],
+ "wallets-and-testnets": [
+  {
+   "q": "What does a recovery phrase give its holder?",
+   "o": [
+    "Read access",
+    "Control of every key in the wallet",
+    "Nothing without the device",
+    "Access to one account"
+   ],
+   "a": 1,
+   "e": "Never share or store it digitally."
+  },
+  {
+   "q": "Which testnet is meant for applications?",
+   "o": [
+    "Hoodi",
+    "Sepolia",
+    "Mainnet",
+    "Ropsten"
+   ],
+   "a": 1,
+   "e": "Hoodi is for validators and staking."
+  },
+  {
+   "q": "Which wallet type can add spending limits and recovery rules?",
+   "o": [
+    "Paper wallet",
+    "Smart account",
+    "Exchange account",
+    "Hardware wallet alone"
+   ],
+   "a": 1,
+   "e": "Rules live in a contract (ERC-4337, EIP-7702)."
+  }
+ ],
+ "nodes-and-providers": [
+  {
+   "q": "Which two programs does an Ethereum node run since the Merge?",
+   "o": [
+    "Miner and wallet",
+    "Execution client and consensus client",
+    "Compiler and EVM",
+    "Two wallets"
+   ],
+   "a": 1,
+   "e": "For example Geth plus Lighthouse."
+  },
+  {
+   "q": "Why does client diversity matter?",
+   "o": [
+    "Lower fees",
+    "A bug in a majority client could split the chain",
+    "Faster blocks",
+    "Privacy"
+   ],
+   "a": 1,
+   "e": "No client should exceed a third of the network."
+  },
+  {
+   "q": "MetaMask shows your balance. By default, who answered the request?",
+   "o": [
+    "Your own node",
+    "An RPC provider (Infura)",
+    "Etherscan",
+    "The Ethereum Foundation"
+   ],
+   "a": 1,
+   "e": "You trust the provider unless you run a node."
+  }
+ ],
+ "toolchain": [
+  {
+   "q": "Which Foundry tool runs tests?",
+   "o": [
+    "anvil",
+    "cast",
+    "forge",
+    "chisel"
+   ],
+   "a": 2,
+   "e": "forge builds and tests; anvil is a local chain."
+  },
+  {
+   "q": "Which framework should a new project not start with?",
+   "o": [
+    "Foundry",
+    "Hardhat",
+    "Truffle",
+    "Remix for prototypes"
+   ],
+   "a": 2,
+   "e": "Truffle is no longer maintained."
+  }
+ ],
+ "testing-contracts": [
+  {
+   "q": "Which test checks a rule for hundreds of random inputs?",
+   "o": [
+    "Unit test",
+    "Fuzz test",
+    "Manual test",
+    "Coverage"
+   ],
+   "a": 1,
+   "e": "Foundry runs 256 inputs by default."
+  },
+  {
+   "q": "What does vm.prank(addr) do in Foundry?",
+   "o": [
+    "Deletes addr",
+    "Makes the next call come from addr",
+    "Funds addr",
+    "Deploys a contract"
+   ],
+   "a": 1,
+   "e": "It replaces switching accounts in Remix."
+  },
+  {
+   "q": "What does code coverage show?",
+   "o": [
+    "Gas cost",
+    "Which lines and branches the tests ran",
+    "Bugs",
+    "Security score"
+   ],
+   "a": 1,
+   "e": "Untested branches are where bugs hide."
+  }
+ ],
+ "lab-foundry-test": [
+  {
+   "q": "You let the seller call refund. Which test fails?",
+   "o": [
+    "test_ReleasePaysSeller",
+    "test_SellerCannotRefund",
+    "testFuzz_DepositNeedsExactPrice",
+    "None"
+   ],
+   "a": 1,
+   "e": "The test encodes the agreement: only the arbiter refunds."
+  },
+  {
+   "q": "What does vm.assume do in a fuzz test?",
+   "o": [
+    "Ends the test",
+    "Skips inputs that do not meet a condition",
+    "Funds an address",
+    "Reverts"
+   ],
+   "a": 1,
+   "e": "Here it skips the one correct price."
+  }
+ ],
+ "audits-and-analysis": [
+  {
+   "q": "Which tool is a static analyser?",
+   "o": [
+    "Echidna",
+    "Slither",
+    "Anvil",
+    "MetaMask"
+   ],
+   "a": 1,
+   "e": "Echidna is a fuzzer."
+  },
+  {
+   "q": "What should you read first in an audit report?",
+   "o": [
+    "The logo",
+    "The scope: what was not reviewed",
+    "The fee",
+    "The date only"
+   ],
+   "a": 1,
+   "e": "Out-of-scope code was not checked."
+  },
+  {
+   "q": "Can an AI review replace an audit today?",
+   "o": [
+    "Yes",
+    "No; hybrids with classic tools and human review work best",
+    "Only for tokens",
+    "Only on testnets"
+   ],
+   "a": 1,
+   "e": "Every AI finding needs human verification."
+  }
+ ],
+ "upgrades-and-operations": [
+  {
+   "q": "In a proxy pattern, what can the admin change?",
+   "o": [
+    "Nothing",
+    "The implementation, and so every rule",
+    "Only the name",
+    "Only gas prices"
+   ],
+   "a": 1,
+   "e": "An upgradeable contract is only as trustworthy as its admin key."
+  },
+  {
+   "q": "What does a timelock give users?",
+   "o": [
+    "Higher yield",
+    "Time to exit before an upgrade takes effect",
+    "Lower gas",
+    "Anonymity"
+   ],
+   "a": 1,
+   "e": "Upgrades are announced and delayed."
+  },
+  {
+   "q": "Why must proxy and implementation agree on storage layout?",
+   "o": [
+    "For gas",
+    "The proxy’s stored data is read by the new code",
+    "For verification",
+    "They need not"
+   ],
+   "a": 1,
+   "e": "A mismatch corrupts balances and settings."
+  }
+ ],
+ "dapp-architecture": [
+  {
+   "q": "What is an ABI?",
+   "o": [
+    "A token",
+    "A contract’s interface description used to encode calls",
+    "A wallet",
+    "A block"
+   ],
+   "a": 1,
+   "e": "Apps and wallets use it to build calls."
+  },
+  {
+   "q": "Which layer usually handles consumer-law duties?",
+   "o": [
+    "The EVM",
+    "The interface run by an operator",
+    "The consensus client",
+    "Nobody"
+   ],
+   "a": 1,
+   "e": "The website showing the contract is run by someone."
+  }
+ ],
+ "oracles": [
+  {
+   "q": "What can a contract check about oracle data?",
+   "o": [
+    "That it is true",
+    "Who sent it",
+    "Nothing",
+    "The weather"
+   ],
+   "a": 1,
+   "e": "Trust moves to the oracle."
+  },
+  {
+   "q": "Why is a single DEX price a risky oracle?",
+   "o": [
+    "It is slow",
+    "It can be moved inside one transaction with a flash loan",
+    "It is free",
+    "It is private"
+   ],
+   "a": 1,
+   "e": "Use aggregated, manipulation-resistant feeds."
+  },
+  {
+   "q": "How do contracts get fair randomness?",
+   "o": [
+    "block.timestamp",
+    "A verifiable random function (VRF)",
+    "msg.sender",
+    "Gas price"
+   ],
+   "a": 1,
+   "e": "Block data can be predicted or influenced."
+  }
+ ],
+ "decentralised-storage": [
+  {
+   "q": "How does IPFS address a file?",
+   "o": [
+    "By server name",
+    "By its content hash (CID)",
+    "By owner",
+    "By date"
+   ],
+   "a": 1,
+   "e": "A changed file gets a new CID."
+  },
+  {
+   "q": "When can an IPFS file disappear?",
+   "o": [
+    "Never",
+    "When nobody pins it",
+    "Every 24 hours",
+    "When gas rises"
+   ],
+   "a": 1,
+   "e": "Availability needs pinning or paid storage."
+  },
+  {
+   "q": "Where should personal data go?",
+   "o": [
+    "Arweave",
+    "IPFS",
+    "A system that can delete it, with only a hash on chain",
+    "In an NFT"
+   ],
+   "a": 2,
+   "e": "Permanent storage conflicts with erasure rights."
+  }
+ ],
+ "channels-sidechains-bridges": [
+  {
+   "q": "Who do you trust on a sidechain?",
+   "o": [
+    "Ethereum validators",
+    "The sidechain’s own validators",
+    "Nobody",
+    "The bridge user"
+   ],
+   "a": 1,
+   "e": "It has its own consensus."
+  },
+  {
+   "q": "How does a typical bridge move a token?",
+   "o": [
+    "It sends it directly",
+    "Lock on chain A, mint a representation on chain B",
+    "It burns it forever",
+    "It copies it"
+   ],
+   "a": 1,
+   "e": "The locked funds become a big target."
+  },
+  {
+   "q": "Why does a payment channel need a dispute window?",
+   "o": [
+    "To raise fees",
+    "So a party can challenge an old state posted by the other",
+    "For privacy",
+    "It does not"
+   ],
+   "a": 1,
+   "e": "The latest signed state must win."
+  }
+ ],
+ "defi": [
+  {
+   "q": "A pool holds 100 ETH and 300,000 USDC under x·y=k. Someone buys 10 ETH. Roughly what is the average price paid?",
+   "o": [
+    "3,000 USDC",
+    "About 3,333 USDC",
+    "2,700 USDC",
+    "30,000 USDC"
+   ],
+   "a": 1,
+   "e": "Price impact: 33,333 USDC for 10 ETH."
+  },
+  {
+   "q": "What is a flash loan?",
+   "o": [
+    "A loan for one day",
+    "A loan borrowed and repaid in one transaction",
+    "A bank loan",
+    "An NFT"
+   ],
+   "a": 1,
+   "e": "If not repaid, the whole transaction reverts."
+  },
+  {
+   "q": "What is a sandwich attack?",
+   "o": [
+    "A phishing site",
+    "Trading just before and after a victim’s trade to profit from its price impact",
+    "A bridge hack",
+    "A fork"
+   ],
+   "a": 1,
+   "e": "A form of MEV."
+  }
+ ],
+ "daos-and-governance": [
+  {
+   "q": "What does a quorum require?",
+   "o": [
+    "A minimum share of votes for a decision to count",
+    "A single leader",
+    "No votes",
+    "A court"
+   ],
+   "a": 0,
+   "e": "Below quorum, a proposal fails."
+  },
+  {
+   "q": "How was Beanstalk drained in 2022?",
+   "o": [
+    "A stolen key",
+    "Borrowed tokens used to pass a malicious proposal",
+    "A bridge bug",
+    "A quantum attack"
+   ],
+   "a": 1,
+   "e": "A governance attack; timelocks help."
+  },
+  {
+   "q": "A DAO has no legal wrapper. A risk for members?",
+   "o": [
+    "None",
+    "Personal liability as partners",
+    "Higher yield",
+    "Free tax"
+   ],
+   "a": 1,
+   "e": "Courts have treated DAOs as partnerships or associations."
+  }
+ ],
+ "smart-legal-contracts": [
+  {
+   "q": "What links legal text and code in a Ricardian contract?",
+   "o": [
+    "A signature",
+    "A hash",
+    "An NFT",
+    "A judge"
+   ],
+   "a": 1,
+   "e": "Each version points to the exact other."
+  },
+  {
+   "q": "What should a precedence clause say?",
+   "o": [
+    "Which version wins if text and code disagree",
+    "The gas price",
+    "The token name",
+    "Nothing"
+   ],
+   "a": 0,
+   "e": "It avoids disputes over interpretation."
+  },
+  {
+   "q": "Which EU law requires safe termination for data-sharing smart contracts?",
+   "o": [
+    "MiCA",
+    "GDPR",
+    "Data Act, Article 36",
+    "DORA"
+   ],
+   "a": 2,
+   "e": "Article 36 of Regulation 2023/2854."
+  }
+ ]
+}

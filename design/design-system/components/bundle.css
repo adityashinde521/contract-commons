@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* Contract Commons components. Every value comes from tokens.css. */
+.cc { font-family: var(--font-sans); color: var(--ink); }
+
+/* Buttons */
+.cc-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 44px; padding: 0 var(--space-5); border-radius: var(--radius-md); font: 700 15px/1 var(--font-sans); text-decoration: none; cursor: pointer; border: 1px solid transparent; }
+.cc-btn:focus-visible { outline: 3px solid var(--brand-500); outline-offset: 2px; }
+.cc-btn--primary { background: var(--brand-900); color: var(--on-brand); }
+.cc-btn--primary:hover { background: var(--brand-700); }
+.cc-btn--secondary { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
+.cc-btn--secondary:hover { border-color: var(--brand-700); }
+.cc-btn--accent { background: var(--brand-300); color: var(--brand-ink); }
+.cc-btn--ghost-dark { background: rgba(255,255,255,0.08); color: var(--on-brand); border-color: rgba(255,255,255,0.22); }
+
+/* Chips and badges */
+.cc-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: var(--radius-pill); font: 600 12.5px/1.2 var(--font-sans); background: var(--ground); color: var(--ink-2); }
+.cc-chip--cs { background: var(--cs-100); color: var(--cs-600); font-weight: 700; }
+.cc-chip--bi { background: var(--bi-100); color: var(--bi-600); font-weight: 700; }
+.cc-chip--law { background: var(--law-100); color: var(--law-600); font-weight: 700; }
+.cc-chip--brand { background: var(--brand-50); color: var(--brand-700); font-weight: 700; }
+.cc-chip--warn { background: var(--warn-100); color: var(--warn-700); font-weight: 700; }
+.cc-chip--pending { background: var(--pending-100); color: var(--pending-700); font-weight: 700; }
+
+/* Cards */
+.cc-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-6); }
+.cc-card--xl { border-radius: var(--radius-xl); }
+.cc-card--active { border: 2px solid var(--brand-500); }
+.cc-eyebrow { font: 700 13px/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand-700); }
+.cc-icon-tile { width: 48px; height: 48px; border-radius: var(--radius-md); display: grid; place-items: center; flex: none; }
+.cc-icon-tile--cs { background: var(--cs-100); color: var(--cs-600); }
+.cc-icon-tile--bi { background: var(--bi-100); color: var(--bi-600); }
+.cc-icon-tile--law { background: var(--law-100); color: var(--law-600); }
+.cc-icon-tile--brand { background: var(--brand-50); color: var(--brand-700); }
+
+/* Stat tile */
+.cc-stat { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
+.cc-stat__label { font: 600 13.5px/1.3 var(--font-sans); color: var(--muted); }
+.cc-stat__value { font: 800 28px/1.2 var(--font-sans); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.cc-stat__note { font: 600 12.5px/1.3 var(--font-sans); color: var(--brand-700); }
+
+/* Progress */
+.cc-progress { height: 8px; border-radius: 8px; background: #e8eeea; overflow: hidden; }
+.cc-progress > span { display: block; height: 100%; background: var(--brand-500); border-radius: 8px; }
+
+/* Lesson steps with expected results */
+.cc-steps { list-style: none; margin: 0; padding: 0; }
+.cc-steps > li { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.cc-steps__n { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 800 13.5px/1 var(--font-sans); background: #e8eeea; color: var(--ink-2); }
+.cc-steps__n--done { background: var(--brand-500); color: var(--on-brand); }
+.cc-steps__n--now { background: var(--brand-900); color: var(--on-brand); }
+.cc-steps__body { min-width: 0; display: flex; flex-direction: column; gap: 8px; font-size: 15.5px; line-height: 1.55; }
+.cc-expected { background: var(--brand-50); border-radius: var(--radius-md); padding: 9px 12px; font-size: 14px; color: #0d4a33; }
+.cc-expected b { font-weight: 700; }
+
+/* Callouts */
+.cc-callout { display: flex; gap: 12px; align-items: flex-start; border-radius: 14px; padding: 12px 16px; font-size: 14.5px; line-height: 1.55; }
+.cc-callout--warn { background: var(--warn-100); color: #5a3e00; }
+.cc-callout--law { background: var(--law-50); color: #2a2350; }
+.cc-callout--tool { background: var(--brand-100); color: #1d4d3b; }
+.cc-callout--problem { background: #fff7ec; color: #5a3a10; }
+
+/* Discipline tabs */
+.cc-tabs { display: inline-flex; gap: var(--space-1); background: var(--ground); border-radius: 14px; padding: 4px; flex-wrap: wrap; }
+.cc-tabs button { border: 0; font: 700 14px/1 var(--font-sans); padding: 11px 16px; border-radius: 10px; background: transparent; color: var(--ink-2); cursor: pointer; min-height: 40px; }
+.cc-tabs button[aria-pressed="true"][data-d="cs"] { background: var(--cs-600); color: #fff; }
+.cc-tabs button[aria-pressed="true"][data-d="bi"] { background: var(--bi-600); color: #fff; }
+.cc-tabs button[aria-pressed="true"][data-d="law"] { background: var(--law-600); color: #fff; }
+
+/* State stepper */
+.cc-states { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+.cc-states li { border-radius: var(--radius-md); padding: 10px 12px; background: var(--ground); }
+.cc-states li[data-s="done"] { background: var(--brand-50); }
+.cc-states li[data-s="now"] { background: var(--surface); border: 2px solid var(--pending-500); padding: 8px 10px; }
+.cc-states small { display: block; font: 700 11px/1.3 var(--font-sans); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted-2); }
+.cc-states li[data-s="done"] small { color: var(--brand-700); }
+.cc-states li[data-s="now"] small { color: var(--pending-700); }
+.cc-states b { font: 600 14px/1.3 var(--font-sans); }
+
+/* Code */
+.cc-code { background: var(--code-bg); color: var(--code-ink); border-radius: 16px; padding: 16px 18px; font: 400 13px/1.65 var(--font-mono); overflow-x: auto; white-space: pre; }
+.cc-code .c { color: var(--code-comment); } .cc-code .s { color: var(--code-string); }

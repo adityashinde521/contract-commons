@@ -1,0 +1,188 @@
+[
+ {
+  "n": 1,
+  "slug": "foundations",
+  "title": "Blockchain foundations",
+  "tint": "core",
+  "summary": "Why a shared ledger needs hashes, signatures and blocks, and when a normal database is better.",
+  "sources": "Princeton Principles of Blockchains (cryptographic primitives); MIT 15.S12 sessions 2–3; roadmap.sh: What is blockchain, cryptography, structure, types",
+  "lessons": [
+   "trust-and-ledgers",
+   "hash-functions",
+   "keys-and-signatures",
+   "blocks-and-state-models",
+   "types-of-blockchains",
+   "lab-eth-build"
+  ]
+ },
+ {
+  "n": 2,
+  "slug": "consensus",
+  "title": "Consensus and decentralisation",
+  "tint": "core",
+  "summary": "How thousands of computers agree on one history, what finality means and who can change the rules.",
+  "sources": "Stanford CS251 (2026) lectures 4–6; Princeton Nakamoto consensus and PoS; roadmap.sh: consensus protocols, forking, decentralisation",
+  "lessons": [
+   "consensus",
+   "forks-and-governance",
+   "lab-read-the-chain"
+  ]
+ },
+ {
+  "n": 3,
+  "slug": "ethereum",
+  "title": "Ethereum and the EVM",
+  "tint": "cs",
+  "summary": "Accounts, transactions, gas, wallets, nodes and test networks: what happens when you click transact.",
+  "sources": "Stanford CS251 lecture 7; UZH Blockchain and Crypto-economics lectures 3–4; roadmap.sh: Ethereum, EVM, wallets, faucets, clients and nodes",
+  "lessons": [
+   "ethereum-evm-gas",
+   "wallets-and-testnets",
+   "nodes-and-providers",
+   "lab-remix-tour",
+   "lab-simple-storage"
+  ]
+ },
+ {
+  "n": 4,
+  "slug": "solidity",
+  "title": "Solidity smart contracts",
+  "tint": "cs",
+  "summary": "What a smart contract is and is not, Solidity for programmers, and three contracts with real legal questions.",
+  "sources": "Stanford CS251 lecture 8; MIT 15.S12 session 6; roadmap.sh: smart contracts, Solidity, Vyper, Remix",
+  "lessons": [
+   "what-smart-contracts-are",
+   "solidity-for-programmers",
+   "lab-escrow",
+   "lab-rental-deposit",
+   "lab-document-registry"
+  ]
+ },
+ {
+  "n": 5,
+  "slug": "tokens",
+  "title": "Tokens and standards",
+  "tint": "cs",
+  "summary": "ERC-20, ERC-721 and ERC-1155, audited libraries, and ready-made token contracts.",
+  "sources": "UZH lecture 5; roadmap.sh: ERC tokens, NFTs, OpenZeppelin",
+  "lessons": [
+   "token-standards",
+   "lab-course-token",
+   "lab-openzeppelin-wizard",
+   "lab-thirdweb"
+  ]
+ },
+ {
+  "n": 6,
+  "slug": "tooling",
+  "title": "Developer tooling and testing",
+  "tint": "cs",
+  "summary": "From Remix to a professional toolchain: Foundry, Hardhat, Git, and tests that prove a contract follows its rules.",
+  "sources": "roadmap.sh: Foundry, Hardhat, Git, unit and integration tests, code coverage, fuzz testing",
+  "lessons": [
+   "toolchain",
+   "testing-contracts",
+   "lab-foundry-test"
+  ]
+ },
+ {
+  "n": 7,
+  "slug": "security",
+  "title": "Smart contract security",
+  "tint": "cs",
+  "summary": "The bugs that cost real money, how attacks happen today, and how professionals find problems first.",
+  "sources": "Stanford CS251; Anthropic SCONE-bench (2025); BlockSec top incidents 2025; roadmap.sh: security, threat vectors, Slither, Echidna",
+  "lessons": [
+   "security-basics",
+   "security-in-practice",
+   "audits-and-analysis",
+   "lab-reentrancy",
+   "lab-phalcon"
+  ]
+ },
+ {
+  "n": 8,
+  "slug": "operate",
+  "title": "Deploy, verify and operate",
+  "tint": "cs",
+  "summary": "Ship to a public testnet, verify the source, debug real transactions and plan for upgrades.",
+  "sources": "roadmap.sh: deployment, monitoring, upgrades, maintenance; Tenderly and Remix documentation",
+  "lessons": [
+   "upgrades-and-operations",
+   "lab-sepolia",
+   "lab-tenderly",
+   "lab-see-inside"
+  ]
+ },
+ {
+  "n": 9,
+  "slug": "dapps",
+  "title": "dApps, oracles and storage",
+  "tint": "bi",
+  "summary": "How a contract meets the world: front ends, oracles for outside facts, and storage for files.",
+  "sources": "MIT 15.S12 session 7; roadmap.sh: dApps, frontend frameworks, ethers.js, oracles, Chainlink, decentralised storage",
+  "lessons": [
+   "dapp-architecture",
+   "oracles",
+   "decentralised-storage",
+   "lab-attestations",
+   "lab-quickdapp"
+  ]
+ },
+ {
+  "n": 10,
+  "slug": "scaling",
+  "title": "Scaling, privacy and interoperability",
+  "tint": "bi",
+  "summary": "Rollups, channels and bridges, zero-knowledge proofs, and the risks each one adds.",
+  "sources": "Stanford CS251 lectures 12–18; Princeton payment channels and rollups; roadmap.sh: L2, rollups, sidechains, state channels, interoperability",
+  "lessons": [
+   "ethereum-today",
+   "channels-sidechains-bridges",
+   "zero-knowledge",
+   "lab-dashboards"
+  ]
+ },
+ {
+  "n": 11,
+  "slug": "defi-daos",
+  "title": "DeFi, DAOs and governance",
+  "tint": "bi",
+  "summary": "Stablecoins, exchanges, lending and MEV; and how groups hold money and decide together on chain.",
+  "sources": "Stanford CS251 lectures 9–11; UZH lectures 6–7; Stanford Law Blockchain Governance; SMU LAW649 topics 5–6",
+  "lessons": [
+   "defi",
+   "daos-and-governance",
+   "lab-safe",
+   "lab-aragon"
+  ]
+ },
+ {
+  "n": 12,
+  "slug": "law-business",
+  "title": "Law, regulation and business",
+  "tint": "law",
+  "summary": "Smart legal contracts, the legal questions code cannot answer, tokenisation and EU regulation.",
+  "sources": "SMU LAW649 topics 7–10; MIT 15.S12 sessions 8, 11–12; UK Law Commission (2021); MiCA",
+  "lessons": [
+   "law-and-business",
+   "smart-legal-contracts",
+   "regulation",
+   "lab-accord"
+  ]
+ },
+ {
+  "n": 13,
+  "slug": "frontiers",
+  "title": "Frontiers and research",
+  "tint": "law",
+  "summary": "AI agents with wallets, quantum risk, current research, and how to judge new tools.",
+  "sources": "Stanford CS251 lecture 18 (account abstraction, post-quantum, AI); ERC-8004; NIST PQC; recent papers",
+  "lessons": [
+   "ai-agents",
+   "quantum",
+   "research",
+   "tools-to-evaluate"
+  ]
+ }
+]

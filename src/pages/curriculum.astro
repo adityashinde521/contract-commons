@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import { MODULES, TINT, KIND_LABEL, KIND_CHIP, orderedLessons, url } from '../lib/course';
+const lessons = await orderedLessons();
+---
+<Base title="Curriculum" active="curriculum">
+  <div class="wrap">
+    <header class="page-head">
+      <div class="cc-eyebrow">Curriculum</div>
+      <h1>{MODULES.length} modules, {lessons.length} lessons and labs</h1>
+      <p class="lead">Ethereum-focused and ordered from first principles to research. Every module ends with a lab. Lessons marked with a quiz are complete when you score 80%.</p>
+    </header>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px">
+      {MODULES.map((m) => (
+        <section class="cc-card" id={m.slug} style="border-radius:var(--radius-xl)">
+          <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+            <span class={`mod-num ${TINT[m.tint]}`}>{String(m.n).padStart(2, '0')}</span>
+            <div style="flex:1 1 400px;min-width:0">
+              <h2 style="margin:0;font-size:22px;font-weight:800"><a href={url(`/modules/${m.slug}/`)} style="color:var(--ink);text-decoration:none">{m.title}</a></h2>
+              <p style="margin:4px 0 0;color:var(--muted)">{m.summary}</p>
+            </div>
+            <span class="cc-chip" data-mod-progress={m.lessons.join(',')}>0 of {m.lessons.length} done</span>
+          </div>
+          <ol style="list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+            {lessons.filter((l) => l.mod.n === m.n).map((l) => (
+              <li><a href={url(`/lessons/${l.entry.id}/`)} data-lesson-link={l.entry.id} style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--surface-muted);text-decoration:none;color:var(--ink)">
+                <span style="font:500 13px var(--font-mono);color:var(--muted-2);min-width:34px">{l.code}</span>
+                <span style="flex:1;font-weight:600;font-size:15px">{l.entry.data.title}</span>
+                <span class={`cc-chip ${KIND_CHIP[l.entry.data.kind]}`}>{KIND_LABEL[l.entry.data.kind]}</span>
+              </a></li>
+            ))}
+          </ol>
+        </section>
+      ))}
+      <section class="cc-card" style="border-radius:var(--radius-xl)">
+        <h2 style="margin:0;font-size:22px;font-weight:800">Capstone and final exam</h2>
+        <p style="margin:4px 0 12px;color:var(--muted)">Bring the three disciplines together in one project, then take the 20-question final exam.</p>
+        <div class="meta-chips"><a class="cc-btn cc-btn--primary" href={url('/capstone/')}>Capstone: the agentic escrow</a><a class="cc-btn cc-btn--secondary" href={url('/final-exam/')}>Final exam</a></div>
+      </section>
+    </div>
+  </div>
+</Base>

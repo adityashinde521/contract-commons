@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { MODULES, splitSteps, url } from '../lib/course';
+const pages = (await getCollection('pages')).filter((p) => p.id.startsWith('instructor')).sort((a, b) => a.id.localeCompare(b.id));
+const order = ['instructor-plan', 'instructor-sessions', 'instructor-rubric', 'instructor-about'];
+pages.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+const fix = (h: string) => h.replace(/href="\.\.\/\.\.\//g, `href="${url('/')}`).replace(/href="\.\.\//g, `href="${url('/lessons/')}`);
+const syllabi = [
+  ['Stanford University', 'CS251 Cryptocurrencies, Blockchains and Smart Contracts (Fall 2026)', 'https://cs251.stanford.edu/syllabus.html', 'Consensus, Ethereum and Solidity, stablecoins, DEXs, MEV, privacy and zk-SNARKs, channels, rollups, account abstraction, post-quantum'],
+  ['Princeton University', 'Principles of Blockchains (Prof. Pramod Viswanath)', 'https://web3.princeton.edu/principles-of-blockchains', 'Cryptographic primitives, Nakamoto consensus, PoS, scaling, payment channels, rollups, ZK, bridges'],
+  ['MIT Sloan', '15.S12 Blockchain and Money (Gensler, 2018)', 'https://ocw.mit.edu/courses/15-s12-blockchain-and-money-fall-2018/pages/calendar/', 'Money and ledgers, smart contracts, public policy, use-case economics, payments, digital ID'],
+  ['University of Zurich', 'Blockchain and Crypto-economics (2024)', 'https://ifi.uzh.ch/dam/jcr:c8b2f22d-b059-4bef-b21d-1782a3a29012/Course%20Syllabus_BCE%2024.pdf', 'UTXO and accounts, Ethereum, tokens, DeFi, DAOs, L2 scaling, attacks; hands-on sessions 40% of grade'],
+  ['Singapore Management University', 'LAW 649 Blockchain and Governance (LLM)', 'https://law.smu.edu.sg/sites/law.smu.edu.sg/files/2023-05/LAW649.pdf', 'Technical and economic foundations of trust, governance, tokenisation and regulation, law and economics of smart contracts and DeFi'],
+  ['Stanford Law School', 'LAW 1078 Blockchain Governance', 'https://law.stanford.edu/courses/blockchain-governance/', 'DAO tooling, voting, delegation, constitutional design, identity; open to law, technical and business students'],
+  ['roadmap.sh', 'Blockchain developer roadmap', 'https://roadmap.sh/blockchain', '127 topics from fundamentals to dApps, security, testing, deployment and scaling'],
+];
+---
+<Base title="For instructors" active="instructors">
+  <div class="wrap" style="max-width:1040px">
+    <header class="page-head">
+      <div class="cc-eyebrow">For instructors</div>
+      <h1>Plans, preparation and assessment</h1>
+      <p class="lead">Everything needed to run Contract Commons as a semester course or a block week, and the sources the curriculum is built on.</p>
+    </header>
+    <section class="step-card" id="sources" style="margin-top:20px">
+      <h2 style="font-size:22px;margin:0 0 6px">How the curriculum was built</h2>
+      <p style="margin:0 0 14px;color:var(--muted)">The module structure follows the roadmap.sh blockchain roadmap, narrowed to Ethereum smart contracts, and was checked against these syllabi. Each module page lists the sources it draws on.</p>
+      <div class="prose"><div class="tw"><table>
+        <tr><th>Institution</th><th>Course</th><th>Topics used</th></tr>
+        {syllabi.map(([i, c, u, t]) => <tr><td>{i}</td><td><a href={u} target="_blank" rel="noopener">{c}</a></td><td>{t}</td></tr>)}
+      </table></div>
+      <h3>Module to source map</h3>
+      <div class="tw"><table><tr><th>Module</th><th>Sources</th></tr>{MODULES.map((m) => <tr><td><a href={url(`/modules/${m.slug}/`)}>{m.n}. {m.title}</a></td><td>{m.sources}</td></tr>)}</table></div></div>
+    </section>
+    {pages.map((p) => (
+      <section class="step-card" style="margin-top:16px" id={p.id}>
+        <h2 style="font-size:24px;margin:0 0 12px">{p.data.title}</h2>
+        {splitSteps(p.body || '').map((s) => (<div class="prose" style="margin-top:12px"><h3>{s.title}</h3><div set:html={fix(s.html)} /></div>))}
+      </section>
+    ))}
+  </div>
+</Base>

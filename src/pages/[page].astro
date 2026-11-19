@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { splitSteps, url } from '../lib/course';
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.filter((p) => !p.id.startsWith('instructor')).map((p) => ({ params: { page: p.id }, props: { p } }));
+}
+const { p } = Astro.props;
+const fix = (h: string) => h.replace(/href="\.\.\/\.\.\//g, `href="${url('/')}`).replace(/href="\.\.\//g, `href="${url('/lessons/')}`);
+const parts = splitSteps(p.body || '');
+const EYEBROW: Record<string, string> = { about: 'About the course', setup: 'Before the first lab', teamwork: 'Mixed teams', capstone: 'Project', 'team-formats': 'Project', 'thesis-topics': 'Project' };
+---
+<Base title={p.data.title}>
+  <div class="wrap" style="max-width:960px">
+    <header class="page-head"><div class="cc-eyebrow">{EYEBROW[p.id] || 'Contract Commons'}</div><h1>{p.data.title}</h1></header>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:20px">
+      {parts.map((s) => (
+        <section class="step-card" id={s.id}>
+          <h2 style="font-size:22px;margin:0 0 12px">{s.title}</h2>
+          <div class="prose" set:html={fix(s.html)} />
+        </section>
+      ))}
+    </div>
+  </div>
+</Base>

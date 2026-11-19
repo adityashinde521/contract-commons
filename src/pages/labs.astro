@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+import { orderedLessons, splitSteps, KIND_LABEL, KIND_CHIP, url } from '../lib/course';
+const labs = (await orderedLessons()).filter((l) => l.entry.data.kind.startsWith('lab'));
+const overview = await getEntry('lessons', 'gui-tools-overview');
+const ov = overview ? splitSteps(overview.body || '') : [];
+const concept = ov.find((s) => s.id === 'concept');
+---
+<Base title="Labs and tools" active="labs">
+  <div class="wrap">
+    <header class="page-head">
+      <div class="cc-eyebrow">Labs and tools</div>
+      <h1>{labs.length} labs, all on test networks</h1>
+      <p class="lead">Code labs use Remix and Foundry. Tool labs use the graphical products professionals use, so law and business students can build and inspect real contracts without programming.</p>
+    </header>
+    <div class="filters" role="group" aria-label="Filter labs" style="margin-top:20px">
+      <button type="button" aria-pressed="true" data-filter="all">All labs</button>
+      <button type="button" aria-pressed="false" data-filter="lab-remix">Code labs</button>
+      <button type="button" aria-pressed="false" data-filter="lab-gui">Tool labs (no code)</button>
+    </div>
+    <div class="grid" data-filter-list>
+      {labs.map((l) => (
+        <a class="cc-card card-link" href={url(`/lessons/${l.entry.id}/`)} data-kind={l.entry.data.kind} data-lesson-link={l.entry.id}>
+          <div class="meta-chips"><span class={`cc-chip ${KIND_CHIP[l.entry.data.kind]}`}>{KIND_LABEL[l.entry.data.kind]}</span><span class="cc-chip">{l.code}</span>{l.entry.data.minutes && <span class="cc-chip">{l.entry.data.minutes}</span>}</div>
+          <h3>{l.entry.data.title}</h3>
+          <p>{l.entry.data.problem}</p>
+        </a>
+      ))}
+    </div>
+    {concept && (
+      <section class="section">
+        <div class="panel prose" set:html={concept.html.replace(/href="\.\.\//g, `href="${url('/lessons/')}`)} />
+      </section>
+    )}
+  </div>
+</Base>

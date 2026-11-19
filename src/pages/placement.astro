@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import qs from '../data/placement.json';
+import { MODULES, url } from '../lib/course';
+---
+<Base title="Placement check" active="">
+  <div class="wrap" style="max-width:860px">
+    <header class="page-head">
+      <div class="cc-eyebrow">Placement check</div>
+      <h1>Where should you start?</h1>
+      <p class="lead">Ten questions, about five minutes. Answer what you know and choose “Not sure” otherwise. Nothing is graded.</p>
+    </header>
+    <form class="cc-card" data-placement style="margin-top:20px;border-radius:var(--radius-xl)">
+      <label for="pl-role" style="font-weight:700;display:block;margin-bottom:6px">Your discipline</label>
+      <select id="pl-role" name="role" class="select" required>
+        <option value="law">Law</option><option value="bi">Business informatics</option><option value="cs">Computer science</option><option value="pro">I already work</option>
+      </select>
+      {qs.map((q, i) => (
+        <fieldset style="border:0;padding:0;margin:22px 0 0">
+          <legend style="font-weight:700;font-size:16px;margin-bottom:8px">{i + 1}. {q.q}</legend>
+          {[...q.o, 'Not sure'].map((o, j) => (
+            <label style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:12px;background:var(--surface-muted);margin:6px 0;cursor:pointer;min-height:44px">
+              <input type="radio" name={`q${i}`} value={j === q.o.length ? -1 : j} required={j === 0} style="width:18px;height:18px;accent-color:var(--brand-700)"> <span>{o}</span>
+            </label>
+          ))}
+        </fieldset>
+      ))}
+      <button class="cc-btn cc-btn--primary" type="submit" style="margin-top:22px">Show my starting point</button>
+    </form>
+    <section class="cc-card" data-placement-result hidden style="margin-top:20px;border-radius:var(--radius-xl);border:2px solid var(--brand-500)"></section>
+  </div>
+  <script type="application/json" id="placement-data" set:html={JSON.stringify({ qs, modules: MODULES.map((m) => ({ n: m.n, slug: m.slug, title: m.title, first: m.lessons[0] })) })} />
+</Base>
