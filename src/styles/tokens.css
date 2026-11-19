@@ -36,7 +36,7 @@
   --code-ink: #d9e8e0;
   --code-comment: #7fb89e;
   --code-string: #f2c661;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --space-1: 4px;
   --space-2: 8px;

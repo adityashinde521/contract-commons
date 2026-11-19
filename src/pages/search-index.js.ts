@@ -10,5 +10,5 @@ export const GET: APIRoute = async () => {
     { t: 'Setup and safety', s: 'Page', k: 'MetaMask Sepolia faucet wallet recovery phrase', u: '/setup/' },
     { t: 'Capstone: the agentic escrow', s: 'Project', k: 'capstone project team', u: '/capstone/' },
   ];
-  return new Response(JSON.stringify(items), { headers: { 'Content-Type': 'application/json' } });
+  return new Response('window.CC_SEARCH=' + JSON.stringify(items) + ';', { headers: { 'Content-Type': 'text/javascript' } });
 };

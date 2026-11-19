@@ -11,6 +11,12 @@ contract from three sides: code, business process and law.
 - Progress, quiz scores and a lab log saved in the learner’s browser (no accounts, no server)
 - Every lab runs on the Sepolia test network or reads public data. No real money is used.
 
+## Use it offline
+
+Run `npm install` and `npm run build` once. Then open `dist/index.html` in any browser by double-clicking it.
+Everything (fonts, search, quizzes, progress) works from disk without internet or a web server.
+Only the links to outside tools (Remix, Etherscan, Safe and so on) need a connection.
+
 ## Run it
 
 ```bash
@@ -19,11 +25,7 @@ npm run dev        # http://localhost:4321
 npm run build      # static site in dist/
 ```
 
-To host under a sub-path (for example GitHub Pages for this repository):
-
-```bash
-SITE_URL=https://adityashinde521.github.io BASE_PATH=/contract-commons npm run build
-```
+All links in the build are relative, so the `dist/` folder can be copied to any static host or sub-path as it is.
 
 ## Where things are
 

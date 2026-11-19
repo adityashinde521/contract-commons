@@ -6,10 +6,13 @@
   "description": "Contract Commons: an Ethereum-focused smart contracts course for computer science, business informatics and law students.",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "build": "astro build && node tools/relativize.mjs",
+    "preview": "astro preview",
+    "offline": "npm run build && node tools/open-offline.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.6",
+    "@fontsource/jetbrains-mono": "^5.2.6",
     "astro": "5.7.13"
   }
 }

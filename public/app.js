@@ -1,7 +1,9 @@
 /* Contract Commons client script: progress, quizzes, lab log, search, dashboard, placement. Data stays in this browser. */
 (function () {
   'use strict';
-  var BASE = document.body.getAttribute('data-base') || '';
+  var BASE = document.body.getAttribute('data-base') || '.';
+  /* Link helper: works on a web server and when the site is opened from disk. */
+  function L(p) { var h = ''; var i = p.indexOf('#'); if (i >= 0) { h = p.slice(i); p = p.slice(0, i); } return BASE + p + (/\/$/.test(p) ? 'index.html' : '') + h; }
   var KEY = 'contract-commons-v1';
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
   var S = load();
@@ -24,7 +26,7 @@
 
   /* Search */
   var dlg = $('#search'), idx = null;
-  function openSearch() { if (!dlg) return; if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); $('#search-q').focus(); if (!idx) fetch(BASE + '/search.json').then(function (r) { return r.json(); }).then(function (d) { idx = d; run(); }).catch(function () {}); }
+  function openSearch() { if (!dlg) return; if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); $('#search-q').focus(); if (!idx) { if (window.CC_SEARCH) { idx = window.CC_SEARCH; run(); } else { var sc = document.createElement('script'); sc.src = BASE + '/search-index.js'; sc.onload = function () { idx = window.CC_SEARCH || []; run(); }; document.head.appendChild(sc); } } }
   function run() {
     var q = ($('#search-q').value || '').toLowerCase().trim(), out = $('#search-res');
     if (!idx) { out.innerHTML = '<li style="padding:12px;color:var(--muted-2)">Loading…</li>'; return; }
@@ -35,7 +37,7 @@
       for (var i = 0; i < words.length; i++) { var w = words[i]; if (t.indexOf(w) >= 0) sc += 5; else if (k.indexOf(w) >= 0) sc += 1; else return null; }
       return { it: it, sc: sc };
     }).filter(Boolean).sort(function (a, b) { return b.sc - a.sc; }).slice(0, 12);
-    out.innerHTML = hits.length ? hits.map(function (h) { return '<li><a href="' + BASE + h.it.u + '">' + esc(h.it.t) + '<small>' + esc(h.it.s) + '</small></a></li>'; }).join('') : '<li style="padding:12px;color:var(--muted-2)">No results. Try a tool name such as Remix or Safe.</li>';
+    out.innerHTML = hits.length ? hits.map(function (h) { return '<li><a href="' + L(h.it.u) + '">' + esc(h.it.t) + '<small>' + esc(h.it.s) + '</small></a></li>'; }).join('') : '<li style="padding:12px;color:var(--muted-2)">No results. Try a tool name such as Remix or Safe.</li>';
   }
   $$('[data-search-open]').forEach(function (b) { b.addEventListener('click', openSearch); });
   var sc = $('[data-search-close]'); if (sc) sc.addEventListener('click', function () { dlg.close(); });
@@ -162,7 +164,7 @@
   if (gf) gf.addEventListener('input', function () { var q = gf.value.toLowerCase(); $$('[data-term]').forEach(function (c) { c.hidden = q && c.getAttribute('data-term').indexOf(q) < 0 && c.textContent.toLowerCase().indexOf(q) < 0; }); });
   /* Paths */
   $$('[data-choose-path]').forEach(function (b) {
-    b.addEventListener('click', function () { S.path = b.getAttribute('data-choose-path'); save(); location.href = BASE + '/dashboard/'; });
+    b.addEventListener('click', function () { S.path = b.getAttribute('data-choose-path'); save(); location.href = L('/dashboard/'); });
   });
 
   /* Dashboard */
@@ -187,9 +189,9 @@
       if (next) {
         $('[data-d-next-title]').textContent = 'Up next: ' + next.code + ' ' + next.title;
         $('[data-d-next-sub]').textContent = 'Module ' + next.mod + ' · ' + (next.kind === 'lesson' ? 'Lesson' : next.kind === 'lab-remix' ? 'Code lab' : 'Tool lab') + (next.minutes ? ' · ' + next.minutes : '');
-        $('[data-d-next-link]').href = BASE + '/lessons/' + next.id + '/';
+        $('[data-d-next-link]').href = L('/lessons/' + next.id + '/');
         $('[data-d-next-link]').textContent = S.done && Object.keys(S.done).length ? 'Continue' : 'Start';
-      } else { $('[data-d-next-title]').textContent = 'Path complete'; $('[data-d-next-sub]').textContent = 'Take the final exam and start the capstone.'; $('[data-d-next-link]').href = BASE + '/final-exam/'; $('[data-d-next-link]').textContent = 'Final exam'; }
+      } else { $('[data-d-next-title]').textContent = 'Path complete'; $('[data-d-next-sub]').textContent = 'Take the final exam and start the capstone.'; $('[data-d-next-link]').href = L('/final-exam/'); $('[data-d-next-link]').textContent = 'Final exam'; }
       var cur = mods.filter(function (m) { return !modDone(m); })[0];
       $('[data-d-path-list]').innerHTML = mods.slice(Math.max(0, mods.indexOf(cur) - 1), Math.max(0, mods.indexOf(cur) - 1) + 3).map(function (m) {
         var d = modDone(m), c = m === cur;
@@ -209,15 +211,15 @@
       $('[data-d-continue]').innerHTML = cont.length ? cont.map(function (l) {
         var v = S.visit[l.id] || {}, seen = Object.keys(v).length, pct = Math.min(95, seen * 20);
         var chip = l.kind === 'lab-remix' ? 'cc-chip--cs">Code lab' : l.kind === 'lab-gui' ? 'cc-chip--law">Tool lab' : 'cc-chip--brand">Lesson';
-        return '<a class="cc-card card-link" href="' + BASE + '/lessons/' + l.id + '/"><div class="meta-chips"><span class="cc-chip ' + chip + '</span><span class="cc-chip">' + l.code + '</span></div><h3 style="font-size:16.5px">' + esc(l.title) + '</h3><div style="display:flex;align-items:center;gap:10px"><div class="cc-progress" style="flex:1"><span style="width:' + pct + '%"></span></div><b style="font-size:13px">' + pct + '%</b></div></a>';
+        return '<a class="cc-card card-link" href="' + L('/lessons/' + l.id + '/') + '"><div class="meta-chips"><span class="cc-chip ' + chip + '</span><span class="cc-chip">' + l.code + '</span></div><h3 style="font-size:16.5px">' + esc(l.title) + '</h3><div style="display:flex;align-items:center;gap:10px"><div class="cc-progress" style="flex:1"><span style="width:' + pct + '%"></span></div><b style="font-size:13px">' + pct + '%</b></div></a>';
       }).join('') : '<div class="empty">Everything on your path is complete.</div>';
       $('[data-d-log]').innerHTML = logs.length ? '<table><thead><tr><th>Unit</th><th>Notes</th><th>Evidence</th><th>Saved</th></tr></thead><tbody>' + logs.map(function (k) {
         var e = S.log[k];
-        return '<tr><td style="font-weight:600"><a href="' + BASE + '/lessons/' + k + '/">' + esc((byId[k] ? byId[k].code + ' ' : '') + (byId[k] ? byId[k].title : e.title)) + '</a></td><td>' + esc(e.note || '') + '</td><td style="font:500 12.5px var(--font-mono);overflow-wrap:anywhere">' + esc(e.evidence || '—') + '</td><td>' + esc((e.at || '').slice(0, 10)) + '</td></tr>';
+        return '<tr><td style="font-weight:600"><a href="' + L('/lessons/' + k + '/') + '">' + esc((byId[k] ? byId[k].code + ' ' : '') + (byId[k] ? byId[k].title : e.title)) + '</a></td><td>' + esc(e.note || '') + '</td><td style="font:500 12.5px var(--font-mono);overflow-wrap:anywhere">' + esc(e.evidence || '—') + '</td><td>' + esc((e.at || '').slice(0, 10)) + '</td></tr>';
       }).join('') + '</tbody></table>' : '<div class="empty">No entries yet. Each lab ends with a “Save to your lab log” form.</div>';
       $('[data-d-mods]').innerHTML = D.modules.map(function (m) {
         var n = m.lessons.filter(function (i) { return S.done[i]; }).length, inPath = P.modules.indexOf(m.n) >= 0;
-        return '<li><a href="' + BASE + '/modules/' + m.slug + '/" style="text-decoration:none;color:var(--ink);display:block;' + (inPath ? '' : 'opacity:.6') + '"><div style="display:flex;justify-content:space-between;gap:8px;font-size:14px"><span style="font-weight:600">' + m.n + '. ' + esc(m.title) + '</span><span style="color:var(--muted-2);font-variant-numeric:tabular-nums">' + n + '/' + m.lessons.length + '</span></div><div class="cc-progress" style="height:6px;margin-top:6px"><span style="width:' + Math.round(100 * n / m.lessons.length) + '%"></span></div></a></li>';
+        return '<li><a href="' + L('/modules/' + m.slug + '/') + '" style="text-decoration:none;color:var(--ink);display:block;' + (inPath ? '' : 'opacity:.6') + '"><div style="display:flex;justify-content:space-between;gap:8px;font-size:14px"><span style="font-weight:600">' + m.n + '. ' + esc(m.title) + '</span><span style="color:var(--muted-2);font-variant-numeric:tabular-nums">' + n + '/' + m.lessons.length + '</span></div><div class="cc-progress" style="height:6px;margin-top:6px"><span style="width:' + Math.round(100 * n / m.lessons.length) + '%"></span></div></a></li>';
       }).join('');
     }
     dash();
@@ -247,7 +249,7 @@
       var r = $('[data-placement-result]'); r.hidden = false;
       r.innerHTML = '<div class="cc-eyebrow">Your result</div><h2 style="font-size:26px;margin:8px 0">' + known + ' of ' + PD.qs.length + ' known · start at Module ' + start.n + '</h2>' +
         '<p style="margin:0 0 12px;color:var(--muted)">Suggested path: <b style="color:var(--ink)">' + names[path] + '</b>. ' + (skim.length ? 'You can skim modules ' + skim.map(function (m) { return m.n; }).join(', ') + ' and take their quizzes to mark them complete.' : 'Start from the beginning: the foundations are worth it.') + '</p>' +
-        '<div class="meta-chips"><a class="cc-btn cc-btn--primary" href="' + BASE + '/lessons/' + start.first + '/">Open Module ' + start.n + ': ' + esc(start.title) + '</a><a class="cc-btn cc-btn--secondary" href="' + BASE + '/dashboard/">See my progress</a></div>';
+        '<div class="meta-chips"><a class="cc-btn cc-btn--primary" href="' + L('/lessons/' + start.first + '/') + '">Open Module ' + start.n + ': ' + esc(start.title) + '</a><a class="cc-btn cc-btn--secondary" href="' + L('/dashboard/') + '">See my progress</a></div>';
       r.scrollIntoView({ block: 'start' });
     });
   }
