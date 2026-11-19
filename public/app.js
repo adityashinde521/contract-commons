@@ -240,7 +240,17 @@
   });
   /* Glossary filter */
   var gf = $('[data-gloss-filter]');
-  if (gf) gf.addEventListener('input', function () { var q = gf.value.toLowerCase(); $$('[data-term]').forEach(function (c) { c.hidden = q && c.getAttribute('data-term').indexOf(q) < 0 && c.textContent.toLowerCase().indexOf(q) < 0; }); });
+  if (gf) gf.addEventListener('input', function () {
+    var q = gf.value.toLowerCase().trim(), shown = 0;
+    $$('[data-term]').forEach(function (c) { c.hidden = !!q && c.getAttribute('data-term').indexOf(q) < 0 && c.textContent.toLowerCase().indexOf(q) < 0; if (!c.hidden) shown++; });
+    $$('[data-gloss-group]').forEach(function (g) {
+      var any = $$('[data-term]', g).some(function (c) { return !c.hidden; });
+      g.hidden = !any;
+      var a = $('[data-az="' + g.getAttribute('data-gloss-group') + '"]'); if (a) a.classList.toggle('is-off', !any);
+    });
+    var ct = $('[data-gloss-count]'); if (ct) ct.textContent = shown + (shown === 1 ? ' term' : ' terms');
+    var em = $('[data-gloss-empty]'); if (em) em.hidden = shown > 0;
+  });
 
   /* Dashboard */
   var cd = $('#course-data');

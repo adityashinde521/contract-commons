@@ -1,8 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
 import terms from '../data/glossary.json';
+import { getCollection } from 'astro:content';
 import { url } from '../lib/course';
+const titles: Record<string, string> = {};
+(await getCollection('lessons')).forEach((l) => { titles[l.id] = l.data.title; });
 const sorted = [...terms].sort((a, b) => a.t.localeCompare(b.t));
+const letterOf = (t: string) => (/[a-z]/i.test(t[0]) ? t[0].toUpperCase() : '#');
+const groups: [string, typeof sorted][] = [];
+sorted.forEach((g) => {
+  const L = letterOf(g.t);
+  const last = groups[groups.length - 1];
+  if (last && last[0] === L) last[1].push(g); else groups.push([L, [g]]);
+});
+const have = new Set(groups.map((g) => g[0]));
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 ---
 <Base title="Glossary" active="glossary">
   <div class="wrap">
@@ -11,16 +23,35 @@ const sorted = [...terms].sort((a, b) => a.t.localeCompare(b.t));
       <h1>{sorted.length} terms in plain English</h1>
       <p class="lead">Each term links to the lesson that explains it.</p>
     </header>
-    <label for="gfilter" class="sr-only">Filter terms</label>
-    <input id="gfilter" type="search" placeholder="Filter terms" class="select" style="width:100%;max-width:420px;margin-top:20px" data-gloss-filter>
-    <dl class="grid" style="margin-top:18px" data-gloss-list>
-      {sorted.map((g) => (
-        <div class="cc-card" data-term={g.t.toLowerCase()} id={g.t.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
-          <dt style="font-weight:800;font-size:17px">{g.t}</dt>
-          <dd style="margin:6px 0 10px;color:var(--muted);font-size:15px">{g.d}</dd>
-          <dd style="margin:0"><a href={url(`/lessons/${g.l}/`)} style="font-weight:700;font-size:14px">Read the lesson →</a></dd>
-        </div>
+
+    <div class="gloss-bar">
+      <div class="gloss-search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <label for="gfilter" class="sr-only">Filter terms</label>
+        <input id="gfilter" type="search" placeholder="Filter terms, for example gas or MiCA" autocomplete="off" data-gloss-filter>
+        <span class="gloss-count" data-gloss-count aria-live="polite">{sorted.length} terms</span>
+      </div>
+      <nav class="gloss-az" aria-label="Jump to letter">
+        {alphabet.map((L) => have.has(L) ? <a href={`#letter-${L}`} data-az={L}>{L}</a> : <span aria-hidden="true">{L}</span>)}
+      </nav>
+    </div>
+
+    <div class="gloss-list" data-gloss-list>
+      {groups.map(([L, items]) => (
+        <section class="gloss-group" id={`letter-${L}`} data-gloss-group={L} aria-labelledby={`h-${L}`}>
+          <h2 class="gloss-letter" id={`h-${L}`}>{L}</h2>
+          <dl class="gloss-rows">
+            {items.map((g) => (
+              <div class="gloss-row" data-term={g.t.toLowerCase()} id={g.t.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+                <dt>{g.t}</dt>
+                <dd class="gloss-def">{g.d}</dd>
+                <dd class="gloss-link"><a href={url(`/lessons/${g.l}/`)} title={titles[g.l]}><span>{titles[g.l] || 'Read the lesson'}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       ))}
-    </dl>
+      <p class="gloss-empty" data-gloss-empty hidden>No term matches. Try a shorter word, or search the whole course with Ctrl K.</p>
+    </div>
   </div>
 </Base>
