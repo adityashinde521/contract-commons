@@ -14,7 +14,7 @@ The design system for Contract Commons, an Ethereum-focused smart contracts cour
 
 - **Ground and surfaces.** `ground` behind everything, `surface` for cards, `surface-muted` for blocks inside a card. Borders are `line`; secondary buttons use `line-strong`.
 - **Brand.** `brand-900` is the identity colour: hero bands, primary buttons, the logo tile. On `brand-900`, text is `on-brand` / `on-brand-muted` and the main call to action is `brand-300` with `brand-ink` text. `brand-700` is for links and eyebrows on light grounds; `brand-500` for progress and done states.
-- **Disciplines.** Each discipline has a tint and a strong colour: computer science `cs-100`/`cs-600`, business informatics `bi-100`/`bi-600`, law `law-100`/`law-600` (`law-50` for legal text panels). Use them for chips, icon tiles, path cards and the Apply tabs. Never use them for state.
+- **Disciplines.** Each discipline has a tint and a strong colour: computer science `cs-100`/`cs-600`, business informatics `bi-100`/`bi-600`, law `law-100`/`law-600` (`law-50` for legal text panels). Use them for chips, icon tiles and the three lenses (technology, business, law) in the Apply step. Never use them for state.
 - **State.** Done = `brand-50`/`brand-500`. Current = `pending-100`/`pending-500`/`pending-700`. Warning = `warn-100`/`warn-700`. Error and revert = `danger-100`/`danger-700`.
 - **Code.** `code-bg`, `code-ink`, `code-comment`, `code-string`.
 - All text pairs meet 4.5:1. `muted-2` is the lightest text colour allowed on `surface` and `ground`.

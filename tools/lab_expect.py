@@ -131,10 +131,10 @@ def main():
         nonlocal_added = [0]
         s = re.sub(r'(<ol class="steps"[^>]*>)(.*?)</ol>', per_ol, s, flags=re.S)
         added += nonlocal_added[0]
-        s = re.sub(r'<div class="checked">.*?</div>\n?', '', s, flags=re.S)
+        s = re.sub(r'\n*<div class="checked">.*?</div>\n*', '\n\n', s, flags=re.S)
         note = NOTE.get(kind)
         if note:
-            s = s.replace('## Build\n', '## Build\n\n' + note + '\n', 1)
+            s = re.sub(r'## Build\n+', '## Build\n\n' + note + '\n\n', s, count=1)
         p.write_text(s, encoding='utf-8')
     print('expected results added:', added, 'of', len(E))
 
