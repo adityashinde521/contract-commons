@@ -13,6 +13,8 @@ business and law. Everyone does every lab and takes the same final exam.
 - One final exam for everyone: 40 questions (10 of each type, spread across all modules), pass with 70%
 - A placement check that shows which modules a learner can move through quickly
 
+**Live site:** https://adityashinde521.github.io/contract-commons/
+
 ## Maintaining the content
 
 | Task | Command or file |
